@@ -1,0 +1,11 @@
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\bin\Debug\Calculator.Unit.Test.dll
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\bin\Debug\Calculator.Unit.Test.pdb
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.exe
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\bin\Debug\nunit.framework.dll
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.pdb
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.exe.config
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\bin\Debug\nunit.framework.xml
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.csprojResolveAssemblyReference.cache
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.csproj.CoreCompileInputs.cache
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.dll
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.pdb

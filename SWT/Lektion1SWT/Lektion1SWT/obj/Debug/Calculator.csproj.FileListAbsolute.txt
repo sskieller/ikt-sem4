@@ -1,0 +1,6 @@
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Lektion1SWT\bin\Debug\Lektion1SWT.exe.config
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Lektion1SWT\bin\Debug\Lektion1SWT.exe
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Lektion1SWT\bin\Debug\Lektion1SWT.pdb
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Lektion1SWT\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Lektion1SWT\obj\Debug\Lektion1SWT.exe
+D:\Programming\repos\semester4\SWT\Lektion1SWT\Lektion1SWT\obj\Debug\Lektion1SWT.pdb
