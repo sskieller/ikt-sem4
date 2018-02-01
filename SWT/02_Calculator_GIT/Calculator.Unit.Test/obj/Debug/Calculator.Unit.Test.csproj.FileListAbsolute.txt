@@ -20,3 +20,14 @@ C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calc
 C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\nunit.framework.xml
 C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.dll
 C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.pdb
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Calculator.Unit.Test.dll
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Calculator.Unit.Test.pdb
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.exe
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\nunit.framework.dll
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.pdb
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.exe.config
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\nunit.framework.xml
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.csprojResolveAssemblyReference.cache
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.csproj.CoreCompileInputs.cache
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.dll
+E:\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.pdb

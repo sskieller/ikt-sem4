@@ -50,5 +50,15 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             return uut.Divide(a, b);
         }
+
+        [TestCase(2,2, ExpectedResult = 4, TestName = "Multiply 2*2 Result = 4")]
+        [TestCase(2, -2, ExpectedResult = -4, TestName = "Multiply 2*-2 Result = -4")]
+        [TestCase(-2, -2, ExpectedResult = 4, TestName = "Multiply -2*-2 Result = 4")]
+        [TestCase(2, 0, ExpectedResult = 0, TestName = "Multiply 2*0 Result = 0")]
+        public double Multiply_Test(double a, double b)
+        {
+            var uut = new CalculatorUnit();
+            return uut.Multiply(a, b);
+        }
     }
 }

@@ -11,3 +11,9 @@ C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Lekt
 C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\bin\Debug\Lektion1SWT.pdb
 C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\obj\Debug\Lektion1SWT.exe
 C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\obj\Debug\Lektion1SWT.pdb
+E:\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\bin\Debug\Lektion1SWT.exe.config
+E:\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\bin\Debug\Lektion1SWT.exe
+E:\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\bin\Debug\Lektion1SWT.pdb
+E:\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+E:\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\obj\Debug\Lektion1SWT.exe
+E:\ikt-sem4\SWT\02_Calculator_GIT\Lektion1SWT\obj\Debug\Lektion1SWT.pdb
