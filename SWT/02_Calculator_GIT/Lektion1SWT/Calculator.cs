@@ -43,7 +43,31 @@ namespace Lektion1SWT
         }
 
 	    public double Accumulator { get; set; } = 0;
-    }
 
-    
+        public double Add(double addend)
+        {
+            return Accumulator + addend;
+        }
+
+        public double Subtract(double subtractor)
+        {
+            return Accumulator - subtractor;
+        }
+
+        public double Multiply(double multiplier)
+        {
+            return Accumulator * multiplier;
+        }
+
+        public double Divide(double divisor)
+        {
+            return Accumulator / divisor;
+        }
+
+        public double Power(double exponent)
+        {
+            return Math.Pow(Accumulator, exponent);
+        }
+
+    }
 }
