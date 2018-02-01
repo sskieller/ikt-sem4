@@ -39,6 +39,7 @@ namespace Lektion1SWT
 
         public double Divide(double a, double b)
         {
+            if (b == 0) throw new System.ArgumentException();
 	        Accumulator = a / b;
             return Accumulator;
         }

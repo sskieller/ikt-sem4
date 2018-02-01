@@ -126,15 +126,22 @@ namespace Calculator.Unit.Test
 
         #region Divide functiontest
         [TestCase(2, 2, ExpectedResult = 1, TestName = "Divide 2 By 2, Result = 1")]
-        [TestCase(2, 0, ExpectedResult = double.PositiveInfinity, TestName = "2 Divided By 0, Result = PositiveInfinity")]
         [TestCase(2, -2, ExpectedResult = -1, TestName = "Divide 2 By -2, Result = -1")]
         [TestCase(0, -2, ExpectedResult = 0, TestName = "Divide 0 By -2, Result = 0")]
         [TestCase(0, 2, ExpectedResult = 0, TestName = "Divide 0 By 2, Result = 0")]
-        [TestCase(0, 0, ExpectedResult = double.NaN, TestName = "Divide 0 By 0, Result = NaN")]
         public double Divide(double a, double b)
         {
             var uut = new CalculatorUnit();
             return uut.Divide(a, b);
+        }
+
+        [TestCase(2, 0, ExpectedResult = 0, TestName = "Divide 2 By 0, Result = 0")]
+        [TestCase(0, 0, ExpectedResult = 0, TestName = "Divide 0 By 0, Result = 0")]
+        public double Divide_ExceptionThrow(double a, double b)
+        {
+            var uut = new CalculatorUnit();
+            Assert.That(() => uut.Divide(a, b), Throws.TypeOf<ArgumentException>());
+            return 0;
         }
         #endregion
 
@@ -157,7 +164,6 @@ namespace Calculator.Unit.Test
         [TestCase(6, 3, 2, 1, 0, TestName = "6 Divided By 3 and Divided By 2, Result = 1, Tolerance:0.5%")]
         [TestCase(6, 5, -2, -0.6, 0.05, TestName = "6 Divided By 5 And Divided By -2, Result = -0.6, Tolerance:0.05%")]
         [TestCase(-2, 5, 5, -0.08, 0.005, TestName = "-2 Divided By 5 And Divided By 5, Result = -0.08, Tolerance:0.005%")]
-        [TestCase(-2, 0, 5, double.NegativeInfinity, 0, TestName = "-2 Divided By 0 And Divided By 5, Result = NegativeInfinity, Tolerance:0.0005%")]
         [TestCase(6, -3, 2, -1, 0, TestName = "6 Divided By 10 And Divided By 2, Result = -1, Tolerance:0%")]
         public void Divide_Accumulator(double a, double b, double c, double result, double tolerance)
         {
