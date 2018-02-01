@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace Lektion1SWT
 {
@@ -69,6 +70,7 @@ namespace Lektion1SWT
 
         public double Divide(double divisor)
         {
+            if (divisor == 0) throw new System.ArgumentException();
             return Accumulator / divisor;
         }
 
