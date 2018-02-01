@@ -60,5 +60,12 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             return uut.Multiply(a, b);
         }
+
+        [TestCase(2, ExpectedResult = 0, TestName = "Wat")]
+        public double Power_Test(double exponent)
+        {
+            var uut = new CalculatorUnit();
+            return uut.Power(exponent);
+        }
     }
 }
