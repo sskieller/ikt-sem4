@@ -66,6 +66,19 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             return uut.Subtract(a, b);
         }
+
+        [TestCase(6, 3, 2, ExpectedResult = 1, TestName = "Accumulator, Sub 6 By 3 and Sub By 2, Result = 1")]
+        [TestCase(6, 5, -2, ExpectedResult = 3, TestName = "Accumulator, Sub 6 By 5 And Sub By -2, Result = 3")]
+        [TestCase(-2, 5, 5, ExpectedResult = -12, TestName = "Accumulator, Sub -2 By 5 And Sub By 5, Result = -12")]
+        [TestCase(-2, 0, 5, ExpectedResult = -7, TestName = "Accumulator, Sub -2 By 0 And Sub By 5, Result = -7")]
+        [TestCase(6, -10, 2, ExpectedResult = 14, TestName = "Accumulator, Sub 6 By 10 And Sub By 2, Result = 14")]
+        [TestCase(0, 0, 0, ExpectedResult = 0, TestName = "Accumulator, Sub 0 By 0 And Sub By 0, Result = 0")]
+        public double Subtract_Test(double a, double b, double c)
+        {
+            var uut = new CalculatorUnit();
+            uut.Subtract(a, b);
+            return uut.Subtract(c);
+        }
         #endregion
 
         #region Power functiontest
@@ -89,10 +102,23 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             return uut.Power(a, b);
         }
+
+        [TestCase(6, 3, 2, 46656, 0.5, TestName = "Accumulator, 6 To The Power Of 3 and To The Power Of 2, Result = 46656, Tolerance:0.5%")]
+        [TestCase(6, 5, -2, 1.07430117322,0.5, TestName = "Accumulator, 6 To The Power Of 5 And To The Power Of -2, Result = 1.07430117322, Tolerance:0.5%")]
+        [TestCase(-2, 5, 5, -33554432,0.5, TestName = "Accumulator, -2 To The Power Of 5 And To The Power Of 5, Result = -33554432, Tolerance:0.5%")]
+        [TestCase(-2, 0, 5, 1,0.0005, TestName = "Accumulator, -2 To The Power Of 0 And To The Power Of 5, Result = -1,Tolerance:0.0005%")]
+        [TestCase(6, -3, 2, 0.00002143347,0.00005, TestName = "Accumulator, 6 To The Power Of 10 And To The Power Of 2, Result = 0.00002143347,Tolerance:0.00005%")]
+        [TestCase(0, 0, 0, 1,0, TestName = "Accumulator, 0 To The Power Of 0 And To The Power Of 0, Result = 1,Tolerance:0%")]
+        public void Power_Test(double a, double b, double c, double result, double tolerance)
+        {
+            var uut = new CalculatorUnit();
+            uut.Power(a, b);
+            Assert.AreEqual(uut.Power(c),result,tolerance);
+        }
+
         #endregion
 
         #region Divide functiontest
-        // Divide
         [TestCase(2, 2, ExpectedResult = 1, TestName = "Divide 2 By 2, Result = 1")]
         [TestCase(2, 0, ExpectedResult = double.PositiveInfinity, TestName = "2 Divided By 0, Result = PositiveInfinity")]
         [TestCase(2, -2, ExpectedResult = -1, TestName = "Divide 2 By -2, Result = -1")]
@@ -107,7 +133,6 @@ namespace Calculator.Unit.Test
         #endregion
 
         #region Multiply functiontest
-        // Multiply
         [TestCase(2, 2, ExpectedResult = 4, TestName = "Multiply 2 By 2, Result = 4")]
         [TestCase(2, -2, ExpectedResult = -4, TestName = "Multiply 2 By -2, Result = -4")]
         [TestCase(-2, -2, ExpectedResult = 4, TestName = "Multiply -2 By -2, Result = 4")]
