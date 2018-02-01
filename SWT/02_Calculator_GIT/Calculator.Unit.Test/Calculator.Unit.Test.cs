@@ -60,5 +60,23 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             return uut.Multiply(a, b);
         }
+
+        [TestCase(5, ExpectedResult = 5, TestName = "Add with Accumulator, Add 5, Accu = 0, Returns 5")]
+        [TestCase(0, ExpectedResult = 0, TestName = "Add with Accumulator, Add 0, Accu = 0, Returns 0")]
+        [TestCase(-5, ExpectedResult = -5, TestName = "Add with Accumulator, Add -5, Accu = 0, Returns -5")]
+        public double Accu_Add_Tet(double a)
+        {
+            var uut = new CalculatorUnit();
+            return uut.Add(a);
+        }
+
+        [TestCase(5, ExpectedResult = -5, TestName = "Subtract with Accumulator, Sub 5, Accu = 0, Returns -5")]
+        [TestCase(0, ExpectedResult = 0, TestName = "Subtract with Accumulator, Sub 0, Accu = 0, Returns 0")]
+        [TestCase(-5, ExpectedResult = 5, TestName = "Subtract with Accumulator, Sub -5, Accu = 0, Returns 5")]
+        public double Accu_Subtract_Tet(double a)
+        {
+            var uut = new CalculatorUnit();
+            return uut.Subtract(a);
+        }
     }
 }
