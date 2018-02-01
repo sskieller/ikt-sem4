@@ -13,27 +13,37 @@ namespace Lektion1SWT
     {
         public double Add(double a, double b)
         {
-            return a + b;
+	        Accumulator = a + b;
+            return Accumulator;
+
         }
 
         public double Subtract(double a, double b)
         {
-            return a - b;
+	        Accumulator = a - b;
+            return Accumulator;
         }
 
         public double Power(double a, double b)
         {
-            return Math.Pow(a, b);
+	        Accumulator = Math.Pow(a, b);
+            return Accumulator;
         }
 
         public double Multiply(double x, double y)
         {
-            return x * y;
+	        Accumulator = x * y;
+            return Accumulator;
         }
 
         public double Divide(double a, double b)
         {
-            return a / b;
+	        Accumulator = a / b;
+            return Accumulator;
         }
+
+	    public double Accumulator { get; set; } = 0;
     }
+
+    
 }

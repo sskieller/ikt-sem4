@@ -9,3 +9,14 @@ D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Ca
 D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.csproj.CoreCompileInputs.cache
 D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.dll
 D:\Programming\repos\semester4\SWT\Lektion1SWT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.pdb
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.csproj.CoreCompileInputs.cache
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.csprojResolveAssemblyReference.cache
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Calculator.Unit.Test.dll
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Calculator.Unit.Test.pdb
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.exe
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\nunit.framework.dll
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.pdb
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\Lektion1SWT.exe.config
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\bin\Debug\nunit.framework.xml
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.dll
+C:\Users\sv\CloudStation\Skole\Programmering\ikt-sem4\SWT\02_Calculator_GIT\Calculator.Unit.Test\obj\Debug\Calculator.Unit.Test.pdb
