@@ -43,7 +43,7 @@ namespace Lektion1SWT
         }
 
         // Accumulator
-	    public double Accumulator { get; set; } = 0;
+        private double Accumulator { get; set; } = 0;
 
         // Accumulator Clear
         public void Clear()
