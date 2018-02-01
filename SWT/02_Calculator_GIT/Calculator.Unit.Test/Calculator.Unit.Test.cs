@@ -62,6 +62,7 @@ namespace Calculator.Unit.Test
         }
 
         [TestCase(2, ExpectedResult = 0, TestName = "Wat")]
+        [TestCase(2, ExpectedResult = 0, TestName = "Wat")]
         public double Power_Test(double exponent)
         {
             var uut = new CalculatorUnit();
