@@ -60,14 +60,5 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             return uut.Multiply(a, b);
         }
-
-        [TestCase(2, ExpectedResult = 0, TestName = "Power0By2_Return0")]
-        [TestCase(0, ExpectedResult = 0, TestName = "Power0By0_Return0")]
-        [TestCase(-2, ExpectedResult = 0, TestName = "Power0By-2_Return0")]
-        public double Power_Test(double exponent)
-        {
-            var uut = new CalculatorUnit();
-            return uut.Power(2);
-        }
     }
 }
