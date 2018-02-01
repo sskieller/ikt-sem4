@@ -27,6 +27,15 @@ namespace Calculator.Unit.Test
             return uut.Subtract(a, b);
         }
 
+        [TestCase(2, ExpectedResult = 0, TestName = "Accu_Power_0ToPowerOf2_Return0")]
+        [TestCase(0, ExpectedResult = 1, TestName = "Accu_Power_0ToPowerOf0_Return0")]
+        [TestCase(-2, ExpectedResult = double.PositiveInfinity, TestName = "Accu_Power_0ToPowerOf-2_Return0")]
+        public double Power_Test(double exponent)
+        {
+            var uut = new CalculatorUnit();
+            return uut.Power(exponent);
+        }
+
         [TestCase(2, 2, ExpectedResult = 4, TestName = "Power2ToThePowerOf2_Return4")]
         [TestCase(2, 0, ExpectedResult = 1, TestName = "Power2ToThePowerOf0_Return1")]
         [TestCase(2, -2, ExpectedResult = 0.25, TestName = "Power2ToThePowerOfMinus2_Return0.25")]
@@ -38,6 +47,15 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             return uut.Power(a, b);
         }
+
+        [TestCase(2, 2, 4, ExpectedResult = 8, TestName = "Add_Add2To2AndAdd4_Return8")]
+        public double Add_Test(double a, double b, double c)
+        {
+            var uut = new CalculatorUnit();
+            uut.Add(a, b);
+            return uut.Add(c);
+        }
+
 
         [TestCase(2, 2, ExpectedResult = 1, TestName = "Divide2By2_Return1")]
         [TestCase(2, 0, ExpectedResult = double.PositiveInfinity, TestName = "Divide2By0_ReturnPositiveInfinity")]
@@ -61,13 +79,7 @@ namespace Calculator.Unit.Test
             return uut.Multiply(a, b);
         }
 
-        [TestCase(2, ExpectedResult = 0, TestName = "Wat")]
-        [TestCase(2, ExpectedResult = 0, TestName = "Wat")]
-        public double Power_Test(double exponent)
-        {
-            var uut = new CalculatorUnit();
-            return uut.Power(exponent);
-        }
+        
 
         [TestCase(5, ExpectedResult = 5, TestName = "Add with Accumulator, Add 5, Accu = 0, Returns 5")]
         [TestCase(0, ExpectedResult = 0, TestName = "Add with Accumulator, Add 0, Accu = 0, Returns 0")]
