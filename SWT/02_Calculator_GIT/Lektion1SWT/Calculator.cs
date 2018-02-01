@@ -11,11 +11,11 @@ namespace Lektion1SWT
     }
     public class CalculatorUnit
     {
+        // Normal calc functions
         public double Add(double a, double b)
         {
 	        Accumulator = a + b;
             return Accumulator;
-
         }
 
         public double Subtract(double a, double b)
@@ -42,8 +42,16 @@ namespace Lektion1SWT
             return Accumulator;
         }
 
+        // Accumulator
 	    public double Accumulator { get; set; } = 0;
 
+        // Accumulator Clear
+        public void Clear()
+        {
+
+        }
+
+        // Overload calc functions
         public double Add(double addend)
         {
             return Accumulator + addend;
