@@ -217,5 +217,36 @@ namespace Calculator.Unit.Test
             Assert.That(uut.Multiply(c), Is.EqualTo(result).Within(tolerance));
         }
         #endregion
+
+        #region Clear_Accumulator_test
+
+        [TestCase(0, 0, TestName = "No Function run, Expected 0 in Accumulator")]
+        public void Clear_Accumulator(double a, double accumulatorValue)
+        {
+            var uut = new CalculatorUnit();
+            uut.Clear();
+            Assert.That(uut.Accumulator, Is.EqualTo(accumulatorValue));
+        }
+
+        [TestCase(5, 0, TestName = "Added_Function run once, Expected 0 in Accumulator")]
+        public void Clear_Accumulator_Function(double a, double accumulatorValue)
+        {
+            var uut = new CalculatorUnit();
+            uut.Add(a, a);
+            uut.Clear();
+            Assert.That(uut.Accumulator, Is.EqualTo(accumulatorValue));
+        }
+
+        [TestCase(5, 12, 0, TestName = "Added_Function run twice, Expected 0 in Accumulator")]
+        public void Clear_Accumulator_Function2x(double a, double b, double accumulatorValue)
+        {
+            var uut = new CalculatorUnit();
+            uut.Add(b, a);
+            uut.Add(a, b);
+            uut.Clear();
+            Assert.That(uut.Accumulator, Is.EqualTo(accumulatorValue));
+        }
+
+        #endregion
     }
 }

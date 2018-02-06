@@ -45,12 +45,12 @@ namespace Lektion1SWT
         }
 
         // Accumulator
-        private double Accumulator { get; set; } = 0;
+        public double Accumulator { get; set; } = 0;
 
         // Accumulator Clear
         public void Clear()
         {
-
+            Accumulator = 0;
         }
 
         // Overload calc functions
