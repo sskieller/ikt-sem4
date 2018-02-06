@@ -18,6 +18,7 @@ namespace Calculator.Unit.Test
         [TestCase(2, -2, ExpectedResult = 0, TestName = "Add 2 By -2, Result = 0")]
         [TestCase(2, 4, ExpectedResult = 6, TestName = "Add 2 By 4, Result = 6")]
         [TestCase(2, -4, ExpectedResult = -2, TestName = "Add 2 By -4, Result = -2")]
+        [TestCase(-2, -4, ExpectedResult = -6, TestName = "Add -2 By -4, Result = -6")]
         [TestCase(0, 0, ExpectedResult = 0, TestName = "Add 0 By 0, Result = 0")]
         public double Add(double a, double b)
         {
@@ -54,6 +55,7 @@ namespace Calculator.Unit.Test
         [TestCase(5, 3, ExpectedResult = 2, TestName = "Sub 5 By 3, Result = 2")]
         [TestCase(5, 5, ExpectedResult = 0, TestName = "Sub 5 By 5, Result = 0")]
         [TestCase(5, -2, ExpectedResult = 7, TestName = "Sub 5 By -2, Result = 7")]
+        [TestCase(-2, -4, ExpectedResult = 2, TestName = "Sub -2 By -4, Result = 2")]
         [TestCase(0, 5, ExpectedResult = -5, TestName = "Sub 0 By 5 , Result = -5")]
         public double Subtract(double a, double b)
         {
