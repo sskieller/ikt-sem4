@@ -238,6 +238,8 @@ namespace Calculator.Unit.Test
         }
 
         [TestCase(5, 12, 0, TestName = "Added_Function run twice, Expected 0 in Accumulator")]
+        [TestCase(423, 11133, 0, TestName = "Added_Function run twice, Expected 0 in Accumulator")]
+        [TestCase(99, 55, 0, TestName = "Added_Function run twice, Expected 0 in Accumulator")]
         public void Clear_Accumulator_Function2x(double a, double b, double accumulatorValue)
         {
             var uut = new CalculatorUnit();
