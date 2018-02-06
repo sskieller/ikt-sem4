@@ -182,18 +182,6 @@ namespace Calculator.Unit.Test
 
         #endregion
 
-        #region Multiply functiontest
-        [TestCase(2, 2, ExpectedResult = 4, TestName = "Multiply 2 By 2, Result = 4")]
-        [TestCase(2, -2, ExpectedResult = -4, TestName = "Multiply 2 By -2, Result = -4")]
-        [TestCase(-2, -2, ExpectedResult = 4, TestName = "Multiply -2 By -2, Result = 4")]
-        [TestCase(2, 0, ExpectedResult = 0, TestName = "Multiply 2 By 0, Result = 0")]
-        public double Multiply(double a, double b)
-        {
-            var uut = new CalculatorUnit();
-            return uut.Multiply(a, b);
-        }
-        #endregion
-
         #region Multiply_Accumulator functiontest
         [TestCase(2, ExpectedResult = 0, TestName = "0 Multiplied By 2, Result = 0")]
         [TestCase(0, ExpectedResult = 0, TestName = "0 Multiplied By 0, Result = 0")]
@@ -215,6 +203,18 @@ namespace Calculator.Unit.Test
             var uut = new CalculatorUnit();
             uut.Multiply(a, b);
             Assert.That(uut.Multiply(c), Is.EqualTo(result).Within(tolerance));
+        }
+        #endregion
+
+        #region Multiply functiontest
+        [TestCase(2, 2, ExpectedResult = 4, TestName = "Multiply 2 By 2, Result = 4")]
+        [TestCase(2, -2, ExpectedResult = -4, TestName = "Multiply 2 By -2, Result = -4")]
+        [TestCase(-2, -2, ExpectedResult = 4, TestName = "Multiply -2 By -2, Result = 4")]
+        [TestCase(2, 0, ExpectedResult = 0, TestName = "Multiply 2 By 0, Result = 0")]
+        public double Multiply(double a, double b)
+        {
+            var uut = new CalculatorUnit();
+            return uut.Multiply(a, b);
         }
         #endregion
 
