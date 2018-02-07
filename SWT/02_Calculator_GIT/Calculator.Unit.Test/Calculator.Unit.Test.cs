@@ -213,7 +213,7 @@ namespace Calculator.Unit.Test
         [TestCase(2, -2, ExpectedResult = -4, TestName = "Multiply 2 By -2, Result = -4")]
         [TestCase(-2, -2, ExpectedResult = 4, TestName = "Multiply -2 By -2, Result = 4")]
         [TestCase(2, 0, ExpectedResult = 0, TestName = "Multiply 2 By 0, Result = 0")]
-        [TestCase(2, 0, ExpectedResult = 2, TestName = "Multiply 2 By 0, Result = 2. Exspected Fail")]
+        [TestCase(5, 22, ExpectedResult = 110, TestName = "Multiply 5 By 22, Result = 110")]
         public double Multiply(double a, double b)
         {
             var uut = new CalculatorUnit();
