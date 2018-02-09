@@ -2,6 +2,6 @@
 
 Repository for en MEGET seriøs gruppe!
 
-![TroelsFightBack](https://imgur.com/a/dtLeI)
+![TroelsFightBack](https://i.imgur.com/Q3TNky7.png)
 
 
