@@ -2,12 +2,6 @@
 
 Repository for en MEGET seriøs gruppe!
 
-Søren er en numsefisk
+![TroelsFightBack](https://imgur.com/a/dtLeI)
 
-Jonas er en pivskid
-https://www.viafree.dk/programmer/reportage/tattoo-salonen/saeson-3/366881
-
-Hej\nHello
-Kage
- Hello Troels
 
