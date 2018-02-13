@@ -5,9 +5,10 @@ namespace Lektion1SWT
 {
     public static class Program
     {
-        public static void Main()
+        public static int Main()
         {
-            // Do nothing
+	        return 0;
+	        // Do nothing
         }
     }
     public class CalculatorUnit

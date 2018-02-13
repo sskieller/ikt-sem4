@@ -8,14 +8,25 @@ namespace Calculator.Unit.Test
     [TestFixture]
     public class CalculatorTestUnit
     {
-        // Setting: 1/2/3 parameters testing: Same function name
-        // TestFunction name: Function_SpecificOverload_StateUnderTest_ExpectedBehavior
-        // TestCase name: "State Under Test, Expected Behavior
-        // Ex: "Add 2 By 2 And Add Accu By 4, Result 8"
-        // Ex: "Add 2 By -2, Result = 0"
+		// Setting: 1/2/3 parameters testing: Same function name
+		// TestFunction name: Function_SpecificOverload_StateUnderTest_ExpectedBehavior
+		// TestCase name: "State Under Test, Expected Behavior
+		// Ex: "Add 2 By 2 And Add Accu By 4, Result 8"
+		// Ex: "Add 2 By -2, Result = 0"
 
-        #region Add functiontest
-        [TestCase(2, -2, ExpectedResult = 0, TestName = "Add 2 By -2, Result = 0")]
+	    #region TestMain
+
+	    [Test]
+	    public void Main_TestReturn_ExpectZero()
+	    {
+			Assert.That(Program.Main(), Is.EqualTo(0));
+	    }
+	    
+
+		#endregion
+
+		#region Add functiontest
+		[TestCase(2, -2, ExpectedResult = 0, TestName = "Add 2 By -2, Result = 0")]
         [TestCase(2, 4, ExpectedResult = 6, TestName = "Add 2 By 4, Result = 6")]
         [TestCase(2, -4, ExpectedResult = -2, TestName = "Add 2 By -4, Result = -2")]
         [TestCase(-2, -4, ExpectedResult = -6, TestName = "Add -2 By -4, Result = -6")]
