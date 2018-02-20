@@ -75,9 +75,12 @@ namespace RouletteGame.Legacy
     {
         private readonly List<Field> _fields;
         private Field _result;
+        private IRandom _randomEngine;
 
-        public Roulette()
+        public Roulette() : this(null) { }
+        public Roulette(IRandom randomEngine)
         {
+            _randomEngine = randomEngine;
             _fields = new List<Field>
             {
                 new Field(0, Field.Green),
@@ -124,13 +127,41 @@ namespace RouletteGame.Legacy
 
         public void Spin()
         {
-            var n = (uint) new Random().Next(0, 37);
+            var n = _randomEngine?.Next(0, 37) ?? new Random().Next(0, 37); 
             _result = _fields[(int) n];
         }
 
         public Field GetResult()
         {
             return _result;
+        }
+    }
+
+    public interface IRandom
+    {
+        uint Next(int first, int second);
+    }
+
+    public class StubRandom : IRandom
+    {
+        private readonly uint _nextNumber;
+        public StubRandom(uint nextNumber)
+        {
+            _nextNumber = nextNumber;
+        }
+        public uint Next(int first, int second)
+        {
+            return _nextNumber;
+        }
+    }
+
+    public class Random : IRandom
+    {
+        public bool hasbeenCalled { get; set; }
+        public uint Next(int first, int second)
+        {
+            hasbeenCalled = true;
+            return (uint) new System.Random().Next(first, second);
         }
     }
 }
