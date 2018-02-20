@@ -125,6 +125,14 @@ namespace Roulette.Unit.Test
             Assert.That(returnResult, Is.EqualTo(uut.WonAmount(field)));
         }
 
+        [Test]
+        public void BetTest_Name_Equals_Troes()
+        {
+            var uut = new EvenOddBet("Troels", 50u, true);
+
+            Assert.That(uut.PlayerName, Is.EqualTo("Troels"));
+        }
+
         #endregion
 
         #region RouletteTest
