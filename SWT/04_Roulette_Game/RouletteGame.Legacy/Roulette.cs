@@ -62,7 +62,7 @@ namespace RouletteGame.Legacy
     
         public void Spin()
         {
-            throw new NotImplementedException();
+            // Spinning
         }
 
         public Field GetResult()
