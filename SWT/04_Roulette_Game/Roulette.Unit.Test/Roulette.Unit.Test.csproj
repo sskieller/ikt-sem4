@@ -50,7 +50,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\04_Roulette_Game\RouletteGame.Legacy\RouletteGame.Legacy.csproj">
+    <ProjectReference Include="..\RouletteGame.Legacy\RouletteGame.Legacy.csproj">
       <Project>{8db02f2d-df86-4a3b-b94d-0374c1ecb9ed}</Project>
       <Name>RouletteGame.Legacy</Name>
     </ProjectReference>

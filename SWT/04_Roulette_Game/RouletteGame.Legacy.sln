@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouletteGame.Legacy", "RouletteGame.Legacy\RouletteGame.Legacy.csproj", "{8DB02F2D-DF86-4A3B-B94D-0374C1ECB9ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette.Unit.Test", "..\Roulette.Unit.Test\Roulette.Unit.Test.csproj", "{A52FD5BB-6992-431B-9240-D8BE0D19AE8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette.Unit.Test", "Roulette.Unit.Test\Roulette.Unit.Test.csproj", "{A52FD5BB-6992-431B-9240-D8BE0D19AE8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
