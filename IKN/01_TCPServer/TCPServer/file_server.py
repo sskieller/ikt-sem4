@@ -20,14 +20,14 @@ def main(argv):
 
         msg = readTextTCP(clientsocket)
 
-        print("message received: %s", msg.decode('ascii'))
+        print("message received: ", msg)
 
-        if msg.decode('ascii') == "close":
+        if msg == "close":
             serversocket.close()
             sys.exit()
 
         msg = "Hello client!"
-        clientsocket.send(msg.encode('ascii'))
+        writeTextTCP(msg, clientsocket)
         clientsocket.close()
 
         
