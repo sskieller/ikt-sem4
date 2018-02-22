@@ -41,5 +41,27 @@ namespace DoorControl.Unit.Test
 			_doorControl.RequestEntry(Arg.Any<string>());
 			_fakeNotification.Received().NofifyEntryDenied();
 		}
+
+		[Test]
+		public void RequestEntry_ValidId_ExpectDoorOpen()
+		{
+			_fakeUserValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(true);
+			_doorControl.RequestEntry(Arg.Any<string>());
+			_fakeDoor.Received().Open();
+		}
+		[Test]
+		public void RequestEntry_ValidId_ExpectNoDoorClosed()
+		{
+			_fakeUserValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(true);
+			_doorControl.RequestEntry(Arg.Any<string>());
+			_fakeDoor.DidNotReceive().Close();
+		}
+
+		[Test]
+		public void OnDoorOpen_ForcedEntry_ExpectSignalAlarm()
+		{
+
+		}
+
     }
 }
