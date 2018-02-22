@@ -11,7 +11,9 @@ def main(argv):
 
     clientsocket.connect(("10.0.0.1", PORT))
 
-    writeTextTCP("hello world", clientsocket)
+    msg = "hello world"
+
+    writeTextTCP(msg, clientsocket)
 
     msg = readTextTCP(clientsocket)
 
