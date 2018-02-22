@@ -1,7 +1,6 @@
 import sys
 import string
 import os
-from socket import *
 
 def extractFilename(fileName):
     return fileName[fileName.rfind('/', 0,  len(fileName))+1:]
@@ -19,14 +18,14 @@ def readTextTCP(client):
     text = ""
     ch = client.recv(1)
 
-    while ch != "\0":
-        text += ch
+    while ch.decode('UTF-8', 'strict') != "\0":
+        text += ch.decode('UTF-8', 'strict')
         ch = client.recv(1)
 
-    return text.decode('UTF-8', 'strict')
+    return text
 
 def writeTextTCP(text,  client):
-    client.send(text.encode('UTF-8', 'strict')+"\0")
+    client.send((text+"\0").encode('UTF-8', 'strict'))
 
 def getFileSizeTCP(client):
     filesize = 0
