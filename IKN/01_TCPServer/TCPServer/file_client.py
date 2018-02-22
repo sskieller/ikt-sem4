@@ -1,6 +1,6 @@
 import sys
 import socket
-from lib import Lib
+from TCPLib import *
 
 PORT = 9000
 BUFSIZE = 1000
@@ -11,13 +11,13 @@ def main(argv):
 
     clientsocket.connect(("10.0.0.1", PORT))
 
-    clientsocket.send("hello world".encode('ascii'))
+    writeTextTCP("hello world", clientsocket)
 
-    msg = clientsocket.recv(1000)
+    msg = readTextTCP(clientsocket)
 
     clientsocket.close()
 
-    print(msg.decode('ascii'))
+    print(msg)
 
 def receiveFile(fileName, conn):
     pass
