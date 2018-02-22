@@ -25,8 +25,13 @@ def main(argv):
         if msg == "close":
             serversocket.close()
             sys.exit()
+        size = check_File_Exists(extractFilename(msg))
 
-        msg = "Hello client!"
+        if size > 0:
+            msg = str(size)
+        else:
+            msg = "Hello client!"
+
         writeTextTCP(msg, clientsocket)
         clientsocket.close()
 

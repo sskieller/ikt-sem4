@@ -30,7 +30,7 @@ def writeTextTCP(text,  client):
 def getFileSizeTCP(client):
     filesize = 0
     try:
-        filesize = int(Lib.readTextTCP(client))
+        filesize = int(readTextTCP(client))
     except:
         filesize = -1
         sys.exc_clear()

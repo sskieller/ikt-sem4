@@ -18,7 +18,7 @@ def main(argv):
 
     writeTextTCP(msg, clientsocket)
 
-    msg = readTextTCP(clientsocket)
+    msg = getFileSizeTCP(clientsocket)
 
     clientsocket.close()
 
