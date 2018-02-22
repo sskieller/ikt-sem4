@@ -1,6 +1,6 @@
 import sys
 import socket
-from lib import Lib
+from TCPLib import *
 
 HOST = ''
 PORT = 9000
@@ -18,7 +18,7 @@ def main(argv):
 
         print("got a connection from %s", addr)
 
-        msg = clientsocket.recv(1000)
+        msg = readTextTCP(clientsocket)
 
         print("message received: %s", msg.decode('ascii'))
 
