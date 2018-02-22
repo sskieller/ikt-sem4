@@ -134,6 +134,14 @@ namespace Roulette.Unit.Test
             Assert.That(uut.PlayerName, Is.EqualTo("Troels"));
         }
 
+        [Test]
+        public void Abstract_Bet_GetAmount()
+        {
+            Bet uut = new ColorBet("Colorbet", 50u, Field.Black);
+
+            Assert.That(uut.WonAmount(new Field(20u, Field.Black)), Is.EqualTo(100u));
+        }
+
         #endregion
 
         #region RouletteTest
