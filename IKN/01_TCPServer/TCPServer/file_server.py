@@ -31,7 +31,7 @@ def main(argv):
             returnmsg = str(size)
             writeTextTCP(returnmsg, clientsocket)
 
-            file = open(msg)
+            file = open(msg, 'rb')
 
             filedata = file.read(BUFSIZE)
 
