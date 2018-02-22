@@ -22,9 +22,15 @@ def main(argv):
 
         print("message received: %s", msg.decode('ascii'))
 
+        if msg.decode('ascii') == "close":
+            serversocket.close()
+            sys.exit()
+
         msg = "Hello client!"
         clientsocket.send(msg.encode('ascii'))
         clientsocket.close()
+
+        
 
 
 def sendFile(fileName,  fileSize,  conn):
