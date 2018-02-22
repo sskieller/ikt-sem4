@@ -28,11 +28,19 @@ def main(argv):
         size = check_File_Exists(extractFilename(msg))
 
         if size > 0:
-            msg = str(size)
-        else:
-            msg = "Hello client!"
+            returnmsg = str(size)
+            writeTextTCP(returnmsg, clientsocket)
 
-        writeTextTCP(msg, clientsocket)
+            file = open(msg)
+
+            filedata = file.read(BUFSIZE)
+
+            while filedata:
+                clientsocket.send(filedata)
+                filedata = file.read(BUFSIZE)
+
+
+        #writeTextTCP(msg, clientsocket)
         clientsocket.close()
 
         

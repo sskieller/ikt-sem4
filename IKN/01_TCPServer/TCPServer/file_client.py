@@ -14,11 +14,19 @@ def main(argv):
     if argv:
         msg = "".join(argv)
     else:
-        msg = "hello world"
+        sys.exit()
 
     writeTextTCP(msg, clientsocket)
 
-    msg = getFileSizeTCP(clientsocket)
+    filesize = getFileSizeTCP(clientsocket)
+    dataread = 0
+
+    file = open(msg, 'wb')
+
+    while dataread < filesize:
+        filedata = clientsocket.recv(BUFSIZE)
+        file.write(filedata)
+        dataread = dataread+BUFSIZE
 
     clientsocket.close()
 
