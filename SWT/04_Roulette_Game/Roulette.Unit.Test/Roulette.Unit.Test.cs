@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using RouletteGame.Legacy;
+using NSubstitute;
 
 namespace Roulette.Unit.Test
 {
@@ -133,6 +134,14 @@ namespace Roulette.Unit.Test
             Assert.That(uut.PlayerName, Is.EqualTo("Troels"));
         }
 
+        [Test]
+        public void Abstract_Bet_GetAmount()
+        {
+            Bet uut = new ColorBet("Colorbet", 50u, Field.Black);
+
+            Assert.That(uut.WonAmount(new Field(20u, Field.Black)), Is.EqualTo(100u));
+        }
+
         #endregion
 
         #region RouletteTest
@@ -172,6 +181,74 @@ namespace Roulette.Unit.Test
 
             Assert.That(randomEngine.hasbeenCalled, Is.EqualTo(true));
         }
+        #endregion
+
+        #region RouletteGame
+
+        [Test]
+        public void RouletteGame_Place_Bet_Closed_Bet_Expect_Exception()
+        {
+            var uut = new RouletteGame.Legacy.RouletteGame(Substitute.For<IRoulette>());
+
+            uut.OpenBets();
+            uut.CloseBets();
+
+            Assert.Throws<RouletteGameException>(
+                () => uut.PlaceBet(new EvenOddBet("hello", 5, true))    
+                );
+        }
+
+        [Test]
+        public void RouletteGame_Check_Spin()
+        {
+            var _fakeRoulette = Substitute.For<IRoulette>();
+            var uut = new RouletteGame.Legacy.RouletteGame(_fakeRoulette);
+
+            uut.SpinRoulette();
+
+            _fakeRoulette.Received(1).Spin();
+        }
+
+        [Test]
+        public void RouletteGame_Check_Getresult()
+        {
+            var _fakeRoulette = Substitute.For<IRoulette>();
+            var uut = new RouletteGame.Legacy.RouletteGame(_fakeRoulette);
+
+            uut.SpinRoulette();
+
+            _fakeRoulette.Received(1).GetResult();
+        }
+
+        [Test]
+        public void RouletteGame_PayUp_Test()
+        {
+            // Setting up Substitudes
+            var _fakeRoulette = Substitute.For<IRoulette>();
+            var _fakeField = Substitute.For<Field>(10u, Field.Black);
+            var _bet = Substitute.For<FieldBet>("SubBet", 20u, 10u);
+
+            // Setting up Sub returnCalls
+            _bet.WonAmount(_fakeField).Returns(50u);
+            _fakeRoulette.GetResult().Returns(_fakeField);
+
+            var uut = new RouletteGame.Legacy.RouletteGame(_fakeRoulette);
+
+            uut.OpenBets();
+
+            uut.PlaceBet(_bet);
+
+            uut.CloseBets();
+
+            uut.PayUp();
+
+            _bet.Received(1).WonAmount(_fakeField);
+
+            _fakeRoulette.Received(1).GetResult();
+
+        }
+
+
         #endregion
     }
 }
