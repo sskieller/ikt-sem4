@@ -26,7 +26,7 @@ def main(argv):
     while dataread < filesize:
         filedata = clientsocket.recv(BUFSIZE)
         file.write(filedata)
-        dataread = dataread+BUFSIZE
+        dataread = dataread+len(filedata)
 
     clientsocket.close()
 
