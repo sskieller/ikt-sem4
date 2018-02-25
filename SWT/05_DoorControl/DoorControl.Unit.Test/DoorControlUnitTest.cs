@@ -51,11 +51,16 @@ namespace DoorControl.Unit.Test
 			_fakeDoor.Received().Open();
 		}
 		[Test]
-		public void RequestEntry_ValidId_ExpectNoDoorClosed()
+		public void RequestEntry_ValidId_ExpectDoorClosedAgain()
 		{
 			_fakeUserValidation.ValidateEntryRequest(Arg.Any<string>()).Returns(true);
-			_doorControl.RequestEntry(Arg.Any<string>());
-			_fakeDoor.DidNotReceive().Close();
+           _doorControl.RequestEntry(Arg.Any<string>());
+		    _fakeDoor.DoorChangedEvent += Raise.EventWith(new object(), new DoorEventArgs() {Forced = false});
+			Received.InOrder(() =>
+			{
+                _fakeDoor.Open();
+                _fakeDoor.Close();
+			});
 		}
 
 		[Test]

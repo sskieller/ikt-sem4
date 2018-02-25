@@ -10,8 +10,6 @@ namespace DoorControl
 
 	public class DoorControl
     {
-	    public event EventHandler DoorOpen;
-	    public event EventHandler DoorClosed;
 
 	    private IDoor _door;
 	    private IUserValidation _userValidation;
@@ -24,7 +22,9 @@ namespace DoorControl
 			_entryNotification = entryNotification;
 		}
 
-	    public void RequestEntry(string id)
+
+
+        public void RequestEntry(string id)
 	    {
 		    if (_userValidation.ValidateEntryRequest(id) == true)
 		    {
@@ -45,8 +45,9 @@ namespace DoorControl
 		    }
 		    else
 		    {
-				
+		        _door.Close();
 		    }
 	    }
+
     }
 }
