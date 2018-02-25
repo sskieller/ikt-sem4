@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoorControl
 {
-	public class DoorEventArgs : EventArgs
-	{
-		public bool Forced { get; set; }
-	}
+
 
 	public class DoorControl
     {
@@ -22,6 +19,7 @@ namespace DoorControl
 		public DoorControl(IDoor door, IUserValidation userValidation, IEntryNotification entryNotification)
 		{
 			_door = door;
+		    _door.DoorChangedEvent += DoorOpenHandler;
 			_userValidation = userValidation;
 			_entryNotification = entryNotification;
 		}
@@ -36,15 +34,6 @@ namespace DoorControl
 		    else
 		    {
 			    _entryNotification.NofifyEntryDenied();
-		    }
-	    }
-
-	    protected virtual void OnDoorOpen(DoorEventArgs e)
-	    {
-		    EventHandler handler = DoorOpen;
-		    if (DoorOpen != null)
-		    {
-				DoorOpenHandler(this, e);
 		    }
 	    }
 

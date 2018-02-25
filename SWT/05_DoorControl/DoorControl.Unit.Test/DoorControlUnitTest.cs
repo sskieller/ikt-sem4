@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Castle.Core.Smtp;
 using NSubstitute;
 using NUnit.Framework;
 using NSubstitute.Core;
@@ -60,8 +61,16 @@ namespace DoorControl.Unit.Test
 		[Test]
 		public void OnDoorOpen_ForcedEntry_ExpectSignalAlarm()
 		{
-
+		    _fakeDoor.DoorChangedEvent += Raise.EventWith(new object(), new DoorEventArgs() {Forced = true});
+            _fakeNotification.Received().SignalAlarm();
 		}
+
+	    [Test]
+	    public void OnDoorOpen_NoForcedEntry_DoNotExpectAlarm()
+	    {
+	        _fakeDoor.DoorChangedEvent += Raise.EventWith(new object(), new DoorEventArgs() { Forced = false });
+	        _fakeNotification.DidNotReceive().SignalAlarm();
+        }
 
     }
 }

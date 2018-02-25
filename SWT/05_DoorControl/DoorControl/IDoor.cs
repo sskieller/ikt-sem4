@@ -2,9 +2,13 @@
 
 namespace DoorControl
 {
-	public interface IDoor
+    public class DoorEventArgs : EventArgs
+    {
+        public bool Forced { get; set; }
+    }
+    public interface IDoor
 	{
-		event EventHandler DoorChangedEvent;
+		event EventHandler<DoorEventArgs> DoorChangedEvent;
 		void Open();
 		void Close();
 	}
