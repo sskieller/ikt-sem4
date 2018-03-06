@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+
 namespace AndroidApp
 {
 	public partial class MainPage : ContentPage
@@ -15,19 +16,31 @@ namespace AndroidApp
         public MainPage()
 		{
 			InitializeComponent();
-            ButtonClicked.Clicked += ButtonClick_Clicked;
+            OnButton.Clicked += OnButtonOnClicked;
+            OffButton.Clicked += OffButtonOnClicked;
         }
 
-        private void ButtonClick_Clicked(object sender, EventArgs e)
+	    private void OffButtonOnClicked(object sender, EventArgs eventArgs)
+	    {
+	        LightObject light = new LightObject()
+	        {
+                Command = "off",
+                IsRun = false
+	        };
+
+            CreateLightRequest(light);
+	    }
+
+	    private void OnButtonOnClicked(object sender, EventArgs e)
         {
 
-            LightObject lightObject = new LightObject
+            LightObject light = new LightObject
             {
                 Command = "on",
                 IsRun = false
             };
 
-            CreateLightRequest(lightObject);
+            CreateLightRequest(light);
 
 
         }
@@ -72,7 +85,9 @@ namespace AndroidApp
     }
     public class LightObject
     {
+        [JsonProperty]
         public string Command { get; set; }
+        [JsonProperty]
         public bool IsRun { get; set; }
 
 

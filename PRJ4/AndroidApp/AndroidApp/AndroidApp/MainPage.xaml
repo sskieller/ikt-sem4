@@ -15,8 +15,9 @@
            TextColor="Black"
            VerticalOptions="Center" 
            HorizontalOptions="Center" x:Name="label2"/>
-        <Button Text="Click Me!" x:Name="ButtonClicked" />
-        <!--<Button Text="HTTP request" x:Name="HTTPrequest"/>-->
+        <Button Text="Turn light on" x:Name="OnButton" />
+        <Button Text="Turn light off" x:Name="OffButton"/>
+        
 
     </StackLayout>
 
