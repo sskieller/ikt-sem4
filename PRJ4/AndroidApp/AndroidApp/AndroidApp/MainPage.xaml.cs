@@ -16,6 +16,12 @@ namespace AndroidApp
 		{
 			InitializeComponent();
             ButtonClicked.Clicked += ButtonClick_Clicked;
+            ClimateControlButton.Clicked += ClimateControlButton_Clicked;
+        }
+
+        private void ClimateControlButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Page_Climate());
         }
 
         private void ButtonClick_Clicked(object sender, EventArgs e)

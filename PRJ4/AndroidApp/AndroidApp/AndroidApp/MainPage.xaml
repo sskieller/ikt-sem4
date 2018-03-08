@@ -15,7 +15,10 @@
            TextColor="Black"
            VerticalOptions="Center" 
            HorizontalOptions="Center" x:Name="label2"/>
-        <Button Text="Click Me!" x:Name="ButtonClicked" />
+        <Button Text="Click Me!" HorizontalOptions="CenterAndExpand" x:Name="ButtonClicked" />
+
+        <Button Text="Climate Control" HorizontalOptions="CenterAndExpand" x:Name="ClimateControlButton" />
+        <Button Text="Light" HorizontalOptions="CenterAndExpand" x:Name="LightButton" />
         <!--<Button Text="HTTP request" x:Name="HTTPrequest"/>-->
 
     </StackLayout>
