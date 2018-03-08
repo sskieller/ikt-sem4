@@ -27,6 +27,7 @@ namespace FWPS
         {
             services.AddDbContext<LightContext>(opt => opt.UseInMemoryDatabase("LightItem"));
 	        services.AddDbContext<IpContext>(opt => opt.UseInMemoryDatabase("IpItem"));
+            services.AddDbContext<LoginContext>(opt => opt.UseInMemoryDatabase("LoginItem"));
 			services.AddMvc();
         }
 
