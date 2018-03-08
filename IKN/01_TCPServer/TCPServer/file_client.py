@@ -9,10 +9,14 @@ BUFSIZE = 1000
 def main(argv):
     clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    clientsocket.connect(("10.0.0.1", PORT))
-
+	try:
+		clientsocket.connect((argv[0], PORT))
+	except:
+		print("could not connect to specified server")
+		
+		
     if argv:
-        msg = "".join(argv)
+        msg = "".join(argv[1])
     else:
         sys.exit()
 

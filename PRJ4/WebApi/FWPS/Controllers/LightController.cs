@@ -56,7 +56,7 @@ namespace FWPS.Controllers
 	    [HttpGet("[action]")] // '/api/Light/next'
 	    public IActionResult Next()
 	    {
-		    var item = _context.LightItems.FirstOrDefault(o => o.IsRun == false);
+		    var item = _context.LightItems.LastOrDefault(o => o.IsRun == false);
 		    if (item == null)
 		    {
 			    return NotFound();
