@@ -31,7 +31,7 @@ def main(argv):
             sys.exit()
 
         # Getting filesize of the file, will return 0, if file not found
-        size = check_File_Exists(extractFilename(msg))
+        size = check_File_Exists(msg)
 
         if size > 0:
             returnmsg = str(size)  # Making the size a string to be sent
@@ -44,6 +44,10 @@ def main(argv):
             while filedata:
                 clientsocket.send(filedata)  # Send filedata
                 filedata = file.read(BUFSIZE)  # Read more bytes.
+        else:
+            returnmsg = str(size)  # Making the size a string to be sent
+            writeTextTCP(returnmsg, clientsocket)  # Sending filesize as a string
+
 
 
         #writeTextTCP(msg, clientsocket)
