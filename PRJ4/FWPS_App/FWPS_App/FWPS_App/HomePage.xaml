@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FWPS_App.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to FWPS!"
+                   FontSize="Large"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry Placeholder="Username" />
+            <Entry Placeholder="Password" 
+                   IsPassword="True"/>
+            <Button Text="Login" 
+                    x:Name="OnLoginButton" />
+            <Button Text="Sign Up"
+                    x:Name="SignUpButton" />
+            <Button Text="About Us"
+                    x:Name="AboutUsButton" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using Xamarin.Forms;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace AndroidApp
+namespace FWPS
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Page_Light : ContentPage
 	{
-		public Page_Light ()
+		public Page_Light()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 
             OnButton.Clicked += OnButton_Clicked;
             OffButton.Clicked += OffButton_Clicked;

@@ -80,9 +80,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AndroidApp\AndroidApp.csproj">
-      <Project>{4F298AFC-4DBA-412A-B55D-8E6910865C16}</Project>
-      <Name>AndroidApp</Name>
+    <ProjectReference Include="..\AndroidApp\FWPS.csproj">
+      <Project>{E241A8F9-EC38-4801-8A9F-2521BCD38A08}</Project>
+      <Name>FWPS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

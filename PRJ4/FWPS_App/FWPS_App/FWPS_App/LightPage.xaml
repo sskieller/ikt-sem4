@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FWPS_App.LightPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Debug" 
+           TextColor="White"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" x:Name="mainlabel"/>
+            <Label Text="Welcome to Light!" 
+           TextColor="Black"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" x:Name="label2"/>
+            <Button Text="Turn light on" HorizontalOptions="CenterAndExpand" x:Name="OnButton" />
+            <Button Text="Turn light off" HorizontalOptions="CenterAndExpand" x:Name="OffButton"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

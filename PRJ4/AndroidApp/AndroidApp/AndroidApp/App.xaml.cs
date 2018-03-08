@@ -5,7 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 
-namespace AndroidApp
+namespace FWPS
 {
 	public partial class App : Application
 	{
@@ -13,7 +13,7 @@ namespace AndroidApp
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new AndroidApp.MainPage());
+			MainPage = new NavigationPage(root: new MainPage() {Title = "MainPage" });
 		}
 
 		protected override void OnStart ()

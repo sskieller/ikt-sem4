@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FWPS_App"
+             x:Class="FWPS_App.MainPage">
+
+    <StackLayout VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand">
+	<Label Text="Welcome MainPage!" 
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+    <Label Text="Welcome to the Homeland!" TextColor="White" HorizontalOptions="CenterAndExpand" x:Name="WelcomeAppButton" />
+    <Button Text="Climate Control" HorizontalOptions="CenterAndExpand" x:Name="ClimateControlButton" />
+    <Button Text="Light" HorizontalOptions="CenterAndExpand" x:Name="LightButton" />
+    <Button Text="Poomba" HorizontalOptions="CenterAndExpand" x:Name="PoombaButton" />
+    <Button Text="Hodoor" HorizontalOptions="CenterAndExpand" x:Name="HodoorButton" />
+    </StackLayout>
+        
+</ContentPage>
