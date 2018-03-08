@@ -13,7 +13,7 @@ namespace AndroidApp
 		{
 			InitializeComponent();
 
-			MainPage = new AndroidApp.MainPage();
+			MainPage = new NavigationPage(new AndroidApp.MainPage());
 		}
 
 		protected override void OnStart ()

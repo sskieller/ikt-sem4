@@ -7,89 +7,27 @@ using Xamarin.Forms;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
-
 namespace AndroidApp
 {
-	public partial class MainPage : ContentPage
-	{
-        
-        public MainPage()
-		{
-			InitializeComponent();
-            OnButton.Clicked += OnButtonOnClicked;
-            OffButton.Clicked += OffButtonOnClicked;
-        }
-
-	    private void OffButtonOnClicked(object sender, EventArgs eventArgs)
-	    {
-	        LightObject light = new LightObject()
-	        {
-                Command = "off",
-                IsRun = false
-	        };
-
-            CreateLightRequest(light);
-	    }
-
-	    private void OnButtonOnClicked(object sender, EventArgs e)
-        {
-
-            LightObject light = new LightObject
-            {
-                Command = "on",
-                IsRun = false
-            };
-
-            CreateLightRequest(light);
-
-
-        }
-        public static string BaseUri { get; set; } = "https://fwps.azurewebsites.net/api/Light/";
-        protected virtual void CreateLightRequest(LightObject light)
-        {
-            
-
-            try
-            {
-
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri);
-                request.Method = "POST";
-                request.ContentType = "application/json";
-                //request.Headers.Add("content-type", "application/json");
-                ///string json = "{\"command\":\"on\"}";
-
-                string json = JsonConvert.SerializeObject(light); //Serialize json object to string
-                request.ContentLength = json.Length; //Get length of json
-                Stream stream = request.GetRequestStream(); //Create stream
-
-            
-
-                mainlabel.Text = "Reached Write + " + json;
-                stream.Write(Encoding.UTF8.GetBytes(json), 0, json.Length); //Write PUT request
-
-
-
-                HttpWebResponse response = (HttpWebResponse) request.GetResponse(); //Get response to make sure json object is sent
-            }
-            catch (Exception e)
-            {
-
-                label2.Text = e.Message;
-                string message = e.Message;
-                //await DisplayAlert("DisplayAlert", $"{message}", "OK");
-            }
-        }
-
-
-
-    }
-    public class LightObject
+    public partial class MainPage : ContentPage
     {
-        [JsonProperty]
-        public string Command { get; set; }
-        [JsonProperty]
-        public bool IsRun { get; set; }
 
+        public MainPage()
+        {
+            InitializeComponent();
+            ClimateControlButton.Clicked += ClimateControlButton_Clicked;
+            LightButton.Clicked += LightButton_Clicked;
+        }
 
-    }
+        private void LightButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Page_Light());
+        }
+
+        private void ClimateControlButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Page_Climate());
+        }
+
+    }    
 }

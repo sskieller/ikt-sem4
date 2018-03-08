@@ -4,21 +4,11 @@
              xmlns:local="clr-namespace:AndroidApp"
              x:Class="AndroidApp.MainPage"
              BackgroundColor="Red">
-    
+
     <StackLayout VerticalOptions="CenterAndExpand"
                  HorizontalOptions="CenterAndExpand">
-        <Label Text="Some text!" 
-           TextColor="White"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" x:Name="mainlabel"/>
-        <Label Text="Some text 2!" 
-           TextColor="Black"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" x:Name="label2"/>
-        <Button Text="Turn light on" x:Name="OnButton" />
-        <Button Text="Turn light off" x:Name="OffButton"/>
-        
-
+        <Button Text="Climate Control" HorizontalOptions="CenterAndExpand" x:Name="ClimateControlButton" />
+        <Button Text="Light" HorizontalOptions="CenterAndExpand" x:Name="LightButton" />
     </StackLayout>
 
 </ContentPage>
