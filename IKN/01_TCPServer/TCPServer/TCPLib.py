@@ -10,7 +10,7 @@ def check_File_Exists(fileName):
         size = os.stat(fileName).st_size
     except:
         size = 0
-        sys.exc_clear()
+        #sys.exc_clear()
 
     return size
 
@@ -33,6 +33,6 @@ def getFileSizeTCP(client):
         filesize = int(readTextTCP(client))
     except:
         filesize = -1
-        sys.exc_clear()
+        
 
     return filesize

@@ -9,19 +9,26 @@ BUFSIZE = 1000
 def main(argv):
     clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    clientsocket.connect(("10.0.0.1", PORT))
-
-    if argv:
-        msg = "".join(argv)
+    if len(argv)==2:
+        server = argv[0]
+        msg = argv[1]
     else:
+        print("Format needs to be <server IP> <Path/Filename>")
         sys.exit()
+
+    clientsocket.connect((server, PORT))
 
     writeTextTCP(msg, clientsocket)
 
     filesize = getFileSizeTCP(clientsocket)
     dataread = 0
+    percent = 0
 
-    file = open(msg, 'wb')
+    if filesize <= 0:
+        print("File not found on server")
+        sys.exit()
+
+    file = open(extractFilename(msg), 'wb')
 
     while dataread < filesize:
         filedata = clientsocket.recv(BUFSIZE)
