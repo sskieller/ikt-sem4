@@ -23,9 +23,17 @@ namespace FWPS.Controllers
             }
         }
 
+        /*
+        [HttpGet]
+        public IEnumerable<LoginItem> GetAll()
+        {
+            return _context.LoginItems.ToList();
 
-        [HttpGet("{username:string}", Name = "GetUsername")]
-        public IActionResult GetByUsername(string username, string password)
+        }
+        */
+         
+        [HttpGet("{username}", Name = "GetUsername")]
+        public IActionResult GetByUsername(string username)
         {
             var item = _context.LoginItems.FirstOrDefault(t => t.Username == username);
             {
@@ -38,7 +46,7 @@ namespace FWPS.Controllers
         }
 
 
-        [HttpGet("{username:string, password:string}", Name = "GetLogin")]
+        [HttpGet("{username};{password}", Name = "GetLogin")]
         public IActionResult GetAllowLogin(string username, string password)
         {
             var item = _context.LoginItems.FirstOrDefault(t => (t.Username == username & t.Password == password));
@@ -48,9 +56,9 @@ namespace FWPS.Controllers
                     return NotFound();
                 }
             }
-            return Ok();
+            return Content("Hi there");
         }
-
+        
         
     }
 }

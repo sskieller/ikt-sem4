@@ -8,9 +8,11 @@
                    FontSize="Large"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Username" />
+            <Entry Placeholder="Username" 
+                   x:Name="usernameTextBox"/>
             <Entry Placeholder="Password" 
-                   IsPassword="True"/>
+                   IsPassword="True"
+                   x:Name="passwordTextBox"/>
             <Button Text="Login" 
                     x:Name="OnLoginButton" />
             <Button Text="Sign Up"

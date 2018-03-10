@@ -15,6 +15,7 @@ namespace FWPS.Models
             this.CreatedDate = d;
             this.LastModifiedDate = d;
         }
+        [Key]
         public string Username { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
