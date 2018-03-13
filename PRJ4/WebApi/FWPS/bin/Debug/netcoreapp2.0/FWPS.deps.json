@@ -25,6 +25,9 @@
         "dependencies": {
           "AWSSDK.Core": "3.3.21.15",
           "Microsoft.AspNetCore.All": "2.0.5",
+          "Microsoft.EntityFrameworkCore.Design": "2.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.2"
         },

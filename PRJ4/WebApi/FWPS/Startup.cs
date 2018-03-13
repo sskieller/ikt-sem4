@@ -25,7 +25,10 @@ namespace FWPS
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<LightContext>(opt => opt.UseInMemoryDatabase("LightItem"));
+            //services.AddDbContext<LightContext>(opt => opt.UseInMemoryDatabase("LightItem"));
+            var connectionString =
+                @"Server=fwps.database.windows.net;Database=FWPS_DB;User Id=dbadmin;Password=Navyseal1";
+            services.AddDbContext<LightContext>(opt => opt.UseSqlServer(connectionString));
 	        services.AddDbContext<IpContext>(opt => opt.UseInMemoryDatabase("IpItem"));
             services.AddDbContext<LoginContext>(opt => opt.UseInMemoryDatabase("LoginItem"));
 			services.AddMvc();
