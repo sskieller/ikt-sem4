@@ -23,8 +23,8 @@ namespace FWPS.Controllers
             }
         }
 
-
-        [HttpGet("{username:string}", Name = "GetUsername")]
+        
+        [HttpGet("{username}", Name = "GetUsername")]
         public IActionResult GetByUsername(string username, string password)
         {
             var item = _context.LoginItems.FirstOrDefault(t => t.Username == username);
@@ -38,7 +38,7 @@ namespace FWPS.Controllers
         }
 
 
-        [HttpGet("{username:string, password:string}", Name = "GetLogin")]
+        [HttpGet("{username}, {password}", Name = "GetLogin")]
         public IActionResult GetAllowLogin(string username, string password)
         {
             var item = _context.LoginItems.FirstOrDefault(t => (t.Username == username & t.Password == password));
