@@ -27,11 +27,11 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<Button Grid.Row="0" Content="Morning Sun" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle1}" Command="{Binding MorningSunWindowCommand}"/>
-		<Button Grid.Row="1" Content="Hodoor" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle2}"/>
-		<Button Grid.Row="2" Content="Poomba" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle1}"/>
-		<Button Grid.Row="3" Content="Curtain" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle2}"/>
-		<Button Grid.Row="4" Content="Climate Control" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle1}"/>
-		<Button Grid.Row="5" Content="Snap Box" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle2}"/>
+		<Button Grid.Row="1" Content="Hodoor (Not implemented)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle2}"/>
+		<Button Grid.Row="2" Content="Poomba (Not implemented)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle1}"/>
+		<Button Grid.Row="3" Content="Curtain (Not implemented)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle2}"/>
+		<Button Grid.Row="4" Content="Climate Control (Not implemented)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle1}"/>
+		<Button Grid.Row="5" Content="Snap Box (Not implemented)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Margin="0,3,0,3" Style="{StaticResource ButtonStyle2}"/>
 
 	</Grid>
 </Window>
