@@ -24,8 +24,8 @@ namespace FWPS_App
 
         private void OnLoginButton_Clicked(object sender, EventArgs e)
         {
-            Username = usernameTextBox.Text;
-            Password = passwordTextBox.Text;
+            Username = usernameTextBox.Text ?? "";
+            Password = passwordTextBox.Text ?? "";
 
             if (_login.Login(Username, Password))
                 Navigation.PushAsync(new MainPage());
