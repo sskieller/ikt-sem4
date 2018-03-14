@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FWPS.Models
 {
-    public class LightItem
+    public class MorningSunItem
     {
 
-        public LightItem()
+        public MorningSunItem()
         {
             DateTime d = DateTime.Now;
             this.CreatedDate = d;
@@ -33,6 +33,6 @@ namespace FWPS.Models
 			//Empty for now
 		}
 
-		public DbSet<LightItem> LightItems { get; set; }
+		public DbSet<MorningSunItem> LightItems { get; set; }
 	}
 }

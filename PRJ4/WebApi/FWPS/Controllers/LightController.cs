@@ -20,7 +20,7 @@ namespace FWPS.Controllers
 
             if (_context.LightItems.Any() == false)
             {
-                _context.LightItems.Add(new LightItem() {Command = "on", IsRun = false});
+                _context.LightItems.Add(new MorningSunItem() {Command = "on", IsRun = false});
                 _context.SaveChanges();
             }
         }
@@ -33,7 +33,7 @@ namespace FWPS.Controllers
 	    }
 
         [HttpGet]
-        public IEnumerable<LightItem> GetAll()
+        public IEnumerable<MorningSunItem> GetAll()
         {
             return _context.LightItems.ToList();
 			
@@ -66,7 +66,7 @@ namespace FWPS.Controllers
 
 
 		[HttpPost]
-        public IActionResult Create([FromBody] LightItem item)
+        public IActionResult Create([FromBody] MorningSunItem item)
         {
             if (item == null)
                 return BadRequest();
@@ -78,7 +78,7 @@ namespace FWPS.Controllers
             return CreatedAtRoute("GetLight", new {id = item.Id}, item);
         }
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] LightItem item)
+        public IActionResult Update(long id, [FromBody] MorningSunItem item)
         {
             if (item == null || item.Id != id)
             {
