@@ -75,7 +75,7 @@ namespace FWPS.Controllers
             _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetMorningSun", new {id = lightItem.Id}, lightItem);
+            return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);
         }
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] LightItem lightItem)
