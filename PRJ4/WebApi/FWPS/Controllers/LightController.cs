@@ -20,27 +20,27 @@ namespace FWPS.Controllers
 
             if (_context.LightItems.Any() == false)
             {
-                _context.LightItems.Add(new LightItem() {Command = "on", IsRun = false});
+                _context.LightItems.Add(new LightItem() { Command = "on", IsRun = false });
                 _context.SaveChanges();
             }
         }
 
-	    [HttpGet("[action]")]
-		public ActionResult Index()
-	    {
-		    var lightItems = _context.LightItems.ToList();
-		    return View(lightItems);
-	    }
+        [HttpGet("[action]")]
+        public ActionResult Index()
+        {
+            var lightItems = _context.LightItems.ToList();
+            return View(lightItems);
+        }
 
         [HttpGet]
         public IEnumerable<LightItem> GetAll()
         {
             return _context.LightItems.ToList();
-			
+
         }
 
 
-		[HttpGet("{id:int}", Name = "GetLight")]
+        [HttpGet("{id:int}", Name = "GetLight")]
         public IActionResult GetById(long id)
         {
             var lightItem = _context.LightItems.FirstOrDefault(t => t.Id == id);
@@ -53,30 +53,53 @@ namespace FWPS.Controllers
             return new ObjectResult(lightItem);
         }
 
-	    [HttpGet("[action]")] // '/api/Light/next'
-	    public IActionResult Next()
-	    {
-		    var lightItem = _context.LightItems.LastOrDefault(o => o.IsRun == false);
-		    if (lightItem == null)
-		    {
-			    return NotFound();
-		    }
-		    return new ObjectResult(lightItem);
-	    }
-
-
-		[HttpPost]
-        public IActionResult Create([FromBody] LightItem lightItem)
+        [HttpGet("[action]")] // '/api/Light/next'
+        public IActionResult Next()
         {
+            var lightItem = _context.LightItems.LastOrDefault(o => o.IsRun == false);
             if (lightItem == null)
-                return BadRequest();
+            {
+                return NotFound();
+            }
+            return new ObjectResult(lightItem);
+        }
 
+
+        //[HttpPost]
+        //public IActionResult Create([FromBody] LightItem lightItem)
+        //{
+        //    if (lightItem == null)
+        //        return BadRequest();
+
+
+        //    _context.LightItems.Add(lightItem);
+        //    _context.SaveChanges();
+
+        //    return CreatedAtRoute("GetLight", new { id = lightItem.Id }, lightItem);
+        //}
+
+        [HttpPost]
+        public IActionResult Create([FromBody] LightObject lightObject)
+        {
+            if (lightObject == null)
+            {
+                return BadRequest();
+            }
+
+            var lightItem = new LightItem
+            {
+                Command = lightObject.Command,
+                IsRun = lightObject.IsRun,
+                CreatedDate = DateTime.Now,
+                LastModifiedDate = DateTime.Now
+            };
 
             _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);
+            return CreatedAtRoute("GetLight", new {command = lightObject.Command}, lightObject);
         }
+
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] LightItem lightItem)
         {
@@ -98,7 +121,7 @@ namespace FWPS.Controllers
             _context.SaveChanges();
             return new NoContentResult();
         }
-		
+
 
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
