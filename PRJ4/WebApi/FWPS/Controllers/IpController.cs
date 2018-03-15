@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FWPS.Data;
 using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,9 @@ namespace FWPS.Controllers
 	[Route("api/[Controller]")]
 	public class IpController : Controller
 	{
-		private readonly IpContext _context;
+		private readonly FWPS_DB_Context _context;
 
-		public IpController(IpContext context)
+		public IpController(FWPS_DB_Context context)
 		{
 			_context = context;
 

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using FWPS.Models;
 using Microsoft.EntityFrameworkCore;
+using FWPS.Data;
 
 namespace FWPS
 {
@@ -28,9 +29,10 @@ namespace FWPS
             //services.AddDbContext<LightContext>(opt => opt.UseInMemoryDatabase("LightItem"));
             var connectionString =
                 @"Server=fwps.database.windows.net;Database=FWPS_DB;User Id=dbadmin;Password=Navyseal1";
-            services.AddDbContext<LightContext>(opt => opt.UseSqlServer(connectionString));
-	        services.AddDbContext<IpContext>(opt => opt.UseInMemoryDatabase("IpItem"));
-            services.AddDbContext<LoginContext>(opt => opt.UseInMemoryDatabase("LoginItem"));
+            services.AddDbContext<FWPS_DB_Context>(opt => opt.UseSqlServer(connectionString));
+            //services.AddDbContext<LightContext>(opt => opt.UseSqlServer(connectionString));
+	        //services.AddDbContext<IpContext>(opt => opt.UseInMemoryDatabase("IpItem"));
+            //services.AddDbContext<LoginContext>(opt => opt.UseInMemoryDatabase("LoginItem"));
 			services.AddMvc();
         }
 

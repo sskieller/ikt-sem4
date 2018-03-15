@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
+using FWPS.Data;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,15 +12,15 @@ namespace FWPS.Controllers
     [Route("api/[Controller]")]
     public class LightController : Controller
     {
-        private readonly LightContext _context;
+        private readonly FWPS_DB_Context _context;
 
-        public LightController(LightContext context)
+        public LightController(FWPS_DB_Context context)
         {
             _context = context;
 
             if (_context.LightItems.Any() == false)
             {
-                _context.LightItems.Add(new MorningSunItem() {Command = "on", IsRun = false});
+                _context.LightItems.Add(new LightItem() {Command = "on", IsRun = false});
                 _context.SaveChanges();
             }
         }
@@ -28,12 +28,12 @@ namespace FWPS.Controllers
 	    [HttpGet("[action]")]
 		public ActionResult Index()
 	    {
-		    var items = _context.LightItems.ToList();
-		    return View(items);
+		    var lightItems = _context.LightItems.ToList();
+		    return View(lightItems);
 	    }
 
         [HttpGet]
-        public IEnumerable<MorningSunItem> GetAll()
+        public IEnumerable<LightItem> GetAll()
         {
             return _context.LightItems.ToList();
 			
@@ -43,44 +43,44 @@ namespace FWPS.Controllers
 		[HttpGet("{id:int}", Name = "GetLight")]
         public IActionResult GetById(long id)
         {
-            var item = _context.LightItems.FirstOrDefault(t => t.Id == id);
+            var lightItem = _context.LightItems.FirstOrDefault(t => t.Id == id);
             {
-                if (item == null)
+                if (lightItem == null)
                 {
                     return NotFound();
                 }
             }
-            return new ObjectResult(item);
+            return new ObjectResult(lightItem);
         }
 
 	    [HttpGet("[action]")] // '/api/Light/next'
 	    public IActionResult Next()
 	    {
-		    var item = _context.LightItems.LastOrDefault(o => o.IsRun == false);
-		    if (item == null)
+		    var lightItem = _context.LightItems.LastOrDefault(o => o.IsRun == false);
+		    if (lightItem == null)
 		    {
 			    return NotFound();
 		    }
-		    return new ObjectResult(item);
+		    return new ObjectResult(lightItem);
 	    }
 
 
 		[HttpPost]
-        public IActionResult Create([FromBody] MorningSunItem item)
+        public IActionResult Create([FromBody] LightItem lightItem)
         {
-            if (item == null)
+            if (lightItem == null)
                 return BadRequest();
 
 
-            _context.LightItems.Add(item);
+            _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetLight", new {id = item.Id}, item);
+            return CreatedAtRoute("GetMorningSun", new {id = lightItem.Id}, lightItem);
         }
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] MorningSunItem item)
+        public IActionResult Update(long id, [FromBody] LightItem lightItem)
         {
-            if (item == null || item.Id != id)
+            if (lightItem == null || lightItem.Id != id)
             {
                 return BadRequest();
             }
@@ -91,7 +91,7 @@ namespace FWPS.Controllers
                 return NotFound();
             }
 
-            light.IsRun = item.IsRun;
+            light.IsRun = lightItem.IsRun;
             light.LastModifiedDate = DateTime.Now;
 
             _context.LightItems.Update(light);
@@ -103,13 +103,13 @@ namespace FWPS.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            var light = _context.LightItems.FirstOrDefault(o => o.Id == id);
-            if (light == null)
+            var lightItem = _context.LightItems.FirstOrDefault(o => o.Id == id);
+            if (lightItem == null)
             {
                 return NotFound();
             }
 
-            _context.LightItems.Remove(light);
+            _context.LightItems.Remove(lightItem);
             _context.SaveChanges();
             return new NoContentResult();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FWPS.Data;
 using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,9 @@ namespace FWPS.Controllers
     [Route("api/[Controller]")]
     public class LoginController : Controller
     {
-        private readonly LoginContext _context;
+        private readonly FWPS_DB_Context _context;
 
-        public LoginController(LoginContext context)
+        public LoginController(FWPS_DB_Context context)
         {
             _context = context;
 

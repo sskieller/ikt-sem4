@@ -23,16 +23,16 @@ namespace FWPS.Models
 	    public string Ip { get; set; }
 	}
 
-	public class IpContext : DbContext
-	{
-		public IpContext(DbContextOptions<IpContext> options)
-			: base(options)
-		{
-			//Empty for now
-		}
+	//public class IpContext : DbContext
+	//{
+	//	public IpContext(DbContextOptions<IpContext> options)
+	//		: base(options)
+	//	{
+	//		//Empty for now
+	//	}
 
-		public DbSet<IpItem> IpItems { get; set; }
-	}
+	//	public DbSet<IpItem> IpItems { get; set; }
+	//}
 
 
 }

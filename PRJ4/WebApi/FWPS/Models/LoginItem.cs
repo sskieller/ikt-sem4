@@ -9,6 +9,7 @@ namespace FWPS.Models
 {
     public class LoginItem
     {
+        public long Id { get; set; }
         public LoginItem()
         {
             DateTime d = DateTime.Now;
@@ -23,16 +24,16 @@ namespace FWPS.Models
         public string Password { get; set; }
     }
 
-    public class LoginContext : DbContext
-    {
-        public LoginContext(DbContextOptions<LoginContext> options)
-            : base(options)
-        {
-            //Empty for now
-        }
+    //public class LoginContext : DbContext
+    //{
+    //    public LoginContext(DbContextOptions<LoginContext> options)
+    //        : base(options)
+    //    {
+    //        //Empty for now
+    //    }
 
-        public DbSet<LoginItem> LoginItems { get; set; }
-    }
+    //    public DbSet<LoginItem> LoginItems { get; set; }
+    //}
 
 
 }
