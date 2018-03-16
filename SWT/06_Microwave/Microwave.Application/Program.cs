@@ -1,6 +1,9 @@
-﻿using MicrowaveOvenClasses.Boundary;
+﻿using System;
+using System.Threading;
+using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Controllers;
 using MicrowaveOvenClasses.Interfaces;
+using Timer = MicrowaveOvenClasses.Boundary.Timer;
 
 namespace Microwave.Application
 {
@@ -26,6 +29,12 @@ namespace Microwave.Application
 		    IUserInterface ui = new UserInterface(powerButton, timerButton, startCancelButton,
 		        door, display, light, cookController);
 
+		    cookController.UI = ui;
+
+		    Console.BackgroundColor = ConsoleColor.Cyan;
+		    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("Main UC");
+
             // UC 1
             door.Open();
             // UC 4
@@ -34,6 +43,7 @@ namespace Microwave.Application
 		    RunUC6ToEnd(powerButton, timerButton, startCancelButton, timer, door);
 
 
+            Console.WriteLine("Ext1 UC6");
             // Extension 1 - Start from UC6
             door.Open();
             door.Close();
@@ -43,6 +53,7 @@ namespace Microwave.Application
 
 		    RunUC6ToEnd(powerButton, timerButton, startCancelButton, timer, door);
 
+            Console.WriteLine("Ext1 UC15");
             // Extension 1 - Start from UC15
             door.Open();
             door.Close();
@@ -51,9 +62,124 @@ namespace Microwave.Application
             startCancelButton.Press();
 
             RunUC15ToEnd(door);
+
+            Console.WriteLine("Ext2 Powerbutton: UC4");
+            // Extension 2 - Power button: Start from UC4
+            door.Open();
+            door.Close();
+
+            powerButton.Press();
+            door.Open();
+		    RunUC4ToEnd(powerButton, timerButton, startCancelButton, timer, door);
+
+            Console.WriteLine("Ext2 Powerbutton: UC17");
+            // Extension 2 - Power button: Start from UC17
+            door.Open();
+            door.Close();
+            
+            powerButton.Press();
+            door.Open();
+            RunUC17ToEnd(door);
+
+            Console.WriteLine("Ext2 Timerbutton: UC4");
+		    // Extension 2 - Timer button: Start from UC4
+            door.Open();
+            door.Close();
+
+            powerButton.Press();
+            timerButton.Press();
+
+		    door.Open();
+		    RunUC4ToEnd(powerButton, timerButton, startCancelButton, timer, door);
+
+            Console.WriteLine("Ext2 Timerbutton: UC17");
+		    // Extension 2 - Timer button: Start from UC17
+            door.Open();
+            door.Close();
+
+            powerButton.Press();
+            timerButton.Press();
+
+            door.Open();
+            RunUC17ToEnd(door);
+
+            Console.WriteLine("Ext3 UC6");
+            // Extension 3 - Start from UC6
+            door.Open();
+            door.Close();
+
+            powerButton.Press();
+            timerButton.Press();
+
+            startCancelButton.Press();
+            // Before timer ends
+		    Thread.Sleep(200);
+            startCancelButton.Press();
+
+		    RunUC6ToEnd(powerButton, timerButton, startCancelButton, timer, door);
+
+            Console.WriteLine("Ext3 UC15");
+            // Extension 3 - Start from UC15
+		    door.Open();
+		    door.Close();
+
+		    powerButton.Press();
+		    timerButton.Press();
+
+		    startCancelButton.Press();
+            // Before timer ends
+		    Thread.Sleep(200);
+            startCancelButton.Press();
+
+            RunUC15ToEnd(door);
+
+            Console.WriteLine("Ext4 UC4");
+            // Extension 4 - Start from UC4
+		    door.Open();
+		    door.Close();
+
+		    powerButton.Press();
+		    timerButton.Press();
+
+		    startCancelButton.Press();
+            // Before timer ends
+		    Thread.Sleep(200);
+            door.Open();
+
+		    RunUC4ToEnd(powerButton, timerButton, startCancelButton, timer, door);
+
+            Console.WriteLine("Ext4 UC17");
+            // Extension 4 - Start from UC17
+		    door.Open();
+		    door.Close();
+
+		    powerButton.Press();
+		    timerButton.Press();
+
+		    startCancelButton.Press();
+
+		    // Before timer ends
+            Thread.Sleep(200);
+		    door.Open();
+
+            RunUC17ToEnd(door);
+
+		    Console.ReadKey();
 		}
 
-	    public static void RunUC6ToEnd(IButton powerButton, 
+        private static void RunUC4ToEnd(IButton powerButton,
+	        IButton timerButton,
+	        IButton startCancelButton,
+	        ITimer timer,
+	        IDoor door)
+	    {
+	        // UC 4
+	        door.Close();
+	        // UC 6 to End
+	        RunUC6ToEnd(powerButton, timerButton, startCancelButton, timer, door);
+	    }
+
+        private static void RunUC6ToEnd(IButton powerButton, 
 	        IButton timerButton, 
 	        IButton startCancelButton, 
 	        ITimer timer,
@@ -64,8 +190,8 @@ namespace Microwave.Application
 	        {
 	            powerButton.Press();
 	        }
-	        // UC 7, Timer set to 2 minutes
-	        for (int i = 0; i < 2; i++)
+	        // UC 7, Timer set to 1 minute
+	        for (int i = 0; i < 1; i++)
 	        {
 	            timerButton.Press();
 	        }
@@ -79,16 +205,27 @@ namespace Microwave.Application
 	            // Do nothing
 	        }
 
+            Thread.Sleep(200);
 	        // UC 15
 	        door.Open();
-	        // UC 18
-	        door.Close();
+	        // UC 17 to End
+	        RunUC17ToEnd(door);
         }
 
 	    private static void RunUC15ToEnd(IDoor door)
 	    {
             // UC 15
             door.Open();
+            // UC 17 
+            RunUC17ToEnd(door);
+	    }
+
+	    
+
+	    private static void RunUC17ToEnd(IDoor door)
+	    {
+            // UC 17
+            // Removes food
             // UC 18
             door.Close();
 	    }

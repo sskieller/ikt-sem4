@@ -15,11 +15,13 @@ namespace MicrowaveOvenClasses.Boundary
         public void Close()
         {
             Closed?.Invoke(this, System.EventArgs.Empty);
+            Console.WriteLine("Door closed");
         }
 
         public void Open()
         {
             Opened?.Invoke(this, System.EventArgs.Empty);
+            Console.WriteLine("Door opened");
         }
     }
 }
