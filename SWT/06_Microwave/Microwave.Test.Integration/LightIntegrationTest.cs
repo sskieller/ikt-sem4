@@ -12,6 +12,6 @@ namespace Microwave.Test.Integration
 	[TestFixture]
     public class LightIntegrationTest
     {
-		public void
+		
     }
 }
