@@ -8,8 +8,13 @@
   <ReportType>HTML<!-- [HTML|JSON|XML|NDependXML]. A type of the report. XML by default. --></ReportType>
   <InheritConsole><!-- [True|False] Lets the application being analysed to inherit dotCover console. True by default. --> </InheritConsole>
   
+  
   <Filters>
     <ExcludeFilters>
+		<FilterEntry>
+			<ClassMask>Nunit</ClassMask>
+		</FilterEntry>
+	
       <FilterEntry>
         <ModuleMask>MicrowaveOvenClasses</ModuleMask>
         <ClassMask>MicrowaveOvenClasses.Boundary.Output</ClassMask>
