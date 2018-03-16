@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Controllers;
@@ -30,6 +31,14 @@ namespace Microwave.Application
 		        door, display, light, cookController);
 
 		    cookController.UI = ui;
+
+            Console.WriteLine("Program started");
+
+            // To output to file
+		    var ostrm = new FileStream("output.txt",FileMode.Open,FileAccess.Write);
+            var writer = new StreamWriter(ostrm);
+		    TextWriter oldOut = Console.Out;
+		    Console.SetOut(writer);
 
 		    Console.BackgroundColor = ConsoleColor.Cyan;
 		    Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -164,6 +173,12 @@ namespace Microwave.Application
 
             RunUC17ToEnd(door);
 
+
+            writer.Close();
+            ostrm.Close();
+
+            Console.SetOut(oldOut);
+            Console.WriteLine("Press any key to continue...");
 		    Console.ReadKey();
 		}
 
