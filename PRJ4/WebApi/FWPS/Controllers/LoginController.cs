@@ -11,9 +11,9 @@ namespace FWPS.Controllers
     [Route("api/[Controller]")]
     public class LoginController : Controller
     {
-        private readonly FWPS_DB_Context _context;
+        private readonly FwpsDbContext _context;
 
-        public LoginController(FWPS_DB_Context context)
+        public LoginController(FwpsDbContext context)
         {
             _context = context;
 

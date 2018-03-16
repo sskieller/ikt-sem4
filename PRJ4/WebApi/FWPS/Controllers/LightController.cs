@@ -12,9 +12,9 @@ namespace FWPS.Controllers
     [Route("api/[Controller]")]
     public class LightController : Controller
     {
-        private readonly FWPS_DB_Context _context;
+        private readonly FwpsDbContext _context;
 
-        public LightController(FWPS_DB_Context context)
+        public LightController(FwpsDbContext context)
         {
             _context = context;
 
@@ -85,6 +85,8 @@ namespace FWPS.Controllers
             {
                 return BadRequest();
             }
+
+            
 
             var lightItem = new LightItem
             {

@@ -56,8 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="IT3_Light.cs" />
     <Compile Include="IT4_UI.cs" />
+=======
+    <Compile Include="IT2_Display.cs" />
+    <Compile Include="LightIntegrationTest.cs" />
+    <Compile Include="IT1_PowerTube.cs" />
+>>>>>>> 0a553c0c79d11d2f3078db6c234924fc213a467d
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

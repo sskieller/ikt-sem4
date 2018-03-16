@@ -11,9 +11,9 @@ namespace FWPS.Controllers
 	[Route("api/[Controller]")]
 	public class IpController : Controller
 	{
-		private readonly FWPS_DB_Context _context;
+		private readonly FwpsDbContext _context;
 
-		public IpController(FWPS_DB_Context context)
+		public IpController(FwpsDbContext context)
 		{
 			_context = context;
 

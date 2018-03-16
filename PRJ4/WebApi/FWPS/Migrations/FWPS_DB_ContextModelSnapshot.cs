@@ -10,7 +10,7 @@ using System;
 
 namespace FWPS.Migrations
 {
-    [DbContext(typeof(FWPS_DB_Context))]
+    [DbContext(typeof(FwpsDbContext))]
     partial class FWPS_DB_ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

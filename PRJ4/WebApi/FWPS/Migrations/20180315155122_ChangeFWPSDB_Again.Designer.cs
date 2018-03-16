@@ -11,8 +11,8 @@ using System;
 namespace FWPS.Migrations
 {
     [DbContext(typeof(FwpsDbContext))]
-    [Migration("20180315143908_CreateFWPSDB")]
-    partial class CreateFWPSDB
+    [Migration("20180315155122_ChangeFWPSDB_Again")]
+    partial class ChangeFWPSDB_Again
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,24 @@ namespace FWPS.Migrations
                     b.ToTable("IpItems");
                 });
 
+            modelBuilder.Entity("FWPS.Models.LightItem", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Command");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("IsRun");
+
+                    b.Property<DateTime>("LastModifiedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LightItems");
+                });
+
             modelBuilder.Entity("FWPS.Models.LoginItem", b =>
                 {
                     b.Property<long>("Id")
@@ -53,24 +71,6 @@ namespace FWPS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LoginItems");
-                });
-
-            modelBuilder.Entity("FWPS.Models.MorningSunItem", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Command");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<bool>("IsRun");
-
-                    b.Property<DateTime>("LastModifiedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MorningSunItems");
                 });
 #pragma warning restore 612, 618
         }
