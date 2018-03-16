@@ -18,18 +18,13 @@
 			<ClassMask>Nunit*</ClassMask>
 		</FilterEntry>
 		<FilterEntry>
-			<ClassMask>nunit*</ClassMask>
+			<ClassMask>nunit.*</ClassMask>
 		</FilterEntry>
 		
 	
       <FilterEntry>
         <ModuleMask>MicrowaveOvenClasses</ModuleMask>
         <ClassMask>MicrowaveOvenClasses.Boundary.Output</ClassMask>
-        <FunctionMask>*</FunctionMask>
-      </FilterEntry>
-      <FilterEntry>
-        <ModuleMask>Microwave.Test.Integration</ModuleMask>
-        <ClassMask>Microwave.Test.Integration.*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
     </ExcludeFilters>
