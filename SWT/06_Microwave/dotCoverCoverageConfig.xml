@@ -8,11 +8,14 @@
   <ReportType>HTML<!-- [HTML|JSON|XML|NDependXML]. A type of the report. XML by default. --></ReportType>
   <InheritConsole><!-- [True|False] Lets the application being analysed to inherit dotCover console. True by default. --> </InheritConsole>
   
-  <!--
+  
+
+  
+  
   <Filters>
     <ExcludeFilters>
 		<FilterEntry>
-			<ClassMask>Nunit</ClassMask>
+			<ClassMask>Nunit*</ClassMask>
 		</FilterEntry>
 	
       <FilterEntry>
@@ -27,7 +30,7 @@
       </FilterEntry>
     </ExcludeFilters>
   </Filters>
-  -->
+  
   <!-- Coverage filters. It's possible to use asterisks as wildcard symbols.
     <IncludeFilters>
       <FilterEntry>
