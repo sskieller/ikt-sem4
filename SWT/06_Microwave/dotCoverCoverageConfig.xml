@@ -17,6 +17,10 @@
 		<FilterEntry>
 			<ClassMask>Nunit*</ClassMask>
 		</FilterEntry>
+		<FilterEntry>
+			<ClassMask>nunit*</ClassMask>
+		</FilterEntry>
+		
 	
       <FilterEntry>
         <ModuleMask>MicrowaveOvenClasses</ModuleMask>
