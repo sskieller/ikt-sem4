@@ -1,0 +1,575 @@
+Main UC
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 100 W
+Display shows: 150 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 150 W
+Display shows: 00:59
+Display shows: 00:58
+Display shows: 00:57
+Display shows: 00:56
+Display shows: 00:55
+Display shows: 00:54
+Display shows: 00:53
+Display shows: 00:52
+Display shows: 00:51
+Display shows: 00:50
+Display shows: 00:49
+Display shows: 00:48
+Display shows: 00:47
+Display shows: 00:46
+Display shows: 00:45
+Display shows: 00:44
+Display shows: 00:43
+Display shows: 00:42
+Display shows: 00:41
+Display shows: 00:40
+Display shows: 00:39
+Display shows: 00:38
+Display shows: 00:37
+Display shows: 00:36
+Display shows: 00:35
+Display shows: 00:34
+Display shows: 00:33
+Display shows: 00:32
+Display shows: 00:31
+Display shows: 00:30
+Display shows: 00:29
+Display shows: 00:28
+Display shows: 00:27
+Display shows: 00:26
+Display shows: 00:25
+Display shows: 00:24
+Display shows: 00:23
+Display shows: 00:22
+Display shows: 00:21
+Display shows: 00:20
+Display shows: 00:19
+Display shows: 00:18
+Display shows: 00:17
+Display shows: 00:16
+Display shows: 00:15
+Display shows: 00:14
+Display shows: 00:13
+Display shows: 00:12
+Display shows: 00:11
+Display shows: 00:10
+Display shows: 00:09
+Display shows: 00:08
+Display shows: 00:07
+Display shows: 00:06
+Display shows: 00:05
+Display shows: 00:04
+Display shows: 00:03
+Display shows: 00:02
+Display shows: 00:01
+Display shows: 00:00
+PowerTube turned off
+Display cleared
+Light is turned off
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext1 UC6
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display cleared
+Display shows: 50 W
+Display shows: 100 W
+Display shows: 150 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 150 W
+Display shows: 00:59
+Display shows: 00:58
+Display shows: 00:57
+Display shows: 00:56
+Display shows: 00:55
+Display shows: 00:54
+Display shows: 00:53
+Display shows: 00:52
+Display shows: 00:51
+Display shows: 00:50
+Display shows: 00:49
+Display shows: 00:48
+Display shows: 00:47
+Display shows: 00:46
+Display shows: 00:45
+Display shows: 00:44
+Display shows: 00:43
+Display shows: 00:42
+Display shows: 00:41
+Display shows: 00:40
+Display shows: 00:39
+Display shows: 00:38
+Display shows: 00:37
+Display shows: 00:36
+Display shows: 00:35
+Display shows: 00:34
+Display shows: 00:33
+Display shows: 00:32
+Display shows: 00:31
+Display shows: 00:30
+Display shows: 00:29
+Display shows: 00:28
+Display shows: 00:27
+Display shows: 00:26
+Display shows: 00:25
+Display shows: 00:24
+Display shows: 00:23
+Display shows: 00:22
+Display shows: 00:21
+Display shows: 00:20
+Display shows: 00:19
+Display shows: 00:18
+Display shows: 00:17
+Display shows: 00:16
+Display shows: 00:15
+Display shows: 00:14
+Display shows: 00:13
+Display shows: 00:12
+Display shows: 00:11
+Display shows: 00:10
+Display shows: 00:09
+Display shows: 00:08
+Display shows: 00:07
+Display shows: 00:06
+Display shows: 00:05
+Display shows: 00:04
+Display shows: 00:03
+Display shows: 00:02
+Display shows: 00:01
+Display shows: 00:00
+PowerTube turned off
+Display cleared
+Light is turned off
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext1 UC15
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display cleared
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext2 Powerbutton: UC4
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Light is turned on
+Display cleared
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 100 W
+Display shows: 150 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 150 W
+Display shows: 00:59
+Display shows: 00:58
+Display shows: 00:57
+Display shows: 00:56
+Display shows: 00:55
+Display shows: 00:54
+Display shows: 00:53
+Display shows: 00:52
+Display shows: 00:51
+Display shows: 00:50
+Display shows: 00:49
+Display shows: 00:48
+Display shows: 00:47
+Display shows: 00:46
+Display shows: 00:45
+Display shows: 00:44
+Display shows: 00:43
+Display shows: 00:42
+Display shows: 00:41
+Display shows: 00:40
+Display shows: 00:39
+Display shows: 00:38
+Display shows: 00:37
+Display shows: 00:36
+Display shows: 00:35
+Display shows: 00:34
+Display shows: 00:33
+Display shows: 00:32
+Display shows: 00:31
+Display shows: 00:30
+Display shows: 00:29
+Display shows: 00:28
+Display shows: 00:27
+Display shows: 00:26
+Display shows: 00:25
+Display shows: 00:24
+Display shows: 00:23
+Display shows: 00:22
+Display shows: 00:21
+Display shows: 00:20
+Display shows: 00:19
+Display shows: 00:18
+Display shows: 00:17
+Display shows: 00:16
+Display shows: 00:15
+Display shows: 00:14
+Display shows: 00:13
+Display shows: 00:12
+Display shows: 00:11
+Display shows: 00:10
+Display shows: 00:09
+Display shows: 00:08
+Display shows: 00:07
+Display shows: 00:06
+Display shows: 00:05
+Display shows: 00:04
+Display shows: 00:03
+Display shows: 00:02
+Display shows: 00:01
+Display shows: 00:00
+PowerTube turned off
+Display cleared
+Light is turned off
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext2 Powerbutton: UC17
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Light is turned on
+Display cleared
+Door opened
+Light is turned off
+Door closed
+Ext2 Timerbutton: UC4
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 01:00
+Light is turned on
+Display cleared
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 100 W
+Display shows: 150 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 150 W
+Display shows: 00:59
+Display shows: 00:58
+Display shows: 00:57
+Display shows: 00:56
+Display shows: 00:55
+Display shows: 00:54
+Display shows: 00:53
+Display shows: 00:52
+Display shows: 00:51
+Display shows: 00:50
+Display shows: 00:49
+Display shows: 00:48
+Display shows: 00:47
+Display shows: 00:46
+Display shows: 00:45
+Display shows: 00:44
+Display shows: 00:43
+Display shows: 00:42
+Display shows: 00:41
+Display shows: 00:40
+Display shows: 00:39
+Display shows: 00:38
+Display shows: 00:37
+Display shows: 00:36
+Display shows: 00:35
+Display shows: 00:34
+Display shows: 00:33
+Display shows: 00:32
+Display shows: 00:31
+Display shows: 00:30
+Display shows: 00:29
+Display shows: 00:28
+Display shows: 00:27
+Display shows: 00:26
+Display shows: 00:25
+Display shows: 00:24
+Display shows: 00:23
+Display shows: 00:22
+Display shows: 00:21
+Display shows: 00:20
+Display shows: 00:19
+Display shows: 00:18
+Display shows: 00:17
+Display shows: 00:16
+Display shows: 00:15
+Display shows: 00:14
+Display shows: 00:13
+Display shows: 00:12
+Display shows: 00:11
+Display shows: 00:10
+Display shows: 00:09
+Display shows: 00:08
+Display shows: 00:07
+Display shows: 00:06
+Display shows: 00:05
+Display shows: 00:04
+Display shows: 00:03
+Display shows: 00:02
+Display shows: 00:01
+Display shows: 00:00
+PowerTube turned off
+Display cleared
+Light is turned off
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext2 Timerbutton: UC17
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 01:00
+Light is turned on
+Display cleared
+Door opened
+Light is turned off
+Door closed
+Ext3 UC6
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 50 W
+Display shows: 00:59
+PowerTube turned off
+Light is turned off
+Display cleared
+Display shows: 50 W
+Display shows: 100 W
+Display shows: 150 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 150 W
+Display shows: 00:59
+Display shows: 00:58
+Display shows: 00:57
+Display shows: 00:56
+Display shows: 00:55
+Display shows: 00:54
+Display shows: 00:53
+Display shows: 00:52
+Display shows: 00:51
+Display shows: 00:50
+Display shows: 00:49
+Display shows: 00:48
+Display shows: 00:47
+Display shows: 00:46
+Display shows: 00:45
+Display shows: 00:44
+Display shows: 00:43
+Display shows: 00:42
+Display shows: 00:41
+Display shows: 00:40
+Display shows: 00:39
+Display shows: 00:38
+Display shows: 00:37
+Display shows: 00:36
+Display shows: 00:35
+Display shows: 00:34
+Display shows: 00:33
+Display shows: 00:32
+Display shows: 00:31
+Display shows: 00:30
+Display shows: 00:29
+Display shows: 00:28
+Display shows: 00:27
+Display shows: 00:26
+Display shows: 00:25
+Display shows: 00:24
+Display shows: 00:23
+Display shows: 00:22
+Display shows: 00:21
+Display shows: 00:20
+Display shows: 00:19
+Display shows: 00:18
+Display shows: 00:17
+Display shows: 00:16
+Display shows: 00:15
+Display shows: 00:14
+Display shows: 00:13
+Display shows: 00:12
+Display shows: 00:11
+Display shows: 00:10
+Display shows: 00:09
+Display shows: 00:08
+Display shows: 00:07
+Display shows: 00:06
+Display shows: 00:05
+Display shows: 00:04
+Display shows: 00:03
+Display shows: 00:02
+Display shows: 00:01
+Display shows: 00:00
+PowerTube turned off
+Display cleared
+Light is turned off
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext3 UC15
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 50 W
+Display shows: 00:59
+PowerTube turned off
+Light is turned off
+Display cleared
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext4 UC4
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 50 W
+Display shows: 00:59
+PowerTube turned off
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 100 W
+Display shows: 150 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 150 W
+Display shows: 00:59
+Display shows: 00:58
+Display shows: 00:57
+Display shows: 00:56
+Display shows: 00:55
+Display shows: 00:54
+Display shows: 00:53
+Display shows: 00:52
+Display shows: 00:51
+Display shows: 00:50
+Display shows: 00:49
+Display shows: 00:48
+Display shows: 00:47
+Display shows: 00:46
+Display shows: 00:45
+Display shows: 00:44
+Display shows: 00:43
+Display shows: 00:42
+Display shows: 00:41
+Display shows: 00:40
+Display shows: 00:39
+Display shows: 00:38
+Display shows: 00:37
+Display shows: 00:36
+Display shows: 00:35
+Display shows: 00:34
+Display shows: 00:33
+Display shows: 00:32
+Display shows: 00:31
+Display shows: 00:30
+Display shows: 00:29
+Display shows: 00:28
+Display shows: 00:27
+Display shows: 00:26
+Display shows: 00:25
+Display shows: 00:24
+Display shows: 00:23
+Display shows: 00:22
+Display shows: 00:21
+Display shows: 00:20
+Display shows: 00:19
+Display shows: 00:18
+Display shows: 00:17
+Display shows: 00:16
+Display shows: 00:15
+Display shows: 00:14
+Display shows: 00:13
+Display shows: 00:12
+Display shows: 00:11
+Display shows: 00:10
+Display shows: 00:09
+Display shows: 00:08
+Display shows: 00:07
+Display shows: 00:06
+Display shows: 00:05
+Display shows: 00:04
+Display shows: 00:03
+Display shows: 00:02
+Display shows: 00:01
+Display shows: 00:00
+PowerTube turned off
+Display cleared
+Light is turned off
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Ext4 UC17
+Light is turned on
+Door opened
+Light is turned off
+Door closed
+Display shows: 50 W
+Display shows: 01:00
+Display cleared
+Light is turned on
+PowerTube works with 50 W
+Display shows: 00:59
+PowerTube turned off
+Door opened
+Light is turned off
+Door closed
