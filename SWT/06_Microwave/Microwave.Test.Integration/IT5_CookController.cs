@@ -42,7 +42,7 @@ namespace Microwave.Test.Integration
             _cookController.StartCooking(50, 50);
 
             _output.Received(1).OutputLine(Arg.Is<string>(str => 
-                str.Contains("PowerTube works with 50 %")));
+                str.Contains("PowerTube works with 50 W")));
             
         }
 
@@ -77,7 +77,7 @@ namespace Microwave.Test.Integration
 
             Thread.Sleep(1200);
 
-            _output.Received().OutputLine("PowerTube works with 50 %");
+            _output.Received().OutputLine("PowerTube works with 50 W");
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Display shows:")));
         }
 
@@ -88,7 +88,7 @@ namespace Microwave.Test.Integration
 
             Thread.Sleep(2200);
 
-            _output.Received().OutputLine("PowerTube works with 50 %");
+            _output.Received().OutputLine("PowerTube works with 50 W");
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("Display shows: 00:49")));
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("Display shows: 00:48")));
 
@@ -101,7 +101,7 @@ namespace Microwave.Test.Integration
 
             Thread.Sleep(1100);
 
-            _output.Received().OutputLine("PowerTube works with 50 %");
+            _output.Received().OutputLine("PowerTube works with 50 W");
             _output.Received().OutputLine(Arg.Is<string>(str => str.Contains("Display shows: 00:49")));
 
             // Stopping and clearing
