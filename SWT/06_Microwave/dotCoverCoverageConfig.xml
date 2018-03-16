@@ -15,6 +15,7 @@
   <Filters>
     <ExcludeFilters>
 		<FilterEntry>
+			<ModuleMask>nunit.framework</ModuleMask>
 			<ClassMask>nunit.framework</ClassMask>
 		</FilterEntry>
 		
