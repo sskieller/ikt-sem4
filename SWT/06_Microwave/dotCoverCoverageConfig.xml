@@ -15,24 +15,11 @@
   <Filters>
     <ExcludeFilters>
 		<FilterEntry>
-			<ModuleMask>nunit.framework</ModuleMask>
-			<ClassMask>nunit.framework.*</ClassMask>
+			<ModuleMask>NUnit.Framework</ModuleMask>
+			<ClassMask>NUnit.Framework.*</ClassMask>
 			<FunctionMask>*</FunctionMask>
 		</FilterEntry>
-		
-	<!--
-      <FilterEntry>
-        <ModuleMask>MicrowaveOvenClasses</ModuleMask>
-        <ClassMask>MicrowaveOvenClasses.Boundary.Output</ClassMask>
-        <FunctionMask>*</FunctionMask>
-      </FilterEntry>
-      <FilterEntry>
-        <ModuleMask>Microwave.Test.Integration</ModuleMask>
-        <ClassMask>Microwave.Test.Integration.*</ClassMask>
-        <FunctionMask>*</FunctionMask>
-      </FilterEntry>
-	  -->
-    </ExcludeFilters>
+	</ExcludeFilters>
   </Filters>
   
   <!-- Coverage filters. It's possible to use asterisks as wildcard symbols.
