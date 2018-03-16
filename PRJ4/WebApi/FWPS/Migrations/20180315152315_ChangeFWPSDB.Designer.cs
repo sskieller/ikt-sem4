@@ -10,7 +10,7 @@ using System;
 
 namespace FWPS.Migrations
 {
-    [DbContext(typeof(FWPS_DB_Context))]
+    [DbContext(typeof(FwpsDbContext))]
     [Migration("20180315152315_ChangeFWPSDB")]
     partial class ChangeFWPSDB
     {
