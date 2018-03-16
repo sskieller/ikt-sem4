@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Interfaces;
 using NSubstitute;
-using NUnit;
 using NUnit.Framework;
 
 namespace Microwave.Test.Integration

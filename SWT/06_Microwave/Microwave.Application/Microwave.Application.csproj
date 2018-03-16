@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MicrowaveOvenClasses\MicrowaveOvenClasses.csproj">
-      <Project>{2b04da6b-afe9-4548-aa05-84d806ba0fa4}</Project>
+      <Project>{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}</Project>
       <Name>MicrowaveOvenClasses</Name>
     </ProjectReference>
   </ItemGroup>

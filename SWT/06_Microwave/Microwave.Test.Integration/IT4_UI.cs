@@ -210,6 +210,19 @@ namespace Microwave.Test.Integration
 		}
 
 		[Test]
+		public void OnDoorOpened_OpenDoorCooking_CookerStopped()
+		{
+			_powerButton.Press();
+			_timeButton.Press();
+			_startCancelButton.Press();
+			ClearConsole();
+
+			_door.Open();
+
+			_cookController.ReceivedWithAnyArgs().StartCooking(0,0);
+		}
+
+		[Test]
 		public void OnDoorClosed_CloseDoorWhenDoorOpen_LightOff()
 		{
 			_door.Open();
@@ -220,6 +233,7 @@ namespace Microwave.Test.Integration
 
 			Assert.AreEqual(expected, _sw.ToString());
 		}
+
 
 		[Test]
 		public void CookingIsDone_Called_ClearDisplayAndLight()
