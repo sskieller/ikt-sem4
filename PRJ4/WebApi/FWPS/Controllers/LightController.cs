@@ -56,7 +56,7 @@ namespace FWPS.Controllers
         [HttpGet("[action]")] // '/api/Light/next'
         public IActionResult Next()
         {
-            var lightItem = _context.LightItems.LastOrDefault(o => o.IsRun == false);
+            var lightItem = _context.LightItems.LastOrDefault(o => o.IsRun == false && o.Command != null);
             if (lightItem == null)
             {
                 return NotFound();
@@ -79,28 +79,28 @@ namespace FWPS.Controllers
         //}
 
         [HttpPost]
-        public IActionResult Create([FromBody] LightObject lightObject)
+        public IActionResult Create([FromBody] LightItem lightItem)
         {
-            if (lightObject == null)
+            if (lightItem == null)
             {
                 return BadRequest();
             }
 
             
 
-            var lightItem = new LightItem
+            var light = new LightItem
             {
-                Command = lightObject.Command,
-                IsRun = lightObject.IsRun,
+                Command = lightItem.Command,
+                IsRun = lightItem.IsRun,
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now
             };
 
-            _context.LightItems.Add(lightItem);
+            _context.LightItems.Add(light);
             _context.SaveChanges();
 
 
-            return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightObject);
+            return CreatedAtRoute("GetLight", new {id = light.Id}, light);
         }
 
         [HttpPut("{id}")]

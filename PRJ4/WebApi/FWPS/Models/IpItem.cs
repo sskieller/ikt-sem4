@@ -7,19 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FWPS.Models
 {
-    public class IpItem
+    public class IpItem : ItemBase
     {
-	    public IpItem()
-	    {
-		    DateTime d = DateTime.Now;
-		    this.CreatedDate = d;
-		    this.LastModifiedDate = d;
-	    }
-	    public long Id { get; set; }
-	    [DataType(DataType.Date)]
-	    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-	    public DateTime CreatedDate { get; set; }
-	    public DateTime LastModifiedDate { get; set; }
+
 	    public string Ip { get; set; }
 	}
 

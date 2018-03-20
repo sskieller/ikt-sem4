@@ -11,9 +11,10 @@ using System;
 namespace FWPS.Migrations
 {
     [DbContext(typeof(FwpsDbContext))]
-    partial class FWPS_DB_ContextModelSnapshot : ModelSnapshot
+    [Migration("20180320201532_ChangedModelStructureWithItemBase")]
+    partial class ChangedModelStructureWithItemBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +45,6 @@ namespace FWPS.Migrations
                     b.Property<string>("Command");
 
                     b.Property<DateTime>("CreatedDate");
-
-                    b.Property<bool>("IsOn");
 
                     b.Property<bool>("IsRun");
 
