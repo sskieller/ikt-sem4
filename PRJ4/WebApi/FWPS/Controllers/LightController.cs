@@ -99,7 +99,8 @@ namespace FWPS.Controllers
             _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetLight", new {command = lightObject.Command}, lightObject);
+
+            return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightObject);
         }
 
         [HttpPut("{id}")]

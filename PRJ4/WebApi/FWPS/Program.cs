@@ -23,22 +23,25 @@ namespace FWPS
 
         public static IWebHost BuildWebHost(string[] args)
         {
+            /*
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 //.AddJsonFile("hosting.json", optional: true)
                 .AddCommandLine(args)
                 .Build();
 
+            
+
             return WebHost.CreateDefaultBuilder(args)
-                .UseUrls("https://fwps.azurewebsite.net/api/")
+                .UseUrls("https://fwps.azurewebsites.net/api/")
                 .UseConfiguration(config)
                 .Configure(app => { app.Run(context => context.Response.WriteAsync("Hello, World")); })
                 .Build();
-
-            //WebHost.CreateDefaultBuilder(args)
-            //    .UseStartup<Startup>()
-            //    .Build();
+            */
+            return WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .Build();
         }
-            
+
     }
 }
