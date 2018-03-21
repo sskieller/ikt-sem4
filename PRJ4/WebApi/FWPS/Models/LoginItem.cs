@@ -9,7 +9,13 @@ namespace FWPS.Models
 {
     public class LoginItem : ItemBase
     {
-
+        public LoginItem()
+        {
+            DateTime d = DateTime.Now;
+            this.CreatedDate = d;
+            this.LastModifiedDate = d;
+        }
+        [Key]
         public string Username { get; set; }
 
         public string Password { get; set; }

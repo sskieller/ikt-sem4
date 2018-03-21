@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.FWPS_App">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="FWPS_App.FWPS_App" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="FWPS_App.Android"></application>
+	<application android:label="FWPS_App.Android" android:icon="@drawable/icon"></application>
 </manifest>

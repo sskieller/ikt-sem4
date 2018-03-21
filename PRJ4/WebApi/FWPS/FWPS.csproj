@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\LoginController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Properties\PublishProfiles\FWPS - FTP.pubxml" />
     <None Remove="Properties\PublishProfiles\FWPS - Web Deploy.pubxml" />
   </ItemGroup>
