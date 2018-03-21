@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -10,39 +11,49 @@ using Xamarin.Forms.Xaml;
 
 namespace FWPS_App
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class HomePage : ContentPage
-	{
-	    private LogIn _login = new LogIn("https://fwps.azurewebsites.net/api/login/");
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class HomePage : ContentPage
+    {
+        private LogIn _login = new LogIn("https://fwps.azurewebsites.net/api/login/"); // Making a login Context to handle Login Requests
 
-	    private string Username = "";
-	    private string Password = "";
-		public HomePage ()
-		{
-			InitializeComponent();
-            OnLoginButton.Clicked += OnLoginButton_Clicked;
-		}
+        private bool _loggingIn = false;
 
-        private async void OnLoginButton_Clicked(object sender, EventArgs e)
+        public HomePage()
         {
+            InitializeComponent();
+            OnLoginButton.Clicked += OnLoginButton_Clicked;
+        }
+
+        private void OnLoginButton_Clicked(object sender, EventArgs e)
+        {
+            if (_loggingIn) return;
             loadingWheelTM.IsRunning = true;
+            _loggingIn = true;
 
-            Username = usernameTextBox.Text ?? "";
-            Password = passwordTextBox.Text ?? "";
+            Task.Run(() => LoginFunc()); // Making thread to handle login since it takes a whole
+        }
 
-            Task<bool> login = _login.Login(Username, Password);
+        private void LoginFunc()
+        {
+            Thread.Sleep(1000); // CUZ OTHERWISE IT TOO FAST
 
-            bool shouldLogin = await login;
+            string username = usernameTextBox.Text ?? "";
+            string password = passwordTextBox.Text ?? "";
 
-            if (shouldLogin)
-            {
-                loadingWheelTM.IsRunning = false;
-                await Navigation.PushAsync(new MainPage());
-            }
+            if (_login.Login(username, password))
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    _loggingIn = false;
+                    loadingWheelTM.IsRunning = false;
+                    Navigation.PushAsync(new MainPage());
+                });
             else
-                usernameTextBox.Text = "Du hvad kammerat";
-
-            loadingWheelTM.IsRunning = false;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    usernameTextBox.Text = "SUMTING WONG";
+                    _loggingIn = false;
+                    loadingWheelTM.IsRunning = false;
+                });
         }
     }
 }

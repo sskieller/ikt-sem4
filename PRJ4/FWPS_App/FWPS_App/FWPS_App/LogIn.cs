@@ -81,9 +81,7 @@ namespace FWPS_App
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse(); // Get response to check the returnvalue
 
                 Console.WriteLine("Status code returned: {0}", response.StatusCode);
-                if (response.StatusCode == HttpStatusCode.OK)
-                    Console.WriteLine("IT GUD BRO");
-                return true;
+                return response.StatusCode == HttpStatusCode.OK;
             }
             catch (Exception e)
             {
@@ -109,12 +107,12 @@ namespace FWPS_App
         }
 
 
-        public async Task<bool> Login(string usrname, string pskword)
+        public bool Login(string usrname, string pskword)
         {
             usrname = usrname?.Trim();
 
             pskword = pskword?.Trim();
-
+            
             if (!_verify.VerifyPassword(usrname, _hasher.Hash(pskword)))
                 return false;
 

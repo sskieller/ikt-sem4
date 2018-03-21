@@ -8,7 +8,7 @@
                    FontSize="Large"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ActivityIndicator x:Name="loadingWheelTM"  VerticalOptions="Center" HorizontalOptions="Center" IsRunning="True" Color="Orange"/>
+            <ActivityIndicator x:Name="loadingWheelTM"  VerticalOptions="Center" HorizontalOptions="Center" IsRunning="False" Color="Orange"/>
             <Entry Placeholder="Username" 
                    x:Name="usernameTextBox"/>
             <Entry Placeholder="Password" 
