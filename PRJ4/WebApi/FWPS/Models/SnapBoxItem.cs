@@ -11,7 +11,7 @@ namespace FWPS.Models
 
         public string PowerLevel { get; set; }
         public bool MailReceived { get; set; }
-        public List<String> ReceiverEmailList { get; set; }
+        public string ReceiverEmail { get; set; }
 
     }
 }

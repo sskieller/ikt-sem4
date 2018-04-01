@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180401181715_AddSnapBoxItem.cs" />
+    <Compile Remove="Migrations\20180401181715_AddSnapBoxItem.Designer.cs" />
+    <Compile Remove="Migrations\20180401182256_AddSnapBoxItem.cs" />
+    <Compile Remove="Migrations\20180401182256_AddSnapBoxItem.Designer.cs" />
     <Compile Remove="Models\LoginController.cs" />
   </ItemGroup>
 
