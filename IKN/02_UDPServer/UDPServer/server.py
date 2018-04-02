@@ -7,18 +7,13 @@ BUFSIZE = 1000
 
 
 def main(argv):
+    #Create socket
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     serversocket.bind((HOST, PORT))
 
 
-
+    #Keep server on
     while True:
-        # Accepting Connection
-        #clientsocket, addr = serversocket.accept()
-
-        #print("got a connection from {}".format(addr))
-
-        # Getting file request
         msg, addr = serversocket.recvfrom(BUFSIZE)
 
         print("message received: {}".format(msg))
@@ -36,12 +31,6 @@ def main(argv):
             file = open("/proc/loadavg", 'r')
             serversocket.sendto(file.read().encode('UTF-8', 'strict'), addr)
 
-        
 
-
-def sendFile(fileName,  fileSize,  conn):
-    pass
-    # TO DO Your Code
-    
 if __name__ == "__main__":
     main(sys.argv[1:])
