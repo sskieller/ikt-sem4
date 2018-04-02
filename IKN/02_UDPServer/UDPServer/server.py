@@ -23,13 +23,16 @@ def main(argv):
             serversocket.close()
             sys.exit()
 
-        elif msg == "L" or "l":
+        elif msg == 'L' or msg == 'l':
             file = open("/proc/uptime", 'r')
             serversocket.sendto(file.read().encode('UTF-8', 'strict'), addr)
 
-        elif msg == 'U' or 'u':
+        elif msg == 'U' or msg == 'u':
             file = open("/proc/loadavg", 'r')
             serversocket.sendto(file.read().encode('UTF-8', 'strict'), addr)
+        else:
+            file = 'Error'
+            serversocket.sendto(file.encode('UTF-8', 'strict'), addr)
 
 
 if __name__ == "__main__":
