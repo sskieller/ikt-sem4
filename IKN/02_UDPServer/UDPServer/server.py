@@ -1,8 +1,7 @@
 import sys
 import socket
-from TCPLib import *
 
-HOST = "127.0.0.1"
+HOST = "10.0.0.1"
 PORT = 9000
 BUFSIZE = 1000
 
