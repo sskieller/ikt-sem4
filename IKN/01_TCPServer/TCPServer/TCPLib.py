@@ -33,9 +33,5 @@ def getFileSizeTCP(client):
         filesize = int(readTextTCP(client))
     except:
         filesize = -1
-<<<<<<< Updated upstream
-        
-=======
->>>>>>> Stashed changes
 
     return filesize

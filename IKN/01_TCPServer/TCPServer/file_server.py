@@ -11,6 +11,8 @@ def main(argv):
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serversocket.bind((HOST, PORT))
 
+    print("Starting server at addr: {} on port: {}".format(HOST,PORT))
+
     serversocket.listen(5)
 
 
