@@ -35,7 +35,7 @@ namespace FWPS_App
 
         private void LoginFunc()
         {
-            Thread.Sleep(1000); // CUZ OTHERWISE IT TOO FAST
+            Thread.Sleep(1000); // CUZ OTHERWISE IT TOO FUCKIN' FAST
 
             string username = usernameTextBox.Text ?? "";
             string password = passwordTextBox.Text ?? "";
@@ -45,12 +45,12 @@ namespace FWPS_App
                 {
                     _loggingIn = false;
                     loadingWheelTM.IsRunning = false;
-                    Navigation.PushAsync(new MainPage());
+                    Navigation.PushAsync(new MainPage() { Title = "Main Page" });
                 });
             else
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    usernameTextBox.Text = "SUMTING WONG";
+                    usernameTextBox.Text = "SUMTING MUCH WONG";
                     _loggingIn = false;
                     loadingWheelTM.IsRunning = false;
                 });
