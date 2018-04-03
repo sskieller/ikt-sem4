@@ -25,6 +25,7 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
@@ -37,6 +38,7 @@
                 <Button Text="Light" HorizontalOptions="CenterAndExpand" x:Name="LightButton" Grid.Row="3"/>
                 <Button Text="Poomba" HorizontalOptions="CenterAndExpand" x:Name="PoombaButton" Grid.Row="4"/>
                 <Button Text="Hodoor" HorizontalOptions="CenterAndExpand" x:Name="HodoorButton" Grid.Row="5"/>
+                <Button Text="Logout" HorizontalOptions="CenterAndExpand" x:Name="LogoutButton" Grid.Row="6"/>
             </Grid>
         </RelativeLayout>
     </ContentPage.Content>
