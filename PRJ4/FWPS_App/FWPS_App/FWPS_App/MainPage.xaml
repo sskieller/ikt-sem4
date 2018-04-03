@@ -4,16 +4,41 @@
              xmlns:local="clr-namespace:FWPS_App"
              x:Class="FWPS_App.MainPage">
 
-    <StackLayout VerticalOptions="CenterAndExpand"
-                 HorizontalOptions="CenterAndExpand">
-	<Label Text="Welcome MainPage!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-    <Label Text="Welcome to the Homeland!" TextColor="White" HorizontalOptions="CenterAndExpand" x:Name="WelcomeAppButton" />
-    <Button Text="Climate Control" HorizontalOptions="CenterAndExpand" x:Name="ClimateControlButton" />
-    <Button Text="Light" HorizontalOptions="CenterAndExpand" x:Name="LightButton" />
-    <Button Text="Poomba" HorizontalOptions="CenterAndExpand" x:Name="PoombaButton" />
-    <Button Text="Hodoor" HorizontalOptions="CenterAndExpand" x:Name="HodoorButton" />
-    </StackLayout>
-        
+
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Image Source="http://www.lol.de/tiere/frisurentrends-fuer-2013-alpaka-style-163/alpaka-mit-koteletten-lefi435bj3-20.jpg" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+                <Label Text="Welcome MainPage!" Grid.Row="0"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                <Label Text="Welcome to the Homeland!" TextColor="White" HorizontalOptions="CenterAndExpand" x:Name="WelcomeAppButton" Grid.Row="1" />
+                <Button Text="Climate Control" HorizontalOptions="CenterAndExpand" x:Name="ClimateControlButton" Grid.Row="2"/>
+                <Button Text="Light" HorizontalOptions="CenterAndExpand" x:Name="LightButton" Grid.Row="3"/>
+                <Button Text="Poomba" HorizontalOptions="CenterAndExpand" x:Name="PoombaButton" Grid.Row="4"/>
+                <Button Text="Hodoor" HorizontalOptions="CenterAndExpand" x:Name="HodoorButton" Grid.Row="5"/>
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+
 </ContentPage>

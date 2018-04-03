@@ -12,10 +12,12 @@ namespace FWPS_App
 		public MainPage()
 		{
 			InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             ClimateControlButton.Clicked += ClimateControlButton_Clicked;
             LightButton.Clicked += LightButton_Clicked;
             PoombaButton.Clicked += PoombaButton_Clicked;
             HodoorButton.Clicked += HodoorButton_Clicked;
+
         }
 
         private void HodoorButton_Clicked(object sender, EventArgs e)
