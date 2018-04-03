@@ -67,8 +67,8 @@ namespace FWPS.Controllers
 
             if (item.MailReceived)
             {
-                new Thread(() => { MailSender.SendSnapBoxMail(_context, item); }).Start();
-                
+                MailSender ms = new MailSender(_context);
+                ms.SendSnapBoxMail(item);
             }
 
 			return CreatedAtRoute("GetSnapBox", new { id = item.Id }, item);
