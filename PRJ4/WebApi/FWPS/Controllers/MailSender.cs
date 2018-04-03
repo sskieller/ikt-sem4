@@ -9,12 +9,18 @@ using System.Net.Mail;
 
 namespace FWPS.Controllers
 {
-    public static class MailSender
+    public class MailSender
     {
+        private readonly FwpsDbContext _context;
 
-        public static void SendSnapBoxMail(FwpsDbContext context, SnapBoxItem item)
+        public MailSender(FwpsDbContext context)
         {
-            MailMessage mail = new MailMessage("simonvu@post.au.dk", item.ReceiverEmail);
+            _context = context;
+        }
+
+        public void SendSnapBoxMail(SnapBoxItem item)
+        {
+            MailMessage mail = new MailMessage("simonvu8210@gmail.com", item.ReceiverEmail);
             mail.Body = string.Format("You have received mail\nAlso your current power level is: {0}", item.PowerLevel);
             mail.Subject = "New mail in SnapBox";
 
@@ -26,8 +32,8 @@ namespace FWPS.Controllers
                 Subject = "New mail in SnapBox"
             };
 
-            context.MailItems.Add(mailCopy);
-            context.SaveChanges();
+            _context.MailItems.Add(mailCopy);
+            _context.SaveChanges();
 
             //Send mail here
             SmtpClient client = new SmtpClient();
@@ -35,8 +41,8 @@ namespace FWPS.Controllers
             client.Port = 587;
             client.EnableSsl = true;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.Credentials = new System.Net.NetworkCredential("au553622@uni.au.dk", "4Doru0109");
-            client.Host = "post.au.dk";
+            client.Credentials = new System.Net.NetworkCredential("simonvu8210@gmail.com", "Kalle210");
+            client.Host = "smtp.gmail.com";
 
             try
             {
@@ -44,6 +50,8 @@ namespace FWPS.Controllers
             }
             catch (Exception e)
             {
+                mailCopy.Subject = "FAILED TO SEND MAIL";
+                _context.SaveChanges();
                 Console.WriteLine("Failure to send email");
             }
             
