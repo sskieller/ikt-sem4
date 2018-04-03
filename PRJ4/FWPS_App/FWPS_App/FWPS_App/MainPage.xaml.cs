@@ -18,7 +18,13 @@ namespace FWPS_App
             PoombaButton.Clicked += PoombaButton_Clicked;
             HodoorButton.Clicked += HodoorButton_Clicked;
             LogoutButton.Clicked += LogoutButton_Clicked;
+            SnapboxButton.Clicked += SnapboxButton_Clicked;
 
+        }
+
+        private void SnapboxButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SnapboxPage());
         }
 
         private void LogoutButton_Clicked(object sender, EventArgs e)

@@ -8,21 +8,24 @@
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="HorizontalOptions" Value="Fill" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="FontAttributes" Value="Italic" />
-                <Setter Property="TextColor" Value="Blue" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="#FFB8860B" />
                 
             </Style>
-            
+
             <Style x:Key="ButtonStyle" TargetType="Button">
-                <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="BorderColor" Value="Lime" />
+                <Setter Property="BorderColor" Value="Teal" />
                 <Setter Property="BorderRadius" Value="5" />
                 <Setter Property="BorderWidth" Value="5" />
-                <Setter Property="WidthRequest" Value="200" />
-                <Setter Property="TextColor" Value="Teal" />
+                <Setter Property="BackgroundColor" Value="#FFFDF5E6" />
+                <Setter Property="TextColor" Value="#FFDAA520" />
             </Style>
-            
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#FFB8860B" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
