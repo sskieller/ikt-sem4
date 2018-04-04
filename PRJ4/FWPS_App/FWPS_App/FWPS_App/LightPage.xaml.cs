@@ -14,7 +14,8 @@ namespace FWPS_App
 	{
 		public LightPage ()
 		{
-			InitializeComponent (); OnButton.Clicked += OnButton_Clicked;
+			InitializeComponent ();
+            OnButton.Clicked += OnButton_Clicked;
             OffButton.Clicked += OffButton_Clicked;
         }
 
@@ -25,7 +26,6 @@ namespace FWPS_App
                 Command = "off",
                 IsRun = false
             };
-
             CreateLightRequest(light);
         }
 
@@ -36,18 +36,14 @@ namespace FWPS_App
                 Command = "on",
                 IsRun = false
             };
-
             CreateLightRequest(lightObject);
         }
 
         public static string BaseUri { get; set; } = "https://fwps.azurewebsites.net/api/Light/";
         protected virtual void CreateLightRequest(LightObject light)
         {
-
-
             try
             {
-
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri);
                 request.Method = "POST";
                 request.ContentType = "application/json";
@@ -58,30 +54,31 @@ namespace FWPS_App
                 request.ContentLength = json.Length; //Get length of json
                 Stream stream = request.GetRequestStream(); //Create stream
 
-
-
                 mainlabel.Text = "Reached Write + " + json;
                 stream.Write(Encoding.UTF8.GetBytes(json), 0, json.Length); //Write PUT request
-
-
 
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse(); //Get response to make sure json object is sent
             }
             catch (Exception e)
             {
-
                 label2.Text = e.Message;
                 string message = e.Message;
                 //await DisplayAlert("DisplayAlert", $"{message}", "OK");
             }
         }
 
+
+        //protected virtual void GetLightState()
+        //{
+
+        //    //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri);
+        //    //request.Method = "GET";
+        //    //request.ContentType = "application/json";
+        //}
         public class LightObject
         {
             public string Command { get; set; }
             public bool IsRun { get; set; }
-
-
         }
     }
 }

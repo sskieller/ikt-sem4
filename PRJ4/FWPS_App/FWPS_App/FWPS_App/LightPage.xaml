@@ -2,18 +2,79 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FWPS_App.LightPage">
+
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Debug" 
-           TextColor="White"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" x:Name="mainlabel"/>
-            <Label Text="Welcome to Light!" 
-           TextColor="Black"
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" x:Name="label2"/>
-            <Button Text="Turn light on" HorizontalOptions="CenterAndExpand" x:Name="OnButton" />
-            <Button Text="Turn light off" HorizontalOptions="CenterAndExpand" x:Name="OffButton"/>
-        </StackLayout>
+
+        <RelativeLayout>
+            <Image Source="http://denstoredanske.dk/@api/deki/files/103069/=Alpaca_alpaka.jpg" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Text="Welcome to Light!" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" x:Name="label2"
+                       Margin="0,40,0,0"
+                       FontSize="Large"
+                       Style="{StaticResource LabelStyle}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"/>
+                <Button Text="Turn light on" HorizontalOptions="CenterAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="OnButton" 
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
+                <Button Text="Turn light off" HorizontalOptions="CenterAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="OffButton"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
+                <Label Text="Current state: " 
+                       Style="{StaticResource LabelStyle}"
+                       HorizontalOptions="End" 
+                       Grid.Row="6"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"/>
+                <Label x:Name="lightStateLabel"
+                       Style="{StaticResource LabelStyle}"
+                       Text="--state here--"
+                       Grid.Row="6"
+                       Grid.Column="2"/>
+                <Label Text="Debug" 
+                       TextColor="White"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" x:Name="mainlabel"
+                       Grid.Row="7"
+                       Grid.Column="0"/>
+            </Grid>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

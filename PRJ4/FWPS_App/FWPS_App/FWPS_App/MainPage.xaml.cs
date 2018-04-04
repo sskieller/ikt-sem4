@@ -44,7 +44,7 @@ namespace FWPS_App
 
         private void LightButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LightPage());
+            Navigation.PushAsync(new LightPage() {Title="Back" });
         }
 
         private void ClimateControlButton_Clicked(object sender, EventArgs e)
