@@ -100,19 +100,15 @@ namespace FWPS.Controllers
 
             
 
-            var light = new LightItem
-            {
-                Command = lightItem.Command,
-                IsRun = lightItem.IsRun,
-                CreatedDate = DateTime.Now,
-                LastModifiedDate = DateTime.Now
-            };
 
-            _context.LightItems.Add(light);
+
+            _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
+			Console.WriteLine("Created Lightitem with ID: {0}", lightItem.Id);
 
-            return CreatedAtRoute("GetLight", new {id = light.Id}, light);
+
+            return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);
         }
 
         [HttpPut("{id}")]
