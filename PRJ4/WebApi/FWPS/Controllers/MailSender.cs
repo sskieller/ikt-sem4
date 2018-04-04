@@ -52,7 +52,7 @@ namespace FWPS.Controllers
             {
                 mailCopy.Subject = "FAILED TO SEND MAIL";
                 _context.SaveChanges();
-                Console.WriteLine("Failure to send email");
+                Console.WriteLine("Failure to send email -- ", e.Message);
             }
             
 
