@@ -68,7 +68,7 @@ namespace FWPS
             //enter to an infinite cycle to be able to handle every change in stream
             while (true)
             {
-                while (!stream.DataAvailable) ;
+                while (!stream.DataAvailable);
 
                 Byte[] bytes = new Byte[client.Available];
 
