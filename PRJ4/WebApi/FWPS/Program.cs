@@ -24,10 +24,7 @@ namespace FWPS
         {
 	        Task t = Task.Run(() => { Server.SetupServer(); });
 			
-			_fileStream = new FileStream("out.txt", FileMode.Create);
-			_writer = new StreamWriter(_fileStream);
-			Console.SetOut(_writer);
-			Console.SetError(_writer);
+			DebugWriter.Write("Hello world");
 			
             BuildWebHost(args).Run();
         }
