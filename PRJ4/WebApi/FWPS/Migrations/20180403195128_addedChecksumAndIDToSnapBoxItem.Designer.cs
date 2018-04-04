@@ -11,9 +11,10 @@ using System;
 namespace FWPS.Migrations
 {
     [DbContext(typeof(FwpsDbContext))]
-    partial class FWPS_DB_ContextModelSnapshot : ModelSnapshot
+    [Migration("20180403195128_addedChecksumAndIDToSnapBoxItem")]
+    partial class addedChecksumAndIDToSnapBoxItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
