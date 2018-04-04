@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.WebSockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -21,17 +22,29 @@ namespace FWPS
 	    private static FileStream _fileStream;
 	    private static StreamWriter _writer;
         public static void Main(string[] args)
-        {
-	        Task t = Task.Run(() => { Server.SetupServer(); });
-			
+        {	
 			_fileStream = new FileStream("out.txt", FileMode.Create);
 			_writer = new StreamWriter(_fileStream);
-			Console.SetOut(_writer);
+
+            var consoleOut = Console.Out;
+            var consoleError = Console.Error;
+            Console.SetOut(_writer);
 			Console.SetError(_writer);
 			
+            Console.WriteLine("HELLO WORLD");
+
+            Console.SetOut(consoleOut);
+            Console.SetError(consoleError);
+
+            _writer.Close();
+            _fileStream.Close();
+            
+
             BuildWebHost(args).Run();
+
+            Task.Run(() => { Server.SetupServer(); });
         }
-		
+
         public static IWebHost BuildWebHost(string[] args)
         {
             /*
@@ -60,7 +73,8 @@ namespace FWPS
     {
         public static Task SetupServer()
         {
-            TcpListener server = new TcpListener(IPAddress.Parse("52.138.196.70"), 80);
+            
+            TcpListener server = new TcpListener(IPAddress.Parse("127.0.0.1"), 80);
 
             server.Start();
             Console.WriteLine("Server has started on 52.138.196.70:80.{0}Waiting for a connection...",
