@@ -18,11 +18,20 @@ namespace FWPS
 {
     public class Program
     {
+	    private static FileStream _fileStream;
+	    private static StreamWriter _writer;
         public static void Main(string[] args)
         {
+	        Task t = Task.Run(() => { Server.SetupServer(); });
+			
+			_fileStream = new FileStream("out.txt", FileMode.Create);
+			_writer = new StreamWriter(_fileStream);
+			Console.SetOut(_writer);
+			Console.SetError(_writer);
+			
             BuildWebHost(args).Run();
         }
-
+		
         public static IWebHost BuildWebHost(string[] args)
         {
             /*
@@ -47,7 +56,7 @@ namespace FWPS
 
     }
 
-    class Server
+    public class Server
     {
         public static Task SetupServer()
         {
