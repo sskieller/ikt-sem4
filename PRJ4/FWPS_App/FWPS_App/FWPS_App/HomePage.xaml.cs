@@ -46,11 +46,15 @@ namespace FWPS_App
                     _loggingIn = false;
                     loadingWheelTM.IsRunning = false;
                     Navigation.PushAsync(new MainPage() { Title = "Main Page" });
+                    usernameTextBox.Text = "";
+                    passwordTextBox.Text = "";
                 });
             else
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    usernameTextBox.Text = "SUMTING MUCH WONG";
+                    DisplayAlert("Login", "Wrong username or password", "OK");
+                    usernameTextBox.Text = "";
+                    passwordTextBox.Text = "";
                     _loggingIn = false;
                     loadingWheelTM.IsRunning = false;
                 });

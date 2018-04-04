@@ -73,7 +73,8 @@
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" x:Name="mainlabel"
                        Grid.Row="7"
-                       Grid.Column="0"/>
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"/>
             </Grid>
         </RelativeLayout>
     </ContentPage.Content>
