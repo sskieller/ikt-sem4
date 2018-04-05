@@ -20,11 +20,21 @@ namespace FWPS
     public class Program
     {
         public static void Main(string[] args)
-        {	
+        {
+            DebugWriter.Clear();
+
+            DebugWriter.Write("Starting...");
+            DebugWriter.Write("Running Server...");
+
+            Task t = Server.SetupServer();
+
+            DebugWriter.Write("Running App...");
+
             BuildWebHost(args).Run();
 
-			
-            Task.Run(() => { Server.SetupServer(); });
+            t.Wait();
+
+            //Task.Run(() => { Server.SetupServer(); });
         }
 
         public static IWebHost BuildWebHost(string[] args)
@@ -53,18 +63,18 @@ namespace FWPS
 
     public class Server
     {
-        public static Task SetupServer()
+        public static async Task SetupServer()
         {
-            
-            TcpListener server = new TcpListener(IPAddress.Parse("127.0.0.1"), 80);
-
+            DebugWriter.Write("Intro to SetupServer");
+            DebugWriter.Write("Making Server...");
+            TcpListener server = new TcpListener(IPAddress.Parse("52.138.196.70"), 443);
+            DebugWriter.Write("Starting Server...");
             server.Start();
-            Console.WriteLine("Server has started on 52.138.196.70:80.{0}Waiting for a connection...",
-                Environment.NewLine);
+            DebugWriter.Write("Server has started on 52.138.196.70:443. -- Waiting for a connection...");
 
             TcpClient client = server.AcceptTcpClient();
 
-            Console.WriteLine("A client connected.");
+            DebugWriter.Write("A client connected.");
 
             NetworkStream stream = client.GetStream();
 
@@ -77,14 +87,16 @@ namespace FWPS
 
                 Byte[] bytes = new Byte[client.Available];
 
-                stream.Read(bytes, 0, bytes.Length);
+                
+
+                await stream.ReadAsync(bytes, 0, bytes.Length);
 
                 //translate bytes of request to string
                 String data = Encoding.UTF8.GetString(bytes);
 
                 if (new Regex("^GET").IsMatch(data))
                 {
-                    Console.WriteLine(data);
+                    DebugWriter.Write(data);
 
                     const string eol = "\r\n"; // HTTP/1.1 defines the sequence CR LF as the end-of-line marker
 
@@ -120,19 +132,19 @@ namespace FWPS
                                                                                                 ) + eol
                                                                                                 + eol);
 
-                    stream.Write(response, 0, response.Length);
+                    await stream.WriteAsync(response, 0, response.Length);
 
                 }
                 else if (bytes[0] != 138)
                 {
-                    Console.WriteLine(GetMessage(bytes));
+                    DebugWriter.Write(GetMessage(bytes));
                     string responseString = GetMessage(bytes);
 
                     byte[] response = DataFrame(WebSocketDatatype.Text, Encoding.UTF8.GetBytes(responseString));
 
-                    //Console.WriteLine(bytes.Length);
+                    //DebugWriter.Write(bytes.Length);
 
-                    stream.Write(response, 0, response.Length);
+                    await stream.WriteAsync(response, 0, response.Length);
                 }
             }
         }
@@ -169,7 +181,7 @@ namespace FWPS
                 else
                 {
                     Type = 3;
-                    Console.WriteLine("error 1");
+                    DebugWriter.Write("error 1");
                 }
 
                 if (Type < 3)
@@ -188,7 +200,7 @@ namespace FWPS
             }
             else
             {
-                Console.WriteLine("error 2: " + bytes[0].ToString());
+                DebugWriter.Write("error 2: " + bytes[0].ToString());
             }
 
             return DETEXT;
