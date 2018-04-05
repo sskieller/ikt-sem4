@@ -56,7 +56,7 @@ namespace FWPS.Controllers
         [HttpGet("[action]")] // '/api/Light/next'
         public IActionResult Next()
         {
-            var lightItem = _context.LightItems.LastOrDefault(o => o.IsRun == false);
+            var lightItem = _context.LightItems.LastOrDefault(o => o.IsRun == false && o.Command != null);
             if (lightItem == null)
             {
                 return NotFound();
@@ -65,41 +65,50 @@ namespace FWPS.Controllers
         }
 
 
-        //[HttpPost]
-        //public IActionResult Create([FromBody] LightItem lightItem)
-        //{
-        //    if (lightItem == null)
-        //        return BadRequest();
+	    [HttpGet("[action]")] // '/api/Light/Newest'
+	    public IActionResult Newest()
+	    {
+		    var lightItem = _context.LightItems.Last();
+		    if (lightItem == null)
+		    {
+			    return NotFound();
+		    }
+		    return new ObjectResult(lightItem);
+	    }
 
 
-        //    _context.LightItems.Add(lightItem);
-        //    _context.SaveChanges();
+		//[HttpPost]
+		//public IActionResult Create([FromBody] LightItem lightItem)
+		//{
+		//    if (lightItem == null)
+		//        return BadRequest();
 
-        //    return CreatedAtRoute("GetLight", new { id = lightItem.Id }, lightItem);
-        //}
 
-        [HttpPost]
-        public IActionResult Create([FromBody] LightObject lightObject)
+		//    _context.LightItems.Add(lightItem);
+		//    _context.SaveChanges();
+
+		//    return CreatedAtRoute("GetLight", new { id = lightItem.Id }, lightItem);
+		//}
+
+		[HttpPost]
+        public IActionResult Create([FromBody] LightItem lightItem)
         {
-            if (lightObject == null)
+            if (lightItem == null)
             {
                 return BadRequest();
             }
 
             
 
-            var lightItem = new LightItem
-            {
-                Command = lightObject.Command,
-                IsRun = lightObject.IsRun,
-                CreatedDate = DateTime.Now,
-                LastModifiedDate = DateTime.Now
-            };
+
 
             _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetLight", new {command = lightObject.Command}, lightObject);
+			Console.WriteLine("Created Lightitem with ID: {0}", lightItem.Id);
+
+
+            return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);
         }
 
         [HttpPut("{id}")]

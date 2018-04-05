@@ -11,9 +11,10 @@ using System;
 namespace FWPS.Migrations
 {
     [DbContext(typeof(FwpsDbContext))]
-    partial class FWPS_DB_ContextModelSnapshot : ModelSnapshot
+    [Migration("20180320201532_ChangedModelStructureWithItemBase")]
+    partial class ChangedModelStructureWithItemBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,8 +46,6 @@ namespace FWPS.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<bool>("IsOn");
-
                     b.Property<bool>("IsRun");
 
                     b.Property<DateTime>("LastModifiedDate");
@@ -76,52 +75,6 @@ namespace FWPS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LoginItems");
-                });
-
-            modelBuilder.Entity("FWPS.Models.MailItem", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Body");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("From");
-
-                    b.Property<DateTime>("LastModifiedDate");
-
-                    b.Property<string>("Subject");
-
-                    b.Property<string>("To");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MailItems");
-                });
-
-            modelBuilder.Entity("FWPS.Models.SnapBoxItem", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Checksum");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<DateTime>("LastModifiedDate");
-
-                    b.Property<bool>("MailReceived");
-
-                    b.Property<string>("PowerLevel");
-
-                    b.Property<string>("ReceiverEmail");
-
-                    b.Property<string>("SnapBoxId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SnapBoxItems");
                 });
 #pragma warning restore 612, 618
         }

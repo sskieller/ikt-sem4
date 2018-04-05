@@ -33,6 +33,5 @@ def getFileSizeTCP(client):
         filesize = int(readTextTCP(client))
     except:
         filesize = -1
-        sys.exc_clear()
 
     return filesize

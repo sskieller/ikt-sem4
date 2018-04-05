@@ -11,6 +11,8 @@ def main(argv):
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serversocket.bind((HOST, PORT))
 
+    print("Starting server at addr: {} on port: {}".format(HOST,PORT))
+
     serversocket.listen(5)
 
 
@@ -44,6 +46,10 @@ def main(argv):
             while filedata:
                 clientsocket.send(filedata)  # Send filedata
                 filedata = file.read(BUFSIZE)  # Read more bytes.
+        else:
+            returnmsg = str(size)  # Making the size a string to be sent
+            writeTextTCP(returnmsg, clientsocket)  # Sending filesize as a string
+
 
 
         #writeTextTCP(msg, clientsocket)
