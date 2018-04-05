@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +16,7 @@ using Microsoft.Extensions.Options;
 using FWPS.Models;
 using Microsoft.EntityFrameworkCore;
 using FWPS.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace FWPS
 {
@@ -44,8 +50,30 @@ namespace FWPS
                 app.UseDeveloperExceptionPage();
             }
 
+            var websocketOptions =
+                new WebSocketOptions() {KeepAliveInterval = TimeSpan.FromSeconds(120), ReceiveBufferSize = 1024};
+            app.UseWebSockets(websocketOptions);
             app.UseStatusCodePages();
             app.UseMvc();
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/ws")
+                { 
+                    if (context.WebSockets.IsWebSocketRequest)
+                    {
+                        Clients.Instance.AddClient(context);
+                    }
+                    else
+                    {
+                        context.Response.StatusCode = 400;
+                    }
+                }
+                else
+                {
+                    await next();
+                }
+
+            });
         }
     }
 }

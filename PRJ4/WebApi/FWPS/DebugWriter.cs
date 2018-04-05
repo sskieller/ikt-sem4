@@ -11,7 +11,6 @@ namespace FWPS
     public static class DebugWriter
     {
 		static FileStream fs;
-	    //static StreamWriter writer = new StreamWriter(fs);
 
 	    public static void Write(string text)
 	    {
@@ -19,12 +18,23 @@ namespace FWPS
 
 			//fs.Write(Decoder .UTF8.GetBytes(text));
 
-		    byte[] bytestowrite = System.Text.Encoding.UTF8.GetBytes(text);
+		    byte[] bytestowrite = System.Text.Encoding.UTF8.GetBytes(text + "\r\n");
 
 			fs.Write(bytestowrite, 0, bytestowrite.Length);
 
 			fs.Close();
-	    }	
-	    
+	    }
+        public static void Clear()
+        {
+            File.Open("out.txt", FileMode.Create).Close();
+        }
+
+        public static string Read()
+        {
+            return File.ReadAllText("out.txt");
+        }
     }
+
 }
+
+

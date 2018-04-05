@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
 using FWPS.Data;
@@ -100,13 +101,22 @@ namespace FWPS.Controllers
 
             
 
-
+            
 
             _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
-			Console.WriteLine("Created Lightitem with ID: {0}", lightItem.Id);
+			DebugWriter.Write(string.Format("Created Lightitem with ID: {0}", lightItem.Id));
 
+            try
+            {
+                Clients.Instance.SendToClients("wat");
+
+            }
+            catch (Exception e)
+            {
+                DebugWriter.Write(e.Message);
+            }
 
             return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);
         }

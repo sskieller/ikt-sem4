@@ -21,18 +21,18 @@ namespace FWPS
     {
         public static void Main(string[] args)
         {
-            DebugWriter.Clear();
+            //DebugWriter.Clear();
 
             DebugWriter.Write("Starting...");
             DebugWriter.Write("Running Server...");
 
-            Task t = Server.SetupServer();
+            //Task t = Server.SetupServer();
 
             DebugWriter.Write("Running App...");
 
             BuildWebHost(args).Run();
 
-            t.Wait();
+            //t.Wait();
 
             //Task.Run(() => { Server.SetupServer(); });
         }
