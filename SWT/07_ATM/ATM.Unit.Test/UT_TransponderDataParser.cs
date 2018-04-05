@@ -1,8 +1,14 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace ATM.Unit.Test
 {
-    public class Class1
+
+
+
+    [TestFixture]
+    public class UT_TransponderDataParser
     {
+        [TestCase()]
     }
 }

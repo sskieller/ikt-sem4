@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ATM
 {
@@ -25,10 +26,16 @@ namespace ATM
             return new DateTime(year, month, day, hour, min, sec, millis);
         }
 
-        public void ParseData(string inputString, out string tag, out int Xcoord, out int Ycoord, out uint altitude,
+        public void ParseData(string inputString, out string tag, out int xCoord, out int yCoord, out uint altitude,
             out DateTime time)
         {
-            throw new NotImplementedException();
+            string[] strings = inputString.Split(';');
+
+            tag = strings[0];
+            xCoord = int.Parse(strings[1]);
+            yCoord = int.Parse(strings[2]);
+            altitude = uint.Parse(strings[3]);
+            time = ParseTime(strings[4]);
         }
     }
 }
