@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ATM
 {
-    internal interface ITransponderDataParser
+    public interface ITransponderDataParser
     {
         DateTime ParseTime(string time);
 
