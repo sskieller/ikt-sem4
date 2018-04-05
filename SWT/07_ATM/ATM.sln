@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATM", "ATM\ATM.csproj", "{96A431B9-949A-4276-94C2-B8E0E83877DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderLib", "TransponderLib\TransponderLib.csproj", "{B4B765E4-FEFD-4186-BB62-C4B68DD54213}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{96A431B9-949A-4276-94C2-B8E0E83877DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96A431B9-949A-4276-94C2-B8E0E83877DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96A431B9-949A-4276-94C2-B8E0E83877DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B765E4-FEFD-4186-BB62-C4B68DD54213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B765E4-FEFD-4186-BB62-C4B68DD54213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B765E4-FEFD-4186-BB62-C4B68DD54213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B765E4-FEFD-4186-BB62-C4B68DD54213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

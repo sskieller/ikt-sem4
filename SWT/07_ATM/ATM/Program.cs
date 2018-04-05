@@ -15,11 +15,21 @@ namespace ATM
 
             TransponderDataParser dp = new TransponderDataParser();
 
-            var dt = dp.ParseTime("20180405113000123");
+            DateTime dt;
+            string tag;
+            int x;
+            int y;
+            uint alt;
 
-            
+            dp.ParseData("ATR423;40000;10000;14000;20180405113000123", out tag, out x, out y, out alt, out dt);
 
-            while (Console.Read() != 'q') ;
+            Console.WriteLine(tag);
+            Console.WriteLine(x);
+            Console.WriteLine(y);
+            Console.WriteLine(alt);
+            Console.WriteLine(dt);
+
+            //while (Console.Read() != 'q') ;
         }
     }
 
