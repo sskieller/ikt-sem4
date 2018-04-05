@@ -19,29 +19,11 @@ namespace FWPS
 {
     public class Program
     {
-	    private static FileStream _fileStream;
-	    private static StreamWriter _writer;
         public static void Main(string[] args)
         {	
-			_fileStream = new FileStream("out.txt", FileMode.Create);
-			_writer = new StreamWriter(_fileStream);
-
-            var consoleOut = Console.Out;
-            var consoleError = Console.Error;
-            Console.SetOut(_writer);
-			Console.SetError(_writer);
-			
-            Console.WriteLine("HELLO WORLD");
-
-            Console.SetOut(consoleOut);
-            Console.SetError(consoleError);
-
-            _writer.Close();
-            _fileStream.Close();
-            
-
             BuildWebHost(args).Run();
 
+			
             Task.Run(() => { Server.SetupServer(); });
         }
 
