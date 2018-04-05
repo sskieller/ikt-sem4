@@ -1,8 +1,12 @@
 ﻿using System;
-using ATM;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using NUnit.Framework;
+using ATM;
 
-namespace UnitTest
+namespace TestUnit
 {
     [TestFixture]
     public class UT_TransponderDataParser
@@ -20,7 +24,7 @@ namespace UnitTest
         public void FirstTest()
         {
             int wat = 1;
-            Assert.That(wat,Is.EqualTo(1));
+            Assert.That(wat, Is.EqualTo(1));
         }
     }
 }
