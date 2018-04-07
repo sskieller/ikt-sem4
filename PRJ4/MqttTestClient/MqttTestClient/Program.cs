@@ -26,19 +26,17 @@ namespace MqttTestClient
             string clientId = "Mqtt_tester";
             client.Connect(clientId, "simon", "simon");
 
-            //client.MqttMsgPublished += HandleMessagePublished;
+            client.MqttMsgPublished += HandleMessagePublished;
 
             if (client.IsConnected)
             {
                 Console.WriteLine("Connected, now sending message");
-                client.Publish(args[0], Encoding.UTF8.GetBytes(args[1]));
+                client.Publish(args[0], Encoding.UTF8.GetBytes(args[1]), MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, false);
                 Console.WriteLine("Sent message: \"{0}\" to topic: \"{1}\"", args[1], args[0]);
                 Thread.Sleep(1000);
-                client.Disconnect();
+                //client.Disconnect();
                 
             }
-
-
 
         }
 

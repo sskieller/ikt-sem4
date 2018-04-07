@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using MasterApplication.MessageHandlers;
 using MasterApplication.Threads;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -21,15 +22,33 @@ namespace MasterApplication
 
             using (var connection = connFactory.CreateConnection())
             {
-                var thread = new MorningSunThread(connection);
+                IListener listener = new FwpsListener(connection);
+				IPublisher publisher = new FwpsPublisher(connection);
+				
+				MessageDispatcher dispatcher = new MessageDispatcher(publisher, listener);
 
-                thread.Start();
+				listener.Add("MorningSun.#");
+                listener.Start();
+				
 
 
-                Console.WriteLine("Press Enter to exit");
+                Console.WriteLine("Press Enter to remove morning sun and add snap box");
                 Console.ReadLine();
 
-                thread.Dispose();
+	            listener.Add("SnapBox.#");
+				listener.Remove("MorningSun.#");
+
+
+	            Console.WriteLine("Press Enter to Add morning sun again");
+	            Console.ReadLine();
+
+	            listener.Add("MorningSun.#");
+
+
+				Console.WriteLine("Press Enter to Exit");
+	            Console.ReadLine();
+
+				listener.Dispose();
             }
 
 
