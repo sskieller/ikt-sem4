@@ -7,6 +7,6 @@ namespace MasterApplication.MessageHandlers
 {
     public interface IMessageHandler
     {
-        void HandleMessage(string message, IPublisher publisher, string topic = null);
+        void HandleMessage(string message, string topic = null);
     }
 }

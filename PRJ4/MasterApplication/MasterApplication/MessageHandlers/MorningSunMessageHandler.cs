@@ -14,37 +14,44 @@ namespace MasterApplication.MessageHandlers
     {
 	    private static System.Timers.Timer _wakeUpTimer;
 	    private static System.Timers.Timer _sleepTimer;
-	    private WebApiConnector connector = new WebApiConnector();
+	    private readonly WebApiConnector _connector = new WebApiConnector();
 
 	    static MorningSunMessageHandler()
 	    {
-			SetTime(null, null);
+			UpdateTime(null);
 		}
 		
 		//Create map of topics here
-        public void HandleMessage(string message, IPublisher publisher, string topic)
+        public void HandleMessage(string message, string topic)
         {
 	        if (topic == null)
 		        return;
 
 	        switch (topic)
 	        {
-				case "On":
-					LightIsOn(message, publisher);
+				case "ModuleOn":
+					LightIsOn(message);
 					break;
 
-				case "Off":
-					LightIsOff(message, publisher);
+				case "ModuleOff":
+					LightIsOff(message);
 					break;
 
-				case "SetTime":
-					SetTime(message, publisher);
+				case "UpdateTime":
+					UpdateTime(message);
 					break;
 
-				case "CmdOff":
+				case "WebOff":
 					break;
-				case "CmdOn":
+				case "WebOn":
 					break;
+
+                case "Module": //Nothing important here
+                    break;
+
+                case "Hello":
+                    Console.WriteLine("Received Hello from MorningSun");
+                    break;
 
 				default:
 					UnknownMessage();
@@ -53,25 +60,25 @@ namespace MasterApplication.MessageHandlers
 	        }
         }
 
-	    private void LightIsOn(string message, IPublisher publisher)
+	    private void LightIsOn(string message)
 	    {
 		    Console.WriteLine("Morning Sun: Received \"on\" from module");
 
 			//Send message to DB that light is now on
 			LightItem lightItem = new LightItem(){Command = "TurnedOn", IsOn = true};
-		    connector.PostItem("Light/",JsonConvert.SerializeObject(lightItem));
+		    _connector.PostItem("Light/",JsonConvert.SerializeObject(lightItem));
 
 	    }
 
-	    private void LightIsOff(string message, IPublisher publisher)
+	    private void LightIsOff(string message)
 	    {
 		    Console.WriteLine("Morning Sun: Received \"off\" from module");
 			//Send message to DB that light is now on
 			LightItem lightItem = new LightItem() { Command = "TurnedOff", IsOn = false };
-		    connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
+		    _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
 		}
 
-	    private static void SetTime(string message, IPublisher publisher)
+	    private static void UpdateTime(string message)
 	    {
 		    WebApiConnector connector = new WebApiConnector();
 			//Get latest lightObject from database

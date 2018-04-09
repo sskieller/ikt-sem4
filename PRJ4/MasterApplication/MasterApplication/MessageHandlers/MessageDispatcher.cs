@@ -10,10 +10,8 @@ namespace MasterApplication.MessageHandlers
 {
     public class MessageDispatcher
     {
-	    private IPublisher _publisher;
-	    public MessageDispatcher(IPublisher publisher, IListener listener)
+	    public MessageDispatcher(IListener listener)
 	    {
-		    _publisher = publisher;
 
 		    listener.OnMessageReceived += OnMessageReceived_DispatchMessage;
 		}
@@ -30,7 +28,7 @@ namespace MasterApplication.MessageHandlers
 			try
 		    {
 			    IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(senderModule);
-			    msgHandler.HandleMessage(message, _publisher, topic);
+			    msgHandler.HandleMessage(message, topic);
 			}
 		    catch (MessageHandlerCreationException ex)
 		    {

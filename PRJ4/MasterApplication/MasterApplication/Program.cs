@@ -27,26 +27,30 @@ namespace MasterApplication
 			using (var connection = connFactory.CreateConnection())
 			{
 				IListener listener = new FwpsListener(connection);
-				IPublisher publisher = new FwpsPublisher(connection);
+                FwpsPublisher.Initialize(connection);
 
-				MessageDispatcher dispatcher = new MessageDispatcher(publisher, listener);
+				MessageDispatcher dispatcher = new MessageDispatcher(listener);
 
+                //Add topics to subscribe to
 				listener.Add("MorningSun.#");
-				listener.Start();
-
-
-
-				Console.WriteLine("Press Enter to remove morning sun and add snap box");
-				Console.ReadLine();
-
 				listener.Add("SnapBox.#");
-				listener.Remove("MorningSun.#");
 
-
-				Console.WriteLine("Press Enter to Add morning sun again");
-				Console.ReadLine();
-
-				listener.Add("MorningSun.#");
+                Console.WriteLine("Enter a char, 1 for on, 2 for off, q for quit");
+			    char key = Console.ReadKey().KeyChar;
+			    while (key != 'q')
+			    {
+			        if (key == '1')
+			        {
+                        FwpsPublisher.PublishMessage("SnapBox.CmdOn", "Hello");
+                        Console.WriteLine("Sending on");
+			        }
+                    else if (key == '2')
+			        {
+			            FwpsPublisher.PublishMessage("SnapBox.CmdOff", "Hello");
+			            Console.WriteLine("Sending off");
+			        }
+                    key = Console.ReadKey().KeyChar;
+                }
 
 
 				Console.WriteLine("Press Enter to Exit");
