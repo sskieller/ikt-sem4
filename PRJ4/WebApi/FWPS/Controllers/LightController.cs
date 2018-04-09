@@ -99,8 +99,12 @@ namespace FWPS.Controllers
                 return BadRequest();
             }
 
-            
 
+	        if (lightItem.WakeUpTime == DateTime.MinValue)
+		        lightItem.WakeUpTime = _context.LightItems.Last().WakeUpTime;
+
+	        if (lightItem.SleepTime == DateTime.MinValue)
+		        lightItem.SleepTime = _context.LightItems.Last().SleepTime;
             
 
             _context.LightItems.Add(lightItem);
@@ -137,6 +141,12 @@ namespace FWPS.Controllers
 
             light.IsRun = lightItem.IsRun;
             light.LastModifiedDate = DateTime.Now;
+	        light.Command = lightItem.Command;
+	        if (lightItem.SleepTime != DateTime.MinValue && lightItem.WakeUpTime != DateTime.MinValue)
+	        {
+		        light.SleepTime = lightItem.SleepTime;
+		        light.WakeUpTime = lightItem.WakeUpTime;
+	        }
 
             _context.LightItems.Update(light);
             _context.SaveChanges();
