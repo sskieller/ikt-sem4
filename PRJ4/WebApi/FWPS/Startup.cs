@@ -40,6 +40,7 @@ namespace FWPS
 	        //services.AddDbContext<IpContext>(opt => opt.UseInMemoryDatabase("IpItem"));
             //services.AddDbContext<LoginContext>(opt => opt.UseInMemoryDatabase("LoginItem"));
 			services.AddMvc();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,11 +51,14 @@ namespace FWPS
                 app.UseDeveloperExceptionPage();
             }
 
-            var websocketOptions =
-                new WebSocketOptions() {KeepAliveInterval = TimeSpan.FromSeconds(120), ReceiveBufferSize = 1024};
-            app.UseWebSockets(websocketOptions);
             app.UseStatusCodePages();
             app.UseMvc();
+
+            // SignalR Routing
+            app.UseSignalR(route => route.MapHub<DevicesHub>("devices"));
+
+            // Commented out for now, implementing SignalR instead. It's way more reliable on Azure servers
+            /*
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path == "/ws")
@@ -74,6 +78,7 @@ namespace FWPS
                 }
 
             });
+            */
         }
     }
 }
