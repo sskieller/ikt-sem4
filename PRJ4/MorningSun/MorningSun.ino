@@ -8,12 +8,8 @@
 const char * ssid = "ap88v0"; // SSID
 const char * password = "thang6troimua"; // Password
 String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1 
-const int port = 9000; // Port serveur - Server Port
-const int watchdog = 1000; // Fréquence du watchdog - Watchdog frequency
-unsigned long previousMillis = millis();
-WiFiClient wifiClient;
-PubSubClient mqClient(wifiClient);
-
+WiFiClient *espClient = new WiFiClient();
+PubSubClient mqClient(*espClient);
 
 void setup()
 {
@@ -27,8 +23,8 @@ void setup()
 	digitalWrite(LED_BUILTIN, LOW);
 	delay(1000);
 	digitalWrite(LED_BUILTIN, HIGH);
+	WiFi.mode(WIFI_STA);
 	WiFi.begin(ssid, password);
-
 	//Connect to Wifi
 	while (WiFi.status() != WL_CONNECTED)
 	{
@@ -43,20 +39,23 @@ void setup()
 
 	while (host == "")
 	{
-		//getRaspberryIp();
+		getRaspberryIp();
 	}
+
+
+	Serial.println("Setting up client");
 	
-	char * host2 = "192.168.1.131";
-	mqClient.setServer(host2, 1883);
-	mqClient.setCallback(mqCallback);
+	mqClient.setServer(host.c_str(), 1883);
+	mqClient.setCallback(callback);
+	Serial.println("Done setting up mqClient");
 
 }
 
-void mqCallback(char * topic, byte* payload, unsigned int length)
+void callback(char * topic, byte* payload, unsigned int length)
 {
 	Serial.print("Message recived on topic: \"");
 	Serial.print(topic);
-	Serial.print("\"");
+	Serial.print("\": ");
 	for (int i = 0; i < length; ++i)
 	{
 		Serial.print((char)payload[i]);
@@ -71,7 +70,6 @@ void mqCallback(char * topic, byte* payload, unsigned int length)
 		Wire.write('a');
 		Wire.endTransmission();
 
-		mqClient.publish("MorningSun/ModuleVerify", "OK");
 		return;
 	}
 	else if (strcmp(topic, "MorningSun/CmdOff") == 0) //Received 'off'
@@ -81,11 +79,18 @@ void mqCallback(char * topic, byte* payload, unsigned int length)
 		Wire.write('b');
 		Wire.endTransmission();
 
-		mqClient.publish("MorningSun/ModuleVerify", "OK");
 		return;
 	}
+	else if (strcmp(topic, "MorningSun/CmdStatus") == 0)
+	{
+		
+		//WIP
+		
+		String response = "";
+		mqClient.publish("MorningSun/ModuleStatus", response.c_str());
+	}
 
-	mqClient.publish("MorningSun/ModuleVerify", "ERR");
+	Serial.println("Unknown command received");
 }
 
 void getRaspberryIp()
@@ -116,14 +121,15 @@ void reconnect()
 		Serial.print(host);
 
 		String clientId = "MorningSun";
-		if (mqClient.connect(clientId.c_str()))
+		if (mqClient.connect(clientId.c_str(), "simon", "simon"))
 		{
 			Serial.println("Connected to message broker");
 			//Publish announcement that you are here
-			mqClient.publish("MorningSun/hello", "Hello World");
+			mqClient.publish("MorningSun/Hello", "Hello World");
 			//Subscribe to MorningSun
 			mqClient.subscribe("MorningSun/CmdOn");
 			mqClient.subscribe("MorningSun/CmdOff");
+			mqClient.subscribe("MorningSun/CmdStatus");
 		}
 		else
 		{
@@ -142,6 +148,7 @@ void loop()
 		reconnect();
 	}
 	mqClient.loop();
+	
 	
 
 }

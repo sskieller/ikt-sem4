@@ -27,7 +27,6 @@ namespace MasterApplication
 			using (var connection = connFactory.CreateConnection())
 			{
 				IListener listener = new FwpsListener(connection);
-                FwpsPublisher.Initialize(connection);
 				
 
 				MessageDispatcher dispatcher = new MessageDispatcher(listener);
@@ -35,7 +34,10 @@ namespace MasterApplication
                 //Add topics to subscribe to
 				listener.Add("MorningSun.#");
 				listener.Add("SnapBox.#");
+
+				//Initialize listener and publisher
 				listener.Start();
+				FwpsPublisher.Initialize(connection);
 
 				Console.WriteLine("Enter a char, 1 for on, 2 for off, q for quit");
 				char key = Console.ReadKey().KeyChar;
@@ -43,12 +45,12 @@ namespace MasterApplication
 				{
 					if (key == '1')
 					{
-						FwpsPublisher.PublishMessage("SnapBox.CmdOn", "Hello");
+						FwpsPublisher.PublishMessage("MorningSun.CmdOn", "Hello");
 						Console.WriteLine("Sending on");
 					}
 					else if (key == '2')
 					{
-						FwpsPublisher.PublishMessage("SnapBox.CmdOff", "Hello");
+						FwpsPublisher.PublishMessage("MorningSun.CmdOff", "Hello");
 						Console.WriteLine("Sending off");
 					}
 					key = Console.ReadKey().KeyChar;
