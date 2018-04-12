@@ -45,12 +45,17 @@ namespace MasterApplication
 				{
 					if (key == '1')
 					{
-						FwpsPublisher.PublishMessage("MorningSun.CmdOn", "Hello");
+						FwpsPublisher.PublishMessage("MorningSun.CmdOn", "On");
 						Console.WriteLine("Sending on");
 					}
 					else if (key == '2')
 					{
-						FwpsPublisher.PublishMessage("MorningSun.CmdOff", "Hello");
+						FwpsPublisher.PublishMessage("MorningSun.CmdOff", "Off");
+						Console.WriteLine("Sending off");
+					}
+					else if (key == '3')
+					{
+						FwpsPublisher.PublishMessage("MorningSun.CmdStatus", "Status");
 						Console.WriteLine("Sending off");
 					}
 					key = Console.ReadKey().KeyChar;

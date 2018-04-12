@@ -83,11 +83,29 @@ void callback(char * topic, byte* payload, unsigned int length)
 	}
 	else if (strcmp(topic, "MorningSun/CmdStatus") == 0)
 	{
+		int i = 0;
+		char buffer[20];
+		Wire.requestFrom(0x10, 1);
+
+		while (Wire.available())
+		{
+			buffer[i] = Wire.read();
+			++i;
+		}
+
+		Serial.println("Received following from Morning sun: ");
 		
-		//WIP
-		
+		bool isOn = false;
 		String response = "";
-		mqClient.publish("MorningSun/ModuleStatus", response.c_str());
+		//WIP
+		if (isOn)
+		{
+			mqClient.publish("MorningSun/ModuleOn", response.c_str());
+		}
+		else
+		{
+			mqClient.publish("MorningSun/ModuleOff", response.c_str());
+		}
 	}
 
 	Serial.println("Unknown command received");
