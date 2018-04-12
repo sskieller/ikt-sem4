@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FWPS", "FWPS\FWPS.csproj", "{04C65382-4D15-49C3-B07A-AF723117FD5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWPS", "FWPS\FWPS.csproj", "{04C65382-4D15-49C3-B07A-AF723117FD5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.UnitTest", "WebApi.UnitTest\WebApi.UnitTest.csproj", "{BE3E2128-CF57-44DC-96CB-7D77A22F317A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{04C65382-4D15-49C3-B07A-AF723117FD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C65382-4D15-49C3-B07A-AF723117FD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C65382-4D15-49C3-B07A-AF723117FD5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3E2128-CF57-44DC-96CB-7D77A22F317A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3E2128-CF57-44DC-96CB-7D77A22F317A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3E2128-CF57-44DC-96CB-7D77A22F317A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3E2128-CF57-44DC-96CB-7D77A22F317A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

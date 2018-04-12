@@ -12,9 +12,10 @@ using System;
 namespace FWPS.Migrations
 {
     [DbContext(typeof(FwpsDbContext))]
-    partial class FWPS_DB_ContextModelSnapshot : ModelSnapshot
+    [Migration("20180412115752_Added_DBsets")]
+    partial class Added_DBsets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

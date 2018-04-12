@@ -26,7 +26,11 @@ namespace ATM
             return new DateTime(year, month, day, hour, min, sec, millis);
         }
 
-        public void ParseData(string inputString, out string tag, out int xCoord, out int yCoord, out uint altitude,
+        public void ParseData(string inputString, 
+            out string tag, 
+            out int xCoord, 
+            out int yCoord, 
+            out uint altitude,
             out DateTime time)
         {
             string[] strings = inputString.Split(';');

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,8 +10,14 @@ namespace FWPS.Models
     {
         public string Command { get; set; }
         public bool IsRun { get; set; }
-        public List<string> RoomsToClean { get; set; }
+        public List<Room> Rooms { get; set; }
         public DateTime CleaningTime { get; set; }
 
+    }
+
+    public class Room
+    {
+        [Key]
+        public string RoomName { get; set; } 
     }
 }
