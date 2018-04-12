@@ -107,10 +107,12 @@ void callback(char * topic, byte* payload, unsigned int length)
 		if (buffer[0] == '1')
 		{
 			mqClient.publish("MorningSun/ModuleOn", "Status on");
+			return;
 		}
 		else if (buffer[0] == '0')
 		{
 			mqClient.publish("MorningSun/ModuleOff", "Status off");
+			return;
 		}
 	}
 

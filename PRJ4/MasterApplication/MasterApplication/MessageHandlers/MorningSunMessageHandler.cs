@@ -149,16 +149,19 @@ namespace MasterApplication.MessageHandlers
 
         private static void WakeUp(object sender, ElapsedEventArgs e)
         {
+			FwpsPublisher.PublishMessage("MorningSun/CmdOn","");
+
             Console.WriteLine("Light waking up");
 
             //Rearm timer to start in one day
-            _wakeUpTimer.Interval = TimeSpan.FromSeconds(2).TotalMilliseconds;
+            _wakeUpTimer.Interval = TimeSpan.FromDays(1).TotalMilliseconds;
             _wakeUpTimer.Start();
         }
 
         private static void Sleep(object sender, ElapsedEventArgs e)
         {
-            Console.WriteLine("Light sleeping");
+	        FwpsPublisher.PublishMessage("MorningSun/CmdOff", "");
+			Console.WriteLine("Light sleeping");
 
             //Rearm timer to start in one day
             _sleepTimer.Interval = TimeSpan.FromDays(1).TotalMilliseconds;
