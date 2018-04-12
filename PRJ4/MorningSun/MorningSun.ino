@@ -5,8 +5,8 @@
 #include <PubSubClient.h>
 
 //Wifi related
-const char * ssid = "ap88v0"; // SSID
-const char * password = "thang6troimua"; // Password
+const char * ssid = "JonasAP"; // SSID
+const char * password = "Fkt73gss"; // Password
 String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1 
 WiFiClient espClient;
 PubSubClient mqClient(espClient);
