@@ -27,7 +27,7 @@ namespace MasterApplication
 
         public event EventHandler<SignalREventArgs> OnCommandReceived;
 
-        private readonly HubConnection _connection;
+        private HubConnection _connection;
 
         private SignalRClient()
         {
@@ -38,6 +38,28 @@ namespace MasterApplication
             {
                 OnCommandReceived?.Invoke(this, new SignalREventArgs(obj, target, type));
             }));
+
+            _connection.Closed += ConnectionOnClosed;
+        }
+
+        private Task ConnectionOnClosed(Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+
+            Task.Delay(TimeSpan.FromSeconds(15));
+
+            _connection = new HubConnectionBuilder().WithUrl("http://fwps.azurewebsites.net/devices").Build();
+
+            try
+            {
+                _connection.StartAsync().Wait(TimeSpan.FromSeconds(15));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return Task.CompletedTask;
         }
 
 

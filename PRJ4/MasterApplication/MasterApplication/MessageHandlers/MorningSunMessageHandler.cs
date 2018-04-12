@@ -143,7 +143,7 @@ namespace MasterApplication.MessageHandlers
             _sleepTimer.Start();
 
 
-            _wakeUpTimer = new System.Timers.Timer(timeToTurnOff.TotalMilliseconds);
+            _wakeUpTimer = new System.Timers.Timer(timeToTurnOn.TotalMilliseconds);
             _wakeUpTimer.Elapsed += WakeUp;
             _wakeUpTimer.AutoReset = false;
             _wakeUpTimer.Start();
@@ -151,7 +151,7 @@ namespace MasterApplication.MessageHandlers
 
         private static void WakeUp(object sender, ElapsedEventArgs e)
         {
-			FwpsPublisher.PublishMessage("MorningSun/CmdOn","");
+			FwpsPublisher.PublishMessage("MorningSun.CmdOn", "");
 
             Console.WriteLine("Light waking up");
 
@@ -162,7 +162,7 @@ namespace MasterApplication.MessageHandlers
 
         private static void Sleep(object sender, ElapsedEventArgs e)
         {
-	        FwpsPublisher.PublishMessage("MorningSun/CmdOff", "");
+	        FwpsPublisher.PublishMessage("MorningSun.CmdOff", "");
 			Console.WriteLine("Light sleeping");
 
             //Rearm timer to start in one day
