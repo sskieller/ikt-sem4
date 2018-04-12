@@ -23,9 +23,6 @@ namespace FWPS.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            _hub.Clients.All.InvokeAsync("Send", "hello from debug");
-            _hub.Clients.All.InvokeAsync("Update", "debugmessage", new LightItem() {Command = "Hello"});
-            _hub.Clients.All.InvokeAsync("UpdateSpecific", "debugmessage", "morningSun/Broker", new IpItem() {Ip = "10.0.0.1"} );
             return Content(DebugWriter.Read());
         }
 
@@ -33,7 +30,6 @@ namespace FWPS.Controllers
         public IActionResult Clear()
         {
             DebugWriter.Clear();
-
             return Ok();
         }
 
