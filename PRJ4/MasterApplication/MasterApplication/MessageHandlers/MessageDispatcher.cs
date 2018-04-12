@@ -14,9 +14,24 @@ namespace MasterApplication.MessageHandlers
 	    {
 
 		    listener.OnMessageReceived += OnMessageReceived_DispatchMessage;
+
+            SignalRClient.Instance.OnCommandReceived += SignalROnCommandReceived;
 		}
 
-	    private void OnMessageReceived_DispatchMessage(object sender, BasicDeliverEventArgs e)
+        private void SignalROnCommandReceived(object sender, SignalREventArgs signalREventArgs)
+        {
+            try
+            {
+                IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(signalREventArgs.Module);
+                msgHandler.HandleMessage(signalREventArgs.Obj.ToString(), signalREventArgs.Topic);
+            }
+            catch (MessageHandlerCreationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void OnMessageReceived_DispatchMessage(object sender, BasicDeliverEventArgs e)
 	    {
 		    var message = Encoding.UTF8.GetString(e.Body); //Message 
 		    string senderModule = e.RoutingKey.Split('.').First(); //Extracts the module from which the message originated from

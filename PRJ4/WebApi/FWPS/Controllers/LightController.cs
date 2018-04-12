@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
 using FWPS.Data;
+using Microsoft.AspNetCore.SignalR;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,9 +15,13 @@ namespace FWPS.Controllers
     public class LightController : Controller
     {
         private readonly FwpsDbContext _context;
+        // SignalRHubContext
+        private IHubContext<DevicesHub> _hub;
 
-        public LightController(FwpsDbContext context)
+
+        public LightController(FwpsDbContext context, IHubContext<DevicesHub> hub)
         {
+            _hub = hub;
             _context = context;
 
             if (_context.LightItems.Any() == false)
@@ -114,7 +119,7 @@ namespace FWPS.Controllers
 
             try
             {
-                Clients.Instance.SendToClients("wat");
+                _hub.Clients.All.InvokeAsync("UpdateSpecific", "MorningSun", lightItem.Command, lightItem);
 
             }
             catch (Exception e)

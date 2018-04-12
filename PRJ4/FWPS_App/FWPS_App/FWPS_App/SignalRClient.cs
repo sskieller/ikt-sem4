@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
+using Newtonsoft.Json;
 
 namespace FWPS_App
 {
@@ -30,7 +32,20 @@ namespace FWPS_App
             _connection = new HubConnectionBuilder().WithUrl("http://fwps.azurewebsites.net/devices").Build();
             _connection.StartAsync().Wait();
 
-            _connection.On<();
+            _connection.On<string, object>("Update", (s, o) =>
+            {
+                if (s == "Light")
+                {
+                    var item = JsonConvert.DeserializeObject<LightPage.LightObject>(o.ToString());
+
+                    OnLightChanged?.Invoke(this, new LightEventArgs(item.Command == "on"));
+                }
+            });
+        }
+
+        public async Task UpdateName()
+        {
+            await _connection.SendAsync("Send", "Hello from mobile");
         }
     }
 

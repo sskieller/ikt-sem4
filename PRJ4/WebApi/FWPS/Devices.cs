@@ -41,14 +41,15 @@ namespace FWPS
             return Clients.All.InvokeAsync("Send", message);
         }
 
-        public Task Update(string type, object obj)
+        public Task UpdateName(string name)
         {
-            return Clients.All.InvokeAsync("Update", type, obj);
+            Devices.ConnectedDevices[Context.ConnectionId] = name;
+            return Task.CompletedTask;
         }
 
         public Task UpdateSpecific(string type, string target, object obj)
         {
-            return Clients.All.InvokeAsync("Update", type, target, obj);
+            return Clients.All.InvokeAsync("UpdateSpecific", type, target, obj);
         }
     }
 }

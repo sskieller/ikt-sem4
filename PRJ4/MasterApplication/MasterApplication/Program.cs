@@ -17,6 +17,8 @@ namespace MasterApplication
 
             var connFactory = new ConnectionFactory() { HostName = "localhost" };
             connFactory.AutomaticRecoveryEnabled = true;
+            // Init SigalR Singleton. Connecting to Azure and setting unit name
+            SignalRClient.Instance.UpdateName("Master Unit");
 
 	        {
 				MorningSunMessageHandler msgHandler = new MorningSunMessageHandler();
