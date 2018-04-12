@@ -8,8 +8,8 @@
 const char * ssid = "ap88v0"; // SSID
 const char * password = "thang6troimua"; // Password
 String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1 
-WiFiClient *espClient = new WiFiClient();
-PubSubClient mqClient(*espClient);
+WiFiClient espClient;
+PubSubClient mqClient(espClient);
 
 void setup()
 {
@@ -70,6 +70,8 @@ void callback(char * topic, byte* payload, unsigned int length)
 		Wire.write('a');
 		Wire.endTransmission();
 
+		mqClient.publish("MorningSun/ModuleOn", "Turned on");
+
 		return;
 	}
 	else if (strcmp(topic, "MorningSun/CmdOff") == 0) //Received 'off'
@@ -78,6 +80,8 @@ void callback(char * topic, byte* payload, unsigned int length)
 		Wire.beginTransmission(0x10);
 		Wire.write('b');
 		Wire.endTransmission();
+		
+		mqClient.publish("MorningSun/ModuleOff", "Turned off");
 
 		return;
 	}
@@ -94,17 +98,19 @@ void callback(char * topic, byte* payload, unsigned int length)
 		}
 
 		Serial.println("Received following from Morning sun: ");
-		
-		bool isOn = false;
-		String response = "";
-		//WIP
-		if (isOn)
+		for (int j = 0; j < i; ++j)
 		{
-			mqClient.publish("MorningSun/ModuleOn", response.c_str());
+			Serial.print(buffer[j]);
 		}
-		else
+		
+		//WIP
+		if (buffer[0] == '1')
 		{
-			mqClient.publish("MorningSun/ModuleOff", response.c_str());
+			mqClient.publish("MorningSun/ModuleOn", "Status on");
+		}
+		else if (buffer[0] == '0')
+		{
+			mqClient.publish("MorningSun/ModuleOff", "Status off");
 		}
 	}
 
