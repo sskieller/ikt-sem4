@@ -40,9 +40,11 @@ namespace MasterApplication.MessageHandlers
 
                 //Sent from Web
 				case "On":
+                case "on":
                     TurnOn(message);
 					break;
 	            case "Off":
+                case "off":
 	                TurnOff(message);
 	                break;
                 case "UpdateTime":

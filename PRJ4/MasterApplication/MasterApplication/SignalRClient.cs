@@ -40,9 +40,15 @@ namespace MasterApplication
             }));
         }
 
-        public void UpdateName(string name)
+
+        /// <summary>
+        /// Setups and configures the signalR connection to the Azure server
+        /// </summary>
+        /// <param name="deviceName">Name Displayed on the Azure server</param>
+        /// <returns>void</returns>
+        public void UpdateName(string deviceName)
         {
-            _connection.SendAsync("UpdateName", name).Wait();
+            _connection.SendAsync("UpdateName", deviceName).Wait();
         }
     }
 
