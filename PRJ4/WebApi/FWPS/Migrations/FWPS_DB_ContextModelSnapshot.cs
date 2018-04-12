@@ -4,9 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
 namespace FWPS.Migrations
@@ -21,190 +18,96 @@ namespace FWPS.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FWPS.Models.ItemBase", b =>
+            modelBuilder.Entity("FWPS.Models.IpItem", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
+                    b.Property<string>("Ip");
 
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ItemBases");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("ItemBase");
-                });
-
-            modelBuilder.Entity("FWPS.Models.Room", b =>
-                {
-                    b.Property<string>("RoomName")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<long?>("PoombaItemId");
-
-                    b.HasKey("RoomName");
-
-                    b.HasIndex("PoombaItemId");
-
-                    b.ToTable("Room");
-                });
-
-            modelBuilder.Entity("FWPS.Models.ClimateControlItem", b =>
-                {
-                    b.HasBaseType("FWPS.Models.ItemBase");
-
-                    b.Property<string>("Command");
-
-                    b.Property<int>("HumidityLevel");
-
-                    b.Property<bool>("IsHeaterOn");
-
-                    b.Property<bool>("IsRun");
-
-                    b.Property<bool>("IsVentilationOn");
-
-                    b.Property<int>("MaxHumidity");
-
-                    b.Property<int>("MaxTemperature");
-
-                    b.Property<int>("MinHumidity");
-
-                    b.Property<int>("MinTemperature");
-
-                    b.Property<int>("TemperatureLevel");
-
-                    b.ToTable("ClimateControlItem");
-
-                    b.HasDiscriminator().HasValue("ClimateControlItem");
-                });
-
-            modelBuilder.Entity("FWPS.Models.CurtainItem", b =>
-                {
-                    b.HasBaseType("FWPS.Models.ItemBase");
-
-                    b.Property<string>("Command")
-                        .HasColumnName("CurtainItem_Command");
-
-                    b.Property<bool>("IsRun")
-                        .HasColumnName("CurtainItem_IsRun");
-
-                    b.Property<int>("LightIntensity");
-
-                    b.Property<int>("MaxLightIntensity");
-
-                    b.Property<string>("Status");
-
-                    b.ToTable("CurtainItem");
-
-                    b.HasDiscriminator().HasValue("CurtainItem");
-                });
-
-            modelBuilder.Entity("FWPS.Models.HodoorItem", b =>
-                {
-                    b.HasBaseType("FWPS.Models.ItemBase");
-
-                    b.Property<string>("Command")
-                        .HasColumnName("HodoorItem_Command");
-
-                    b.Property<bool>("IsRun")
-                        .HasColumnName("HodoorItem_IsRun");
-
-                    b.Property<bool>("OpenStatus");
-
-                    b.ToTable("HodoorItem");
-
-                    b.HasDiscriminator().HasValue("HodoorItem");
-                });
-
-            modelBuilder.Entity("FWPS.Models.IpItem", b =>
-                {
-                    b.HasBaseType("FWPS.Models.ItemBase");
-
-                    b.Property<string>("Ip");
-
-                    b.ToTable("IpItem");
-
-                    b.HasDiscriminator().HasValue("IpItem");
+                    b.ToTable("IpItems");
                 });
 
             modelBuilder.Entity("FWPS.Models.LightItem", b =>
                 {
-                    b.HasBaseType("FWPS.Models.ItemBase");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Command")
-                        .HasColumnName("LightItem_Command");
+                    b.Property<string>("Command");
+
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool>("IsOn");
 
-                    b.Property<bool>("IsRun")
-                        .HasColumnName("LightItem_IsRun");
+                    b.Property<bool>("IsRun");
+
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<DateTime>("SleepTime");
 
                     b.Property<DateTime>("WakeUpTime");
 
-                    b.ToTable("LightItem");
+                    b.HasKey("Id");
 
-                    b.HasDiscriminator().HasValue("LightItem");
+                    b.ToTable("LightItems");
                 });
 
             modelBuilder.Entity("FWPS.Models.LoginItem", b =>
                 {
-                    b.HasBaseType("FWPS.Models.ItemBase");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("Password");
 
                     b.Property<string>("Username");
 
-                    b.ToTable("LoginItem");
+                    b.HasKey("Id");
 
-                    b.HasDiscriminator().HasValue("LoginItem");
+                    b.ToTable("LoginItems");
                 });
 
             modelBuilder.Entity("FWPS.Models.MailItem", b =>
                 {
-                    b.HasBaseType("FWPS.Models.ItemBase");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Body");
 
+                    b.Property<DateTime>("CreatedDate");
+
                     b.Property<string>("From");
+
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("Subject");
 
                     b.Property<string>("To");
 
-                    b.ToTable("MailItem");
+                    b.HasKey("Id");
 
-                    b.HasDiscriminator().HasValue("MailItem");
-                });
-
-            modelBuilder.Entity("FWPS.Models.PoombaItem", b =>
-                {
-                    b.HasBaseType("FWPS.Models.ItemBase");
-
-                    b.Property<DateTime>("CleaningTime");
-
-                    b.Property<string>("Command")
-                        .HasColumnName("PoombaItem_Command");
-
-                    b.Property<bool>("IsRun")
-                        .HasColumnName("PoombaItem_IsRun");
-
-                    b.ToTable("PoombaItem");
-
-                    b.HasDiscriminator().HasValue("PoombaItem");
+                    b.ToTable("MailItems");
                 });
 
             modelBuilder.Entity("FWPS.Models.SnapBoxItem", b =>
                 {
-                    b.HasBaseType("FWPS.Models.ItemBase");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Checksum");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<bool>("MailReceived");
 
@@ -214,16 +117,9 @@ namespace FWPS.Migrations
 
                     b.Property<string>("SnapBoxId");
 
-                    b.ToTable("SnapBoxItem");
+                    b.HasKey("Id");
 
-                    b.HasDiscriminator().HasValue("SnapBoxItem");
-                });
-
-            modelBuilder.Entity("FWPS.Models.Room", b =>
-                {
-                    b.HasOne("FWPS.Models.PoombaItem")
-                        .WithMany("Rooms")
-                        .HasForeignKey("PoombaItemId");
+                    b.ToTable("SnapBoxItems");
                 });
 #pragma warning restore 612, 618
         }
