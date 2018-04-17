@@ -25,7 +25,6 @@ namespace FWPS
         public override Task OnConnectedAsync()
         {
             Devices.ConnectedDevices.Add(Context.ConnectionId, "Device " + (Devices.ConnectedDevices.Count + 1));
-            Context.Connection.Features.
             DebugWriter.Write(Context.ConnectionId + " Connected  --  " + Devices.ConnectedDevices.Count + " devices connected");
             return base.OnConnectedAsync();
         }

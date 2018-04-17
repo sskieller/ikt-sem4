@@ -16,6 +16,8 @@
     <Compile Remove="Migrations\20180403195017_addedChecksumAndIDToSnapBoxItem.Designer.cs" />
     <Compile Remove="Migrations\20180412115752_Added_DBsets.cs" />
     <Compile Remove="Migrations\20180412115752_Added_DBsets.Designer.cs" />
+    <Compile Remove="Migrations\20180412141723_dontdeletethetablespls.cs" />
+    <Compile Remove="Migrations\20180412141723_dontdeletethetablespls.Designer.cs" />
     <Compile Remove="Models\LoginController.cs" />
   </ItemGroup>
 
