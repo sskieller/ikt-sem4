@@ -31,20 +31,12 @@ namespace FWPS.Controllers
             }
         }
 
-        [HttpGet("[action]")]
-        public ActionResult Index()
-        {
-            var lightItems = _context.LightItems.ToList();
-            return View(lightItems);
-        }
-
         [HttpGet]
         public IEnumerable<LightItem> GetAll()
         {
             return _context.LightItems.ToList();
 
         }
-
 
         [HttpGet("{id:int}", Name = "GetLight")]
         public IActionResult GetById(long id)
