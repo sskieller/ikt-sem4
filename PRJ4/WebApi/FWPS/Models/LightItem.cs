@@ -17,5 +17,4 @@ namespace FWPS.Models
         public bool IsOn { get; set; }
 
     }
-
 }

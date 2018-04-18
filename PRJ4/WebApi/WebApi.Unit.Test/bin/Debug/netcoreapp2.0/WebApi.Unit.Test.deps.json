@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "dd16ccb6eb87368478862af2a79798d95f42978d"
+    "signature": "fb45663e0e513399e6fa3412181cbf69b098d6c3"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,6 +10,7 @@
         "dependencies": {
           "FWPS": "1.0.0",
           "Microsoft.NET.Test.Sdk": "15.7.0",
+          "NSubstitute": "1.10.0",
           "NUnit": "3.10.1",
           "NUnit3TestAdapter": "3.10.0"
         },
@@ -2336,6 +2337,11 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
+        }
+      },
+      "NSubstitute/1.10.0": {
+        "runtime": {
+          "lib/net45/NSubstitute.dll": {}
         }
       },
       "NuGet.Frameworks/4.0.0": {
@@ -5291,6 +5297,13 @@
       "sha512": "sha512-5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
+    },
+    "NSubstitute/1.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EjtltQLY+h9Q5k+Qr/8rnR0/MUlTizF+LOHA8Y5uy4SzLAL1Yubuz1gW9qfisJEhsS2DPWoBym/1f3Huwr0E8w==",
+      "path": "nsubstitute/1.10.0",
+      "hashPath": "nsubstitute.1.10.0.nupkg.sha512"
     },
     "NuGet.Frameworks/4.0.0": {
       "type": "package",
