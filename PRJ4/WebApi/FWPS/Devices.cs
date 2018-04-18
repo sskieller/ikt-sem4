@@ -25,7 +25,6 @@ namespace FWPS
         public override Task OnConnectedAsync()
         {
             Devices.ConnectedDevices.Add(Context.ConnectionId, "Device " + (Devices.ConnectedDevices.Count + 1));
-            Context.Connection.Features.
             DebugWriter.Write(Context.ConnectionId + " Connected  --  " + Devices.ConnectedDevices.Count + " devices connected");
             return base.OnConnectedAsync();
         }
@@ -46,6 +45,12 @@ namespace FWPS
         {
             Devices.ConnectedDevices[Context.ConnectionId] = name;
             return Task.CompletedTask;
+        }
+
+        public Task UpdateEntityCondition(string entity, string value)
+        {
+            DebugWriter.Write("Updated entity cond:    " + entity + " --- " + value);
+            return Clients.All.InvokeAsync("UpdateEntityCondition", entity, value);
         }
 
         public Task UpdateSpecific(string type, string target, object obj)
