@@ -47,6 +47,12 @@ namespace FWPS
             return Task.CompletedTask;
         }
 
+        public Task UpdateEntityCondition(string entity, string value)
+        {
+            DebugWriter.Write("Updated entity cond:    " + entity + " --- " + value);
+            return Clients.All.InvokeAsync("UpdateEntityCondition", entity, value);
+        }
+
         public Task UpdateSpecific(string type, string target, object obj)
         {
             return Clients.All.InvokeAsync("UpdateSpecific", type, target, obj);

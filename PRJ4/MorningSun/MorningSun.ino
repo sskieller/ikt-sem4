@@ -7,9 +7,11 @@
 //Wifi related
 const char * ssid = "JonasAP"; // SSID
 const char * password = "Fkt73gss"; // Password
-String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1 
+String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1
 WiFiClient espClient;
 PubSubClient mqClient(espClient);
+char buffer[10];
+bool isOn = false;
 
 void setup()
 {
@@ -67,7 +69,7 @@ void callback(char * topic, byte* payload, unsigned int length)
 	{
 		digitalWrite(LED_BUILTIN, LOW); // Turn the LED on (Note that LOW is the voltage level
 		Wire.beginTransmission(0x10);
-		Wire.write('a');
+		Wire.write('T');
 		Wire.endTransmission();
 
 		mqClient.publish("MorningSun/ModuleOn", "Turned on");
@@ -78,42 +80,12 @@ void callback(char * topic, byte* payload, unsigned int length)
 	{
 		digitalWrite(LED_BUILTIN, HIGH); // Turn the LED on (Note that LOW is the voltage level
 		Wire.beginTransmission(0x10);
-		Wire.write('b');
+		Wire.write('F');
 		Wire.endTransmission();
 		
 		mqClient.publish("MorningSun/ModuleOff", "Turned off");
 
 		return;
-	}
-	else if (strcmp(topic, "MorningSun/CmdStatus") == 0)
-	{
-		int i = 0;
-		char buffer[20];
-		Wire.requestFrom(0x10, 1);
-
-		while (Wire.available())
-		{
-			buffer[i] = Wire.read();
-			++i;
-		}
-
-		Serial.println("Received following from Morning sun: ");
-		for (int j = 0; j < i; ++j)
-		{
-			Serial.print(buffer[j]);
-		}
-		
-		//WIP
-		if (buffer[0] == '1')
-		{
-			mqClient.publish("MorningSun/ModuleOn", "Status on");
-			return;
-		}
-		else if (buffer[0] == '0')
-		{
-			mqClient.publish("MorningSun/ModuleOff", "Status off");
-			return;
-		}
 	}
 
 	Serial.println("Unknown command received");
@@ -171,10 +143,43 @@ void loop()
 {
 	if(!mqClient.connected())
 	{
-		reconnect();
+		reconnect(); //Reconnect if not connected
 	}
-	mqClient.loop();
-	
-	
+	mqClient.loop(); //Loop MQTT client
 
+		
+	int i = 0;
+	
+	Wire.requestFrom(0x10, 1);
+
+	while (Wire.available())
+	{
+		buffer[i] = Wire.read();
+		++i;
+	}
+	i = 0;
+
+
+	//Serial.println("Received following from Morning sun: ");
+	for (int j = 0; j < i; ++j)
+	{
+		Serial.print(buffer[j]);
+	}
+
+	
+	//WIP
+	if (buffer[0] == '0')
+	{
+		//Do nothing
+	}
+	else if (buffer[0] == 'F')
+	{
+		mqClient.publish("MorningSun/ModuleOff", "Status off");
+	}
+	else if (buffer[0] == 'T')
+	{
+		mqClient.publish("MorningSun/ModuleOn", "Status on");
+	}
+
+	delay(50);
 }
