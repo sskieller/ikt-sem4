@@ -10,12 +10,12 @@ const char * password = "Fkt73gss"; // Password
 String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1
 WiFiClient espClient;
 PubSubClient mqClient(espClient);
-char buffer[10];
+char buffer[20];
 bool isOn = false;
 
 void setup()
 {
-	Wire.begin(); // Sets I2C pins to pin 0 and pin 2
+	Wire.begin(2,0); // Sets I2C pins to pin 0 and pin 2
 	Serial.begin(115200);
 	Serial.print("Connecting to ");
 	Serial.println(ssid);
@@ -67,25 +67,29 @@ void callback(char * topic, byte* payload, unsigned int length)
 	//Different handlers for different topics
 	if (strcmp(topic, "MorningSun/CmdOn") == 0) //Received 'on'
 	{
-		digitalWrite(LED_BUILTIN, LOW); // Turn the LED on (Note that LOW is the voltage level
 		Wire.beginTransmission(0x10);
 		Wire.write('T');
-		Wire.endTransmission();
+		byte s = Wire.endTransmission();
 
-		mqClient.publish("MorningSun/ModuleOn", "Turned on");
+		mqClient.publish("MorningSun/ModuleOn", "Turned on " + (int)s);
 
 		return;
 	}
 	else if (strcmp(topic, "MorningSun/CmdOff") == 0) //Received 'off'
 	{
-		digitalWrite(LED_BUILTIN, HIGH); // Turn the LED on (Note that LOW is the voltage level
 		Wire.beginTransmission(0x10);
 		Wire.write('F');
-		Wire.endTransmission();
+		byte s = Wire.endTransmission();
 		
-		mqClient.publish("MorningSun/ModuleOff", "Turned off");
+		mqClient.publish("MorningSun/ModuleOff", "Turned off " + (int)s);
 
 		return;
+	}
+	else if (strcmp(topic, "MorningSun/CmdStatus") == 0)
+	{
+		Wire.beginTransmission(0x10);
+		Wire.write('L');
+		byte s = Wire.endTransmission();
 	}
 
 	Serial.println("Unknown command received");
@@ -147,7 +151,7 @@ void loop()
 	}
 	mqClient.loop(); //Loop MQTT client
 
-		
+	/*
 	int i = 0;
 	
 	Wire.requestFrom(0x10, 1);
@@ -168,7 +172,7 @@ void loop()
 
 	
 	//WIP
-	if (buffer[0] == '0')
+	if (buffer[0] == 0)
 	{
 		//Do nothing
 	}
@@ -181,5 +185,6 @@ void loop()
 		mqClient.publish("MorningSun/ModuleOn", "Status on");
 	}
 
-	delay(50);
+	delay(200);
+	*/
 }
