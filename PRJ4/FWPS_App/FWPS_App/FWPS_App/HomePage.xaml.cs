@@ -37,6 +37,8 @@ namespace FWPS_App
         {
             Thread.Sleep(1000); // CUZ OTHERWISE IT TOO FUCKIN' FAST
 
+            // SignalRClient.Instance.GetHashCode();
+
             string username = usernameTextBox.Text ?? "";
             string password = passwordTextBox.Text ?? "";
 
