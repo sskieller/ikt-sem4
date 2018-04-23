@@ -28,5 +28,6 @@ namespace Handin32.Data
 		public string PhoneType { get; set; }
 		public string PhoneCompany { get; set; }
 		public int? PersonId { get; set; }
+		public string PersonName { get; set; }
 	}
 }

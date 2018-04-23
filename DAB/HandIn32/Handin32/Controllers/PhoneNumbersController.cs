@@ -22,12 +22,14 @@ namespace Handin32.Controllers
         {
             var uow = new UnitOfWork<PhoneNumbers>(db);
 	        var phone = from p in uow.Repository.ReadAll()
+				.Include(p => p.People)
 		        select new PhoneDto
 		        {
 			        Id = p.Id,
 			        PhoneCompany = p.PhoneCompany,
 					PersonId = p.Person_Id,
-					PhoneType = p.PhoneType
+					PhoneType = p.PhoneType,
+					PersonName = p.People.LastName + ", " + p.People.FirstName
 		        };
 
 	        return phone;
@@ -38,46 +40,32 @@ namespace Handin32.Controllers
         [ResponseType(typeof(PhoneDto))]
         public async Task<IHttpActionResult> GetPhoneNumbers(int id)
         {
-	        var uow = new UnitOfWork<People>(db);
-	        PeopleDto people = uow.Repository.ReadAll()
-		        .Include(p => p.Emails).Include(p => p.PhoneNumbers).Include(p => p.PublicAddresses)
-		        .Select(p => new PeopleDto()
-		        {
-			        Id = p.Id,
-			        Emails = from e in p.Emails
-				        select new EmailDto
-				        {
-					        Id = e.Id,
-					        MailAddress = e.MailAddress
-				        },
-			        Firstname = p.FirstName,
-			        LastName = p.LastName,
-			        PhoneNumbers = from n in p.PhoneNumbers
-				        select new PhoneDto
-				        {
-					        Id = n.Id,
-					        PhoneCompany = n.PhoneCompany,
-					        PhoneType = n.PhoneType
-				        },
-			        PublicAddresses = from a in p.PublicAddresses
-				        select new PublicAddressDto
-				        {
-					        Id = a.Id,
-					        HouseNumber = a.HouseNumber,
-					        StreetName = a.StreetName
-				        }
-		        }).SingleOrDefault(p => p.Id == id);
+	        var uow = new UnitOfWork<PhoneNumbers>(db);
+	        var phone = uow.Repository.Read(id);
 
-	        if (people == null)
+	        if (phone == null)
 		        return NotFound();
 
-	        return Ok(people);
+	        PhoneDto dto = uow.Repository.ReadAll()
+		        .Include(p => p.People)
+		        .Select(p => new PhoneDto()
+		        {
+			        Id = p.Id,
+			        PhoneCompany = p.PhoneCompany,
+			        PersonId = p.Person_Id,
+			        PhoneType = p.PhoneType,
+			        PersonName = p.People.LastName + ", " + p.People.FirstName
+
+		        }).SingleOrDefault(p => p.Id == id);
+
+			return Ok(dto);
 		}
 
         // PUT: api/PhoneNumbers/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutPhoneNumbers(int id, PhoneNumbers phoneNumbers)
         {
+			/*
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -105,38 +93,53 @@ namespace Handin32.Controllers
                     throw;
                 }
             }
-
+			*/
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/PhoneNumbers
-        [ResponseType(typeof(PhoneNumbers))]
+        [ResponseType(typeof(PhoneDto))]
         public async Task<IHttpActionResult> PostPhoneNumbers(PhoneNumbers phoneNumbers)
         {
-            if (!ModelState.IsValid)
+	        var uow = new UnitOfWork<PhoneNumbers>(db);
+			if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.PhoneNumbers.Add(phoneNumbers);
-            await db.SaveChangesAsync();
+			uow.Repository.Create(phoneNumbers);
+	        uow.Commit();
 
-            return CreatedAtRoute("DefaultApi", new { id = phoneNumbers.Id }, phoneNumbers);
+	        PhoneDto dto = uow.Repository.ReadAll()
+		        .Include(p => p.People)
+		        .Select(p => new PhoneDto()
+		        {
+			        Id = p.Id,
+			        PhoneCompany = p.PhoneCompany,
+			        PersonId = p.Person_Id,
+			        PhoneType = p.PhoneType,
+			        PersonName = p.People.LastName + ", " + p.People.FirstName
+
+		        }).SingleOrDefault(p => p.Id == phoneNumbers.Id);
+
+
+			return CreatedAtRoute("DefaultApi", new { id = phoneNumbers.Id }, dto);
         }
 
         // DELETE: api/PhoneNumbers/5
         [ResponseType(typeof(PhoneNumbers))]
         public async Task<IHttpActionResult> DeletePhoneNumbers(int id)
         {
-            PhoneNumbers phoneNumbers = await db.PhoneNumbers.FindAsync(id);
+            var uow = new UnitOfWork<PhoneNumbers>(db);
+	        var phoneNumbers = uow.Repository.Read(id);
             if (phoneNumbers == null)
             {
                 return NotFound();
             }
 
-            db.PhoneNumbers.Remove(phoneNumbers);
-            await db.SaveChangesAsync();
-
+			uow.Repository.Delete(phoneNumbers);
+	        uow.Commit();
+			
             return Ok(phoneNumbers);
         }
 

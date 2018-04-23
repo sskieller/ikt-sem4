@@ -188,6 +188,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PhoneNumbersController.cs" />
+    <Compile Include="Controllers\PublicAddressesController.cs" />
     <Compile Include="Data\AddressModel.cs" />
     <Compile Include="Data\C__MigrationHistory.cs" />
     <Compile Include="Data\Emails.cs" />
