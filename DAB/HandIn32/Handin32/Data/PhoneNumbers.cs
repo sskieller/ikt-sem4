@@ -27,6 +27,6 @@ namespace Handin32.Data
 		public int Id { get; set; }
 		public string PhoneType { get; set; }
 		public string PhoneCompany { get; set; }
-		public int PersonId { get; set; }
+		public int? PersonId { get; set; }
 	}
 }

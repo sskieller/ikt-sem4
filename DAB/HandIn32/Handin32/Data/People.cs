@@ -52,8 +52,8 @@ namespace Handin32.Data
 		public string Firstname { get; set; }
 		public string MiddleName { get; set; }
 		public string LastName { get; set; }
-		public virtual ICollection<EmailDto> Emails { get; set; }
-		public virtual ICollection<PhoneDto> PhoneNumbers { get; set; }
-		public virtual ICollection<PublicAddressDetailDto> PublicAddresses { get; set; }
+		public virtual IEnumerable<EmailDto> Emails { get; set; }
+		public virtual IEnumerable<PhoneDto> PhoneNumbers { get; set; }
+		public virtual IEnumerable<PublicAddressDetailDto> PublicAddresses { get; set; }
 	}
 }
