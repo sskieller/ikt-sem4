@@ -34,11 +34,18 @@ namespace Handin32.Controllers
         }
 
         // GET: api/Emails/5
-        [ResponseType(typeof(Emails))]
+        [ResponseType(typeof(EmailDto))]
         public async Task<IHttpActionResult> GetEmails(int id)
         {
             var uow = new UnitOfWork<Emails>(db);
-            Emails emails = uow.Repository.Read(id);
+            EmailDto emails = uow.Repository.ReadAll()
+                .Select(e => new EmailDto()
+                {
+                    Id = e.Id,
+                    MailAddress = e.MailAddress,
+                    PersonId = e.Person_Id
+                }).SingleOrDefault(e => e.Id == id);
+
             if (emails == null)
             {
                 return NotFound();
@@ -91,24 +98,35 @@ namespace Handin32.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Emails.Add(emails);
-            await db.SaveChangesAsync();
+            var uow = new UnitOfWork<Emails>(db);
+            uow.Repository.Create(emails);
+            uow.Commit();
 
-            return CreatedAtRoute("DefaultApi", new { id = emails.Id }, emails);
+            EmailDto em = uow.Repository.ReadAll()
+                .Select(e => new EmailDto()
+                {
+                    Id = e.Id,
+                    MailAddress = e.MailAddress,
+                    PersonId = e.Person_Id
+                }).SingleOrDefault(e => e.Id == emails.Id);
+
+
+            return CreatedAtRoute("DefaultApi", new { id = emails.Id }, em);
         }
 
         // DELETE: api/Emails/5
         [ResponseType(typeof(Emails))]
         public async Task<IHttpActionResult> DeleteEmails(int id)
         {
-            Emails emails = await db.Emails.FindAsync(id);
+            var uow = new UnitOfWork<Emails>(db);
+            Emails emails = uow.Repository.Read(id);
             if (emails == null)
             {
                 return NotFound();
             }
 
-            db.Emails.Remove(emails);
-            await db.SaveChangesAsync();
+            uow.Repository.Delete(emails);
+            uow.Commit();
 
             return Ok(emails);
         }
