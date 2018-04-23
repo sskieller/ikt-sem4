@@ -35,18 +35,18 @@ namespace Handin32.Controllers
         public IQueryable<PublicAddressDetailDto> GetPublicAddresses()
         {
 	        var uow = new UnitOfWork<PublicAddresses>(db);
-	        string[] arr;
 	        var addr = from p in uow.Repository.ReadAll()
 			        .Include(p => p.People)
 		        select new PublicAddressDetailDto
 		        {
 			        Id = p.Id,
-					AddressType = p.AddressType,
-					City = p.City,
-					HouseNumber = p.HouseNumber,
-					StreetName = p.StreetName,
-					ZipCode = p.ZipCode
+			        AddressType = p.AddressType,
+			        City = p.City,
+			        HouseNumber = p.HouseNumber,
+			        StreetName = p.StreetName,
+			        ZipCode = p.ZipCode,
 		        };
+		       
 
 	        return addr;
         }
