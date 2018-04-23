@@ -16,6 +16,7 @@ namespace Handin32.Controllers
     public class PeopleController : ApiController
     {
         private AddressModel db = new AddressModel();
+        
 
         // GET: api/People
         public IQueryable<PeopleDto> GetPeople()
@@ -182,6 +183,8 @@ namespace Handin32.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            
 
 	        var uow = new UnitOfWork<People>(db);
 			uow.Repository.Create(people);
