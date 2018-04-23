@@ -23,11 +23,13 @@ namespace Handin32.Controllers
             var uow = new UnitOfWork<Emails>(db);
 
             var email = from e in uow.Repository.ReadAll()
+                        .Include(e => e.People)
                         select new EmailDto
                         {
                             Id = e.Id,
                             MailAddress = e.MailAddress,
-                            PersonId = e.Person_Id
+                            PersonId = e.Person_Id,
+                            PersonName = e.People.LastName + ", " + e.People.FirstName
                         };
 
             return email;
@@ -38,12 +40,19 @@ namespace Handin32.Controllers
         public async Task<IHttpActionResult> GetEmails(int id)
         {
             var uow = new UnitOfWork<Emails>(db);
+            var email = uow.Repository.Read(id);
+
+            if (email == null)
+                return NotFound();
+
             EmailDto emails = uow.Repository.ReadAll()
+                .Include(e => e.People)
                 .Select(e => new EmailDto()
                 {
                     Id = e.Id,
                     MailAddress = e.MailAddress,
-                    PersonId = e.Person_Id
+                    PersonId = e.Person_Id,
+                    PersonName = e.People.LastName + ", " + e.People.FirstName
                 }).SingleOrDefault(e => e.Id == id);
 
             if (emails == null)
@@ -93,21 +102,25 @@ namespace Handin32.Controllers
         [ResponseType(typeof(Emails))]
         public async Task<IHttpActionResult> PostEmails(Emails emails)
         {
+            var uow = new UnitOfWork<Emails>(db);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var uow = new UnitOfWork<Emails>(db);
+
             uow.Repository.Create(emails);
             uow.Commit();
 
             EmailDto em = uow.Repository.ReadAll()
+                .Include(e => e.People)
                 .Select(e => new EmailDto()
                 {
                     Id = e.Id,
                     MailAddress = e.MailAddress,
-                    PersonId = e.Person_Id
+                    PersonId = e.Person_Id,
+                    PersonName = e.People.LastName + ", " + e.People.FirstName
                 }).SingleOrDefault(e => e.Id == emails.Id);
 
 

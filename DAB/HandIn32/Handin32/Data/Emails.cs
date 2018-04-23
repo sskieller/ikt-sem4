@@ -23,5 +23,6 @@ namespace Handin32.Data
 		public int Id { get; set; }
 		public string MailAddress { get; set; }
 		public int? PersonId { get; set; }
-	}
+        public string PersonName { get; set; }
+    }
 }
