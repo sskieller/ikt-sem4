@@ -50,7 +50,7 @@ namespace Application
 					var file = File.OpenRead(LIB.extractFileName(filename));
 
 					byte[] fileSize = Encoding.ASCII.GetBytes(file.Length.ToString());
-					Console.WriteLine("File \"{0}\" exists, now sending file length to client", LIB.extractFileName(filename));
+					Console.WriteLine("File \"{0}\" exists with size {1}, now sending file length to client", LIB.extractFileName(filename), Encoding.ASCII.GetString(fileSize));
 
 					//Send file size
 					transport.send(fileSize, fileSize.Length);
