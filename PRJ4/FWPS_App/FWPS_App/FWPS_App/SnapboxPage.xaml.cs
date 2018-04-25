@@ -15,6 +15,13 @@ namespace FWPS_App
 		public SnapboxPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+            NavigationPage.SetHasNavigationBar(this, false);
+            ReturnBtn.Clicked += ReturnBtn_Clicked;
+        }
+
+        private void ReturnBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+    }
 }

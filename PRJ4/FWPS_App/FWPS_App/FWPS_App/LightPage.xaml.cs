@@ -27,7 +27,7 @@ namespace FWPS_App
             timer = new System.Timers.Timer();
             timer.Elapsed += (object s, ElapsedEventArgs e) => LightState();
             timer.AutoReset = true;
-            timer.Interval = 3000;
+            timer.Interval = 2000;
             timer.Start();
         }
 
@@ -48,14 +48,14 @@ namespace FWPS_App
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    lightStateLabel.Text = "Light is on";
+                    lightStateLabel.Text = "Light is ON";
                 });
             }
             else if (lightObject.IsOn == false)
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    lightStateLabel.Text = "Light is off";
+                    lightStateLabel.Text = "Light is OFF";
                 });
             }
             else
@@ -66,10 +66,10 @@ namespace FWPS_App
                 });
             }
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                mainlabel.Text = obj;
-            });
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    mainlabel.Text = obj;
+            //});
         }
 
         private void OffButton_Clicked(object sender, EventArgs e)
@@ -102,78 +102,6 @@ namespace FWPS_App
         }
 
         public static string LightUri { get; set; } = "https://fwps.azurewebsites.net/api/Light/";
-        //protected virtual void CreateLightRequest(LightObject light)
-        //{
-        //    try
-        //    {
-        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri);
-        //        request.Method = "POST";
-        //        request.ContentType = "application/json";
-        //        //request.Headers.Add("content-type", "application/json");
-        //        ///string json = "{\"command\":\"on\"}";
-
-        //        string json = JsonConvert.SerializeObject(light); //Serialize json object to string
-        //        request.ContentLength = json.Length; //Get length of json
-        //        Stream stream = request.GetRequestStream(); //Create stream
-
-        //        mainlabel.Text = "Reached Write + " + json;
-        //        stream.Write(Encoding.UTF8.GetBytes(json), 0, json.Length); //Write PUT request
-
-        //        HttpWebResponse response = (HttpWebResponse)request.GetResponse(); //Get response to make sure json object is sent
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        label2.Text = e.Message;
-        //        string message = e.Message;
-        //        //await DisplayAlert("DisplayAlert", $"{message}", "OK");
-        //    }
-
-
-        //}
-
-        //protected void GetLightState()
-        //{
-
-        //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + "Newest/");
-        //    request.Method = "GET";
-        //    request.KeepAlive = false;
-        //    request.ContentType = "application/json";
-        //    //request.Headers.Add("content-type", "application/json");
-            
-        //    try
-        //    {
-        //        HttpWebResponse response = (HttpWebResponse)  request.GetResponse();
-        //        string myResponse = "";
-        //        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-        //        {
-        //            myResponse = sr.ReadToEnd();
-        //        }
-
-        //        LightObject lightobject = JsonConvert.DeserializeObject<LightObject>(myResponse);
-
-        //        if (lightobject.IsOn == true)
-        //        {
-        //            lightStateLabel.Text = "Light is on";
-
-        //        }
-        //        else if(lightobject.IsOn == false)
-        //        {
-        //            lightStateLabel.Text = "Light is off";
-        //        }
-        //        else
-        //        {
-        //            lightStateLabel.Text = "Something went much wrong";
-        //        }
-                
-        //    }
-        //    catch (WebException e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //    }
-
-        //}
-
-
 
         public class LightObject
         {

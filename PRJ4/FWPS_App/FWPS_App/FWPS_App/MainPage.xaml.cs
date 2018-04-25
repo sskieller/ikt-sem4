@@ -9,10 +9,12 @@ namespace FWPS_App
 {
 	public partial class MainPage : ContentPage
 	{
-        ContentPage page = new LightPage();
+        ContentPage lightPage, snapboxPage, hodoorPage, poombaPage, climateControlPage;
+
         public MainPage()
 		{
 			InitializeComponent();
+            MakePages();
             NavigationPage.SetHasNavigationBar(this, false);
             ClimateControlButton.Clicked += ClimateControlButton_Clicked;
             LightButton.Clicked += LightButton_Clicked;
@@ -23,35 +25,46 @@ namespace FWPS_App
 
         }
 
+        public void MakePages()
+        {
+            lightPage = new LightPage();
+            snapboxPage = new SnapboxPage();
+            hodoorPage = new HodoorPage();
+            poombaPage = new PoombaPage();
+            climateControlPage = new ClimateControlPage();
+        }
+
+        #region PagesPushAsync
+        private void LightButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(lightPage);
+        }
 
         private void SnapboxButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SnapboxPage());
+            Navigation.PushAsync(snapboxPage);
         }
+
+        private void HodoorButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(hodoorPage);
+        }
+
+        private void PoombaButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(poombaPage);
+        }
+
+        private void ClimateControlButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(climateControlPage);
+        }
+        #endregion
 
         private void LogoutButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
         }
 
-        private void HodoorButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new HodoorPage());
-        }
-
-        private void PoombaButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new PoombaPage());
-        }
-
-        private void LightButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(page);
-        }
-
-        private void ClimateControlButton_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new ClimateControlPage());
-        }
     }
 }
