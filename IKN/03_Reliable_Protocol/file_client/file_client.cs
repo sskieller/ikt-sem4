@@ -28,6 +28,9 @@ namespace Application
 		/// </param>
 	    private file_client(String[] args)
 	    {
+            Transport transport = new Transport(BUFSIZE, APP);
+
+        
 	    	// TO DO Your own code
 	    }
 
