@@ -36,14 +36,14 @@ namespace FWPS_App
 
                 OnButton.IsEnabled = false;
 
-                LightObject light = new LightObject()
+                LightObject lightObject = new LightObject()
                 {
                     Command = "off",
                     IsRun = false,
                     IsOn = false
                 };
-                CreateLightRequest(light);
-                OnButton.IsEnabled = true;
+            HTTPRequestHandler.CreateRequest(lightObject, LightUri);
+            OnButton.IsEnabled = true;
             
         }
 
@@ -56,81 +56,81 @@ namespace FWPS_App
                 IsRun = false,
                 IsOn = true
             };
-            CreateLightRequest(lightObject);
+            HTTPRequestHandler.CreateRequest(lightObject, LightUri);
             OnButton.IsEnabled = true;
         }
 
-        public static string BaseUri { get; set; } = "https://fwps.azurewebsites.net/api/Light/";
-        protected virtual void CreateLightRequest(LightObject light)
-        {
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri);
-                request.Method = "POST";
-                request.ContentType = "application/json";
-                //request.Headers.Add("content-type", "application/json");
-                ///string json = "{\"command\":\"on\"}";
+        public static string LightUri { get; set; } = "https://fwps.azurewebsites.net/api/Light/";
+        //protected virtual void CreateLightRequest(LightObject light)
+        //{
+        //    try
+        //    {
+        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri);
+        //        request.Method = "POST";
+        //        request.ContentType = "application/json";
+        //        //request.Headers.Add("content-type", "application/json");
+        //        ///string json = "{\"command\":\"on\"}";
 
-                string json = JsonConvert.SerializeObject(light); //Serialize json object to string
-                request.ContentLength = json.Length; //Get length of json
-                Stream stream = request.GetRequestStream(); //Create stream
+        //        string json = JsonConvert.SerializeObject(light); //Serialize json object to string
+        //        request.ContentLength = json.Length; //Get length of json
+        //        Stream stream = request.GetRequestStream(); //Create stream
 
-                mainlabel.Text = "Reached Write + " + json;
-                stream.Write(Encoding.UTF8.GetBytes(json), 0, json.Length); //Write PUT request
+        //        mainlabel.Text = "Reached Write + " + json;
+        //        stream.Write(Encoding.UTF8.GetBytes(json), 0, json.Length); //Write PUT request
 
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse(); //Get response to make sure json object is sent
-            }
-            catch (Exception e)
-            {
-                label2.Text = e.Message;
-                string message = e.Message;
-                //await DisplayAlert("DisplayAlert", $"{message}", "OK");
-            }
+        //        HttpWebResponse response = (HttpWebResponse)request.GetResponse(); //Get response to make sure json object is sent
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        label2.Text = e.Message;
+        //        string message = e.Message;
+        //        //await DisplayAlert("DisplayAlert", $"{message}", "OK");
+        //    }
 
 
-        }
+        //}
 
-        protected void GetLightState()
-        {
+        //protected void GetLightState()
+        //{
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + "Newest/");
-            request.Method = "GET";
-            request.KeepAlive = false;
-            request.ContentType = "application/json";
-            //request.Headers.Add("content-type", "application/json");
+        //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + "Newest/");
+        //    request.Method = "GET";
+        //    request.KeepAlive = false;
+        //    request.ContentType = "application/json";
+        //    //request.Headers.Add("content-type", "application/json");
             
-            try
-            {
-                HttpWebResponse response = (HttpWebResponse)  request.GetResponse();
-                string myResponse = "";
-                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-                {
-                    myResponse = sr.ReadToEnd();
-                }
+        //    try
+        //    {
+        //        HttpWebResponse response = (HttpWebResponse)  request.GetResponse();
+        //        string myResponse = "";
+        //        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+        //        {
+        //            myResponse = sr.ReadToEnd();
+        //        }
 
-                LightObject lightobject = JsonConvert.DeserializeObject<LightObject>(myResponse);
+        //        LightObject lightobject = JsonConvert.DeserializeObject<LightObject>(myResponse);
 
-                if (lightobject.IsOn == true)
-                {
-                    lightStateLabel.Text = "Light is on";
+        //        if (lightobject.IsOn == true)
+        //        {
+        //            lightStateLabel.Text = "Light is on";
 
-                }
-                else if(lightobject.IsOn == false)
-                {
-                    lightStateLabel.Text = "Light is off";
-                }
-                else
-                {
-                    lightStateLabel.Text = "Something went much wrong";
-                }
+        //        }
+        //        else if(lightobject.IsOn == false)
+        //        {
+        //            lightStateLabel.Text = "Light is off";
+        //        }
+        //        else
+        //        {
+        //            lightStateLabel.Text = "Something went much wrong";
+        //        }
                 
-            }
-            catch (WebException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+        //    }
+        //    catch (WebException e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //    }
 
-        }
+        //}
 
 
 
