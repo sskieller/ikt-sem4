@@ -49,11 +49,11 @@ namespace Application
 					Console.WriteLine ("Found file");
 					var file = File.OpenRead(LIB.extractFileName(filename));
 
-					var fileSize = Encoding.ASCII.GetBytes(file.Length.ToString());
+					byte[] fileSize = Encoding.ASCII.GetBytes(file.Length.ToString());
 					Console.WriteLine("File \"{0}\" exists, now sending file length to client", LIB.extractFileName(filename));
 
 					//Send file size
-					transport.send(Encoding.ASCII.GetBytes(fileSize.ToString()), Encoding.ASCII.GetBytes(fileSize.ToString()).Length);
+					transport.send(fileSize, fileSize.Length);
 				
 					int remainingBytes = 1;
 					while (remainingBytes > 0)
