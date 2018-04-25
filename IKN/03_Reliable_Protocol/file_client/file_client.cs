@@ -26,26 +26,50 @@ namespace Application
 		/// <param name='args'>
 		/// Filnavn med evtuelle sti.
 		/// </param>
-	    private file_client(String[] args)
-	    {
-            Transport transport = new Transport(BUFSIZE, APP);
-
-        
-	    	// TO DO Your own code
-	    }
-
-		/// <summary>
-		/// Receives the file.
-		/// </summary>
-		/// <param name='fileName'>
-		/// File name.
-		/// </param>
-		/// <param name='transport'>
-		/// Transportlaget
-		/// </param>
-		private void receiveFile (String fileName, Transport transport)
+		private file_client(String[] args)
 		{
-			// TO DO Your own code
+			if (args.Length != 1)
+			{
+				Console.WriteLine("Please enter a filename");
+				return;
+			}
+			Transport transport = new Transport(BUFSIZE, APP);
+			byte[] receiveBuffer = new byte[1004];
+			long fileSize = 0;
+
+
+			string filename = args[0];
+
+			Console.WriteLine("Gettting file: {0}", filename);
+
+			transport.send(Encoding.ASCII.GetBytes(filename), filename.Length);
+
+
+			transport.receive(ref receiveBuffer);
+			if (long.TryParse(Encoding.ASCII.GetString(receiveBuffer), out fileSize) == false) 
+			{
+				Console.WriteLine("Filesize was not returned, actually received: {0}", Encoding.ASCII.GetString(receiveBuffer));
+				return;
+			}
+
+			if (fileSize == 0)
+			{
+				Console.WriteLine("File does not exist, filesize is 0");
+				return;
+			}
+
+			Console.WriteLine("Total file size from server: {0} bytes", fileSize);
+
+			var file = File.Create(filename); //Create new file
+			while (file.Position < fileSize) //Still need to receive more data
+			{
+				transport.receive(ref receiveBuffer);
+				file.Write(receiveBuffer, 0, receiveBuffer.Length);
+				Console.WriteLine("{0} bytes of {1} written so far", file.Position, fileSize);
+			}
+			file.Close();
+
+			Console.WriteLine("Transfer complete");
 		}
 
 		/// <summary>

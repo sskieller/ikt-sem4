@@ -76,8 +76,8 @@ namespace Transportlaget
 			if (recvSize == (int)TransSize.ACKSIZE) {
 				dataReceived = false;
 				if (!checksum.checkChecksum (buffer, (int)TransSize.ACKSIZE) ||
-				  buffer [(int)TransCHKSUM.SEQNO] != seqNo ||
-				  buffer [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
+					buffer [(int)TransCHKSUM.SEQNO] != seqNo ||
+					buffer [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
 				{
 					seqNo = (byte) buffer[(int)TransCHKSUM.SEQNO];
 				}
@@ -86,7 +86,7 @@ namespace Transportlaget
 					seqNo = (byte)((buffer[(int)TransCHKSUM.SEQNO] + 1) % 2);
 				}
 			}
- 
+
 			return seqNo;
 		}
 
@@ -117,7 +117,24 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			// TO DO Your own code
+			//Send one frame at a time
+			//Do not send more frames until ACK is received
+			do
+			{
+				//Copy parameter buf to buffer, store from the fifth [4] bit onwards
+				Array.Copy(buf, 0, buffer, (int)TransSize.ACKSIZE, size );
+
+				buffer[(int)TransCHKSUM.SEQNO] = seqNo; //Add sequence number
+				buffer[(int) TransCHKSUM.TYPE] = (byte) TransType.DATA; //Set type to DATA
+
+				checksum.calcChecksum(ref buffer, size + (int) TransSize.ACKSIZE); //Add checksum to send buffer data
+
+				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
+
+			} while (receiveAck() == old_seqNo); //Kepp on going until sequence number changes
+
+			old_seqNo = DEFAULT_SEQNO; //Increment old sequence number, to reset after sending
+
 		}
 
 		/// <summary>
@@ -128,7 +145,37 @@ namespace Transportlaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-			// TO DO Your own code
+			while (true)
+			{
+				int receivedBytes = link.receive(ref buffer); //Receive data from link layer
+
+				if (checksum.checkChecksum(buffer, receivedBytes) == false)
+				{
+					//Checksum error, returning false ACK
+					Console.WriteLine("Sending back false ack, checksum failed");
+					Console.WriteLine("seqNo: {0}", buffer[(int)TransCHKSUM.SEQNO]);
+					Console.WriteLine("old_seqNo: {0}", old_seqNo);
+
+					sendAck(false); // Send false ack
+					continue;
+				}
+
+				//Correct data received
+				sendAck(true);
+
+				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
+				{
+					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
+					continue;
+				}
+
+				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
+
+				Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
+
+				return receivedBytes - 4; //return amount of bytes received
+			}
+
 		}
 	}
 }
