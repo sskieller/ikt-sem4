@@ -1,5 +1,6 @@
 using System;
 using System.IO.Ports;
+using System.Collections.Generic;
 
 /// <summary>
 /// Link.
@@ -65,7 +66,33 @@ namespace Linklaget
 		/// </param>
 		public void send (byte[] buf, int size)
 		{
-	    	// TO DO Your own code
+			List<byte> frame = new List<byte>();
+			frame.Add(DELIMITER); //Add delimiter to start of frame
+
+			for (int i = 0; i < size; ++i)
+			{
+				if (buf[i] == DELIMITER)
+				{
+					//If an 'A' is hit, add 'BC' instead
+					frame.Add((byte)'B');
+					frame.Add((byte)'C');
+				}
+				else
+				{
+					//Add frame byte
+					frame.Add(buf[i]);
+
+					//If 'B' is hit, add an additional 'D'
+					if (buf[i] == (byte) 'B')
+						frame.Add((byte) 'D');
+				}
+			}
+
+			//Add delimiter to end of frame
+			frame.Add(DELIMITER);
+
+			//Write to serial port
+			serialPort.Write(frame.ToArray(), 0, frame.Count); 
 		}
 
 		/// <summary>
@@ -79,8 +106,38 @@ namespace Linklaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-	    	// TO DO Your own code
-			return 0;
+			byte tempByte;
+			do
+			{
+				//Read single byte until delimiter is read
+				tempByte = (byte) serialPort.ReadByte();
+			} while (tempByte != DELIMITER);
+
+			tempByte = (byte) serialPort.ReadByte();
+			int count = 0;
+
+			while (tempByte != DELIMITER) //Keep on reading till delimiter is reached
+			{
+				if (tempByte == (byte) 'B')
+				{
+					//May be either 'A' or 'B'
+					tempByte = (byte) serialPort.ReadByte();
+
+					if (tempByte == (byte) 'C')
+						buf[count] = (byte) 'A';
+					else
+						buf[count] = (byte) 'B';
+				}
+				else
+				{
+					buf[count] = tempByte;
+				}
+
+				++count; //Increment count by 1
+				tempByte = (byte) serialPort.ReadByte(); //Read next byte
+			}
+
+			return count; //Return amount of bytes read
 		}
 	}
 }
