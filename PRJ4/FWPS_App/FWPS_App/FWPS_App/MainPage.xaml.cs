@@ -9,7 +9,8 @@ namespace FWPS_App
 {
 	public partial class MainPage : ContentPage
 	{
-		public MainPage()
+        ContentPage page = new LightPage();
+        public MainPage()
 		{
 			InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -21,6 +22,7 @@ namespace FWPS_App
             SnapboxButton.Clicked += SnapboxButton_Clicked;
 
         }
+
 
         private void SnapboxButton_Clicked(object sender, EventArgs e)
         {
@@ -44,7 +46,7 @@ namespace FWPS_App
 
         private void LightButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LightPage() {Title="Back" });
+            Navigation.PushAsync(page);
         }
 
         private void ClimateControlButton_Clicked(object sender, EventArgs e)

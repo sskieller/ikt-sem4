@@ -57,6 +57,12 @@
                         Grid.Row="5"
                         Grid.Column="1"
                         Grid.ColumnSpan="2"/>
+                <Button Text="Return to MainPage"
+                        HorizontalOptions="CenterAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="ReturnBtn"
+                        Grid.Row="7"
+                        Grid.Column="4"/>
                 <Label Text="Current state: " 
                        Style="{StaticResource LabelStyle}"
                        HorizontalOptions="End" 
@@ -74,7 +80,7 @@
                        HorizontalOptions="Center" x:Name="mainlabel"
                        Grid.Row="7"
                        Grid.Column="0"
-                       Grid.ColumnSpan="2"/>
+                       Grid.ColumnSpan="3"/>
             </Grid>
         </RelativeLayout>
     </ContentPage.Content>

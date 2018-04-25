@@ -14,10 +14,15 @@ namespace FWPS_App
 
         public static void CreateRequest(LightPage.LightObject light, string BaseUri)
         {
-            Task.Factory.StartNew(() => _CreateRequest(light, BaseUri));
+            Task.Factory.StartNew(() => _CreatePostRequest(light, BaseUri));
         }
 
-        private static Task _CreateRequest(object obj, string uri)
+        public static object CreateGetRequest(string BaseUri)
+        {
+            return _GetObject(BaseUri);
+        }
+
+        private static Task _CreatePostRequest(object obj, string uri)
         {
             try
             {
@@ -45,6 +50,38 @@ namespace FWPS_App
             }
 
             return Task.CompletedTask;
+        }
+
+        private static string _GetObject(string uri)
+        {
+                string myResponse = string.Empty;
+
+                try
+                {
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+                    request.Method = "GET";
+                    request.KeepAlive = false;
+                    request.ContentType = "application/json";
+                    //request.Headers.Add("content-type", "application/json");
+
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        myResponse = sr.ReadToEnd();
+                    }
+
+                    //LightPage.LightObject lightobject = JsonConvert.DeserializeObject<LightPage.LightObject>(myResponse);
+                }
+
+                catch (WebException e)
+                {
+                    string message = e.Message;
+
+                    return myResponse;
+                }
+
+                return myResponse;
         }
     }
 }

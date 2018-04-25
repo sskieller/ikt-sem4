@@ -15,21 +15,62 @@ namespace FWPS_App
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LightPage : ContentPage
 	{
-        //Timer timer;
+        System.Timers.Timer timer;
         public LightPage ()
 		{
 			InitializeComponent ();
+            NavigationPage.SetHasNavigationBar(this, false);
+            LightState();
             OnButton.Clicked += OnButton_Clicked;
             OffButton.Clicked += OffButton_Clicked;
-            //timer = new Timer();
-            //timer.Elapsed += (object s, ElapsedEventArgs e) => GetLightState();
-            //timer.AutoReset = true;
-            //timer.Interval = 1000;
-            //timer.Start();
-
-
+            ReturnBtn.Clicked += ReturnBtn_Clicked;
+            timer = new System.Timers.Timer();
+            timer.Elapsed += (object s, ElapsedEventArgs e) => LightState();
+            timer.AutoReset = true;
+            timer.Interval = 3000;
+            timer.Start();
         }
 
+        private void ReturnBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+
+        private void LightState()
+        {
+
+            string obj = HTTPRequestHandler.CreateGetRequest(LightUri + "newest/").ToString();
+
+            var lightObject = JsonConvert.DeserializeObject<LightObject>(obj);
+
+
+            if (lightObject.IsOn == true)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    lightStateLabel.Text = "Light is on";
+                });
+            }
+            else if (lightObject.IsOn == false)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    lightStateLabel.Text = "Light is off";
+                });
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    lightStateLabel.Text = "Something went much wrong";
+                });
+            }
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                mainlabel.Text = obj;
+            });
+        }
 
         private void OffButton_Clicked(object sender, EventArgs e)
         {
