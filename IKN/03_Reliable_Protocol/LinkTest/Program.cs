@@ -8,7 +8,7 @@ namespace LinkTest
 	{
 		public static void Main (string[] args)
 		{
-			if (args.Length != 2) 
+			if (args.Length != 1) 
 			{
 				Console.WriteLine ("Please enter <send> or not");
 				return;
@@ -16,7 +16,7 @@ namespace LinkTest
 
 			Link link = new Link (1000, "empty");
 
-			byte[] buffer = new byte[10];
+			byte[] buffer = new byte[255];
 
 			buffer [0] = (byte)'H';
 			buffer [1] = (byte)'E';
@@ -31,14 +31,28 @@ namespace LinkTest
 			buffer [8] = (byte)'C';
 			buffer [9] = (byte)'D';
 
-			if (args [1] == "send") 
+			if (args [0] == "send") 
 			{
+				Console.WriteLine ("Send passed as argument to application: sending 'HELLO ABCD' to serial");
 				link.send (buffer, 10);
 			}
 
-			link.receive (ref buffer);
+			for (int i = 0; i < buffer.Length; ++i) 
+			{
+				buffer [i] = (byte)'\0'; //Fill buffer with null
+			}
 
-			Console.WriteLine (buffer);
+			int length = link.receive (ref buffer);
+
+
+			Console.WriteLine ();
+			Console.Write ("Received data: ");
+			for (int i = 0; i < length; ++i) 
+			{
+				Console.Write ((char)buffer [i]);
+			}
+			Console.WriteLine ();
+
 
 
 		}
