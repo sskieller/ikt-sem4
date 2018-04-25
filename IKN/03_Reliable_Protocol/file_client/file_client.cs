@@ -34,7 +34,7 @@ namespace Application
 				return;
 			}
 			Transport transport = new Transport(BUFSIZE, APP);
-			byte[] receiveBuffer = new byte[1004];
+			byte[] receiveBuffer = new byte[BUFSIZE];
 			long fileSize = 0;
 
 
@@ -46,7 +46,11 @@ namespace Application
 
 
 			transport.receive(ref receiveBuffer);
-			if (long.TryParse(Encoding.ASCII.GetString(receiveBuffer), out fileSize) == false) 
+			string tempFileSize = Encoding.ASCII.GetString (receiveBuffer);
+
+			Console.WriteLine ("Got file size: {0}", tempFileSize);
+
+			if (long.TryParse(tempFileSize, out fileSize) == false) 
 			{
 				Console.WriteLine("Filesize was not returned, actually received: {0}", Encoding.ASCII.GetString(receiveBuffer));
 				return;

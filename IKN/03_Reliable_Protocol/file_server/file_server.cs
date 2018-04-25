@@ -28,31 +28,40 @@ namespace Application
 				Console.WriteLine("Waiting for file request");
 
 				int receivedBytes = transport.receive(ref buffer);
-				string filename = Encoding.ASCII.GetString(buffer);
-				Console.WriteLine("Received: {0}", filename);
+				string filename = LIB.extractFileName(Encoding.ASCII.GetString(buffer, 0, receivedBytes));
+				Console.WriteLine("Received: \"{0}\"", filename);
 
-				long fileSize = LIB.check_File_Exists(LIB.extractFileName(filename));
 
-				if (fileSize == 0)
+				var fl = File.OpenWrite ("test");
+
+				fl.Write (Encoding.ASCII.GetBytes (filename), 0, filename.Length);
+				fl.Close ();
+				if (File.Exists(filename) == false)
 				{
+					
 					Console.WriteLine("File did not exist");
+					Console.WriteLine ();
 					string nul = "0";
 					transport.send(Encoding.ASCII.GetBytes(nul), nul.Length);
 				}
 				else
 				{
-					Console.WriteLine("File \"{0}\" is {1} bytes long, now sending file length to client", LIB.extractFileName(filename), fileSize);
+					Console.WriteLine ("Found file");
+					var file = File.OpenRead(LIB.extractFileName(filename));
+
+					var fileSize = Encoding.ASCII.GetBytes(file.Length.ToString());
+					Console.WriteLine("File \"{0}\" exists, now sending file length to client", LIB.extractFileName(filename));
 
 					//Send file size
 					transport.send(Encoding.ASCII.GetBytes(fileSize.ToString()), Encoding.ASCII.GetBytes(fileSize.ToString()).Length);
-
-					var file = File.OpenRead(LIB.extractFileName(filename));
-					int remainingBytes = (int)fileSize;
+				
+					int remainingBytes = 1;
 					while (remainingBytes > 0)
 					{
 						remainingBytes = file.Read(buffer, 0, BUFSIZE);
 						transport.send(buffer, remainingBytes);
 					}
+					file.Close ();
 
 					Console.WriteLine("File \"{0}\" sent", LIB.extractFileName(filename));
 				}
