@@ -153,14 +153,14 @@ namespace Handin32.Controllers
 			        {
 				        //Mail with ID already exists in DB, add to person
 				        person.PublicAddresses.Add(ad);
-						ad.People.Add(person);
+						
 			        }
 			        else
 			        {
 				        //Mail does not exist, add to DB and person
 				        addr.Repository.Create(newAddr);
 				        person.PublicAddresses.Add(newAddr);
-						newAddr.People.Add(person);
+						
 			        }
 		        }
 
