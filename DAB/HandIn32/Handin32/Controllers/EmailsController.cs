@@ -67,33 +67,27 @@ namespace Handin32.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutEmails(int id, Emails emails)
         {
+            var uow = new UnitOfWork<Emails>(db);
+            Emails email = uow.Repository.Read(id);
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != emails.Id)
+            if (id != emails.Id || emails == null)
             {
                 return BadRequest();
             }
 
-            db.Entry(emails).State = EntityState.Modified;
+            if (emails.Person_Id != null)
+            {
+                email.Person_Id = emails.Person_Id;
+            }
+             
+            email.MailAddress = emails.MailAddress;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EmailsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            uow.Commit();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
