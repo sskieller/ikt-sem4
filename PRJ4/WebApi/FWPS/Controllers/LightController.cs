@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
 using FWPS.Data;
+using Microsoft.AspNetCore.SignalR;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,9 +15,13 @@ namespace FWPS.Controllers
     public class LightController : Controller
     {
         private readonly FwpsDbContext _context;
+        // SignalRHubContext
+        private IHubContext<DevicesHub> _hub;
 
-        public LightController(FwpsDbContext context)
+
+        public LightController(FwpsDbContext context, IHubContext<DevicesHub> hub)
         {
+            _hub = hub;
             _context = context;
 
             if (_context.LightItems.Any() == false)
@@ -25,20 +31,12 @@ namespace FWPS.Controllers
             }
         }
 
-        [HttpGet("[action]")]
-        public ActionResult Index()
-        {
-            var lightItems = _context.LightItems.ToList();
-            return View(lightItems);
-        }
-
         [HttpGet]
         public IEnumerable<LightItem> GetAll()
         {
             return _context.LightItems.ToList();
 
         }
-
 
         [HttpGet("{id:int}", Name = "GetLight")]
         public IActionResult GetById(long id)
@@ -65,20 +63,32 @@ namespace FWPS.Controllers
         }
 
 
-        //[HttpPost]
-        //public IActionResult Create([FromBody] LightItem lightItem)
-        //{
-        //    if (lightItem == null)
-        //        return BadRequest();
+	    [HttpGet("[action]")] // '/api/Light/Newest'
+	    public IActionResult Newest()
+	    {
+		    var lightItem = _context.LightItems.Last();
+		    if (lightItem == null)
+		    {
+			    return NotFound();
+		    }
+		    return new ObjectResult(lightItem);
+	    }
 
 
-        //    _context.LightItems.Add(lightItem);
-        //    _context.SaveChanges();
+		//[HttpPost]
+		//public IActionResult Create([FromBody] LightItem lightItem)
+		//{
+		//    if (lightItem == null)
+		//        return BadRequest();
 
-        //    return CreatedAtRoute("GetLight", new { id = lightItem.Id }, lightItem);
-        //}
 
-        [HttpPost]
+		//    _context.LightItems.Add(lightItem);
+		//    _context.SaveChanges();
+
+		//    return CreatedAtRoute("GetLight", new { id = lightItem.Id }, lightItem);
+		//}
+
+		[HttpPost]
         public IActionResult Create([FromBody] LightItem lightItem)
         {
             if (lightItem == null)
@@ -86,21 +96,30 @@ namespace FWPS.Controllers
                 return BadRequest();
             }
 
+
+	        if (lightItem.WakeUpTime == DateTime.MinValue)
+		        lightItem.WakeUpTime = _context.LightItems.Last().WakeUpTime;
+
+	        if (lightItem.SleepTime == DateTime.MinValue)
+		        lightItem.SleepTime = _context.LightItems.Last().SleepTime;
             
 
-            var light = new LightItem
-            {
-                Command = lightItem.Command,
-                IsRun = lightItem.IsRun,
-                CreatedDate = DateTime.Now,
-                LastModifiedDate = DateTime.Now
-            };
-
-            _context.LightItems.Add(light);
+            _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
+			DebugWriter.Write(string.Format("Created Lightitem with ID: {0}", lightItem.Id));
 
-            return CreatedAtRoute("GetLight", new {id = light.Id}, light);
+            try
+            {
+                _hub.Clients.All.InvokeAsync("UpdateSpecific", "MorningSun", lightItem.Command, lightItem);
+
+            }
+            catch (Exception e)
+            {
+                DebugWriter.Write(e.Message);
+            }
+
+            return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);
         }
 
         [HttpPut("{id}")]
@@ -119,6 +138,12 @@ namespace FWPS.Controllers
 
             light.IsRun = lightItem.IsRun;
             light.LastModifiedDate = DateTime.Now;
+	        light.Command = lightItem.Command;
+	        if (lightItem.SleepTime != DateTime.MinValue && lightItem.WakeUpTime != DateTime.MinValue)
+	        {
+		        light.SleepTime = lightItem.SleepTime;
+		        light.WakeUpTime = lightItem.WakeUpTime;
+	        }
 
             _context.LightItems.Update(light);
             _context.SaveChanges();

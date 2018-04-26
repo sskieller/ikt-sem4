@@ -7,12 +7,6 @@
     
     <ContentPage.Content>
         <RelativeLayout>
-            <Image Source="https://abolengo-alpaka.de/wp-content/uploads/alpaka-jungstute-kaufen.jpg" Opacity="0.3"
-                RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-            
             <Grid RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=

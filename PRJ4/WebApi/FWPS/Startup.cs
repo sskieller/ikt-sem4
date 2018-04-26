@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +16,7 @@ using Microsoft.Extensions.Options;
 using FWPS.Models;
 using Microsoft.EntityFrameworkCore;
 using FWPS.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace FWPS
 {
@@ -34,6 +40,7 @@ namespace FWPS
 	        //services.AddDbContext<IpContext>(opt => opt.UseInMemoryDatabase("IpItem"));
             //services.AddDbContext<LoginContext>(opt => opt.UseInMemoryDatabase("LoginItem"));
 			services.AddMvc();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +53,32 @@ namespace FWPS
 
             app.UseStatusCodePages();
             app.UseMvc();
+
+            // SignalR Routing
+            app.UseSignalR(route => route.MapHub<DevicesHub>("devices"));
+
+            // Commented out for now, implementing SignalR instead. It's way more reliable on Azure servers
+            /*
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path == "/ws")
+                { 
+                    if (context.WebSockets.IsWebSocketRequest)
+                    {
+                        Clients.Instance.AddClient(context);
+                    }
+                    else
+                    {
+                        context.Response.StatusCode = 400;
+                    }
+                }
+                else
+                {
+                    await next();
+                }
+
+            });
+            */
         }
     }
 }
