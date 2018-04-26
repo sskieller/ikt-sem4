@@ -65,35 +65,29 @@ namespace Handin32.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutPhoneNumbers(int id, PhoneNumbers phoneNumbers)
         {
-			/*
+			var uow = new UnitOfWork<PhoneNumbers>(db);
+	        var number = uow.Repository.Read(id);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != phoneNumbers.Id)
+            if (id != phoneNumbers.Id || number == null)
             {
                 return BadRequest();
             }
 
-            db.Entry(phoneNumbers).State = EntityState.Modified;
+	        if (phoneNumbers.Person_Id != null)
+	        {
+		        number.Person_Id = phoneNumbers.Person_Id;
+	        }
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PhoneNumbersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-			*/
+	        number.Number = phoneNumbers.Number;
+	        number.PhoneCompany = phoneNumbers.PhoneCompany;
+	        number.PhoneType = phoneNumbers.PhoneType;
+
+	        uow.Commit();
+
             return StatusCode(HttpStatusCode.NoContent);
         }
 

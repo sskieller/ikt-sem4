@@ -87,35 +87,58 @@ namespace Handin32.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutPublicAddresses(int id, PublicAddresses publicAddresses)
         {
-			/*
-            if (!ModelState.IsValid)
+
+	        var uow = new UnitOfWork<PublicAddresses>(db);
+
+	        var addr = uow.Repository.Read(id);
+
+			if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != publicAddresses.Id)
+            if (id != publicAddresses.Id || addr == null)
             {
                 return BadRequest();
             }
 
-            db.Entry(publicAddresses).State = EntityState.Modified;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PublicAddressesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-			*/
+	        if (publicAddresses.People != null)
+	        {
+				//Persons are to be added to the public address
+				addr.People.Clear();
+
+				var repo = new UnitOfWork<People>(db);
+
+		        foreach (var person in publicAddresses.People)
+		        {
+			        var ppl = repo.Repository.ReadAll().FirstOrDefault(e => person.Id == e.Id);
+			        if (ppl != null)
+			        {
+				        //Person with ID already exists in DB, add to address
+				        addr.People.Add(ppl);
+			        }
+			        else
+			        {
+				        //Person does not exist, add to DB and address
+				        repo.Repository.Create(person);
+				        addr.People.Add(person);
+			        }
+		        }
+
+		        repo.Commit();
+	        }
+
+	        addr.AddressType = publicAddresses.AddressType;
+	        addr.City = publicAddresses.City;
+	        addr.HouseNumber = publicAddresses.HouseNumber;
+	        addr.StreetName = publicAddresses.StreetName;
+	        addr.ZipCode = publicAddresses.ZipCode;
+
+	        uow.Commit();
+
+			
+			
 			return StatusCode(HttpStatusCode.NoContent);
 			
         }
