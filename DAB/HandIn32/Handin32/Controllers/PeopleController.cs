@@ -118,59 +118,84 @@ namespace Handin32.Controllers
             }
 
 			//laves senere
-			/*
-	        var emailList = person.Emails.ToList();
-	        foreach (var mail in people.Emails)
+	        if (people.Emails != null)
 	        {
-				var em = person.Emails.FirstOrDefault(e => mail.Id == e.Id);
-		        if (em != null)
+				var emails = new UnitOfWork<Emails>(db);
+				person.Emails.Clear();
+		        foreach (var mail in people.Emails)
 		        {
-			        em.MailAddress = mail.MailAddress;
-		        }
-				else
-				{
-					person.Emails.Add(mail);
-				}
-	        }
-
-	        foreach (var addr in people.PublicAddresses)
-	        {
-		        var ad = person.PublicAddresses.FirstOrDefault(a => a.Id == addr.Id);
-		        if (ad != null)
-		        {
-			        ad.AddressType = addr.AddressType;
-			        ad.City = addr.City;
-			        ad.HouseNumber = addr.HouseNumber;
-			        ad.StreetName = addr.StreetName;
-			        ad.ZipCode = addr.ZipCode;
-		        }
-		        else
-		        {
-					person.PublicAddresses.Add(addr);
+			        var em = emails.Repository.ReadAll().FirstOrDefault(e => mail.Id == e.Id);
+			        if (em != null)
+			        {
+				        //Mail with ID already exists in DB, add to person
+						person.Emails.Add(em);
+			        }
+			        else
+			        {
+						//Mail does not exist, add to DB and person
+				        emails.Repository.Create(mail);
+						person.Emails.Add(mail);
+			        }
 		        }
 
+		        emails.Commit(); //Commit changes
 	        }
 
-	        foreach (var number in people.PhoneNumbers)
+	        //laves senere
+	        if (people.PublicAddresses != null)
 	        {
-		        var ph = person.PhoneNumbers.FirstOrDefault(p => p.Id == number.Id);
-				if (ph != null)
-				{
-					ph.Number = number.Number;
-					ph.PhoneCompany = number.PhoneCompany;
-					ph.PhoneType = number.PhoneType;
-				}
-				else
-				{
-					person.PhoneNumbers.Add(number);
-				}
+		        var addr = new UnitOfWork<PublicAddresses>(db);
+		        person.PublicAddresses.Clear();
+		        foreach (var newAddr in people.PublicAddresses)
+		        {
+			        var ad = addr.Repository.ReadAll().FirstOrDefault(e => newAddr.Id == e.Id);
+			        if (ad != null)
+			        {
+				        //Mail with ID already exists in DB, add to person
+				        person.PublicAddresses.Add(ad);
+						ad.People.Add(person);
+			        }
+			        else
+			        {
+				        //Mail does not exist, add to DB and person
+				        addr.Repository.Create(newAddr);
+				        person.PublicAddresses.Add(newAddr);
+						newAddr.People.Add(person);
+			        }
+		        }
+
+		        addr.Commit(); //Commit changes
 	        }
+
+	        if (people.PhoneNumbers != null)
+	        {
+				var numbers = new UnitOfWork<PhoneNumbers>(db);
+				person.PhoneNumbers.Clear();
+
+		        foreach (var number in people.PhoneNumbers)
+		        {
+			        var ph = numbers.Repository.ReadAll().FirstOrDefault(p => p.Id == number.Id);
+			        if (ph != null)
+			        {
+				        person.PhoneNumbers.Add(ph);
+			        }
+			        else
+			        {
+						numbers.Repository.Create(number);
+				        person.PhoneNumbers.Add(number);
+			        }
+		        }
+			}
+
+
+
+
 	        person.FirstName = people.FirstName;
 	        person.MiddleName = people.MiddleName;
 	        person.LastName = people.LastName;
 
 	        uow.Commit();
-			*/
+			
             
             return StatusCode(HttpStatusCode.NoContent);
         }
