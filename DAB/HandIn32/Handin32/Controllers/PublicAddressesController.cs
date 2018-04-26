@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -35,18 +36,20 @@ namespace Handin32.Controllers
         public IQueryable<PublicAddressDetailDto> GetPublicAddresses()
         {
 	        var uow = new UnitOfWork<PublicAddresses>(db);
-	        string[] arr;
 	        var addr = from p in uow.Repository.ReadAll()
 			        .Include(p => p.People)
 		        select new PublicAddressDetailDto
 		        {
 			        Id = p.Id,
-					AddressType = p.AddressType,
-					City = p.City,
-					HouseNumber = p.HouseNumber,
-					StreetName = p.StreetName,
-					ZipCode = p.ZipCode
+			        AddressType = p.AddressType,
+			        City = p.City,
+			        HouseNumber = p.HouseNumber,
+			        StreetName = p.StreetName,
+			        ZipCode = p.ZipCode,
+                    People = (from ppl in p.People
+                             select ppl.LastName + ", " + ppl.FirstName)
 		        };
+		       
 
 	        return addr;
         }
@@ -71,8 +74,10 @@ namespace Handin32.Controllers
 			        City = p.City,
 			        HouseNumber = p.HouseNumber,
 			        StreetName = p.StreetName,
-			        ZipCode = p.ZipCode
-		        }).SingleOrDefault(p => p.Id == id);
+			        ZipCode = p.ZipCode,
+		            People = (from ppl in p.People
+		                select ppl.LastName + ", " + ppl.FirstName)
+                }).SingleOrDefault(p => p.Id == id);
 
 	        return Ok(addr2);
 
@@ -137,8 +142,10 @@ namespace Handin32.Controllers
 		        City = p.City,
 		        HouseNumber = p.HouseNumber,
 		        StreetName = p.StreetName,
-		        ZipCode = p.ZipCode
-	        }).SingleOrDefault(p => p.Id == publicAddresses.Id);
+		        ZipCode = p.ZipCode,
+	            People = (from ppl in p.People
+	                select ppl.LastName + ", " + ppl.FirstName)
+                }).SingleOrDefault(p => p.Id == publicAddresses.Id);
 
 
 	        return CreatedAtRoute("DefaultApi", new { id = publicAddresses.Id }, dto);

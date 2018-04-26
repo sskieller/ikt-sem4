@@ -64,7 +64,7 @@ namespace Handin32.Data
 
 		[Required]
 		public string City { get; set; }
-		
-		public string[] People { get; set; }
+
+	    public IEnumerable<string> People;
 	}
 }
