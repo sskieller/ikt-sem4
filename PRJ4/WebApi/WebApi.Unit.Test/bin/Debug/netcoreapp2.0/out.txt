@@ -70,3 +70,4 @@ Created Lightitem with ID: 3
 Created Lightitem with ID: 2
 Created Lightitem with ID: 3
 Created Lightitem with ID: 2
+Created Lightitem with ID: 2

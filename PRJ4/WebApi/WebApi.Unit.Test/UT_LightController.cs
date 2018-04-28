@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using FWPS;
 using FWPS.Controllers;
@@ -66,6 +67,44 @@ namespace WebApi.Unit.Test
         public void TearDown()
         {
             _connection.Close();
+        }
+
+        [Test]
+        public void GetById_IdNotExisting_ExpectedResult_NullReferenceException()
+        {
+            using (_context = new FwpsDbContext(_options))
+            {
+                _context.Database.EnsureCreated();
+                _lc = new LightController(_context, _hub);
+                _li.Command = "FirstItem";
+                _lc.Create(_li);
+
+                long id = 3;
+
+                var result = _lc.GetById(id) as ObjectResult;
+
+                Assert.That(() => result.Value as LightItem, Throws.Exception.TypeOf<NullReferenceException>());
+            }
+        }
+
+        [Test]
+        public void GetById_IdExist_ExpectedResult_LightItemReturned()
+        {
+            using (_context = new FwpsDbContext(_options))
+            {
+                _context.Database.EnsureCreated();
+                _lc = new LightController(_context, _hub);
+                _li.Command = "FirstItem";
+                _lc.Create(_li);
+
+                long id = 2;
+
+                var result = _lc.GetById(id) as ObjectResult;
+                var model = result?.Value as LightItem;
+
+                Debug.Assert(model != null, nameof(model) + " != null");
+                Assert.That(model.Id, Is.EqualTo(id));
+            }
         }
 
         [Test]
@@ -269,27 +308,6 @@ namespace WebApi.Unit.Test
                 _lc.Create(_li2);
 
                 Assert.That(_lc.GetAll(), Is.EqualTo(_context.LightItems.ToList()));
-            }
-        }
-
-        [Test]
-        [Ignore("Unsure of testing method for IActionResult")]
-        public void GetById_IdExist_ExpectedResult_LightItemReturned()
-        {
-            using (_context = new FwpsDbContext(_options))
-            {
-                _context.Database.EnsureCreated();
-                _lc = new LightController(_context, _hub);
-                _li.Command = "FirstItem";
-                _lc.Create(_li);
-
-                long id = 2;
-
-                IActionResult ar = _lc.GetById(id);
-                //ar.ToString();
-                Console.WriteLine(ar);
-                //Assert.That(_lc.GetById(id), Is.EqualTo(new ObjectResult(_li)));
-
             }
         }
 
