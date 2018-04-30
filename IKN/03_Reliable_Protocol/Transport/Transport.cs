@@ -76,7 +76,7 @@ namespace Transportlaget
 		/// <returns>
 		/// The ack.
 		/// </returns>
-		private bool receiveAck()
+		private byte receiveAck()
 		{
 			recvSize = link.receive(ref buffer);
 			dataReceived = true;
@@ -88,16 +88,14 @@ namespace Transportlaget
 					buffer [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
 				{
 					seqNo = (byte) buffer[(int)TransCHKSUM.SEQNO];
-					return false;
 				}
 				else
 				{
 					seqNo = (byte)((buffer[(int)TransCHKSUM.SEQNO] + 1) % 2);
-					return true;
 				}
 			}
 
-			return false;
+			return seqNo;
 
 		}
 
@@ -149,9 +147,8 @@ namespace Transportlaget
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == false); //Kepp on going until sequence number changes
+			} while (receiveAck() == buffer[(int)TransCHKSUM.SEQNO]); //Kepp on going until sequence number changes
 
-			old_seqNo = DEFAULT_SEQNO; //Increment old sequence number, to reset after sending
 
 		}
 
