@@ -76,7 +76,7 @@ namespace Transportlaget
 		/// <returns>
 		/// The ack.
 		/// </returns>
-		private byte receiveAck()
+		private bool receiveAck()
 		{
 			recvSize = link.receive(ref buffer);
 			dataReceived = true;
@@ -88,14 +88,17 @@ namespace Transportlaget
 					buffer [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
 				{
 					seqNo = (byte) buffer[(int)TransCHKSUM.SEQNO];
+					return false;
 				}
 				else
 				{
 					seqNo = (byte)((buffer[(int)TransCHKSUM.SEQNO] + 1) % 2);
+					return true;
 				}
 			}
 
-			return seqNo;
+			return false;
+
 		}
 
 		/// <summary>
@@ -146,7 +149,7 @@ namespace Transportlaget
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == (byte) buffer[(int)TransCHKSUM.SEQNO]); //Kepp on going until sequence number changes
+			} while (receiveAck() == false); //Kepp on going until sequence number changes
 
 			old_seqNo = DEFAULT_SEQNO; //Increment old sequence number, to reset after sending
 
@@ -175,14 +178,17 @@ namespace Transportlaget
 					continue;
 				}
 
-				//Correct data received
-				sendAck(true);
+
 
 				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
 				{
 					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
+					sendAck (false);
 					continue;
 				}
+
+				//Correct data received
+				sendAck(true);
 
 				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
 

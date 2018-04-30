@@ -56,11 +56,11 @@ namespace Application
 					//Send file size
 					transport.send(fileSize, fileSize.Length);
 				
-					int remainingBytes = 1;
-					while (remainingBytes > 0)
+					int remainingBytes = file.Read(buffer,0, BUFSIZE);
+					while (remainingBytes > 0) 
 					{
-						remainingBytes = file.Read(buffer, 0, BUFSIZE);
-						transport.send(buffer, remainingBytes);
+						transport.send (buffer, remainingBytes);
+						remainingBytes = file.Read (buffer, 0, BUFSIZE);
 					}
 					file.Close ();
 
