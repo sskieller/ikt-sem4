@@ -17,9 +17,10 @@ namespace Application
 		/// <summary>
 		/// Initializes a new instance of the <see cref="file_server"/> class.
 		/// </summary>
-		private file_server ()
+		private file_server (string noise)
 		{
 			Transport transport = new Transport(BUFSIZE, APP);
+			transport.GenerateNoiseEvery = int.Parse (noise);
 			byte[] buffer = new byte[BUFSIZE];
 			Console.WriteLine("Server ready");
 			Console.WriteLine();
@@ -80,7 +81,13 @@ namespace Application
 		/// </param>
 		public static void Main (string[] args)
 		{
-			new file_server();
+			if (args.Length != 1) 
+			{
+				Console.WriteLine ("Please pass <Noise> parameter\n\n<Noise=X> equals sending noise every <X> transmissions, enter <0> for no noise");
+				return;
+			}
+			new file_server(args[0]);
+
 		}
 	}
 }

@@ -47,6 +47,14 @@ namespace Transportlaget
 		/// The number of data the recveived.
 		/// </summary>
 		private int recvSize = 0;
+		/// <summary>
+		/// Generate noise every N bytes
+		/// </summary>
+		public int GenerateNoiseEvery {get;set;} = 0;
+		/// <summary>
+		/// counter for noise generation
+		/// </summary>
+		private int noiseCounter = 0;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Transport"/> class.
@@ -129,9 +137,16 @@ namespace Transportlaget
 
 				checksum.calcChecksum(ref buffer, size + (int) TransSize.ACKSIZE); //Add checksum to send buffer data
 
+				if (GenerateNoiseEvery > 0 && (++noiseCounter % GenerateNoiseEvery) == 0)
+				{
+					//Generate noise
+					buffer[(int) TransCHKSUM.CHKSUMHIGH] = 0;
+					Console.WriteLine("Generated some noise, CHSUMHIGH is no longer legit");
+				}
+
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == old_seqNo); //Kepp on going until sequence number changes
+			} while (receiveAck() == (byte) buffer[(int)TransCHKSUM.SEQNO]); //Kepp on going until sequence number changes
 
 			old_seqNo = DEFAULT_SEQNO; //Increment old sequence number, to reset after sending
 
