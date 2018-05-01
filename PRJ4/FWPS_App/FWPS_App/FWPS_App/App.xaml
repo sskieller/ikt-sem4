@@ -24,6 +24,11 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
+            <Style x:Key="EditorStyle" TargetType="Editor">
+                <Setter Property="TextColor" Value="#FFB8860B" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
