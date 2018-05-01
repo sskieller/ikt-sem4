@@ -19,7 +19,10 @@ namespace WebApi.Unit.Test
          
             _ip = "123456789";
 
-            _uut.Ip = _ip;
+            _uut = new IpItem()
+            {
+                Ip = _ip
+            };
         }
 
         [Test]
