@@ -16,6 +16,7 @@ namespace WebApi.Unit.Test
         [SetUp]
         public void SetUp()
         {
+         
             _ip = "123456789";
 
             _uut.Ip = _ip;
