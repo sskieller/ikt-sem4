@@ -29,7 +29,8 @@ namespace Handin32.Controllers
 			        PhoneCompany = p.PhoneCompany,
 					PersonId = p.Person_Id,
 					PhoneType = p.PhoneType,
-					PersonName = p.People.LastName + ", " + p.People.FirstName
+					PersonName = p.People.LastName + ", " + p.People.FirstName,
+					Number = p.Number
 		        };
 
 	        return phone;
@@ -54,7 +55,8 @@ namespace Handin32.Controllers
 			        PhoneCompany = p.PhoneCompany,
 			        PersonId = p.Person_Id,
 			        PhoneType = p.PhoneType,
-			        PersonName = p.People.LastName + ", " + p.People.FirstName
+			        PersonName = p.People.LastName + ", " + p.People.FirstName,
+					Number = p.Number
 
 		        }).SingleOrDefault(p => p.Id == id);
 
@@ -112,7 +114,8 @@ namespace Handin32.Controllers
 			        PhoneCompany = p.PhoneCompany,
 			        PersonId = p.Person_Id,
 			        PhoneType = p.PhoneType,
-			        PersonName = p.People.LastName + ", " + p.People.FirstName
+			        PersonName = p.People.LastName + ", " + p.People.FirstName,
+					Number = p.Number
 
 		        }).SingleOrDefault(p => p.Id == phoneNumbers.Id);
 

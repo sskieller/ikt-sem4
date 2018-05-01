@@ -47,6 +47,14 @@ namespace Transportlaget
 		/// The number of data the recveived.
 		/// </summary>
 		private int recvSize = 0;
+		/// <summary>
+		/// Generate noise every N bytes
+		/// </summary>
+		public int GenerateNoiseEvery {get;set;} = 0;
+		/// <summary>
+		/// counter for noise generation
+		/// </summary>
+		private int noiseCounter = 0;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Transport"/> class.
@@ -88,6 +96,7 @@ namespace Transportlaget
 			}
 
 			return seqNo;
+
 		}
 
 		/// <summary>
@@ -129,11 +138,17 @@ namespace Transportlaget
 
 				checksum.calcChecksum(ref buffer, size + (int) TransSize.ACKSIZE); //Add checksum to send buffer data
 
+				if (GenerateNoiseEvery > 0 && (++noiseCounter % GenerateNoiseEvery) == 0)
+				{
+					//Generate noise
+					buffer[(int) TransCHKSUM.CHKSUMHIGH] = 0;
+					Console.WriteLine("Generated some noise, CHSUMHIGH is no longer legit");
+				}
+
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == old_seqNo); //Kepp on going until sequence number changes
+			} while (receiveAck() == buffer[(int)TransCHKSUM.SEQNO]); //Kepp on going until sequence number changes
 
-			old_seqNo = DEFAULT_SEQNO; //Increment old sequence number, to reset after sending
 
 		}
 
@@ -160,14 +175,17 @@ namespace Transportlaget
 					continue;
 				}
 
-				//Correct data received
-				sendAck(true);
+
 
 				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
 				{
 					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
+					sendAck (false);
 					continue;
 				}
+
+				//Correct data received
+				sendAck(true);
 
 				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
 

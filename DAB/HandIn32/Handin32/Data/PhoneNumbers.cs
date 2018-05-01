@@ -25,6 +25,8 @@ namespace Handin32.Data
 	public class PhoneDto : Entity
 	{
 		public int Id { get; set; }
+		[Required]
+		public string Number { get; set; }
 		public string PhoneType { get; set; }
 		public string PhoneCompany { get; set; }
 		public int? PersonId { get; set; }

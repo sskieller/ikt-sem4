@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "a272940339740f397f8c5fb16251cc5574c4a0d5"
+    "signature": "599b903d6be863ef5765ab7a507ffdcca86c5562"
   },
   "compilationOptions": {},
   "targets": {
@@ -143,7 +143,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.dll": {}
         }
       },
-      "Microsoft.AspNetCore.All/2.0.7": {
+      "Microsoft.AspNetCore.All/2.0.6": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.0.2",
           "Microsoft.AspNetCore.Antiforgery": "2.0.2",
@@ -4004,7 +4004,7 @@
       },
       "FWPS/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.All": "2.0.7",
+          "Microsoft.AspNetCore.All": "2.0.6",
           "Microsoft.AspNetCore.SignalR": "1.0.0-alpha1-final",
           "Microsoft.AspNetCore.WebSockets": "2.0.2",
           "Microsoft.EntityFrameworkCore": "2.0.2",
@@ -4082,12 +4082,12 @@
       "path": "microsoft.aspnetcore/2.0.2",
       "hashPath": "microsoft.aspnetcore.2.0.2.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.All/2.0.7": {
+    "Microsoft.AspNetCore.All/2.0.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hpWBRgs094P0jBWJRqBV+8oXl6G+O5ixDAgXI5qouOsg2jlLOmYr1+95+lRbLSn31HhKbQdNel6VQSDUbm0juw==",
-      "path": "microsoft.aspnetcore.all/2.0.7",
-      "hashPath": "microsoft.aspnetcore.all.2.0.7.nupkg.sha512"
+      "sha512": "sha512-5AEYk4hS25RcPkh1kWeKpn487/9Bb3GeVfu8Sl7EOFv9ADXmz7ypVyVlp8FMwgQIJSykzy6kF6KOOduhrWGmSA==",
+      "path": "microsoft.aspnetcore.all/2.0.6",
+      "hashPath": "microsoft.aspnetcore.all.2.0.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.0.2": {
       "type": "package",

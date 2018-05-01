@@ -40,7 +40,8 @@ namespace Handin32.Controllers
 								   {
 									   Id = n.Id,
 									   PhoneCompany = n.PhoneCompany,
-									   PhoneType = n.PhoneType
+									   PhoneType = n.PhoneType,
+									   Number = n.Number
 								   },
 			        PublicAddresses = from a in p.PublicAddresses
 									  select new PublicAddressDto
@@ -79,7 +80,8 @@ namespace Handin32.Controllers
 				        {
 					        Id = n.Id,
 					        PhoneCompany = n.PhoneCompany,
-					        PhoneType = n.PhoneType
+					        PhoneType = n.PhoneType,
+							Number = n.Number
 				        },
 			        PublicAddresses = from a in p.PublicAddresses
 				        select new PublicAddressDto
@@ -233,7 +235,8 @@ namespace Handin32.Controllers
 				        {
 					        Id = n.Id,
 					        PhoneCompany = n.PhoneCompany,
-					        PhoneType = n.PhoneType
+					        PhoneType = n.PhoneType,
+							Number = n.Number
 				        },
 			        PublicAddresses = from a in p.PublicAddresses
 				        select new PublicAddressDto
@@ -257,7 +260,9 @@ namespace Handin32.Controllers
             {
                 return NotFound();
             }
-
+			people.Emails.Clear();
+			people.PhoneNumbers.Clear();
+			people.PublicAddresses.Clear();
             uow.Repository.Delete(people);
 	        uow.Commit();
 

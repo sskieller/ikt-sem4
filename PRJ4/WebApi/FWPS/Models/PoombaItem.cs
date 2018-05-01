@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,11 +12,5 @@ namespace FWPS.Models
         public List<Room> Rooms { get; set; }
         public DateTime CleaningTime { get; set; }
 
-    }
-
-    public class Room
-    {
-        [Key]
-        public string RoomName { get; set; } 
     }
 }

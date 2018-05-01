@@ -74,20 +74,6 @@ namespace FWPS.Controllers
 		    return new ObjectResult(lightItem);
 	    }
 
-
-		//[HttpPost]
-		//public IActionResult Create([FromBody] LightItem lightItem)
-		//{
-		//    if (lightItem == null)
-		//        return BadRequest();
-
-
-		//    _context.LightItems.Add(lightItem);
-		//    _context.SaveChanges();
-
-		//    return CreatedAtRoute("GetLight", new { id = lightItem.Id }, lightItem);
-		//}
-
 		[HttpPost]
         public IActionResult Create([FromBody] LightItem lightItem)
         {
@@ -96,13 +82,11 @@ namespace FWPS.Controllers
                 return BadRequest();
             }
 
-
 	        if (lightItem.WakeUpTime == DateTime.MinValue)
 		        lightItem.WakeUpTime = _context.LightItems.Last().WakeUpTime;
 
 	        if (lightItem.SleepTime == DateTime.MinValue)
-		        lightItem.SleepTime = _context.LightItems.Last().SleepTime;
-            
+		        lightItem.SleepTime = _context.LightItems.Last().SleepTime;          
 
             _context.LightItems.Add(lightItem);
             _context.SaveChanges();

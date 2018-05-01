@@ -45,5 +45,7 @@ namespace MasterApplication.MessageHandlers
             else 
                 throw new ArgumentException(string.Format("SnapBox Received Wrong Input -- Data length: {0} -- Data: {1}", data.Length, data.ToString()));
         }
+
+        
     }
 }

@@ -27,7 +27,7 @@ namespace FWPS.Controllers
             MailItem mailCopy = new MailItem()
             {
                 To = item.ReceiverEmail,
-                From = "simonvu@post.au.dk",
+                From = "simonvu8210@gmail.com",
                 Body = string.Format("You have received mail\nAlso your current power level is: {0}", item.PowerLevel),
                 Subject = "New mail in SnapBox"
             };
