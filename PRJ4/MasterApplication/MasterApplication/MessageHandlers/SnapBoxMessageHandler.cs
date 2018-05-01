@@ -9,5 +9,7 @@ namespace MasterApplication.MessageHandlers
         {
             Console.WriteLine("Snap Box message: {0}", message);
         }
+
+        
     }
 }
