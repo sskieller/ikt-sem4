@@ -18,7 +18,7 @@ namespace MasterApplication
             var connFactory = new ConnectionFactory() { HostName = "localhost" };
             connFactory.AutomaticRecoveryEnabled = true;
             // Init SigalR Singleton. Connecting to Azure and setting unit name
-            SignalRClient.Instance.UpdateName("Master Unit");
+            SignalRClient.Instance.Setup("Master Unit");
 
 	        {
 				MorningSunMessageHandler msgHandler = new MorningSunMessageHandler();
@@ -58,7 +58,7 @@ namespace MasterApplication
 					else if (key == '3')
 					{
 						FwpsPublisher.PublishMessage("MorningSun.CmdStatus", "Status");
-						Console.WriteLine("Sending off");
+						Console.WriteLine("Sending status");
 					}
 					key = Console.ReadKey().KeyChar;
 				}

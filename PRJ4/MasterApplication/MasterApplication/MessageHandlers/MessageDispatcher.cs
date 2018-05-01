@@ -40,15 +40,15 @@ namespace MasterApplication.MessageHandlers
 		    //Console.WriteLine("Dispatcher recived message from listener: \"{0}\" from module: {1}", message, senderModule);
 		    //Console.WriteLine("Passing message to MessageHandler");
 
-			try
-		    {
-			    IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(senderModule);
-			    msgHandler.HandleMessage(message, topic);
-			}
-		    catch (MessageHandlerCreationException ex)
-		    {
-			    Console.WriteLine(ex.Message);
-		    }
+	        try
+	        {
+	            IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(senderModule);
+	            msgHandler.HandleMessage(message, topic);
+	        }
+	        catch (Exception ex)
+	        {
+	            Console.WriteLine(ex.Message);
+	        }
 		    
 		    
 	    }

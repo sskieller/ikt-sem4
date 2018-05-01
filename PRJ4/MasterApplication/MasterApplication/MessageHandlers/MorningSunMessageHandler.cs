@@ -66,19 +66,21 @@ namespace MasterApplication.MessageHandlers
         private void LightIsOn(string message)
         {
             Console.WriteLine("Morning Sun: Received \"on\" from module");
-
+            Console.WriteLine(message);
             //Send message to DB that light is now on
             LightItem lightItem = new LightItem() { Command = "TurnedOn", IsOn = true };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
-
+            SignalRClient.Instance.UpdateEntityCondition("Light", "On");
         }
 
         private void LightIsOff(string message)
         {
             Console.WriteLine("Morning Sun: Received \"off\" from module");
+            Console.WriteLine(message);
             //Send message to DB that light is now on
             LightItem lightItem = new LightItem() { Command = "TurnedOff", IsOn = false };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
+            SignalRClient.Instance.UpdateEntityCondition("Light", "Off");
         }
 
         #endregion
