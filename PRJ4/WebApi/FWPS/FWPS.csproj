@@ -7,6 +7,10 @@
     <StartupObject />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Migrations\20180401181715_AddSnapBoxItem.cs" />
     <Compile Remove="Migrations\20180401181715_AddSnapBoxItem.Designer.cs" />
