@@ -8,14 +8,13 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Timers;
-using System.Threading;
 
 namespace FWPS_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LightPage : ContentPage
     {
-        System.Timers.Timer timer;
+
         public LightPage()
         {
             InitializeComponent();
@@ -154,7 +153,8 @@ namespace FWPS_App
 
         private void Timer()
         {
-            timer = new System.Timers.Timer();
+            Timer timer;
+            timer = new Timer();
             timer.Elapsed += (object s, ElapsedEventArgs e) => LightState();
             timer.AutoReset = true;
             timer.Interval = 2000;
