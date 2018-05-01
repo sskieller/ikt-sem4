@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <StartupObject>FWPS.Program</StartupObject>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
