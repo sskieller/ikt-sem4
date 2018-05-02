@@ -54,6 +54,20 @@ namespace FWPS.Controllers
 		}
 
 		[HttpPost]
+	    [HttpGet("[action]")] // '/api/Light/Newest'
+	    public IActionResult Newest()
+	    {
+	        var item = _context.SnapBoxItems.Last();
+	        if (item == null)
+	        {
+	            return NotFound();
+	        }
+	        return new ObjectResult(item);
+	    }
+
+
+
+        [HttpPost]
 		public IActionResult Create([FromBody] SnapBoxItem item)
 		{
 			if (item == null)

@@ -21,23 +21,49 @@ namespace MasterApplication
             }
         }
 
-
-
         // Implementation
 
         public event EventHandler<SignalREventArgs> OnCommandReceived;
 
+        /// <summary>
+        /// Setups and configures the signalR connection to the Azure server
+        /// </summary>
+        /// <param name="deviceName">Name Displayed on the Azure server</param>
+        /// <returns>void</returns>
+        public void Setup(string deviceName)
+        {
+            SetUpInternal();
+            _connection.SendAsync("UpdateName", deviceName).Wait();
+        }
+
+        public void UpdateEntityCondition(string entity, string value)
+        {
+            _connection.SendAsync("UpdateEntityCondition", entity, value).Wait();
+        }
+
+
+        // Private implementation
+
         private HubConnection _connection;
 
         private SignalRClient()
+        { }
+
+        private void SetUpInternal()
         {
             _connection = new HubConnectionBuilder().WithUrl("http://fwps.azurewebsites.net/devices").Build();
-            _connection.StartAsync().Wait();
 
             _connection.On<string, string, object>("UpdateSpecific", ((type, target, obj) =>
             {
                 OnCommandReceived?.Invoke(this, new SignalREventArgs(obj, target, type));
             }));
+
+            _connection.On<string, string>("UpdateEntityCondition", (entity, value) =>
+            {
+                Console.WriteLine(entity + " --- " + value);
+            });
+
+            _connection.StartAsync().Wait();
 
             _connection.Closed += ConnectionOnClosed;
         }
@@ -46,10 +72,12 @@ namespace MasterApplication
         {
             Console.WriteLine(exception.Message);
 
+            Console.WriteLine("Connection closed -- Trying to reconnect");
+
             Task.Delay(TimeSpan.FromSeconds(15));
 
-            _connection = new HubConnectionBuilder().WithUrl("http://fwps.azurewebsites.net/devices").Build();
-
+            //_connection = new HubConnectionBuilder().WithUrl("http://fwps.azurewebsites.net/devices").Build();
+            /*
             try
             {
                 _connection.StartAsync().Wait(TimeSpan.FromSeconds(15));
@@ -58,19 +86,16 @@ namespace MasterApplication
             {
                 Console.WriteLine(e.Message);
             }
+            */
+
+            _connection.StartAsync().Wait(TimeSpan.FromSeconds(15));
 
             return Task.CompletedTask;
         }
 
-
-        /// <summary>
-        /// Setups and configures the signalR connection to the Azure server
-        /// </summary>
-        /// <param name="deviceName">Name Displayed on the Azure server</param>
-        /// <returns>void</returns>
-        public void UpdateName(string deviceName)
+        private void TryToReconnect(int times)
         {
-            _connection.SendAsync("UpdateName", deviceName).Wait();
+            if (times > 5) return;
         }
     }
 
