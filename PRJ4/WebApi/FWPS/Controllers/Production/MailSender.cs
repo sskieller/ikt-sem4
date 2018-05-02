@@ -9,7 +9,7 @@ using System.Net.Mail;
 
 namespace FWPS.Controllers
 {
-    public class MailSender
+    public class MailSender : IMailSender
     {
         private readonly FwpsDbContext _context;
 

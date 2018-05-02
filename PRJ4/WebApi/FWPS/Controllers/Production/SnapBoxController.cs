@@ -1,40 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 using FWPS.Data;
 using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FWPS.Controllers
 {
-	[Route("api/[Controller]")]
-	public class SnapBoxController : Controller
+    public class NoItemsInDatabaseException : Exception
+    {
+    }
+    
+    [Route("api/[Controller]")]
+	public class SnapBoxController : Controller, ISnapBoxController
 	{
 		private readonly FwpsDbContext _context;
 	    private List<IObserver<SnapBoxItem>> _observers;
 
 		public SnapBoxController(FwpsDbContext context)
 		{
-			_context = context;
-            _observers = new List<IObserver<SnapBoxItem>>();
+		    _context = context ?? throw new NullReferenceException();
+		    _observers = new List<IObserver<SnapBoxItem>>();
 
 			if (_context.SnapBoxItems.Any() == false)
 			{
-				_context.SnapBoxItems.Add(new SnapBoxItem() { PowerLevel = "100", MailReceived = false, ReceiverEmail = "simonvu@post.au.dk"});
+				_context.SnapBoxItems.Add(new SnapBoxItem { PowerLevel = "100", MailReceived = false, ReceiverEmail = "simonvu@post.au.dk", SnapBoxId = "000"});
 				_context.SaveChanges();
 			}
 		}
 
-
-		[HttpGet]
+	    [HttpGet]
 		public IEnumerable<SnapBoxItem> GetAll()
 		{
+            if (_context.SnapBoxItems.ToList().Count <= 0)
+            {
+                throw new NoItemsInDatabaseException();
+            }
 			return _context.SnapBoxItems.ToList();
-
 		}
-
 
 		[HttpGet("{id:int}", Name = "GetSnapBox")]
 		public IActionResult GetById(long id)
@@ -49,8 +53,6 @@ namespace FWPS.Controllers
 			return new ObjectResult(item);
 		}
 
-
-
 		[HttpPost]
 		public IActionResult Create([FromBody] SnapBoxItem item)
 		{
@@ -59,7 +61,7 @@ namespace FWPS.Controllers
 
 		    if (item.PowerLevel == null)
 		        return BadRequest("Powerlevel null");
-		    if (item.MailReceived == true && item.ReceiverEmail == null)
+		    if (item.MailReceived && item.ReceiverEmail == null)
 		        return BadRequest("No ReceiverEmail specified");
 
 			_context.SnapBoxItems.Add(item);
@@ -87,7 +89,5 @@ namespace FWPS.Controllers
 			_context.SaveChanges();
 			return new NoContentResult();
 		}
-
-
 	}
 }

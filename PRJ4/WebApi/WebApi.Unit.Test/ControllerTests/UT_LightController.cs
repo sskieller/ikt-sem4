@@ -96,8 +96,10 @@ namespace WebApi.Unit.Test
                 _lc.Create(_li2);
 
                 var result = _lc.Newest() as ObjectResult;
+                Debug.Assert(result != null, nameof(result) + " != null");
                 var model = result.Value as LightItem;
 
+                Debug.Assert(model != null, nameof(model) + " != null");
                 Assert.That(model.Command, Is.EqualTo("What"));
                 Assert.That(model.Command, Is.EqualTo("What"));
             }
