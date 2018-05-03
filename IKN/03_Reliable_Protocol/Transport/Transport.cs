@@ -139,13 +139,13 @@ namespace Transportlaget
 					//Generate noise
 					buffer[1]++;
 					Console.WriteLine("Noise! - byte #1 is spoiled in the third transmission");
+					Console.WriteLine("Current sequence number: {0}", seqNo);
 				}
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == buffer[(int)TransCHKSUM.SEQNO]); //Kepp on going until sequence number changes
-			old_seqNo = DEFAULT_SEQNO; //Important i transmission direction will be changed at
-			// application level WHY?
+			} while (receiveAck() == buffer[(int)TransCHKSUM.SEQNO] && !dataReceived); //Kepp on going until sequence number changes
+			old_seqNo = DEFAULT_SEQNO; //Reset sequence number in case transmission direction changes
 
 		}
 
@@ -172,14 +172,17 @@ namespace Transportlaget
 					continue;
 				}
 
-				//Correct data received
-				sendAck(true);
+
+			
 
 				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
 				{
 					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
+					sendAck (false);
 					continue;
 				}
+				//Correct data received
+				sendAck(true);
 
 
 

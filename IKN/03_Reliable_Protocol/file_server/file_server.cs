@@ -56,10 +56,13 @@ namespace Application
 					transport.send(fileSize, fileSize.Length);
 				
 					int remainingBytes = file.Read(buffer,0, BUFSIZE);
+					int remaining = int.Parse(file.Length.ToString ());
 					while (remainingBytes > 0) 
 					{
 						transport.send (buffer, remainingBytes);
 						remainingBytes = file.Read (buffer, 0, BUFSIZE);
+						remaining = remaining - remainingBytes;
+						Console.WriteLine ("Need to write {0} of {1} bytes", remaining, file.Length.ToString ());
 					}
 					file.Close ();
 
