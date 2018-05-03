@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NSubstitute" Version="3.1.0" />
+    <PackageReference Include="NUnit" Version="3.10.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MasterApplication\MasterApplication.csproj" />
+  </ItemGroup>
+
 </Project>
