@@ -30,19 +30,10 @@ namespace Linklaget
 		/// </summary>
 		public Link (int BUFSIZE, string APP)
 		{
-			// Create a new SerialPort object with default settings.
-			#if DEBUG
-				if(APP.Equals("FILE_SERVER"))
-				{
-					serialPort = new SerialPort("/dev/ttySn0",115200,Parity.None,8,StopBits.One);
-				}
-				else
-				{
-					serialPort = new SerialPort("/dev/ttySn1",115200,Parity.None,8,StopBits.One);
-				}
-			#else
-				serialPort = new SerialPort("/dev/ttyS1",115200,Parity.None,8,StopBits.One);
-			#endif
+
+			serialPort = new SerialPort("/dev/ttyS1",115200,Parity.None,8,StopBits.One);
+
+
 			if(!serialPort.IsOpen)
 				serialPort.Open();
 
@@ -135,7 +126,7 @@ namespace Linklaget
 
 				++count; //Increment count by 1
 				tempByte = (byte) serialPort.ReadByte(); //Read next byte
-			}
+ 			}
 
 			return count; //Return amount of bytes read
 		}

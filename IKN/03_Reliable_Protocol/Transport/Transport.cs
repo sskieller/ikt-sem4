@@ -122,14 +122,18 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
+			byte seq = seqNo;
 			//Send one frame at a time
 			//Do not send more frames until ACK is received
 			do
 			{
+				
 				//Copy parameter buf to buffer, store from the fifth [4] bit onwards
 				Array.Copy(buf, 0, buffer, (int)TransSize.ACKSIZE, size );
 
 				buffer[(int)TransCHKSUM.SEQNO] = seqNo; //Add sequence number
+				seq = seqNo;
+
 				buffer[(int) TransCHKSUM.TYPE] = (byte) TransType.DATA; //Set type to DATA
 
 				checksum.calcChecksum(ref buffer, size + (int) TransSize.ACKSIZE); //Add checksum to send buffer data
@@ -144,7 +148,7 @@ namespace Transportlaget
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == buffer[(int)TransCHKSUM.SEQNO] && !dataReceived); //Kepp on going until sequence number changes
+			} while (receiveAck() == seq); //Kepp on going until sequence number changes
 			old_seqNo = DEFAULT_SEQNO; //Reset sequence number in case transmission direction changes
 
 		}
