@@ -25,7 +25,7 @@ namespace MasterApplication.MessageHandlers
 
                 //RFID
                 case "EntryRequest":
-
+                    RfidEntryRequest(message);
                     break;
 
                 case "CmdUnlock":
@@ -67,6 +67,21 @@ namespace MasterApplication.MessageHandlers
         {
             Console.WriteLine("Hodoor: Received entry request with RFID: {0}", message);
             Console.WriteLine();
+
+            string response = _connector.GetItem("Login/" + message);
+
+            bool success = response.Contains("200");
+
+            if (success)
+            {
+                Console.WriteLine("Hodoor: Request success");
+                UnlockHodoor("");
+            }
+            else
+            {
+                Console.WriteLine("Hodoor: Request failed");
+            }
+            
         }
 
         #endregion
