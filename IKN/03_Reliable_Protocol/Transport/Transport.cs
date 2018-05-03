@@ -172,17 +172,16 @@ namespace Transportlaget
 					continue;
 				}
 
-
+				//Correct data received
+				sendAck(true);
 
 				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
 				{
 					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
-					sendAck (false);
 					continue;
 				}
 
-				//Correct data received
-				sendAck(true);
+
 
 				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
 
