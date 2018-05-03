@@ -48,15 +48,6 @@ namespace Transportlaget
 		/// </summary>
 		private int recvSize = 0;
 		/// <summary>
-		/// Generate noise every N bytes
-		/// </summary>
-		public int GenerateNoiseEvery {get;set;} = 0;
-		/// <summary>
-		/// counter for noise generation
-		/// </summary>
-		private int noiseCounter = 0;
-
-		/// <summary>
 		/// Initializes a new instance of the <see cref="Transport"/> class.
 		/// </summary>
 		public Transport (int BUFSIZE, string APP)
@@ -112,6 +103,11 @@ namespace Transportlaget
 				(ackType ? (byte)buffer [(int)TransCHKSUM.SEQNO] : (byte)(buffer [(int)TransCHKSUM.SEQNO] + 1) % 2);
 			ackBuf [(int)TransCHKSUM.TYPE] = (byte)(int)TransType.ACK;
 			checksum.calcChecksum (ref ackBuf, (int)TransSize.ACKSIZE);
+			if(++errorCount == 2) // Simulate noise
+			{
+				ackBuf[1]++; // Important: Only spoil a checksum-field (ackBuf[0] or ackBuf[1])
+				Console.WriteLine("Noise! byte #1 is spoiled in the third transmitted ACK-package");
+			}
 			link.send(ackBuf, (int)TransSize.ACKSIZE);
 		}
 
@@ -138,17 +134,18 @@ namespace Transportlaget
 
 				checksum.calcChecksum(ref buffer, size + (int) TransSize.ACKSIZE); //Add checksum to send buffer data
 
-				if (GenerateNoiseEvery > 0 && (++noiseCounter % GenerateNoiseEvery) == 0)
+				if (++errorCount == 3)
 				{
 					//Generate noise
-					buffer[(int) TransCHKSUM.CHKSUMHIGH] = 0;
-					Console.WriteLine("Generated some noise, CHSUMHIGH is no longer legit");
+					buffer[1]++;
+					Console.WriteLine("Noise! - byte #1 is spoiled in the third transmission");
 				}
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
 			} while (receiveAck() == buffer[(int)TransCHKSUM.SEQNO]); //Kepp on going until sequence number changes
-
+			old_seqNo = DEFAULT_SEQNO; //Important i transmission direction will be changed at
+			// application level WHY?
 
 		}
 
