@@ -14,6 +14,8 @@ namespace MasterApplication.MessageHandlers
                     return new MorningSunMessageHandler();
                 case "SnapBox":
                     return new SnapBoxMessageHandler();
+                case "Hodoor":
+                    return new HodoorMessageHandler();
                 default:
                     throw new MessageHandlerCreationException("Type not recognized by MessageHandlerFactory");
             }
