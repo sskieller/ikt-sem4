@@ -23,6 +23,11 @@ namespace MasterApplication.MessageHandlers
                     HodoorWasUnlocked(message);
                     break;
 
+                //RFID
+                case "EntryRequest":
+
+                    break;
+
                 case "CmdUnlock":
                     UnlockHodoor(message);
                     break;
@@ -56,6 +61,12 @@ namespace MasterApplication.MessageHandlers
             HodoorItem item = new HodoorItem() { Command = "ModuleLocked", OpenStatus = false };
             _connector.PostItem("Hodoor/", JsonConvert.SerializeObject(item));
             SignalRClient.Instance.UpdateEntityCondition("Hodoor", "Locked");
+        }
+
+        private void RfidEntryRequest(string message)
+        {
+            Console.WriteLine("Hodoor: Received entry request with RFID: {0}", message);
+            Console.WriteLine();
         }
 
         #endregion
