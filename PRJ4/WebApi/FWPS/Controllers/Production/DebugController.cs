@@ -23,13 +23,13 @@ namespace FWPS.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Content(DebugWriter.Read());
+            return Content(new DebugWriter().Read);
         }
 
         [HttpGet("[action]")] // '/api/Light/Newest'
         public IActionResult Clear()
         {
-            DebugWriter.Clear();
+            new DebugWriter().Clear();
             return Ok();
         }
 

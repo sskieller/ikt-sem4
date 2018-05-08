@@ -29,8 +29,6 @@ namespace WebApi.Unit.Test.ControllerTests
         private DbContextOptions<FwpsDbContext> _options;
         private FwpsDbContext _stubContext;
 
-        private IQueryable _queryable;
-
         [SetUp]
         public void SetUp()
         {

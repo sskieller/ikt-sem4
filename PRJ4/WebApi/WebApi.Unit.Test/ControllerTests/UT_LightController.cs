@@ -317,8 +317,6 @@ namespace WebApi.Unit.Test
 
                 _lc = new LightController(_context, _hub);
 
-                LightItem nullItem = null;
-
                 _hub.Clients.All.DidNotReceive().InvokeAsync(Arg.Any<string>());
 
             }

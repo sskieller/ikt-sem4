@@ -53,7 +53,6 @@ namespace FWPS.Controllers
 			return new ObjectResult(item);
 		}
 
-		[HttpPost]
 	    [HttpGet("[action]")] // '/api/Light/Newest'
 	    public IActionResult Newest()
 	    {
@@ -64,8 +63,6 @@ namespace FWPS.Controllers
 	        }
 	        return new ObjectResult(item);
 	    }
-
-
 
         [HttpPost]
 		public IActionResult Create([FromBody] SnapBoxItem item)
