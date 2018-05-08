@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "663b18a8d6235c2c653a254d9305b4392f580f6e"
+    "signature": "bac00ec2d94b30ec64f1f33acc97f9c64f8ae6a6"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.7",
           "Microsoft.AspNetCore.SignalR": "1.0.0-alpha1-final",
+          "Microsoft.AspNetCore.SignalR.Client": "1.0.0-alpha1-final",
           "Microsoft.AspNetCore.WebSockets": "2.0.2",
           "Microsoft.EntityFrameworkCore": "2.0.2",
           "Microsoft.EntityFrameworkCore.Design": "2.0.2",
@@ -1316,6 +1317,32 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.dll": {}
         }
       },
+      "Microsoft.AspNetCore.SignalR.Client/1.0.0-alpha1-final": {
+        "dependencies": {
+          "Microsoft.AspNetCore.SignalR.Client.Core": "1.0.0-alpha1-final",
+          "Microsoft.AspNetCore.Sockets.Client.Http": "1.0.0-alpha1-final",
+          "Microsoft.Extensions.Logging.Console": "2.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Client.Core/1.0.0-alpha1-final": {
+        "dependencies": {
+          "Microsoft.AspNetCore.SignalR.Common": "1.0.0-alpha1-final",
+          "Microsoft.AspNetCore.Sockets.Abstractions": "1.0.0-alpha1-final",
+          "Microsoft.Extensions.Logging": "2.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.SignalR.Client.Core.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.SignalR.Common/1.0.0-alpha1-final": {
         "dependencies": {
           "MsgPack.Cli": "0.9.0-beta2",
@@ -1375,6 +1402,26 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Sockets.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Sockets.Client.Http/1.0.0-alpha1-final": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Sockets.Abstractions": "1.0.0-alpha1-final",
+          "Microsoft.AspNetCore.Sockets.Common.Http": "1.0.0-alpha1-final",
+          "Microsoft.Extensions.Logging.Abstractions": "2.0.1",
+          "Newtonsoft.Json": "10.0.1",
+          "System.IO.Pipelines": "0.1.0-alpha-001",
+          "System.IO.Pipelines.Extensions": "0.1.0-alpha-001",
+          "System.Memory": "4.4.0-preview2-25405-01",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0",
+          "System.Threading.Tasks.Channels": "0.1.0-alpha-001"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Sockets.Client.Http.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Sockets.Client.Http.dll": {}
         }
       },
       "Microsoft.AspNetCore.Sockets.Common.Http/1.0.0-alpha1-final": {
@@ -3000,6 +3047,18 @@
           "System.Threading": "4.3.0"
         }
       },
+      "System.Collections.Sequences/0.1.0-alpha-001": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "System.Memory": "4.4.0-preview2-25405-01"
+        },
+        "runtime": {
+          "lib/netstandard1.1/System.Collections.Sequences.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.1/System.Collections.Sequences.dll": {}
+        }
+      },
       "System.Collections.Specialized/4.3.0": {
         "dependencies": {
           "System.Collections.NonGeneric": "4.3.0",
@@ -3382,6 +3441,34 @@
       "System.IO.FileSystem.Primitives/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
+        }
+      },
+      "System.IO.Pipelines/0.1.0-alpha-001": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "System.Buffers.Primitives": "0.1.0-alpha-001",
+          "System.Collections.Sequences": "0.1.0-alpha-001"
+        },
+        "runtime": {
+          "lib/netstandard1.1/System.IO.Pipelines.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.1/System.IO.Pipelines.dll": {}
+        }
+      },
+      "System.IO.Pipelines.Extensions/0.1.0-alpha-001": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "System.Binary": "0.1.0-alpha-001",
+          "System.Collections.Sequences": "0.1.0-alpha-001",
+          "System.IO.Pipelines": "0.1.0-alpha-001",
+          "System.Threading.Tasks.Extensions": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.IO.Pipelines.Extensions.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/System.IO.Pipelines.Extensions.dll": {}
         }
       },
       "System.Linq/4.3.0": {
@@ -5045,6 +5132,20 @@
       "path": "microsoft.aspnetcore.signalr/1.0.0-alpha1-final",
       "hashPath": "microsoft.aspnetcore.signalr.1.0.0-alpha1-final.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.SignalR.Client/1.0.0-alpha1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gcd9TH4I5raEGW/L5eF0BcSroqfWsIE9jnwyLnLdxnzLQQo1MXEBQxzA3ufKh9Bse/O6NrxNUMXKufdpTUZn6Q==",
+      "path": "microsoft.aspnetcore.signalr.client/1.0.0-alpha1-final",
+      "hashPath": "microsoft.aspnetcore.signalr.client.1.0.0-alpha1-final.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Client.Core/1.0.0-alpha1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uPOcnkwaE1vcnvNPp5EB2sJvOS9TPESY0OWcSi0tVWKidwRwU8Cwyl7HbIN/tdWuQnZWysUitT8Vc7Y1Di1uUA==",
+      "path": "microsoft.aspnetcore.signalr.client.core/1.0.0-alpha1-final",
+      "hashPath": "microsoft.aspnetcore.signalr.client.core.1.0.0-alpha1-final.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.SignalR.Common/1.0.0-alpha1-final": {
       "type": "package",
       "serviceable": true,
@@ -5072,6 +5173,13 @@
       "sha512": "sha512-FX1sjfvBgq3SNO6Nfe4dp/i3cPSDQxo8dOtk/sNuP40eqQ1jGoo+iDDWQ9xipCjsdIWsMoPlyCUfbsMykGg7fQ==",
       "path": "microsoft.aspnetcore.sockets.abstractions/1.0.0-alpha1-final",
       "hashPath": "microsoft.aspnetcore.sockets.abstractions.1.0.0-alpha1-final.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Sockets.Client.Http/1.0.0-alpha1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7DGUxzF8NDARx8cpVkHb35sPiWam+WtPOe1NiCDGKe9NW1fmL3e1w7e7KHZ00CtLcdVv5gch1DJtx9R7IR9+UQ==",
+      "path": "microsoft.aspnetcore.sockets.client.http/1.0.0-alpha1-final",
+      "hashPath": "microsoft.aspnetcore.sockets.client.http.1.0.0-alpha1-final.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Sockets.Common.Http/1.0.0-alpha1-final": {
       "type": "package",
@@ -5997,6 +6105,13 @@
       "path": "system.collections.nongeneric/4.3.0",
       "hashPath": "system.collections.nongeneric.4.3.0.nupkg.sha512"
     },
+    "System.Collections.Sequences/0.1.0-alpha-001": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/ybTVl3uZI0fJkhtrG1hm6fJBvcF77drBqmMZrQpA3f8JabDNvUYvF1pspL6AZcUKDWP5qIxdPlOnnJ6XK9mzQ==",
+      "path": "system.collections.sequences/0.1.0-alpha-001",
+      "hashPath": "system.collections.sequences.0.1.0-alpha-001.nupkg.sha512"
+    },
     "System.Collections.Specialized/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -6213,6 +6328,20 @@
       "sha512": "sha512-6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
       "path": "system.io.filesystem.primitives/4.3.0",
       "hashPath": "system.io.filesystem.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Pipelines/0.1.0-alpha-001": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sx58E66aYcRaopcxRRdXweTZwMMVL89p5gDSpMIPJjldG25jl7OctQHe/MnWH59vWE2WUKJmyoW/+Q4FLqFPNQ==",
+      "path": "system.io.pipelines/0.1.0-alpha-001",
+      "hashPath": "system.io.pipelines.0.1.0-alpha-001.nupkg.sha512"
+    },
+    "System.IO.Pipelines.Extensions/0.1.0-alpha-001": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6tlVsWx4PRiDJL34UoEEhMu14l2UxM2RsgaOR967L92fjVwZoEmSNIHf5//l18gBj5YAwkTZdHppj2GIY7LuzA==",
+      "path": "system.io.pipelines.extensions/0.1.0-alpha-001",
+      "hashPath": "system.io.pipelines.extensions.0.1.0-alpha-001.nupkg.sha512"
     },
     "System.Linq/4.3.0": {
       "type": "package",

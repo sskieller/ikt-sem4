@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MasterApplication.Unit.Test
+namespace UnitTest
 {
     public class Class1
     {

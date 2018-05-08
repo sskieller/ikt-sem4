@@ -25,10 +25,10 @@ namespace FWPS.Controllers
         }
 
 
-        [HttpGet("{username}", Name = "GetUsername")]
-        public IActionResult GetByUsername(string username)
+        [HttpGet("{RFID}", Name = "GetRFID")]
+        public IActionResult GetByUsername(string rfid)
         {
-            var item = _context.LoginItems.FirstOrDefault(t => t.Username == username);
+            var item = _context.LoginItems.FirstOrDefault(t => t.Rfid == rfid);
             {
                 if (item == null)
                 {
