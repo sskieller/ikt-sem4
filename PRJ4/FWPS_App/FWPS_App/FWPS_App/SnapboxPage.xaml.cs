@@ -8,6 +8,7 @@ using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace FWPS_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]

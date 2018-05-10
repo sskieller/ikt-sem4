@@ -45,14 +45,14 @@
                 <Entry Placeholder="Username" Style="{StaticResource EntryStyle}"
                        PlaceholderColor="#FFDAA520"
                        x:Name="usernameTextBox"
-                       Grid.Row="4"/>
+                       Grid.Row="3"/>
                 <Entry Placeholder="Password" Style="{StaticResource EntryStyle}"
                        IsPassword="True"
                        PlaceholderColor="#FFDAA520"
                        x:Name="passwordTextBox" Completed="OnLoginButton_Clicked"
-                       Grid.Row="5"/>
+                       Grid.Row="4"/>
                 <ActivityIndicator x:Name="loadingWheelTM"  
-                                   Grid.Row="5" VerticalOptions="Center" 
+                                   Grid.Row="4" VerticalOptions="Center" 
                                    HorizontalOptions="Center" IsRunning="False" 
                                    Color="Orange"/>
                 <Button Text="Login" Style="{StaticResource ButtonStyle}"
