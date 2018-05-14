@@ -18,6 +18,13 @@ namespace SmartGrid.Controllers
     {
         private SmartGridContext db = new SmartGridContext();
 
+        private static event EventHandler ProsumerUpdatedEvent;
+
+        static ProsumersController()
+        {
+            ProsumerUpdatedEvent += EventNotifier.Instance.ProsumersUpdatedEventHandler;
+        }
+
         // GET: api/Prosumers
         public IQueryable<Prosumer> GetProsumers()
         {
@@ -86,24 +93,19 @@ namespace SmartGrid.Controllers
             foreach (var pro in prosumer)
                 uow.Repository.Create(pro);
 
-
             try
             {
-                await db.SaveChangesAsync();
+                uow.Commit();
             }
             catch (DbUpdateException)
             {
-                if (ProsumerExists(prosumer.Name))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest("You don goofed");
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = prosumer.Name }, prosumer);
+            ProsumerUpdatedEvent?.Invoke(new object(), new EventArgs());
+
+            //return CreatedAtRoute("DefaultApi", new { id = prosumer.Name }, prosumer);
+            return Ok();
         }
 
         // DELETE: api/Prosumers/5
