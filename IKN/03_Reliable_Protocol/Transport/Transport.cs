@@ -69,25 +69,24 @@ namespace Transportlaget
 		/// </returns>
 		private byte receiveAck()
 		{
-			recvSize = link.receive(ref buffer);
-			dataReceived = true;
-
-			if (recvSize == (int)TransSize.ACKSIZE) {
-				dataReceived = false;
-				if (!checksum.checkChecksum (buffer, (int)TransSize.ACKSIZE) ||
-					buffer [(int)TransCHKSUM.SEQNO] != seqNo ||
-					buffer [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
-				{
-					seqNo = (byte) buffer[(int)TransCHKSUM.SEQNO];
-				}
-				else
-				{
-					seqNo = (byte)((buffer[(int)TransCHKSUM.SEQNO] + 1) % 2);
-				}
-			}
+			byte[] buf = new byte[(int)TransSize.ACKSIZE];
+			int size = link.receive (ref buf);
+			if (size != (int)TransSize.ACKSIZE)
+				return DEFAULT_SEQNO;
+			if (!checksum.checkChecksum (buf, (int)TransSize.ACKSIZE) ||
+			    buf [(int)TransCHKSUM.SEQNO] != seqNo ||
+			    buf [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
+					return DEFAULT_SEQNO;
 
 			return seqNo;
 
+		}
+		/// <summary>
+		/// Set next sequence number
+		/// </summary>
+		private void nextSeqNo()
+		{
+			seqNo = (byte)((seqNo + 1) % 2);
 		}
 
 		/// <summary>
@@ -148,7 +147,8 @@ namespace Transportlaget
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == seq); //Kepp on going until sequence number changes
+			} while (receiveAck() == seqNo); //Kepp on going until sequence number changes
+			nextSeqNo();
 			old_seqNo = DEFAULT_SEQNO; //Reset sequence number in case transmission direction changes
 
 		}
@@ -198,5 +198,6 @@ namespace Transportlaget
 			}
 
 		}
+
 	}
 }
