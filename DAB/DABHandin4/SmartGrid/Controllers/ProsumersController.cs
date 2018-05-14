@@ -72,39 +72,39 @@ namespace SmartGrid.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Prosumers
-        [ResponseType(typeof(Prosumer))]
-        public async Task<IHttpActionResult> PostProsumer(Prosumer[] prosumer)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/Prosumers
+        //[ResponseType(typeof(Prosumer))]
+        //public async Task<IHttpActionResult> PostProsumer(Prosumer[] prosumer)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var uow = new UnitOfWork<Prosumer>(db);
+        //    var uow = new UnitOfWork<Prosumer>(db);
 
-            foreach (var pro in prosumer)
-                uow.Repository.Create(pro);
+        //    foreach (var pro in prosumer)
+        //        uow.Repository.Create(pro);
 
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (ProsumerExists(prosumer.Name))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    //try
+        //    //{
+        //    //    await db.SaveChangesAsync();
+        //    //}
+        //    //catch (DbUpdateException)
+        //    //{
+        //    //    if (ProsumerExists(prosumer.Name))
+        //    //    {
+        //    //        return Conflict();
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        throw;
+        //    //    }
+        //    //}
 
-            return CreatedAtRoute("DefaultApi", new { id = prosumer.Name }, prosumer);
-        }
+        //    //return CreatedAtRoute("DefaultApi", new { id = prosumer.Name }, prosumer);
+        //}
 
         // DELETE: api/Prosumers/5
         [ResponseType(typeof(Prosumer))]
