@@ -188,7 +188,7 @@ namespace Transportlaget
 				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
 				{
 					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
-					//sendAck (false);
+					sendAck (false);
 					continue;
 				}
 				//Correct data received
