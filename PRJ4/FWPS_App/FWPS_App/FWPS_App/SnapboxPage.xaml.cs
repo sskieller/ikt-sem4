@@ -19,6 +19,7 @@ namespace FWPS_App
             InitializeComponent();
             Timer();
             BatteryStatus();
+            MailStatus();
             NavigationPage.SetHasNavigationBar(this, false);
             ReturnBtn.Clicked += ReturnBtn_Clicked;
         }
@@ -28,6 +29,7 @@ namespace FWPS_App
             Timer timer;
             timer = new Timer();
             timer.Elapsed += (object s, ElapsedEventArgs e) => BatteryStatus();
+            timer.Elapsed += (object s, ElapsedEventArgs e) => MailStatus();
             timer.AutoReset = true;
             timer.Interval = 2000;
             timer.Start();
@@ -50,6 +52,23 @@ namespace FWPS_App
                 });
         }
 
+        private void MailStatus()
+        {
+
+            string obj = HTTPRequestHandler.CreateGetRequest(SnapboxUri + "newest/").ToString();
+
+            var snapboxObject = JsonConvert.DeserializeObject<SnapboxObject>(obj);
+
+            if(snapboxObject.MailReceived == true)
+            {
+                mailStatusLbl.Text = "You got mail";
+            }
+            if(snapboxObject.MailReceived == false)
+            {
+                mailStatusLbl.Text = "Your snapbox is empty";
+            }
+        }
+
         public static string SnapboxUri { get; set; } = "http://fwps.azurewebsites.net/api/snapbox/";
 
         public class SnapboxObject
@@ -62,6 +81,4 @@ namespace FWPS_App
         }
     }
 }
-
-    // Check om der er kommet mail. Gives nofikation såfremt
 
