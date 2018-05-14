@@ -37,6 +37,7 @@ namespace MasterApplication
 				listener.Add("MorningSun.#");
 				listener.Add("SnapBox.#");
                 listener.Add("Hodoor.#");
+
 				//Initialize listener and publisher
 				listener.Start();
 				FwpsPublisher.Initialize(connection);

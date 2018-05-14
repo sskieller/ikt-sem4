@@ -91,7 +91,7 @@ namespace FWPS.Controllers
             _context.LightItems.Add(lightItem);
             _context.SaveChanges();
 
-			DebugWriter.Write(string.Format("Created Lightitem with ID: {0}", lightItem.Id));
+            new DebugWriter().Write(string.Format("Created Lightitem with ID: {0}", lightItem.Id));
 
             try
             {
@@ -100,7 +100,7 @@ namespace FWPS.Controllers
             }
             catch (Exception e)
             {
-                DebugWriter.Write(e.Message);
+                new DebugWriter().Write(e.Message);
             }
 
             return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);

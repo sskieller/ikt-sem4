@@ -23,6 +23,8 @@
     <Compile Remove="Migrations\20180412115752_Added_DBsets.Designer.cs" />
     <Compile Remove="Migrations\20180412141723_dontdeletethetablespls.cs" />
     <Compile Remove="Migrations\20180412141723_dontdeletethetablespls.Designer.cs" />
+    <Compile Remove="Migrations\20180502133838_interfacesForEveryone.cs" />
+    <Compile Remove="Migrations\20180502133838_interfacesForEveryone.Designer.cs" />
     <Compile Remove="Models\LoginController.cs" />
   </ItemGroup>
 
@@ -52,6 +54,12 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>C:\Users\au519051\.nuget\packages\nsubstitute\3.1.0\lib\netstandard1.3\NSubstitute.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

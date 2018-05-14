@@ -64,8 +64,6 @@ namespace FWPS.Controllers
 	        return new ObjectResult(item);
 	    }
 
-
-
         [HttpPost]
 		public IActionResult Create([FromBody] SnapBoxItem item)
 		{

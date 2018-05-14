@@ -11,8 +11,6 @@ namespace WebApi.Unit.Test
     {
         private LightItem _uut;
         private string _command;
-        private string _wakeup;
-        private string _sleep;
         private DateTime _wakeUpTime;
         private DateTime _sleepTime;
         private bool _isOn;

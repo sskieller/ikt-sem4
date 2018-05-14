@@ -11,11 +11,13 @@ namespace MasterApplication.Threads
 	{
 		private static IModel _channel;
 	    private static bool _initialized;
+	    private static readonly object _lock = new object();
 
 
 
 	    public static void Initialize(IConnection connection)
 	    {
+            lock(_lock)
 	        if (!_initialized)
 	        {
 	            _channel = connection.CreateModel();
@@ -28,6 +30,7 @@ namespace MasterApplication.Threads
 
 		public static void PublishMessage(string topic, string message, string exchange = "amq.topic")
 		{
+            lock(_lock)
 		    if (!_initialized)
 		        throw new PublisherInitializedException("Not initialized");
 

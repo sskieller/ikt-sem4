@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using MasterApplication.Models;
 using MasterApplication.Threads;
 using RabbitMQ.Client.Events;
@@ -20,15 +21,23 @@ namespace MasterApplication.MessageHandlers
 
         private void SignalROnCommandReceived(object sender, SignalREventArgs signalREventArgs)
         {
-            try
+            Task.Factory.StartNew(() =>
             {
-                IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(signalREventArgs.Module);
-                msgHandler.HandleMessage(signalREventArgs.Obj.ToString(), signalREventArgs.Topic);
-            }
-            catch (MessageHandlerCreationException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                try
+                {
+                    IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(signalREventArgs.Module);
+                    msgHandler.HandleMessage(signalREventArgs.Obj.ToString(), signalREventArgs.Topic);
+                }
+                catch (MessageHandlerCreationException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            });
+
+
+
+
+
         }
 
         private void OnMessageReceived_DispatchMessage(object sender, BasicDeliverEventArgs e)
@@ -40,17 +49,18 @@ namespace MasterApplication.MessageHandlers
 		    //Console.WriteLine("Dispatcher recived message from listener: \"{0}\" from module: {1}", message, senderModule);
 		    //Console.WriteLine("Passing message to MessageHandler");
 
-	        try
+	        Task.Factory.StartNew(() =>
 	        {
-	            IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(senderModule);
-	            msgHandler.HandleMessage(message, topic);
-	        }
-	        catch (Exception ex)
-	        {
-	            Console.WriteLine(ex.Message);
-	        }
-		    
-		    
-	    }
+	            try
+	            {
+	                IMessageHandler msgHandler = MessageHandlerFactory.GetMessageHandler(senderModule);
+	                msgHandler.HandleMessage(message, topic);
+	            }
+	            catch (Exception ex)
+	            {
+	                Console.WriteLine(ex.Message);
+	            }
+	        });
+        }
     }
 }

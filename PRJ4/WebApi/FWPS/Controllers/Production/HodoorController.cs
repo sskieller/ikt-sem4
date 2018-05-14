@@ -6,23 +6,129 @@ using FWPS.Models;
 using Microsoft.AspNetCore.Mvc;
 using FWPS.Data;
 using Microsoft.AspNetCore.SignalR;
+using NSubstitute;
+using NSubstitute.Extensions;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace FWPS.Controllers
 {
+    interface IHodoorController
+    {
+        [HttpGet]
+        IEnumerable<HodoorItem> GetAll();
+
+        [HttpGet("{id:int}", Name = "GetHodoor")]
+        IActionResult GetById(long id);
+
+        [HttpGet("[action]")] // '/api/Light/next'
+        IActionResult Next();
+
+        [HttpGet("[action]")] // '/api/Light/Newest'
+        IActionResult Newest();
+
+        [HttpPost]
+        IActionResult Create([FromBody] HodoorItem hodoorItem);
+
+        [HttpPut("{id}")]
+        IActionResult Update(long id, [FromBody] HodoorItem hodoorItem);
+
+        [HttpDelete("{id}")]
+        IActionResult Delete(long id);
+    }
+
     [Route("api/[Controller]")]
-    public class HodoorController : Controller
+    public class MockHodoorController : Controller, IHodoorController
     {
         private readonly FwpsDbContext _context;
         // SignalRHubContext
         private IHubContext<DevicesHub> _hub;
 
+        private IDebugWriter _stubDebugWriter;
+
+        public MockHodoorController(FwpsDbContext context, IHubContext<DevicesHub> hub)
+        {
+            _hub = hub ?? throw new NullReferenceException();
+            _context = context ?? throw new NullReferenceException();
+
+            if (_context.HodoorItems.Any() == false)
+            {
+                _context.HodoorItems.Add(new HodoorItem() { Command = "CmdUnlock", OpenStatus = false });
+                _context.SaveChanges();
+            }
+        }
+
+        public IEnumerable<HodoorItem> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult GetById(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Next()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Newest()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Create(HodoorItem hodoorItem)
+        {
+            if (hodoorItem == null)
+            {
+                return BadRequest();
+            }
+
+            _stubDebugWriter = new StubDebugWriter();
+
+            _context.HodoorItems.Add(hodoorItem);
+            _context.SaveChanges();
+
+            _stubDebugWriter.Write(string.Format("Created HodoorItem with ID: {0}", hodoorItem.Id));
+
+            try
+            {
+                _hub.Clients.All.InvokeAsync("UpdateSpecific", "Hodoor", hodoorItem.Command, hodoorItem);
+
+            }
+            catch (Exception e)
+            {
+                _stubDebugWriter.Write(e.Message);
+            }
+
+            return CreatedAtRoute("GetHodoor", new { id = hodoorItem.Id }, hodoorItem);
+        }
+
+        public IActionResult Update(long id, HodoorItem hodoorItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Delete(long id)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [Route("api/[Controller]")]
+    public class HodoorController : Controller, IHodoorController
+    {
+        private readonly FwpsDbContext _context;
+        // SignalRHubContext
+        private IHubContext<DevicesHub> _hub;
+
+        private DebugWriter _debugWriter;
 
         public HodoorController(FwpsDbContext context, IHubContext<DevicesHub> hub)
         {
-            _hub = hub;
-            _context = context;
+            _hub = hub ?? throw new NullReferenceException();
+            _context = context ?? throw new NullReferenceException();
 
             if (_context.HodoorItems.Any() == false)
             {
@@ -82,23 +188,23 @@ namespace FWPS.Controllers
                 return BadRequest();
             }
   
+            _debugWriter = new DebugWriter();
 
             _context.HodoorItems.Add(hodoorItem);
             _context.SaveChanges();
 
-			DebugWriter.Write(string.Format("Created HodoorItem with ID: {0}", hodoorItem.Id));
+			_debugWriter.Write(string.Format("Created HodoorItem with ID: {0}", hodoorItem.Id));
 
             try
             {
                 _hub.Clients.All.InvokeAsync("UpdateSpecific", "Hodoor", hodoorItem.Command, hodoorItem);
-
             }
             catch (Exception e)
             {
-                DebugWriter.Write(e.Message);
+                _debugWriter.Write(e.Message);
             }
 
-            return CreatedAtRoute("GetLight", new {id = hodoorItem.Id}, hodoorItem);
+            return CreatedAtRoute("GetHodoor", new {id = hodoorItem.Id}, hodoorItem);
         }
 
         [HttpPut("{id}")]

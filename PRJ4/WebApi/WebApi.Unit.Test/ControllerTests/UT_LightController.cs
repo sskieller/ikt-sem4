@@ -45,7 +45,7 @@ namespace WebApi.Unit.Test
             };
             _li2 = new LightItem
             {
-                Command = "What",
+                Command = "When",
                 WakeUpTime = DateTime.Parse("2018-03-02 08:00"),
                 SleepTime = DateTime.Parse("2018-03-02 20:00"),
                 IsRun = true,
@@ -100,8 +100,8 @@ namespace WebApi.Unit.Test
                 var model = result.Value as LightItem;
 
                 Debug.Assert(model != null, nameof(model) + " != null");
-                Assert.That(model.Command, Is.EqualTo("What"));
-                Assert.That(model.Command, Is.EqualTo("What"));
+                Assert.That(model.Command, Is.EqualTo("When"));
+                Assert.That(model.Command, Is.EqualTo("When"));
             }
         }
 
@@ -153,7 +153,7 @@ namespace WebApi.Unit.Test
 
                 Assert.That(results[0].Command, Is.EqualTo("on"));
                 Assert.That(results[1].Command, Is.EqualTo("What"));
-                Assert.That(results[2].Command, Is.EqualTo("What"));
+                Assert.That(results[2].Command, Is.EqualTo("When"));
             }
         }
 
@@ -197,7 +197,7 @@ namespace WebApi.Unit.Test
                 _li.Command = "FirstItem";
                 _lc.Create(_li);
 
-                long id = 3;
+                const long id = 3;
 
                 var result = _lc.GetById(id) as ObjectResult;
 
@@ -215,7 +215,7 @@ namespace WebApi.Unit.Test
                 _li.Command = "FirstItem";
                 _lc.Create(_li);
 
-                long id = 2;
+                const long id = 2;
 
                 var result = _lc.GetById(id) as ObjectResult;
                 var model = result?.Value as LightItem;
@@ -232,11 +232,12 @@ namespace WebApi.Unit.Test
             {
                 _context.Database.EnsureCreated();
                 _lc = new LightController(_context, _hub);
-                var id = 1;
+                const int id = 1;
 
                 var result = _lc.GetById(id) as ObjectResult;
                 var model = result?.Value as LightItem;
 
+                Debug.Assert(model != null, nameof(model) + " != null");
                 Assert.That(model.Id, Is.EqualTo(id));
             }
         }
@@ -317,7 +318,7 @@ namespace WebApi.Unit.Test
 
                 _lc = new LightController(_context, _hub);
 
-                LightItem nullItem = null;
+                _lc.Create(null);
 
                 _hub.Clients.All.DidNotReceive().InvokeAsync(Arg.Any<string>());
 
