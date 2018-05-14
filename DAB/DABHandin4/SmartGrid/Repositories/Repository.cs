@@ -26,6 +26,11 @@ namespace SmartGrid.Repositories
             return _context.Set<T>().Find(id);
         }
 
+        public void Update(string id, T t)
+        {
+            _context.Entry<T>(t).State = EntityState.Modified;
+        }
+
         public DbSet<T> ReadAll()
         {
             return _context.Set<T>();
