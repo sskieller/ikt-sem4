@@ -40,7 +40,7 @@ namespace Application
 
 			string filename = args[0];
 
-			Console.WriteLine("Gettting file: {0}", filename);
+			Console.WriteLine("Gettting file with name: {0}", filename);
 
 			transport.send(Encoding.ASCII.GetBytes(filename), filename.Length);
 
