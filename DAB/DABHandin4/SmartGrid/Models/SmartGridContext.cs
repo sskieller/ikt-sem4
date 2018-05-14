@@ -20,5 +20,7 @@ namespace SmartGrid.Models
         }
 
         public System.Data.Entity.DbSet<SmartGrid.Models.Prosumer> Prosumers { get; set; }
+
+        public System.Data.Entity.DbSet<SmartGrid.Models.SmartGridModel> SmartGridModels { get; set; }
     }
 }
