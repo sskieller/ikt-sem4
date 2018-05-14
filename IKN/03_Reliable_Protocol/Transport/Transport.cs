@@ -185,23 +185,24 @@ namespace Transportlaget
 
 			
 
-				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
-				{
-					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
+				if (buffer [(int)TransCHKSUM.SEQNO] == old_seqNo) {
+					Console.WriteLine ("Wrong sequence number received, ignoring: {0}", buffer [(int)TransCHKSUM.SEQNO]);
 					sendAck (false);
-					continue;
+
+				} 
+				else 
+				{
+					//Correct data received
+					sendAck(true);
+
+					old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
+					seqNo = 0; //Reset seqNo in case direction changes
+
+					Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
+
+					return receivedBytes - 4; //return amount of bytes received
 				}
-				//Correct data received
-				sendAck(true);
 
-
-
-				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
-				seqNo = 0; //Reset seqNo in case direction changes
-
-				Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
-
-				return receivedBytes - 4; //return amount of bytes received
 			}
 
 		}
