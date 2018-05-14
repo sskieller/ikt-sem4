@@ -26,9 +26,16 @@ namespace SmartGrid.Controllers
         }
 
         // GET: api/Prosumers
-        public IQueryable<Prosumer> GetProsumers()
+        public IEnumerable<ProsumerDTO> GetProsumers()
         {
-            return db.Prosumers;
+            var uow = new UnitOfWork<Prosumer>(db);
+
+            var Dtos = new List<ProsumerDTO>();
+
+            foreach(var pro in uow.Repository.ReadAll())
+                Dtos.Add(new ProsumerDTO(pro));
+
+            return Dtos;
         }
 
         // GET: api/Prosumers/5
@@ -81,7 +88,7 @@ namespace SmartGrid.Controllers
 
         // POST: api/Prosumers
         [ResponseType(typeof(Prosumer))]
-        public async Task<IHttpActionResult> PostProsumer(Prosumer[] prosumer)
+        public async Task<IHttpActionResult> PostProsumer(ProsumerDTO[] prosumer)
         {
             if (!ModelState.IsValid)
             {
@@ -98,13 +105,20 @@ namespace SmartGrid.Controllers
 
                 if (oldProsumer == null)
                 {
-                    uow.Repository.Create(new Prosumer() { Consumed = pro.Consumed, Produced = pro.Produced, Name = pro.Name, PreferedBuyer = pro.PreferedBuyer, Differece = pro.Differece });
+                    uow.Repository.Create(new Prosumer()
+                    {
+                        Consumed = pro.Consumed,
+                        Produced = pro.Produced,
+                        Name = pro.Name,
+                        PreferedBuyer = (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault(),
+                        Difference = pro.Produced - pro.Consumed
+                    });
                     continue;
                 }
                 oldProsumer.Consumed = pro.Consumed;
                 oldProsumer.Produced = pro.Produced;
-                oldProsumer.Differece = pro.Produced - pro.Consumed;
-                oldProsumer.PreferedBuyer = pro.PreferedBuyer;
+                oldProsumer.Difference = pro.Produced - pro.Consumed;
+                oldProsumer.PreferedBuyer = (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault();
             }
 
             try

@@ -11,10 +11,29 @@ namespace SmartGrid.Models
     {
         [Key]
         public string Name { get; set; }
-        [ForeignKey("PreferedBuyer")]
+        [ForeignKey("Name")]
         public virtual Prosumer PreferedBuyer { get; set; }
         public float Produced { get; set; }
         public float Consumed { get; set; }
-        public float Differece { get; set; }
+        public float Difference { get; set; }
+    }
+
+    public class ProsumerDTO
+    {
+        public ProsumerDTO()
+        { }
+
+        public ProsumerDTO(Prosumer pro)
+        {
+            Name = pro.Name;
+            PreferedBuyer = pro.PreferedBuyer.Name == null ? pro.PreferedBuyer.Name : string.Empty;
+            Produced = pro.Produced;
+            Consumed = pro.Consumed;
+        }
+
+        public string Name { get; set; }
+        public string PreferedBuyer { get; set; }
+        public float Produced { get; set; }
+        public float Consumed { get; set; }
     }
 }
