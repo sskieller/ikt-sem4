@@ -123,7 +123,6 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			int count = 0;
 			//Send one frame at a time
 			//Do not send more frames until ACK is received
 			do
@@ -147,10 +146,10 @@ namespace Transportlaget
 				}
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
-				++count;
 
 
-			} while (receiveAck() != seqNo && count < 5); //Kepp on going until sequence number changes
+
+			} while (receiveAck() != seqNo); //Kepp on going until sequence number changes
 			nextSeqNo();
 			old_seqNo = DEFAULT_SEQNO; //Reset sequence number in case transmission direction changes
 
@@ -179,22 +178,19 @@ namespace Transportlaget
 					continue;
 				}
 
+				sendAck (true);
 
-
-				if (buffer [(int)TransCHKSUM.SEQNO] == old_seqNo) {
-					Console.WriteLine ("Wrong sequence number received, ignoring: {0}", buffer [(int)TransCHKSUM.SEQNO]);
-					sendAck (true);
-
-				} 
-				else 
+				if (buffer [(int)TransCHKSUM.SEQNO] == old_seqNo) 
 				{
-					//Correct data received
-					sendAck(true);
+					Console.WriteLine ("Wrong sequence number received, ignoring: {0}", buffer [(int)TransCHKSUM.SEQNO]);
+					continue;				
+				} 
+					
 
-					old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
-					Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
-					return receivedBytes - 4; //return amount of bytes received
-				}
+				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
+				Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
+				return receivedBytes - 4; //return amount of bytes received
+
 
 			}
 

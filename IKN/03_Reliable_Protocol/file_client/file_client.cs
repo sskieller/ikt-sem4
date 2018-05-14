@@ -65,10 +65,11 @@ namespace Application
 			Console.WriteLine("Total file size from server: {0} bytes", fileSize);
 
 			var file = File.Create(filename); //Create new file
+			int received = 0;
 			while (file.Position < fileSize) //Still need to receive more data
 			{
-				transport.receive(ref receiveBuffer);
-				file.Write(receiveBuffer, 0, receiveBuffer.Length);
+				received = transport.receive(ref receiveBuffer);
+				file.Write(receiveBuffer, 0, received);
 				Console.WriteLine("{0} bytes of {1} written so far", file.Position, fileSize);
 			}
 			file.Close();
