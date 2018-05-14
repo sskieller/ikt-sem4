@@ -38,48 +38,15 @@ namespace SmartGrid.Controllers
         [ResponseType(typeof(SmartGridModel))]
         public IHttpActionResult GetSmartGridModel(int id)
         {
-            SmartGridModel smartGridModel = db.SmartGridModels.Find(id);
+            var uow = new UnitOfWork<SmartGridModel>(db);
+
+            SmartGridModel smartGridModel = uow.Repository.Read(id);
             if (smartGridModel == null)
             {
                 return NotFound();
             }
 
             return Ok(smartGridModel);
-        }
-
-        // PUT: api/SmartGridModels/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutSmartGridModel(int id, SmartGridModel smartGridModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != smartGridModel.SmartGridId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(smartGridModel).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SmartGridModelExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/SmartGridModels
@@ -90,27 +57,11 @@ namespace SmartGrid.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            db.SmartGridModels.Add(smartGridModel);
-            db.SaveChanges();
-
+            var uow = new UnitOfWork<SmartGridModel>(db);
+            uow.Repository.Create(smartGridModel);
+            uow.Commit();
+            
             return CreatedAtRoute("DefaultApi", new { id = smartGridModel.SmartGridId }, smartGridModel);
-        }
-
-        // DELETE: api/SmartGridModels/5
-        [ResponseType(typeof(SmartGridModel))]
-        public IHttpActionResult DeleteSmartGridModel(int id)
-        {
-            SmartGridModel smartGridModel = db.SmartGridModels.Find(id);
-            if (smartGridModel == null)
-            {
-                return NotFound();
-            }
-
-            db.SmartGridModels.Remove(smartGridModel);
-            db.SaveChanges();
-
-            return Ok(smartGridModel);
         }
 
         protected override void Dispose(bool disposing)
