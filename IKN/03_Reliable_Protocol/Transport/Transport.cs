@@ -79,7 +79,6 @@ namespace Transportlaget
 				buf [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
 					return DEFAULT_SEQNO;
 
-			Console.WriteLine ("ACK verified");
 			return seqNo;
 
 		}
@@ -184,7 +183,7 @@ namespace Transportlaget
 
 				if (buffer [(int)TransCHKSUM.SEQNO] == old_seqNo) {
 					Console.WriteLine ("Wrong sequence number received, ignoring: {0}", buffer [(int)TransCHKSUM.SEQNO]);
-					sendAck (false);
+					sendAck (true);
 
 				} 
 				else 
