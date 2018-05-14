@@ -98,15 +98,14 @@ namespace Linklaget
 		/// </param>
 		public int receive (ref byte[] buf)
 		{
-			byte tempByte;
-			do
+			byte tempByte = (byte) '0';
+			while (tempByte != DELIMITER)
 			{
 				//Read single byte until delimiter is read
 				tempByte = (byte) serialPort.ReadByte();
-			} while (tempByte != DELIMITER);
-
-			tempByte = (byte) serialPort.ReadByte();
+			}
 			int count = 0;
+			tempByte = (byte) serialPort.ReadByte();
 
 			while (tempByte != DELIMITER) //Keep on reading till delimiter is reached
 			{
