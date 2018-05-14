@@ -26,7 +26,7 @@ namespace FWPS.Controllers
 
             if (_context.HodoorItems.Any() == false)
             {
-                _context.HodoorItems.Add(new HodoorItem() { Command = "CmdUnlock", OpenStatus = false});
+                _context.HodoorItems.Add(new HodoorItem() { Command = "CmdUnlock", OpenStatus = false, IsRun = false});
                 _context.SaveChanges();
             }
         }

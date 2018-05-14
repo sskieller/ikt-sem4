@@ -13,7 +13,8 @@ namespace FWPS.Models
         public string Username { get; set; }
 
         public string Password { get; set; }
-        public string Rfid { get; set; }
+        public string RfidId1 { get; set; }
+        public string RfidId2 { get; set; }
     }
 
     //public class LoginContext : DbContext

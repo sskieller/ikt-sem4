@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
 using System.Text;
 using MasterApplication.Models;
@@ -25,7 +26,7 @@ namespace MasterApplication.MessageHandlers
 
                 //RFID
                 case "EntryRequest":
-
+                    RfidEntryRequest(message);
                     break;
 
                 case "CmdUnlock":
@@ -66,7 +67,13 @@ namespace MasterApplication.MessageHandlers
         private void RfidEntryRequest(string message)
         {
             Console.WriteLine("Hodoor: Received entry request with RFID: {0}", message);
-            Console.WriteLine();
+
+            var token = _connector.GetItem("Login/" + message);
+
+            Console.WriteLine(token);
+
+            if (token == "Ok") FwpsPublisher.PublishMessage("Hodoor.CmdModUnlock", "");
+            else FwpsPublisher.PublishMessage("Hodoor.CmdModDenied", "");
         }
 
         #endregion
@@ -76,13 +83,13 @@ namespace MasterApplication.MessageHandlers
         private void UnlockHodoor(string message)
         {
             //Unlock Hodoor
-           FwpsPublisher.PublishMessage("Hodoor.CmdUnlock", "");
+           FwpsPublisher.PublishMessage("Hodoor.CmdModUnlock", "");
         }
 
         private void LockHodoor(string message)
         {
             //Lock Hodoor
-            FwpsPublisher.PublishMessage("Hodoor.CmdLock", "");
+            FwpsPublisher.PublishMessage("Hodoor.CmdModLock", "");
         }
 
         #endregion

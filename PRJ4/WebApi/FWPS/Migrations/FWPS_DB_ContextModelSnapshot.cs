@@ -149,7 +149,9 @@ namespace FWPS.Migrations
 
                     b.Property<string>("Password");
 
-                    b.Property<string>("Rfid");
+                    b.Property<string>("RfidId1");
+
+                    b.Property<string>("RfidId2");
 
                     b.Property<string>("Username");
 

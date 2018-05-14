@@ -53,7 +53,6 @@ namespace FWPS.Controllers
 			return new ObjectResult(item);
 		}
 
-		[HttpPost]
 	    [HttpGet("[action]")] // '/api/Light/Newest'
 	    public IActionResult Newest()
 	    {
