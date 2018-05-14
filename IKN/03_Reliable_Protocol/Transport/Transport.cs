@@ -69,7 +69,6 @@ namespace Transportlaget
 		/// </returns>
 		private byte receiveAck()
 		{
-			Console.WriteLine ("Verifying ACK");
 			byte[] buf = new byte[(int)TransSize.ACKSIZE];
 			int size = link.receive (ref buf);
 
