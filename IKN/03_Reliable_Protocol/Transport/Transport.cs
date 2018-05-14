@@ -69,7 +69,8 @@ namespace Transportlaget
 		/// </returns>
 		private byte receiveAck()
 		{
-			byte[] buf = new byte[(int)TransSize.ACKSIZE + 10];
+			Console.WriteLine ("Verifying ACK");
+			byte[] buf = new byte[(int)TransSize.ACKSIZE];
 			int size = link.receive (ref buf);
 
 			if (size != (int)TransSize.ACKSIZE)
@@ -79,6 +80,7 @@ namespace Transportlaget
 				buf [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
 					return DEFAULT_SEQNO;
 
+			Console.WriteLine ("ACK verified");
 			return seqNo;
 
 		}
@@ -98,6 +100,7 @@ namespace Transportlaget
 		/// </param>
 		private void sendAck (bool ackType)
 		{
+			
 			byte[] ackBuf = new byte[(int)TransSize.ACKSIZE];
 			ackBuf [(int)TransCHKSUM.SEQNO] = (byte)
 				(ackType ? (byte)buffer [(int)TransCHKSUM.SEQNO] : (byte)(buffer [(int)TransCHKSUM.SEQNO] + 1) % 2);
@@ -122,7 +125,7 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			byte seq = seqNo;
+			Console.WriteLine ("Sending packet with size {0}", size);
 			//Send one frame at a time
 			//Do not send more frames until ACK is received
 			do
@@ -132,7 +135,6 @@ namespace Transportlaget
 				Array.Copy(buf, 0, buffer, (int)TransSize.ACKSIZE, size );
 
 				buffer[(int)TransCHKSUM.SEQNO] = seqNo; //Add sequence number
-				seq = seqNo;
 
 				buffer[(int) TransCHKSUM.TYPE] = (byte) TransType.DATA; //Set type to DATA
 
@@ -147,6 +149,8 @@ namespace Transportlaget
 				}
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
+
+				Console.WriteLine("Packet with size {0} sent", size);
 
 			} while (receiveAck() == seqNo); //Kepp on going until sequence number changes
 			nextSeqNo();
@@ -183,7 +187,7 @@ namespace Transportlaget
 				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
 				{
 					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
-					sendAck (false);
+					//sendAck (false);
 					continue;
 				}
 				//Correct data received
@@ -192,6 +196,7 @@ namespace Transportlaget
 
 
 				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
+				seqNo = 0; //Reset seqNo in case direction changes
 
 				Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
 
