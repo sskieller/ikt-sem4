@@ -42,20 +42,32 @@
                        Grid.Row="0"
                        Grid.Column="1"
                        Grid.ColumnSpan="2"/>
+                <Button Text="Lock door" HorizontalOptions="FillAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="LockBtn"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
+                <Button Text="Unlock door" HorizontalOptions="FillAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="UnlockBtn"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
                 <Label Text="Door status:" 
                        FontSize="Medium"
                        Style="{StaticResource LabelStyle}"
                        VerticalOptions="Center"
                        HorizontalOptions="End" 
-                       Grid.Row="7"
-                       Grid.Column="2"/>
+                       Grid.Row="6"
+                       Grid.Column="1"/>
                 <Label x:Name="doorStatus"
                        FontSize="Medium"
                        Style="{StaticResource LabelStyle}"
                        VerticalOptions="Center"
                        HorizontalOptions="Start" 
-                       Grid.Row="7"
-                       Grid.Column="3"/>
+                       Grid.Row="6"
+                       Grid.Column="2"/>
                 <Button x:Name="ReturnBtn"
                        Text="Return to MainPage"
                        Style="{StaticResource ButtonStyle}"

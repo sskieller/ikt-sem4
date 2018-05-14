@@ -20,6 +20,52 @@ namespace FWPS_App
             DoorStatus();
             NavigationPage.SetHasNavigationBar(this, false);
             ReturnBtn.Clicked += ReturnBtn_Clicked;
+            LockBtn.Clicked += LockBtn_Clicked;
+            UnlockBtn.Clicked += UnlockBtn_Clicked;
+        }
+
+        private void UnlockBtn_Clicked(object sender, EventArgs e)
+        {
+            string obj = HTTPRequestHandler.CreateGetRequest(HodoorUri + "newest/").ToString();
+            var hodoorStateObject = JsonConvert.DeserializeObject<HodoorObject>(obj);
+
+            if (hodoorStateObject.OpenStatus == true)
+            {
+                DisplayAlert("Well tried", "Hodoor is already open!", "OK");
+            }
+            else
+            {
+                UnlockBtn.IsEnabled = false;
+                HodoorObject hodoorObject = new HodoorObject
+                {
+                    Command = "CmdUnlock",
+                    IsRun = false,
+                };
+                HTTPRequestHandler.CreateRequest(hodoorObject, HodoorUri);
+                UnlockBtn.IsEnabled = true;
+            }
+        }
+
+        private void LockBtn_Clicked(object sender, EventArgs e)
+        {
+            string obj = HTTPRequestHandler.CreateGetRequest(HodoorUri + "newest/").ToString();
+            var hodoorStateObject = JsonConvert.DeserializeObject<HodoorObject>(obj);
+
+            if (hodoorStateObject.OpenStatus == false)
+            {
+                DisplayAlert("Well tried", "Hodoor is already closed!", "OK");
+            }
+            else
+            {
+                LockBtn.IsEnabled = false;
+                HodoorObject hodoorObject = new HodoorObject
+                {
+                    Command = "CmdLock",
+                    IsRun = false,
+                };
+                HTTPRequestHandler.CreateRequest(hodoorObject, HodoorUri);
+                LockBtn.IsEnabled = true;
+            }
         }
 
         private void Timer()
@@ -57,7 +103,7 @@ namespace FWPS_App
             });
         }
 
-        public static string HodoorUri { get; set; } = "http://fwps.azurewebsites.net/api/hodoor/newest";
+        public static string HodoorUri { get; set; } = "http://fwps.azurewebsites.net/api/hodoor/";
 
         public class HodoorObject
         {

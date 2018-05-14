@@ -189,40 +189,53 @@ namespace FWPS_App
                     lightStateLabel.Text = "Something went much wrong";
                 });
             }
-
-            //Device.BeginInvokeOnMainThread(() =>
-            //{
-            //    mainlabel.Text = obj;
-            //});
         }
 
         private void OffButton_Clicked(object sender, EventArgs e)
         {
+            string obj = HTTPRequestHandler.CreateGetRequest(LightUri + "newest/").ToString();
+            var lightStateObject = JsonConvert.DeserializeObject<LightObject>(obj);
 
-            OffButton.IsEnabled = false;
-
-            LightObject lightObject = new LightObject()
+            if(lightStateObject.IsOn == false)
             {
-                Command = "off",
-                IsRun = false,
-                IsOn = false
-            };
-            HTTPRequestHandler.CreateRequest(lightObject, LightUri);
-            OffButton.IsEnabled = true;
+                DisplayAlert("Well tried", "Light is already turned off!", "OK");
+            }
+            else
+            {
+                OffButton.IsEnabled = false;
 
+                LightObject lightObject = new LightObject()
+                {
+                    Command = "off",
+                    IsRun = false,
+                    IsOn = false
+                };
+                HTTPRequestHandler.CreateRequest(lightObject, LightUri);
+                OffButton.IsEnabled = true;
+            }
         }
 
         private void OnButton_Clicked(object sender, EventArgs e)
         {
-            OnButton.IsEnabled = false;
-            LightObject lightObject = new LightObject
+            string obj = HTTPRequestHandler.CreateGetRequest(LightUri + "newest/").ToString();
+            var lightStateObject = JsonConvert.DeserializeObject<LightObject>(obj);
+
+            if (lightStateObject.IsOn == true)
             {
-                Command = "on",
-                IsRun = false,
-                IsOn = true
-            };
-            HTTPRequestHandler.CreateRequest(lightObject, LightUri);
-            OnButton.IsEnabled = true;
+                DisplayAlert("Well tried", "Light is already turned on!", "OK");
+            }
+            else
+            {
+                OnButton.IsEnabled = false;
+                LightObject lightObject = new LightObject
+                {
+                    Command = "on",
+                    IsRun = false,
+                    IsOn = true
+                };
+                HTTPRequestHandler.CreateRequest(lightObject, LightUri);
+                OnButton.IsEnabled = true;
+            }
         }
 
         public static string LightUri { get; set; } = "https://fwps.azurewebsites.net/api/Light/";

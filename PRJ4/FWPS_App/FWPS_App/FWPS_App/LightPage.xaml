@@ -37,15 +37,15 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Label Text="Welcome to Light!" 
+                <Label Text="Welcome to Morning Sun!" 
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" x:Name="label2"
                        Margin="0,15,0,0"
                        FontSize="Large"
                        Style="{StaticResource LabelStyle}"
                        Grid.Row="0"
-                       Grid.Column="1"
-                       Grid.ColumnSpan="2"/>
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"/>
                 <Button Text="Turn light on" HorizontalOptions="FillAndExpand" 
                         Style="{StaticResource ButtonStyle}"
                         x:Name="OnButton" 

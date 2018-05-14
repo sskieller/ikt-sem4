@@ -12,9 +12,9 @@ namespace FWPS_App
     {
         //private static HTTPRequestHandler _instance;
 
-        public static void CreateRequest(LightPage.LightObject light, string BaseUri)
+        public static void CreateRequest(object obj, string BaseUri)
         {
-            Task.Factory.StartNew(() => _CreatePostRequest(light, BaseUri));
+            Task.Factory.StartNew(() => _CreatePostRequest(obj, BaseUri));
         }
 
         public static object CreateGetRequest(string BaseUri)
