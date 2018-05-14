@@ -60,6 +60,7 @@ namespace Linklaget
 			List<byte> frame = new List<byte>();
 			frame.Add(DELIMITER); //Add delimiter to start of frame
 
+
 			for (int i = 0; i < size; ++i)
 			{
 				if (buf[i] == DELIMITER)

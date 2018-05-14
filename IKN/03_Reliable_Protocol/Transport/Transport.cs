@@ -69,13 +69,13 @@ namespace Transportlaget
 		/// </returns>
 		private byte receiveAck()
 		{
-			byte[] buf = new byte[(int)TransSize.ACKSIZE];
-			int size = link.receive (ref buf);
+			int size = link.receive (ref buffer);
+
 			if (size != (int)TransSize.ACKSIZE)
 				return DEFAULT_SEQNO;
-			if (!checksum.checkChecksum (buf, (int)TransSize.ACKSIZE) ||
-			    buf [(int)TransCHKSUM.SEQNO] != seqNo ||
-			    buf [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
+			if (!checksum.checkChecksum (buffer, (int)TransSize.ACKSIZE) ||
+				buffer [(int)TransCHKSUM.SEQNO] != seqNo ||
+				buffer [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
 					return DEFAULT_SEQNO;
 
 			return seqNo;
