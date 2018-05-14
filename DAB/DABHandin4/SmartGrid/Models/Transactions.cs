@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SmartGrid.Models
 {
-    public class Transactions
+    public class Transaction
     {
         public string Id { get; set; }
         public string Consumer { get; set; }
