@@ -125,7 +125,6 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			Console.WriteLine ("Sending packet with size {0}", size);
 			//Send one frame at a time
 			//Do not send more frames until ACK is received
 			do
@@ -150,10 +149,8 @@ namespace Transportlaget
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-				Console.WriteLine("Packet with size {0} sent", size);
 
 			} while (receiveAck() != seqNo); //Kepp on going until sequence number changes
-			Console.WriteLine("Done sending");
 			nextSeqNo();
 			old_seqNo = DEFAULT_SEQNO; //Reset sequence number in case transmission direction changes
 
@@ -196,7 +193,6 @@ namespace Transportlaget
 					sendAck(true);
 
 					old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
-					seqNo = 0; //Reset seqNo in case direction changes
 
 					Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
 

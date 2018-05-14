@@ -109,7 +109,6 @@ namespace Linklaget
 
 			while (tempByte != DELIMITER) //Keep on reading till delimiter is reached
 			{
-				Console.WriteLine ("Byte {0} count {1}", tempByte, count);
 				if (tempByte == (byte) 'B')
 				{
 					
