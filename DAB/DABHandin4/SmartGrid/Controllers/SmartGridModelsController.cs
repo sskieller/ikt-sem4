@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SmartGrid.Models;
+using SmartGrid.Repositories;
 
 namespace SmartGrid.Controllers
 {
@@ -19,7 +20,18 @@ namespace SmartGrid.Controllers
         // GET: api/SmartGridModels
         public IQueryable<SmartGridModel> GetSmartGridModels()
         {
-            return db.SmartGridModels;
+            var uow = new UnitOfWork<SmartGridModel>(db);
+
+            var smartGrid = from sg in uow.Repository.ReadAll()
+                select new SmartGridModel
+                {
+                    SmartGridId = sg.SmartGridId,
+                    TotalForbrug = sg.TotalForbrug,
+                    TotalGeneration = sg.TotalGeneration,
+                    Brutto = sg.Brutto
+                };
+
+            return smartGrid;
         }
 
         // GET: api/SmartGridModels/5

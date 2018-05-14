@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SmartGrid.Models
 {
-    public class SmartGridModel
+    public class SmartGridModel : Entity
     {
         [Key]
         public int SmartGridId { get; set; }
