@@ -211,6 +211,14 @@
     <Compile Include="Migrations\201805141301452_Initial.Designer.cs">
       <DependentUpon>201805141301452_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805141343373_UpdatedEntities.cs" />
+    <Compile Include="Migrations\201805141343373_UpdatedEntities.Designer.cs">
+      <DependentUpon>201805141343373_UpdatedEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805141401226_Spelling.cs" />
+    <Compile Include="Migrations\201805141401226_Spelling.Designer.cs">
+      <DependentUpon>201805141401226_Spelling.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Prosumer.cs" />
@@ -313,6 +321,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805141301452_Initial.resx">
       <DependentUpon>201805141301452_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805141343373_UpdatedEntities.resx">
+      <DependentUpon>201805141343373_UpdatedEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805141401226_Spelling.resx">
+      <DependentUpon>201805141401226_Spelling.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

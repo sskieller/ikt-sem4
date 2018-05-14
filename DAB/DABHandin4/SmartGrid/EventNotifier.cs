@@ -34,7 +34,7 @@ namespace SmartGrid
 
         private void ProsumersUpdatedHandler(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
