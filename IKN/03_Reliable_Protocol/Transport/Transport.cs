@@ -152,7 +152,7 @@ namespace Transportlaget
 
 				Console.WriteLine("Packet with size {0} sent", size);
 
-			} while (receiveAck() == seqNo); //Kepp on going until sequence number changes
+			} while (receiveAck() != seqNo); //Kepp on going until sequence number changes
 			Console.WriteLine("Done sending");
 			nextSeqNo();
 			old_seqNo = DEFAULT_SEQNO; //Reset sequence number in case transmission direction changes
