@@ -41,7 +41,17 @@ namespace SmartGrid
 
                 foreach (var consumer in consumers)
                 {
+                    float netImport = consumer.Difference;
+                    //If the preferred producer is available in producers, choose that
+                    if (producers.Contains(consumer.PreferedBuyer))
+                    {
+                        DistributePower(consumer.PreferedBuyer, consumer);
+                    }
 
+                    while (false)
+                    {
+
+                    }
                 }
 
                 if (netElectricity != 0)
