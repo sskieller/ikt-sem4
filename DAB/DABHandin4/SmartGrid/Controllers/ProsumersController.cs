@@ -90,8 +90,22 @@ namespace SmartGrid.Controllers
 
             var uow = new UnitOfWork<Prosumer>(db);
 
+            var allProsumers = uow.Repository.ReadAll();
+
             foreach (var pro in prosumer)
-                uow.Repository.Create(pro);
+            {
+                var oldProsumer = (from op in allProsumers where op.Name == pro.Name select op).FirstOrDefault();
+
+                if (oldProsumer == null)
+                {
+                    uow.Repository.Create(new Prosumer() { Consumed = pro.Consumed, Produced = pro.Produced, Name = pro.Name, PreferedBuyer = pro.PreferedBuyer, Differece = pro.Differece });
+                    continue;
+                }
+                oldProsumer.Consumed = pro.Consumed;
+                oldProsumer.Produced = pro.Produced;
+                oldProsumer.Differece = pro.Produced - pro.Consumed;
+                oldProsumer.PreferedBuyer = pro.PreferedBuyer;
+            }
 
             try
             {
