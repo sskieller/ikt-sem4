@@ -24,13 +24,13 @@ namespace SmartGrid
                 //Go through all prosumers and get 
                 foreach (var prosumer in uow.Repository.ReadAll())
                 {
-                    netElectricity += prosumer.Differece;
-                    if (prosumer.Differece > 0)
+                    netElectricity += prosumer.Difference;
+                    if (prosumer.Difference > 0)
                     {
                         //Add to list of producers if more electricity is produced than consumed
                         producers.Add(prosumer);
                     }
-                    else if (prosumer.Differece < 0)
+                    else if (prosumer.Difference < 0)
                     {
                         //Add to list of consumres if more electricity is consumed rather than produced
                         consumers.Add(prosumer);

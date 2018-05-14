@@ -101,7 +101,7 @@ namespace SmartGrid.Controllers
 
             foreach (var pro in prosumer)
             {
-                var oldProsumer = (from op in allProsumers where op.Name == pro.Name select op).FirstOrDefault();
+                var oldProsumer = (from op in allProsumers where op.Name.Equals(pro.Name, StringComparison.CurrentCultureIgnoreCase) select op).FirstOrDefault();
 
                 if (oldProsumer == null)
                 {
@@ -115,10 +115,15 @@ namespace SmartGrid.Controllers
                     });
                     continue;
                 }
+
                 oldProsumer.Consumed = pro.Consumed;
                 oldProsumer.Produced = pro.Produced;
+                oldProsumer.Name = pro.Name;
+                oldProsumer.PreferedBuyer =
+                    (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault();
                 oldProsumer.Difference = pro.Produced - pro.Consumed;
-                oldProsumer.PreferedBuyer = (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault();
+
+                uow.Repository.Update(string.Empty, oldProsumer);
             }
 
             try
