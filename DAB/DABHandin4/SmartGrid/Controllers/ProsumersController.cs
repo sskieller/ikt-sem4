@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SmartGrid.Models;
+using SmartGrid.Repositories;
 
 namespace SmartGrid.Controllers
 {
@@ -73,14 +74,18 @@ namespace SmartGrid.Controllers
 
         // POST: api/Prosumers
         [ResponseType(typeof(Prosumer))]
-        public async Task<IHttpActionResult> PostProsumer(Prosumer prosumer)
+        public async Task<IHttpActionResult> PostProsumer(Prosumer[] prosumer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Prosumers.Add(prosumer);
+            var uow = new UnitOfWork<Prosumer>(db);
+
+            foreach (var pro in prosumer)
+                uow.Repository.Create(pro);
+
 
             try
             {
