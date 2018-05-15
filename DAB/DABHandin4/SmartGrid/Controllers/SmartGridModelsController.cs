@@ -22,14 +22,14 @@ namespace SmartGrid.Controllers
         {
             var uow = new UnitOfWork<SmartGridModel>(db);
 
-            var SGMDTOs = new List<SmartGridModelDTO>();
+            var dtos = new List<SmartGridModelDTO>();
 
             foreach (var smartGridModel in uow.Repository.ReadAll())
             {
-                SGMDTOs.Add(new SmartGridModelDTO(smartGridModel));
+                dtos.Add(new SmartGridModelDTO(smartGridModel));
             }
 
-            return SGMDTOs;
+            return dtos;
         }
 
         // GET: api/SmartGridModels/5
@@ -56,6 +56,9 @@ namespace SmartGrid.Controllers
                 return BadRequest(ModelState);
             }
             var uow = new UnitOfWork<SmartGridModel>(db);
+            
+            smartGridModel.TimeStamp = DateTime.Now;
+
             uow.Repository.Create(smartGridModel);
             uow.Commit();
             
