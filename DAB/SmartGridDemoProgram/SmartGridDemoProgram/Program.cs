@@ -6,30 +6,53 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SmartGrid.Data;
 
 namespace SmartGridDemoProgram
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             var prosumers = new List<Prosumer>();
 
-            prosumers.Add(new Prosumer("House1", "House2"));
-            prosumers.Add(new Prosumer("House2", "House3"));
-            prosumers.Add(new Prosumer("House3", "House4"));
-            prosumers.Add(new Prosumer("House4", "House5"));
-            prosumers.Add(new Prosumer("House5", "House1"));
+            // 33 Houses
+            for (int i = 0; i < 33; i++)
+            {
+                prosumers.Add(ProsumerFactory.Create("House"));
+            }
 
+            // 12 Business's
+            for (int i = 0; i < 12; i++)
+            {
+                prosumers.Add(ProsumerFactory.Create("Business"));
+            }
+            // Setting Starters.
+            prosumers.Find(p => p.Name == "House1").PreferedBuyer = "House33";
+            prosumers.Find(p => p.Name == "Business1").PreferedBuyer = "Business12";
+            
 
             var api = new WebApiConnector();
 
             api.PostItem("api/Prosumers", JsonConvert.SerializeObject(prosumers));
+            
+            Console.WriteLine("Press 'q' to quit -- 'u' to Update all -- 't' to view transaction");
+            
+            while (true)
+            {
+                var key = Console.Read();
 
-            var str = api.GetItem("api/Prosumers");
+                if(key == 'q') Environment.Exit(0);
+                else if (key == 'u')
+                {
+                    Console.WriteLine("Updating...");
+                    foreach(var pro in prosumers)
+                        pro.Update();
 
-            Console.WriteLine(str);
+                    api.PostItem("api/Prosumers", JsonConvert.SerializeObject(prosumers));
+                    Console.WriteLine("Done updating!");
+                }
+            }
         }
     }
 
