@@ -13,6 +13,7 @@ namespace SmartGrid.Models
         public double TotalForbrug { get; set; }
         public double TotalGeneration { get; set; }
         public double Brutto { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 
     public class SmartGridModelDTO
@@ -28,11 +29,13 @@ namespace SmartGrid.Models
             TotalForbrug = smartGridModel.TotalForbrug;
             TotalGeneration = smartGridModel.TotalGeneration;
             Brutto = smartGridModel.Brutto;
+            TimeStamp = smartGridModel.TimeStamp;
         }
 
         public int SmartGridId { get; set; }
         public double TotalForbrug { get; set; }
         public double TotalGeneration { get; set; }
         public double Brutto { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }
