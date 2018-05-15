@@ -21,7 +21,7 @@ namespace SmartGrid
 
             var value = float.Parse(obj["bpi"]["USD"]["rate_float"].ToString());
 
-            return value * (float) (Math.Pow(10, -5) * 3.59);
+            return value * (float) (Math.Pow(10, -5) * 3.59) * 6.22f;
             //Console.WriteLine(value);
         }
         public class WebApiConnector

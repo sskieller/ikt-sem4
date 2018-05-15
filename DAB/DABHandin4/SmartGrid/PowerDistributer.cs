@@ -41,10 +41,98 @@ namespace SmartGrid
                     //Otherwise do not add to either consumers or producers
                 }
 
-                CreateGridProsumer(ref producers, ref consumers, netElectricity);
-                DistributePowerBetweenMultiple(ref producers, ref consumers, ref transactions);
+                //CreateGridProsumer(ref producers, ref consumers, netElectricity);
+                bool profit = DistributePowerBetweenMultiple(ref producers, ref consumers, ref transactions);
+
+                Prosumer smartGrid = null;
+                Prosumer nationalGrid = null;
 
 
+                if (profit)
+                {
+                    smartGrid = new Prosumer()
+                    {
+                        Name = "SmartGrid",
+                        PreferedBuyerName = "NationalGrid",
+                        Type = "Grid",
+                        Consumed = 0,
+                        Produced = netElectricity,
+                        Difference = netElectricity,
+                        Remainder = netElectricity
+                    };
+                    nationalGrid = new Prosumer()
+                    {
+                        Name = "NationalGrid",
+                        PreferedBuyerName = "SmartGrid",
+                        Type = "Grid",
+                        Produced = 0,
+                        Consumed = netElectricity,
+                        Difference = 0 - netElectricity,
+                        Remainder = 0 - netElectricity,
+                    };
+
+                    //More power is produced than consumed, sell the rest to SmartGrid and then National Grid
+                    SellPowerToSmartGrid(ref producers, ref transactions, smartGrid);
+
+                    producers.Add(smartGrid);
+                    consumers.Add(nationalGrid);
+                    DistributePowerBetweenMultiple(ref producers, ref consumers, ref transactions);
+
+
+                }
+                else
+                {
+                    netElectricity = Math.Abs(netElectricity);
+                    float price = BitcoinPriceGetter.GetPrice();
+                    smartGrid = new Prosumer()
+                    {
+                        Name = "SmartGrid",
+                        PreferedBuyerName = "NationalGrid",
+                        Type = "Grid",
+                        Consumed = netElectricity,
+                        Produced = 0,
+                        Difference = 0 - netElectricity,
+                        Remainder = 0 - netElectricity
+                    };
+                    nationalGrid = new Prosumer()
+                    {
+                        Name = "NationalGrid",
+                        PreferedBuyerName = "SmartGrid",
+                        Type = "Grid",
+                        Consumed = 0,
+                        Produced = netElectricity,
+                        Difference = netElectricity,
+                        Remainder = netElectricity,
+                    };
+
+                    //Save transaction
+                    transactions.Add(new Transaction()
+                    {
+                        Id = string.Format("{0}-{1}-{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month,
+                            DateTime.Now.Year, nationalGrid.Name, smartGrid.Name),
+                        Consumer = smartGrid.Name,
+                        Producer = nationalGrid.Name,
+                        TransactionDate = DateTime.Now,
+                        KwhAmount = nationalGrid.Produced,
+                        PricePerKwh = price,
+                        TotalPrice = nationalGrid.Produced * price
+                    });
+
+                    smartGrid.Remainder = netElectricity;
+                    nationalGrid.Remainder = 0;
+                    
+                    producers.Add(smartGrid);
+                    DistributePowerBetweenMultiple(ref producers, ref consumers, ref transactions);
+                    //More power is consumed, buy the rest from National grid
+                }
+
+
+                ProsumersController pCtrl = new ProsumersController();
+                await pCtrl.PostProsumer(new ProsumerDTO[]
+                {
+                    new ProsumerDTO(smartGrid),
+                    new ProsumerDTO(nationalGrid)
+                });
 
                 TransactionController ctrl = new TransactionController();
                 await ctrl.Post(transactions);
@@ -52,6 +140,34 @@ namespace SmartGrid
                 uow.Commit(); //Commit at the end
             }
         }
+
+        private static void SellPowerToSmartGrid(ref List<Prosumer> producers, ref List<Transaction> transactions, Prosumer grid)
+        {
+            float pricePerKwh = BitcoinPriceGetter.GetPrice(); //EDIT HERE
+            float sold = 0;
+            foreach (Prosumer producer in producers)
+            {
+                sold += producer.Remainder;
+
+                //Save transaction
+                transactions.Add(new Transaction()
+                {
+                    Id = string.Format("{0}-{1}-{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month,
+                        DateTime.Now.Year, producer.Name, grid.Name),
+                    Consumer = grid.Name,
+                    Producer = producer.Name,
+                    TransactionDate = DateTime.Now,
+                    KwhAmount = producer.Remainder,
+                    PricePerKwh = pricePerKwh,
+                    TotalPrice = producer.Remainder * pricePerKwh
+                });
+
+
+                producer.Remainder = 0;
+                producers.Remove(producer);
+            }
+        }
+
 
         private static bool DistributePowerBetweenMultiple(ref List<Prosumer> producers, ref List<Prosumer> consumers, ref List<Transaction> transactions)
         {
@@ -100,7 +216,7 @@ namespace SmartGrid
             {
                 //More power has been produced than consumed
                 float transferredAmount = Math.Abs(consumer.Remainder);
-                producer.Remainder -= consumer.Remainder;
+                producer.Remainder += consumer.Remainder;
                 consumer.Remainder = 0;
 
                 transactions.Add(new Transaction()
