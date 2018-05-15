@@ -19,6 +19,8 @@ namespace SmartGrid
                 var uow = new UnitOfWork<Prosumer>(prosumerDb);
                 var smartGridUow = new UnitOfWork<SmartGridModel>(prosumerDb);
                 float netElectricity = 0;
+                float produced = 0;
+                float consumed = 0;
 
                 List<Prosumer> consumers = new List<Prosumer>();
                 List<Prosumer> producers = new List<Prosumer>();
@@ -27,7 +29,11 @@ namespace SmartGrid
                 //Go through all prosumers and get 
                 foreach (var prosumer in uow.Repository.ReadAll())
                 {
+                    if (prosumer.Type == "Grid")
+                        continue;
                     netElectricity += prosumer.Difference;
+                    consumed += prosumer.Consumed;
+                    produced += prosumer.Produced;
                     if (prosumer.Difference > 0)
                     {
                         //Add to list of producers if more electricity is produced than consumed
@@ -55,8 +61,8 @@ namespace SmartGrid
                         Name = "SmartGrid",
                         PreferedBuyerName = "NationalGrid",
                         Type = "Grid",
-                        Consumed = 0,
                         Produced = netElectricity,
+                        Consumed = 0,
                         Difference = netElectricity,
                         Remainder = netElectricity
                     };
@@ -126,9 +132,20 @@ namespace SmartGrid
                     //More power is consumed, buy the rest from National grid
                 }
 
+                SmartGridModelsController smartCtrl = new SmartGridModelsController();
+                smartCtrl.PostSmartGridModel(new SmartGridModel()
+                {
+                    TimeStamp = DateTime.Now,
+                    TotalGeneration = produced,
+                    TotalForbrug = consumed,
+                    Brutto = produced - consumed,
+                    
+                });
+
 
                 ProsumersController pCtrl = new ProsumersController();
-                await pCtrl.PostProsumer(new ProsumerDTO[]
+                
+                pCtrl.UpdateGrids(new ProsumerDTO[]
                 {
                     new ProsumerDTO(smartGrid),
                     new ProsumerDTO(nationalGrid)
@@ -164,8 +181,8 @@ namespace SmartGrid
 
 
                 producer.Remainder = 0;
-                producers.Remove(producer);
             }
+            producers.Clear();
         }
 
 
@@ -189,6 +206,9 @@ namespace SmartGrid
                         continue;
                     }
                 }
+
+                if (consumers.Count == 0)
+                    return true; //No more consumers for power
 
                 while (producer.Remainder != 0 && consumers.Count > 0)
                 {
@@ -282,12 +302,13 @@ namespace SmartGrid
                 };
                 //Electricity in smart grid is positive, send to global grid
                 ProsumersController pCtrl = new ProsumersController();
-                pCtrl.PostProsumer(new ProsumerDTO[]
+                
+                pCtrl.UpdateGrids(new ProsumerDTO[]
                 {
                     new ProsumerDTO(smartGrid),
                     new ProsumerDTO(nationalGrid)
-                }).Wait(2000);
-
+                });
+                
                 consumers.Add(nationalGrid);
 
             }
@@ -314,11 +335,12 @@ namespace SmartGrid
                 };
                 //Electricity in smart grid is positive, send to global grid
                 ProsumersController pCtrl = new ProsumersController();
-                pCtrl.PostProsumer(new ProsumerDTO[]
+                
+                pCtrl.UpdateGrids(new ProsumerDTO[]
                 {
                     new ProsumerDTO(smartGrid),
                     new ProsumerDTO(nationalGrid)
-                }).Wait(2000);
+                });
 
                 producers.Add(nationalGrid);
             }

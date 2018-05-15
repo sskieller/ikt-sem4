@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SmartGrid.Models;
@@ -17,6 +18,8 @@ namespace SmartGrid.Controllers
     public class ProsumersController : ApiController
     {
         private SmartGridContext db = new SmartGridContext();
+        private static Timer _timer = new Timer();
+        private bool _timerEnabled = false;
 
         private static event EventHandler ProsumerUpdatedEvent;
 
@@ -87,6 +90,7 @@ namespace SmartGrid.Controllers
         }
 
         // POST: api/Prosumers
+        // POST: api/Prosumers
         [ResponseType(typeof(Prosumer))]
         public async Task<IHttpActionResult> PostProsumer(ProsumerDTO[] prosumer)
         {
@@ -95,6 +99,63 @@ namespace SmartGrid.Controllers
                 return BadRequest(ModelState);
             }
 
+            var uow = new UnitOfWork<Prosumer>(db);
+
+            var allProsumers = uow.Repository.ReadAll();
+
+            foreach (var pro in prosumer)
+            {
+                var oldProsumer =
+                    (from op in allProsumers
+                        where op.Name.Equals(pro.Name, StringComparison.CurrentCultureIgnoreCase)
+                        select op).FirstOrDefault();
+
+                if (oldProsumer == null)
+                {
+                    uow.Repository.Create(new Prosumer()
+                    {
+                        Consumed = pro.Consumed,
+                        Produced = pro.Produced,
+                        Name = pro.Name,
+                        PreferedBuyerName = pro.PreferedBuyer,
+                        Type = pro.Type,
+                        Difference = pro.Produced - pro.Consumed,
+                        Remainder = pro.Produced - pro.Consumed
+                    });
+                    continue;
+                }
+
+                oldProsumer.Consumed = pro.Consumed;
+                oldProsumer.Produced = pro.Produced;
+                oldProsumer.Name = pro.Name;
+                oldProsumer.PreferedBuyerName =
+                    pro.PreferedBuyer; //allProsumers.Find(pro.PreferedBuyer) != null ? pro.PreferedBuyer : string.Empty;
+                oldProsumer.Type = pro.Type;
+                oldProsumer.Difference = pro.Produced - pro.Consumed;
+                oldProsumer.Remainder = pro.Produced - pro.Consumed;
+
+                uow.Repository.Update(string.Empty, oldProsumer);
+            }
+
+            try
+            {
+                uow.Commit();
+            }
+            catch (DbUpdateException)
+            {
+                return BadRequest("You don goofed");
+            }
+
+            await PowerDistributer.HandleTransactions();
+
+            //return CreatedAtRoute("DefaultApi", new { id = prosumer.Name }, prosumer);
+            return Ok();
+        }
+
+        
+
+        internal void UpdateGrids(ProsumerDTO[] prosumer)
+        {
             var uow = new UnitOfWork<Prosumer>(db);
 
             var allProsumers = uow.Repository.ReadAll();
@@ -129,21 +190,11 @@ namespace SmartGrid.Controllers
                 uow.Repository.Update(string.Empty, oldProsumer);
             }
 
-            try
-            {
+
                 uow.Commit();
-            }
-            catch (DbUpdateException)
-            {
-                return BadRequest("You don goofed");
-            }
-
-            ProsumerUpdatedEvent?.Invoke(new object(), new EventArgs());
-
-            //return CreatedAtRoute("DefaultApi", new { id = prosumer.Name }, prosumer);
-            return Ok();
+ 
         }
-
+        
         // DELETE: api/Prosumers/5
         [ResponseType(typeof(Prosumer))]
         public async Task<IHttpActionResult> DeleteProsumer(string id)

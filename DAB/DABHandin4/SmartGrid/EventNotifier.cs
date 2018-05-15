@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace SmartGrid
@@ -32,8 +33,9 @@ namespace SmartGrid
             ProsumersUpdatedEventHandler += ProsumersUpdatedHandler;
         }
 
-        private void ProsumersUpdatedHandler(object sender, EventArgs e)
+        private async void ProsumersUpdatedHandler(object sender, EventArgs e)
         {
+            await PowerDistributer.HandleTransactions();
             //throw new NotImplementedException();
         }
     }
