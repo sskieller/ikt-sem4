@@ -110,7 +110,7 @@ namespace SmartGrid.Controllers
                         Consumed = pro.Consumed,
                         Produced = pro.Produced,
                         Name = pro.Name,
-                        PreferedBuyerName = pro.PreferedBuyer,
+                        PreferedBuyerName = pro.PreferedBuyer,//allProsumers.Find(pro.PreferedBuyer) != null ? pro.PreferedBuyer : string.Empty,
                         Remainder = pro.Produced - pro.Consumed
                     });
                     continue;
@@ -119,7 +119,7 @@ namespace SmartGrid.Controllers
                 oldProsumer.Consumed = pro.Consumed;
                 oldProsumer.Produced = pro.Produced;
                 oldProsumer.Name = pro.Name;
-                oldProsumer.PreferedBuyerName = pro.PreferedBuyer;
+                oldProsumer.PreferedBuyerName = pro.PreferedBuyer;//allProsumers.Find(pro.PreferedBuyer) != null ? pro.PreferedBuyer : string.Empty;
                 oldProsumer.Difference = pro.Produced - pro.Consumed;
                 oldProsumer.Remainder = pro.Produced - pro.Consumed;
 
