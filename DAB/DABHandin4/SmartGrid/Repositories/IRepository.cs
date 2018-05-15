@@ -11,6 +11,7 @@ namespace SmartGrid.Repositories
     {
         void Create(T t);
         T Read(int id);
+        void Update(string id, T t);
         DbSet<T> ReadAll();
         void Delete(T t);
 

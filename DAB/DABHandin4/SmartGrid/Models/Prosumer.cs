@@ -16,6 +16,7 @@ namespace SmartGrid.Models
         public float Produced { get; set; }
         public float Consumed { get; set; }
         public float Difference { get; set; }
+
     }
 
     public class ProsumerDTO

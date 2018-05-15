@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201805141401226_Spelling.Designer.cs">
       <DependentUpon>201805141401226_Spelling.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805141409308_Soeren.cs" />
+    <Compile Include="Migrations\201805141409308_Soeren.Designer.cs">
+      <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Prosumer.cs" />
@@ -327,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805141401226_Spelling.resx">
       <DependentUpon>201805141401226_Spelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805141409308_Soeren.resx">
+      <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

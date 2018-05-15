@@ -32,10 +32,6 @@ namespace Application
 				Console.WriteLine("Received: \"{0}\"", filename);
 
 
-				var fl = File.OpenWrite ("test");
-
-				fl.Write (Encoding.ASCII.GetBytes (filename), 0, filename.Length);
-				fl.Close ();
 				if (File.Exists(filename) == false)
 				{
 					

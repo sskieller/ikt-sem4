@@ -69,25 +69,25 @@ namespace Transportlaget
 		/// </returns>
 		private byte receiveAck()
 		{
-			recvSize = link.receive(ref buffer);
-			dataReceived = true;
+			byte[] buf = new byte[(int)TransSize.ACKSIZE];
+			int size = link.receive (ref buf);
 
-			if (recvSize == (int)TransSize.ACKSIZE) {
-				dataReceived = false;
-				if (!checksum.checkChecksum (buffer, (int)TransSize.ACKSIZE) ||
-					buffer [(int)TransCHKSUM.SEQNO] != seqNo ||
-					buffer [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
-				{
-					seqNo = (byte) buffer[(int)TransCHKSUM.SEQNO];
-				}
-				else
-				{
-					seqNo = (byte)((buffer[(int)TransCHKSUM.SEQNO] + 1) % 2);
-				}
-			}
+			if (size != (int)TransSize.ACKSIZE)
+				return DEFAULT_SEQNO;
+			if (!checksum.checkChecksum (buf, (int)TransSize.ACKSIZE) ||
+				buf [(int)TransCHKSUM.SEQNO] != seqNo ||
+				buf [(int)TransCHKSUM.TYPE] != (int)TransType.ACK)
+					return DEFAULT_SEQNO;
 
 			return seqNo;
 
+		}
+		/// <summary>
+		/// Set next sequence number
+		/// </summary>
+		private void nextSeqNo()
+		{
+			seqNo = (byte)((seqNo + 1) % 2);
 		}
 
 		/// <summary>
@@ -98,6 +98,7 @@ namespace Transportlaget
 		/// </param>
 		private void sendAck (bool ackType)
 		{
+			
 			byte[] ackBuf = new byte[(int)TransSize.ACKSIZE];
 			ackBuf [(int)TransCHKSUM.SEQNO] = (byte)
 				(ackType ? (byte)buffer [(int)TransCHKSUM.SEQNO] : (byte)(buffer [(int)TransCHKSUM.SEQNO] + 1) % 2);
@@ -122,7 +123,6 @@ namespace Transportlaget
 		/// </param>
 		public void send(byte[] buf, int size)
 		{
-			byte seq = seqNo;
 			//Send one frame at a time
 			//Do not send more frames until ACK is received
 			do
@@ -132,7 +132,6 @@ namespace Transportlaget
 				Array.Copy(buf, 0, buffer, (int)TransSize.ACKSIZE, size );
 
 				buffer[(int)TransCHKSUM.SEQNO] = seqNo; //Add sequence number
-				seq = seqNo;
 
 				buffer[(int) TransCHKSUM.TYPE] = (byte) TransType.DATA; //Set type to DATA
 
@@ -148,7 +147,10 @@ namespace Transportlaget
 
 				link.send(buffer, size + (int) TransSize.ACKSIZE); //Send data
 
-			} while (receiveAck() == seq); //Kepp on going until sequence number changes
+
+
+			} while (receiveAck() != seqNo); //Kepp on going until sequence number changes
+			nextSeqNo();
 			old_seqNo = DEFAULT_SEQNO; //Reset sequence number in case transmission direction changes
 
 		}
@@ -176,27 +178,23 @@ namespace Transportlaget
 					continue;
 				}
 
+				sendAck (true);
 
-			
-
-				if (buffer[(int) TransCHKSUM.SEQNO] == old_seqNo)
+				if (buffer [(int)TransCHKSUM.SEQNO] == old_seqNo) 
 				{
-					Console.WriteLine("Wrong sequence number received, ignoring: {0}", buffer[(int) TransCHKSUM.SEQNO]);
-					sendAck (false);
-					continue;
-				}
-				//Correct data received
-				sendAck(true);
-
-
+					Console.WriteLine ("Wrong sequence number received, ignoring: {0}", buffer [(int)TransCHKSUM.SEQNO]);
+					continue;				
+				} 
+					
 
 				old_seqNo = buffer[(int) TransCHKSUM.SEQNO]; //Set old seqNo to the previous one
-
 				Array.Copy(buffer, (int) TransSize.ACKSIZE, buf, 0, receivedBytes - 4); //Copy buffer to new buf
-
 				return receivedBytes - 4; //return amount of bytes received
+
+
 			}
 
 		}
+
 	}
 }

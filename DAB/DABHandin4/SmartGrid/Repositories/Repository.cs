@@ -18,12 +18,17 @@ namespace SmartGrid.Repositories
 
         public void Create(T t)
         {
-            _context.Set<T>().Add(t);
+            _context.Entry<T>(t).State = EntityState.Added;
         }
 
         public T Read(int id)
         {
             return _context.Set<T>().Find(id);
+        }
+
+        public void Update(string id, T t)
+        {
+            _context.Entry(t).State = EntityState.Modified;
         }
 
         public DbSet<T> ReadAll()
