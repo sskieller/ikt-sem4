@@ -43,21 +43,32 @@ namespace SmartGrid.Controllers
             return await _repository.ReadAll();
         }
 
-        // GET: api/Person/5
+        // GET: api/Transaction/5
         public async Task<Transaction> Get(string id)
         {
             return await _repository.Read(id);
         }
 
-        // POST: api/Person
+        // POST: api/Transaction
         public async Task Post([FromBody]Transaction p)
         {
             //Person p = await Task<Person>.Factory.StartNew(() => JsonConvert.DeserializeObject<Person>(value));
             await _repository.Create(p);
 
         }
+        // POST: api/Transaction
+        public async Task Post([FromBody]List<Transaction> p)
+        {
+            //Person p = await Task<Person>.Factory.StartNew(() => JsonConvert.DeserializeObject<Person>(value));
+            foreach (Transaction t in p)
+            {
+                await _repository.Create(t);
+            }
+            
 
-        // PUT: api/Person/5
+        }
+
+        // PUT: api/Transaction/5
         public async Task Put(int id, [FromBody]Transaction p)
         {
             //Person p = await Task<Person>.Factory.StartNew(() => JsonConvert.DeserializeObject<Person>(value));

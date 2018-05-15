@@ -202,6 +202,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProsumersController.cs" />
     <Compile Include="Controllers\SmartGridModelsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="EventNotifier.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

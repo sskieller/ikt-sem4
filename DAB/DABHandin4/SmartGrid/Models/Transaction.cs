@@ -13,5 +13,6 @@ namespace SmartGrid.Models
         public float KwhAmount { get; set; }
         public float PricePerKwh { get; set; }
         public float TotalPrice { get; set; }
+        public DateTime TransactionDate { get; set; }
     }
 }
