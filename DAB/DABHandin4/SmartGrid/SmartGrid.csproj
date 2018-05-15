@@ -203,6 +203,7 @@
     <Compile Include="Controllers\ProsumersController.cs" />
     <Compile Include="Controllers\SmartGridModelsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="EventNotifier.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -224,9 +225,9 @@
     <Compile Include="Migrations\201805141409308_Soeren.Designer.cs">
       <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805151017108_hellow.cs" />
-    <Compile Include="Migrations\201805151017108_hellow.Designer.cs">
-      <DependentUpon>201805151017108_hellow.cs</DependentUpon>
+    <Compile Include="Migrations\201805151118445_NewNames.cs" />
+    <Compile Include="Migrations\201805151118445_NewNames.Designer.cs">
+      <DependentUpon>201805151118445_NewNames.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -340,8 +341,8 @@
     <EmbeddedResource Include="Migrations\201805141409308_Soeren.resx">
       <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151017108_hellow.resx">
-      <DependentUpon>201805151017108_hellow.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805151118445_NewNames.resx">
+      <DependentUpon>201805151118445_NewNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

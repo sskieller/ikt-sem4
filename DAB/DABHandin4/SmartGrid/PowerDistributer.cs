@@ -18,7 +18,7 @@ namespace SmartGrid
                 var uow = new UnitOfWork<Prosumer>(prosumerDb);
                 var smartGridUow = new UnitOfWork<SmartGridModel>(prosumerDb);
                 float netElectricity = 0;
-                
+
                 List<Prosumer> consumers = new List<Prosumer>();
                 List<Prosumer> producers = new List<Prosumer>();
                 List<Transaction> transactions = new List<Transaction>();
@@ -46,7 +46,7 @@ namespace SmartGrid
                 if (netElectricity > 0)
                 {
                     //Electricity in smart grid is positive, send to global grid
-                    
+
                 }
                 else if (netElectricity < 0)
                 {
@@ -66,13 +66,13 @@ namespace SmartGrid
             foreach (var producer in producers.ToArray())
             {
                 float netImport = producer.Difference;
-
+                Prosumer consumer = consumers.Find(x => x.Name == producer.PreferedBuyerName);
                 //If the preferred producer is available in producers, choose that
-                if (producers.Contains(producer.PreferedBuyer))
+                if (consumer != null)
                 {
-                    if (DistributePowerBetweenSingle(producer, producer.PreferedBuyer, ref transactions, pricePerKwh) == 0)
+                    if (DistributePowerBetweenSingle(producer, consumer, ref transactions, pricePerKwh) == 0)
                     {
-                        consumers.Remove(producer.PreferedBuyer);
+                        consumers.Remove(consumer);
                     }
                     else
                     {
@@ -85,7 +85,7 @@ namespace SmartGrid
                 {
                     if (DistributePowerBetweenSingle(producer, consumers[0], ref transactions, pricePerKwh) == 0)
                     {
-                        consumers.Remove(producer.PreferedBuyer);
+                        consumers.Remove(consumers[0]);
                     }
                     else
                     {
@@ -144,5 +144,5 @@ namespace SmartGrid
         }
     }
 
-    
+
 }
