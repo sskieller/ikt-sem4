@@ -11,11 +11,13 @@ namespace SmartGrid.Models
     {
         [Key]
         public string Name { get; set; }
+        public string Type { get; set; }
         public string PreferedBuyerName { get; set; }
         public float Produced { get; set; }
         public float Consumed { get; set; }
         public float Difference { get; set; }
         public float Remainder { get; set; }
+
 
     }
 
@@ -28,11 +30,13 @@ namespace SmartGrid.Models
         {
             Name = pro.Name;
             PreferedBuyer =  pro.PreferedBuyerName;
+            Type = pro.Type;
             Produced = pro.Produced;
             Consumed = pro.Consumed;
         }
 
         public string Name { get; set; }
+        public string Type { get; set; }
         public string PreferedBuyer { get; set; }
         public float Produced { get; set; }
         public float Consumed { get; set; }

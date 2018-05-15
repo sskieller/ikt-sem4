@@ -111,6 +111,7 @@ namespace SmartGrid.Controllers
                         Produced = pro.Produced,
                         Name = pro.Name,
                         PreferedBuyerName = pro.PreferedBuyer,//allProsumers.Find(pro.PreferedBuyer) != null ? pro.PreferedBuyer : string.Empty,
+                        Difference = pro.Produced - pro.Consumed,
                         Remainder = pro.Produced - pro.Consumed
                     });
                     continue;

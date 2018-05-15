@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201805151244590_TimeStamp.Designer.cs">
       <DependentUpon>201805151244590_TimeStamp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151334369_typeField.cs" />
+    <Compile Include="Migrations\201805151334369_typeField.Designer.cs">
+      <DependentUpon>201805151334369_typeField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Prosumer.cs" />
@@ -358,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805151244590_TimeStamp.resx">
       <DependentUpon>201805151244590_TimeStamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151334369_typeField.resx">
+      <DependentUpon>201805151334369_typeField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
