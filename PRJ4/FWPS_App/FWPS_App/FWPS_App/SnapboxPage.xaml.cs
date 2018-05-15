@@ -22,6 +22,12 @@ namespace FWPS_App
             MailStatus();
             NavigationPage.SetHasNavigationBar(this, false);
             ReturnBtn.Clicked += ReturnBtn_Clicked;
+            ShowStatisticsBtn.Clicked += ShowStatisticsBtn_Clicked;
+        }
+
+        private void ShowStatisticsBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ShowStatisticsPage());
         }
 
         private void Timer()
@@ -78,6 +84,7 @@ namespace FWPS_App
             public bool MailReceived { get; set; }
             public string ReceiverEmail { get; set; }
             public string Checksum { get; set; }
+            public DateTime CreatedDate { get; set; }
         }
     }
 }

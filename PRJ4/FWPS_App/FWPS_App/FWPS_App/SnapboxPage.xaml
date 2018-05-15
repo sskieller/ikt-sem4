@@ -71,6 +71,12 @@
                        HorizontalOptions="Start" 
                        Grid.Row="3"
                        Grid.Column="2"/>
+                <Button Text="Show statistics"
+                        x:Name="ShowStatisticsBtn"
+                        Style="{StaticResource ButtonStyle}"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
                 <Button x:Name="ReturnBtn"
                     Text="Return to MainPage"
                     Style="{StaticResource ButtonStyle}"

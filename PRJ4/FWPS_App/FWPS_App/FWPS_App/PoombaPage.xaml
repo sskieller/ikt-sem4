@@ -4,9 +4,6 @@
              x:Class="FWPS_App.PoombaPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome Poomba!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <Label Text="This system is under development!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

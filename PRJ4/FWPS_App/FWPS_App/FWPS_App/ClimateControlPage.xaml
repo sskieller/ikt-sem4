@@ -4,9 +4,6 @@
              x:Class="FWPS_App.ClimateControlPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Climate Control!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <Label Text="This system is under development!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
