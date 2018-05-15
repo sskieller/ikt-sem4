@@ -11,7 +11,8 @@ namespace SmartGrid.Models
     {
         [Key]
         public string Name { get; set; }
-        [ForeignKey("Name")]
+        [ForeignKey("PreferedBuyer")]
+        public string PreferedBuyerName { get; set; }
         public virtual Prosumer PreferedBuyer { get; set; }
         public float Produced { get; set; }
         public float Consumed { get; set; }

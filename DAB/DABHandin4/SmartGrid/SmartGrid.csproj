@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201805141409308_Soeren.Designer.cs">
       <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151017108_hellow.cs" />
+    <Compile Include="Migrations\201805151017108_hellow.Designer.cs">
+      <DependentUpon>201805151017108_hellow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Prosumer.cs" />
@@ -334,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805141409308_Soeren.resx">
       <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151017108_hellow.resx">
+      <DependentUpon>201805151017108_hellow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

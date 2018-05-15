@@ -110,7 +110,8 @@ namespace SmartGrid.Controllers
                         Consumed = pro.Consumed,
                         Produced = pro.Produced,
                         Name = pro.Name,
-                        PreferedBuyer = (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault(),
+                        PreferedBuyerName = pro.PreferedBuyer,
+                        //PreferedBuyer = (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault(),
                         Difference = pro.Produced - pro.Consumed
                     });
                     continue;
@@ -119,8 +120,9 @@ namespace SmartGrid.Controllers
                 oldProsumer.Consumed = pro.Consumed;
                 oldProsumer.Produced = pro.Produced;
                 oldProsumer.Name = pro.Name;
-                oldProsumer.PreferedBuyer =
-                    (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault();
+                oldProsumer.PreferedBuyerName = pro.PreferedBuyer;
+                //oldProsumer.PreferedBuyer =
+                    //(from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault();
                 oldProsumer.Difference = pro.Produced - pro.Consumed;
 
                 uow.Repository.Update(string.Empty, oldProsumer);
