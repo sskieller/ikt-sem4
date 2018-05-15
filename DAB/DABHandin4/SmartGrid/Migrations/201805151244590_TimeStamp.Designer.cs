@@ -7,13 +7,13 @@ namespace SmartGrid.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class w : IMigrationMetadata
+    public sealed partial class TimeStamp : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(w));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TimeStamp));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805151227522_w"; }
+            get { return "201805151244590_TimeStamp"; }
         }
         
         string IMigrationMetadata.Source

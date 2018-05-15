@@ -3,7 +3,7 @@ namespace SmartGrid.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addedtimestamp : DbMigration
+    public partial class TimeStamp : DbMigration
     {
         public override void Up()
         {

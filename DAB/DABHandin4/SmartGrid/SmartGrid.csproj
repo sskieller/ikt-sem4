@@ -230,21 +230,9 @@
     <Compile Include="Migrations\201805151118445_NewNames.Designer.cs">
       <DependentUpon>201805151118445_NewNames.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805151221103_addedtimestamp.cs" />
-    <Compile Include="Migrations\201805151221103_addedtimestamp.Designer.cs">
-      <DependentUpon>201805151221103_addedtimestamp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805151227522_w.cs" />
-    <Compile Include="Migrations\201805151227522_w.Designer.cs">
-      <DependentUpon>201805151227522_w.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805151229343_addedtimestamp1.cs" />
-    <Compile Include="Migrations\201805151229343_addedtimestamp1.Designer.cs">
-      <DependentUpon>201805151229343_addedtimestamp1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805151231163_201805151221103_addedtimestamp.cs" />
-    <Compile Include="Migrations\201805151231163_201805151221103_addedtimestamp.Designer.cs">
-      <DependentUpon>201805151231163_201805151221103_addedtimestamp.cs</DependentUpon>
+    <Compile Include="Migrations\201805151244590_TimeStamp.cs" />
+    <Compile Include="Migrations\201805151244590_TimeStamp.Designer.cs">
+      <DependentUpon>201805151244590_TimeStamp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Entity.cs" />
@@ -361,17 +349,8 @@
     <EmbeddedResource Include="Migrations\201805151118445_NewNames.resx">
       <DependentUpon>201805151118445_NewNames.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151221103_addedtimestamp.resx">
-      <DependentUpon>201805151221103_addedtimestamp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151227522_w.resx">
-      <DependentUpon>201805151227522_w.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151229343_addedtimestamp1.resx">
-      <DependentUpon>201805151229343_addedtimestamp1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805151231163_201805151221103_addedtimestamp.resx">
-      <DependentUpon>201805151231163_201805151221103_addedtimestamp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805151244590_TimeStamp.resx">
+      <DependentUpon>201805151244590_TimeStamp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

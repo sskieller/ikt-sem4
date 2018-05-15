@@ -57,7 +57,7 @@ namespace SmartGrid.Controllers
             }
             var uow = new UnitOfWork<SmartGridModel>(db);
             
-            smartGridModel.TimeStamp = DateTime.Now;
+            //smartGridModel.TimeStamp = DateTime.Now;
 
             uow.Repository.Create(smartGridModel);
             uow.Commit();
