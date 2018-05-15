@@ -18,20 +18,18 @@ namespace SmartGrid.Controllers
         private SmartGridContext db = new SmartGridContext();
 
         // GET: api/SmartGridModels
-        public IQueryable<SmartGridModel> GetSmartGridModels()
+        public IEnumerable<SmartGridModelDTO> GetSmartGridModels()
         {
             var uow = new UnitOfWork<SmartGridModel>(db);
 
-            var smartGrid = from sg in uow.Repository.ReadAll()
-                select new SmartGridModel
-                {
-                    SmartGridId = sg.SmartGridId,
-                    TotalForbrug = sg.TotalForbrug,
-                    TotalGeneration = sg.TotalGeneration,
-                    Brutto = sg.Brutto
-                };
+            var SGMDTOs = new List<SmartGridModelDTO>();
 
-            return smartGrid;
+            foreach (var smartGridModel in uow.Repository.ReadAll())
+            {
+                SGMDTOs.Add(new SmartGridModelDTO(smartGridModel));
+            }
+
+            return SGMDTOs;
         }
 
         // GET: api/SmartGridModels/5
