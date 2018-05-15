@@ -111,7 +111,6 @@ namespace SmartGrid.Controllers
                         Produced = pro.Produced,
                         Name = pro.Name,
                         PreferedBuyerName = pro.PreferedBuyer,
-                        //PreferedBuyer = (from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault(),
                         Remainder = pro.Produced - pro.Consumed
                     });
                     continue;
@@ -121,8 +120,6 @@ namespace SmartGrid.Controllers
                 oldProsumer.Produced = pro.Produced;
                 oldProsumer.Name = pro.Name;
                 oldProsumer.PreferedBuyerName = pro.PreferedBuyer;
-                //oldProsumer.PreferedBuyer =
-                    //(from p in allProsumers where p.Name == pro.PreferedBuyer select p).FirstOrDefault();
                 oldProsumer.Difference = pro.Produced - pro.Consumed;
                 oldProsumer.Remainder = pro.Produced - pro.Consumed;
 

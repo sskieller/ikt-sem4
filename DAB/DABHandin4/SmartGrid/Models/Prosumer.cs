@@ -11,9 +11,7 @@ namespace SmartGrid.Models
     {
         [Key]
         public string Name { get; set; }
-        [ForeignKey("PreferedBuyer")]
         public string PreferedBuyerName { get; set; }
-        public virtual Prosumer PreferedBuyer { get; set; }
         public float Produced { get; set; }
         public float Consumed { get; set; }
         public float Difference { get; set; }
@@ -29,7 +27,7 @@ namespace SmartGrid.Models
         public ProsumerDTO(Prosumer pro)
         {
             Name = pro.Name;
-            PreferedBuyer = pro.PreferedBuyer.Name == null ? pro.PreferedBuyer.Name : string.Empty;
+            PreferedBuyer =  pro.PreferedBuyerName;
             Produced = pro.Produced;
             Consumed = pro.Consumed;
         }
