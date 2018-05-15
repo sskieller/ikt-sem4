@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201805141409308_Soeren.Designer.cs">
       <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151054593_simon.cs" />
+    <Compile Include="Migrations\201805151054593_simon.Designer.cs">
+      <DependentUpon>201805151054593_simon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201805151118445_NewNames.cs" />
     <Compile Include="Migrations\201805151118445_NewNames.Designer.cs">
       <DependentUpon>201805151118445_NewNames.cs</DependentUpon>
@@ -345,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805141409308_Soeren.resx">
       <DependentUpon>201805141409308_Soeren.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151054593_simon.resx">
+      <DependentUpon>201805151054593_simon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805151118445_NewNames.resx">
       <DependentUpon>201805151118445_NewNames.cs</DependentUpon>
