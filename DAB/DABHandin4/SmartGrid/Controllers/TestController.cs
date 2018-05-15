@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using SmartGrid.Models;
 using SmartGrid.Repositories;
@@ -14,7 +15,7 @@ namespace SmartGrid.Controllers
         private SmartGridContext db = new SmartGridContext();
 
         // GET: api/Prosumers
-        public IEnumerable<ProsumerDTO> GetProsumers()
+        public async Task<IEnumerable<ProsumerDTO>> GetProsumers()
         {
             var uow = new UnitOfWork<Prosumer>(db);
 
@@ -23,7 +24,7 @@ namespace SmartGrid.Controllers
             foreach (var pro in uow.Repository.ReadAll())
                 Dtos.Add(new ProsumerDTO(pro));
 
-            PowerDistributer.HandleTransactions();
+            await PowerDistributer.HandleTransactions();
 
             return Dtos;
         }

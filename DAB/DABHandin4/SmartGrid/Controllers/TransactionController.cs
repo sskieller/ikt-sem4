@@ -34,7 +34,7 @@ namespace SmartGrid.Controllers
 
             _client.CreateDatabaseIfNotExistsAsync(new Database() { Id = "TransactionDB" }).Wait(2000);
             _client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("TransactionDB"),
-                new DocumentCollection { Id = "PersonCollection" }).Wait(2000);
+                new DocumentCollection { Id = "TransactionCollection" }).Wait(2000);
 
         }
         // GET: api/Person

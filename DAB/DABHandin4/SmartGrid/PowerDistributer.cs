@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using SmartGrid.Controllers;
 using SmartGrid.Models;
@@ -10,7 +11,7 @@ namespace SmartGrid
 {
     public static class PowerDistributer
     {
-        public static void HandleTransactions()
+        public static async Task HandleTransactions()
         {
             //Do all transactions here
             using (var prosumerDb = new SmartGridContext())
@@ -40,21 +41,13 @@ namespace SmartGrid
                     //Otherwise do not add to either consumers or producers
                 }
 
+                CreateGridProsumer(ref producers, ref consumers, netElectricity);
                 DistributePowerBetweenMultiple(ref producers, ref consumers, ref transactions);
 
 
-                if (netElectricity > 0)
-                {
-                    //Electricity in smart grid is positive, send to global grid
-
-                }
-                else if (netElectricity < 0)
-                {
-                    //Electricity is negative, import power
-                }
 
                 TransactionController ctrl = new TransactionController();
-                ctrl.Post(transactions).Wait(2000);
+                await ctrl.Post(transactions);
 
                 uow.Commit(); //Commit at the end
             }
@@ -62,17 +55,17 @@ namespace SmartGrid
 
         private static bool DistributePowerBetweenMultiple(ref List<Prosumer> producers, ref List<Prosumer> consumers, ref List<Transaction> transactions)
         {
-            float pricePerKwh = 0;
+            float pricePerKwh = BitcoinPriceGetter.GetPrice(); //EDIT HERE
             foreach (var producer in producers.ToArray())
             {
-                float netImport = producer.Difference;
-                Prosumer consumer = consumers.Find(x => x.Name == producer.PreferedBuyerName);
+                float netImport = producer.Remainder;
+                Prosumer preferredConsumer = consumers.Find(x => x.Name == producer.PreferedBuyerName);
                 //If the preferred producer is available in producers, choose that
-                if (consumer != null)
+                if (preferredConsumer != null)
                 {
-                    if (DistributePowerBetweenSingle(producer, consumer, ref transactions, pricePerKwh) == 0)
+                    if (DistributePowerBetweenSingle(producer, preferredConsumer, ref transactions, pricePerKwh) == 0)
                     {
-                        consumers.Remove(consumer);
+                        consumers.Remove(preferredConsumer);
                     }
                     else
                     {
@@ -106,12 +99,14 @@ namespace SmartGrid
             if (Math.Abs(producer.Remainder) > Math.Abs(consumer.Remainder))
             {
                 //More power has been produced than consumed
-                float transferredAmount = consumer.Remainder;
+                float transferredAmount = Math.Abs(consumer.Remainder);
                 producer.Remainder -= consumer.Remainder;
                 consumer.Remainder = 0;
 
                 transactions.Add(new Transaction()
                 {
+                    Id = string.Format("{0}-{1}-{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month,
+                        DateTime.Now.Year, producer.Name, consumer.Name) ,
                     Consumer = consumer.Name,
                     Producer = producer.Name,
                     TransactionDate = DateTime.Now,
@@ -125,12 +120,14 @@ namespace SmartGrid
             else
             {
                 //More power has been consumed than produced
-                float transferredAmount = producer.Remainder;
+                float transferredAmount = Math.Abs(producer.Remainder);
                 consumer.Remainder += producer.Remainder;
                 producer.Remainder = 0;
 
                 transactions.Add(new Transaction()
                 {
+                    Id = string.Format("{0}-{1}-{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month,
+                        DateTime.Now.Year, producer.Name, consumer.Name),
                     Consumer = consumer.Name,
                     Producer = producer.Name,
                     TransactionDate = DateTime.Now,
@@ -142,7 +139,76 @@ namespace SmartGrid
                 return 1;
             }
         }
+
+        private static void CreateGridProsumer(ref List<Prosumer> producers, ref List<Prosumer> consumers, float netElectricity)
+        {
+
+            if (netElectricity > 0)
+            {
+                //Create smartGrid is a producer, nationalGrid is a consumer
+                Prosumer smartGrid = new Prosumer()
+                {
+                    Consumed = 0,
+                    Name = "SmartGrid",
+                    PreferedBuyerName = "",
+                    Produced = netElectricity,
+                    Difference = netElectricity,
+                    Remainder = 0
+                };
+                Prosumer nationalGrid = new Prosumer()
+                {
+                    Consumed = netElectricity,
+                    Name = "NationalGrid",
+                    PreferedBuyerName = "SmartGrid",
+                    Produced = 0,
+                    Difference = 0 - netElectricity,
+                    Remainder = 0 - netElectricity
+                };
+                //Electricity in smart grid is positive, send to global grid
+                ProsumersController pCtrl = new ProsumersController();
+                pCtrl.PostProsumer(new ProsumerDTO[]
+                {
+                    new ProsumerDTO(smartGrid),
+                    new ProsumerDTO(nationalGrid)
+                }).Wait(2000);
+
+                consumers.Add(nationalGrid);
+
+            }
+            else if (netElectricity < 0)
+            {
+                //Electricity is negative, import power
+                Prosumer smartGrid = new Prosumer()
+                {
+                    Consumed = netElectricity,
+                    Name = "SmartGrid",
+                    PreferedBuyerName = "NationalGrid",
+                    Produced = 0,
+                    Difference = 0 - netElectricity,
+                    Remainder = 0
+                };
+                Prosumer nationalGrid = new Prosumer()
+                {
+                    Consumed = 0,
+                    Name = "NationalGrid",
+                    PreferedBuyerName = "",
+                    Produced = netElectricity,
+                    Difference = netElectricity,
+                    Remainder = netElectricity
+                };
+                //Electricity in smart grid is positive, send to global grid
+                ProsumersController pCtrl = new ProsumersController();
+                pCtrl.PostProsumer(new ProsumerDTO[]
+                {
+                    new ProsumerDTO(smartGrid),
+                    new ProsumerDTO(nationalGrid)
+                }).Wait(2000);
+
+                producers.Add(nationalGrid);
+            }
+        }
     }
+
 
 
 }
