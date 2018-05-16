@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using System.Timers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Plugin.Toasts;
+using Plugin.Toasts.Options;
 
 namespace FWPS_App
 {
@@ -55,6 +56,27 @@ namespace FWPS_App
             Device.BeginInvokeOnMainThread(() =>
                 {
                     powerlevel.Text = snapboxObject.PowerLevel + "%";
+
+                    if (snapboxObject.PowerLevel == "15")
+                    {
+                        // Make nofitication if powerlevel is 15%
+                        var toastclass = new ToastClass();
+
+                        toastclass.ShowToast(new NotificationOptions()
+                        {
+                            Title = "Low battery",
+                            Description = "Your snapbox powerlevel has reached 15%!",
+                            IsClickable = true,
+                            WindowsOptions = new WindowsOptions() { LogoUri = "icon.png" },
+                            ClearFromHistory = false,
+                            AllowTapInNotificationCenter = false,
+                            AndroidOptions = new AndroidOptions()
+                            {
+                                HexColor = "#F99D1C",
+                                ForceOpenAppOnNotificationTap = true
+                            }
+                        });
+                    }
                 });
         }
 
@@ -65,13 +87,37 @@ namespace FWPS_App
 
             var snapboxObject = JsonConvert.DeserializeObject<SnapboxObject>(obj);
 
-            if(snapboxObject.MailReceived == true)
+            Device.BeginInvokeOnMainThread(() =>
             {
-                mailStatusLbl.Text = "You got mail";
-            }
-            if(snapboxObject.MailReceived == false)
+                if (snapboxObject.MailReceived == true)
+                {
+                    mailStatusLbl.Text = "You got mail";
+                }
+                if (snapboxObject.MailReceived == false)
+                {
+                    mailStatusLbl.Text = "Your snapbox is empty";
+                }
+            });
+
+            if (snapboxObject.MailReceived == true)
             {
-                mailStatusLbl.Text = "Your snapbox is empty";
+                // Make nofitication if mail is received
+                var toastclass = new ToastClass();
+
+                toastclass.ShowToast(new NotificationOptions()
+                {
+                    Title = "You got mail!",
+                    Description = "Go to your snapbox to pick your snailmail",
+                    IsClickable = true,
+                    WindowsOptions = new WindowsOptions() { LogoUri = "icon.png" },
+                    ClearFromHistory = false,
+                    AllowTapInNotificationCenter = false,
+                    AndroidOptions = new AndroidOptions()
+                    {
+                        HexColor = "#F99D1C",
+                        ForceOpenAppOnNotificationTap = true
+                    }
+                });
             }
         }
 

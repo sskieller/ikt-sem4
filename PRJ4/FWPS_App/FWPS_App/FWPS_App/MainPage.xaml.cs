@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+
+
 namespace FWPS_App
 {
 	public partial class MainPage : ContentPage
@@ -22,8 +24,9 @@ namespace FWPS_App
             HodoorButton.Clicked += HodoorButton_Clicked;
             LogoutButton.Clicked += LogoutButton_Clicked;
             SnapboxButton.Clicked += SnapboxButton_Clicked;
-
         }
+
+
 
         public void MakePages()
         {

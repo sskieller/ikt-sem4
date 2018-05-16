@@ -62,6 +62,8 @@
                 <Button Text="Snapbox" Style="{StaticResource ButtonStyle}" x:Name="SnapboxButton"
                         Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="4,0,0,0"
                         HorizontalOptions="FillAndExpand"/>
+
+                
                 <Button Text="Logout" Style="{StaticResource ButtonStyle}" HorizontalOptions="CenterAndExpand" x:Name="LogoutButton"
                         Grid.Row="7" Grid.Column="0"/>
 
