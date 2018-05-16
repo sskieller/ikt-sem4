@@ -25,7 +25,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -36,45 +37,107 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Label Text="Welcome to Light!" 
+                <Label Text="Welcome to MorningSun!" 
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" x:Name="label2"
-                       Margin="0,40,0,0"
+                       Margin="0,15,0,0"
                        FontSize="Large"
                        Style="{StaticResource LabelStyle}"
                        Grid.Row="0"
-                       Grid.Column="1"
-                       Grid.ColumnSpan="2"/>
-                <Button Text="Turn light on" HorizontalOptions="CenterAndExpand" 
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"/>
+                <Button Text="Turn light on" HorizontalOptions="FillAndExpand" 
                         Style="{StaticResource ButtonStyle}"
                         x:Name="OnButton" 
-                        Grid.Row="4"
+                        Grid.Row="2"
                         Grid.Column="1"
                         Grid.ColumnSpan="2"/>
-                <Button Text="Turn light off" HorizontalOptions="CenterAndExpand" 
+                <Button Text="Turn light off" HorizontalOptions="FillAndExpand" 
                         Style="{StaticResource ButtonStyle}"
                         x:Name="OffButton"
-                        Grid.Row="5"
+                        Grid.Row="3"
                         Grid.Column="1"
-                        Grid.ColumnSpan="2"/>
+                        Grid.ColumnSpan="2"
+                        />
+
                 <Label Text="Current state: " 
                        Style="{StaticResource LabelStyle}"
                        HorizontalOptions="End" 
-                       Grid.Row="6"
+                       Grid.Row="4"
                        Grid.Column="0"
                        Grid.ColumnSpan="2"/>
                 <Label x:Name="lightStateLabel"
                        Style="{StaticResource LabelStyle}"
                        Text="--state here--"
-                       Grid.Row="6"
+                       Grid.Row="4"
                        Grid.Column="2"/>
-                <Label Text="Debug" 
+                <Label x:Name="hhLabel"
+                       Style="{StaticResource LabelStyle}"
+                       Text="Hour (hh)"
+                       VerticalOptions="End"
+                       Grid.Row="5"
+                       Grid.Column="1"/>
+                <Label x:Name="mmLabel"
+                       Style="{StaticResource LabelStyle}"
+                       VerticalOptions="End"
+                       Text="Minut (mm)"
+                       Grid.Row="5"
+                       Grid.Column="2"/>
+                <Label x:Name="WakeUpLabel"
+                       Margin="3,0,0,0"
+                       Style="{StaticResource LabelStyle}"
+                       Text="Wake up time:"
+                       VerticalOptions="Center"
+                       Grid.Row="6"
+                       Grid.Column="0"/>
+                <Label x:Name="SleepLabel"
+                       Margin="3,0,0,0"
+                       Style="{StaticResource LabelStyle}"
+                       Text="Sleep time:"
+                       VerticalOptions="Center"
+                       Grid.Row="7"
+                       Grid.Column="0"/>
+                <Editor x:Name="hhWakeUpEditor"
+                        Style="{StaticResource EditorStyle}"
+                        Grid.Row="6"
+                        Grid.Column="1"/>
+                <Editor x:Name="mmWakeUpEditor"
+                        Style="{StaticResource EditorStyle}"
+                        Grid.Row="6"
+                        Grid.Column="2"/>
+                <Editor x:Name="hhSleepEditor"
+                        Style="{StaticResource EditorStyle}"
+                        Grid.Row="7"
+                        Grid.Column="1" />
+                <Editor x:Name="mmSleepEditor"
+                        Style="{StaticResource EditorStyle}"
+                        Grid.Row="7"
+                        Grid.Column="2"/>
+                <Button x:Name="WakeUpAndSleepApplyBtn"
+                        Style="{StaticResource ButtonStyle}"
+                        Text="Apply"
+                        Grid.Row="6"
+                        Grid.RowSpan="2"
+                        Grid.Column="3"/>
+                <Button Text="Return to MainPage"
+                        HorizontalOptions="CenterAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="ReturnBtn"
+                        Grid.Row="9"
+                        Grid.Column="0"/>
+                <Button Text="Show statistics"
+                        x:Name="ShowStatisticsBtn"
+                        Style="{StaticResource ButtonStyle}"
+                        Grid.Row="9"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"/>
+                <!--<Label Text="Debug" 
                        TextColor="White"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" x:Name="mainlabel"
                        Grid.Row="7"
                        Grid.Column="0"
-                       Grid.ColumnSpan="2"/>
+                       Grid.ColumnSpan="3"/>-->
             </Grid>
         </RelativeLayout>
     </ContentPage.Content>

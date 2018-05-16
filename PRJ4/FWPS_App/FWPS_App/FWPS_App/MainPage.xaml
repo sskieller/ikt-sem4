@@ -47,21 +47,23 @@
                        Grid.Row="1" FontSize="Small" Grid.Column="0" Grid.ColumnSpan="4"
                        VerticalOptions="Start" 
                        HorizontalOptions="Center"/>
-                <Button Text="Climate Control" Style="{StaticResource ButtonStyle}" x:Name="ClimateControlButton" 
-                        Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,0,0,0"
-                        HorizontalOptions="FillAndExpand"/>
-                <Button Text="Light" Style="{StaticResource ButtonStyle}"  x:Name="LightButton" 
-                        Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,4,0"
-                        HorizontalOptions="FillAndExpand"/>
-                <Button Text="Poomba" Style="{StaticResource ButtonStyle}" x:Name="PoombaButton"
-                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,0,0,0"
-                        HorizontalOptions="FillAndExpand"/>
-                <Button Text="Hodoor" Style="{StaticResource ButtonStyle}" x:Name="HodoorButton"
-                        Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,4,0"
-                        HorizontalOptions="FillAndExpand"/>
-                <Button Text="Snapbox" Style="{StaticResource ButtonStyle}" x:Name="SnapboxButton"
+                <Button Text="Clima-M8" Style="{StaticResource ButtonStyle}" x:Name="ClimateControlButton" 
                         Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,0,0,0"
                         HorizontalOptions="FillAndExpand"/>
+                <Button Text="MorningSun" Style="{StaticResource ButtonStyle}"  x:Name="LightButton" 
+                        Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,4,0"
+                        HorizontalOptions="FillAndExpand"/>
+                <Button Text="Poomba" Style="{StaticResource ButtonStyle}" x:Name="PoombaButton"
+                        Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="4,0,0,0"
+                        HorizontalOptions="FillAndExpand"/>
+                <Button Text="Hodoor" Style="{StaticResource ButtonStyle}" x:Name="HodoorButton"
+                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,4,0"
+                        HorizontalOptions="FillAndExpand"/>
+                <Button Text="Snapbox" Style="{StaticResource ButtonStyle}" x:Name="SnapboxButton"
+                        Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="4,0,0,0"
+                        HorizontalOptions="FillAndExpand"/>
+
+                
                 <Button Text="Logout" Style="{StaticResource ButtonStyle}" HorizontalOptions="CenterAndExpand" x:Name="LogoutButton"
                         Grid.Row="7" Grid.Column="0"/>
 

@@ -3,10 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FWPS_App.HodoorPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Hodoor!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <RelativeLayout>
+            <Image Source="http://www.bozedown-alpacas.co.uk/wp-content/uploads/2015/07/IMG_0948.jpg" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="Welcome to Hodoor!"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" x:Name="welcomeLabel"
+                       Margin="0,15,0,0"
+                       FontSize="Large"
+                       Style="{StaticResource LabelStyle}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"/>
+                <Button Text="Lock door" HorizontalOptions="FillAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="LockBtn"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
+                <Button Text="Unlock door" HorizontalOptions="FillAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="UnlockBtn"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
+                <Label Text="Door status:" 
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" 
+                       Grid.Row="6"
+                       Grid.Column="1"/>
+                <Label x:Name="doorStatus"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" 
+                       Grid.Row="6"
+                       Grid.Column="2"/>
+                <Button x:Name="ReturnBtn"
+                       Text="Return to MainPage"
+                       Style="{StaticResource ButtonStyle}"
+                       Grid.Row="9"
+                       Grid.Column="0"/>
+            </Grid>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
