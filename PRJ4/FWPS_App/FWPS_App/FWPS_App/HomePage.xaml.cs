@@ -21,6 +21,7 @@ namespace FWPS_App
         public HomePage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             OnLoginButton.Clicked += OnLoginButton_Clicked;
         }
 

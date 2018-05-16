@@ -15,12 +15,11 @@ namespace FWPS_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SnapboxPage : ContentPage
     {
+        private bool _notificationSent;
         public SnapboxPage()
         {
             InitializeComponent();
             Timer();
-            BatteryStatus();
-            MailStatus();
             NavigationPage.SetHasNavigationBar(this, false);
             ReturnBtn.Clicked += ReturnBtn_Clicked;
             ShowStatisticsBtn.Clicked += ShowStatisticsBtn_Clicked;
@@ -95,15 +94,18 @@ namespace FWPS_App
                 }
                 if (snapboxObject.MailReceived == false)
                 {
+                    _notificationSent = false;
                     mailStatusLbl.Text = "Your snapbox is empty";
                 }
             });
 
-            if (snapboxObject.MailReceived == true)
+            if (snapboxObject.MailReceived == true && _notificationSent == false)
             {
                 // Make nofitication if mail is received
-                var toastclass = new ToastClass();
+                _notificationSent = true;
 
+                var toastclass = new ToastClass();
+                
                 toastclass.ShowToast(new NotificationOptions()
                 {
                     Title = "You got mail!",

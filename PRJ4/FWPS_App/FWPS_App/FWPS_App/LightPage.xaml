@@ -37,7 +37,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Label Text="Welcome to Morning Sun!" 
+                <Label Text="Welcome to MorningSun!" 
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" x:Name="label2"
                        Margin="0,15,0,0"
@@ -125,6 +125,12 @@
                         x:Name="ReturnBtn"
                         Grid.Row="9"
                         Grid.Column="0"/>
+                <Button Text="Show statistics"
+                        x:Name="ShowStatisticsBtn"
+                        Style="{StaticResource ButtonStyle}"
+                        Grid.Row="9"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"/>
                 <!--<Label Text="Debug" 
                        TextColor="White"
                        VerticalOptions="Center" 

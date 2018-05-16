@@ -47,10 +47,10 @@
                        Grid.Row="1" FontSize="Small" Grid.Column="0" Grid.ColumnSpan="4"
                        VerticalOptions="Start" 
                        HorizontalOptions="Center"/>
-                <Button Text="Climate Control" Style="{StaticResource ButtonStyle}" x:Name="ClimateControlButton" 
+                <Button Text="Clima-M8" Style="{StaticResource ButtonStyle}" x:Name="ClimateControlButton" 
                         Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="4,0,0,0"
                         HorizontalOptions="FillAndExpand"/>
-                <Button Text="Morning Sun" Style="{StaticResource ButtonStyle}"  x:Name="LightButton" 
+                <Button Text="MorningSun" Style="{StaticResource ButtonStyle}"  x:Name="LightButton" 
                         Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,4,0"
                         HorizontalOptions="FillAndExpand"/>
                 <Button Text="Poomba" Style="{StaticResource ButtonStyle}" x:Name="PoombaButton"

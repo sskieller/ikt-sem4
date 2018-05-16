@@ -74,8 +74,8 @@
                 <Button Text="Show statistics"
                         x:Name="ShowStatisticsBtn"
                         Style="{StaticResource ButtonStyle}"
-                        Grid.Row="6"
-                        Grid.Column="1"
+                        Grid.Row="9"
+                        Grid.Column="2"
                         Grid.ColumnSpan="2"/>
                 <Button x:Name="ReturnBtn"
                     Text="Return to MainPage"

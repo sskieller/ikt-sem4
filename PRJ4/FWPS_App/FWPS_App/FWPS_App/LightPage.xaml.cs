@@ -26,9 +26,14 @@ namespace FWPS_App
             ReturnBtn.Clicked += ReturnBtn_Clicked;
             OnButton.Clicked += OnButton_Clicked;
             OffButton.Clicked += OffButton_Clicked;
+            ShowStatisticsBtn.Clicked += ShowStatisticsBtn_Clicked;
             WakeUpAndSleepApplyBtn.Clicked += WakeUpAndSleepApplyBtn_Clicked;
         }
 
+        private void ShowStatisticsBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ShowLightStatisticsPage());
+        }
         private void ReturnBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
@@ -249,6 +254,7 @@ namespace FWPS_App
 
             public DateTime SleepTime { get; set; }
             public DateTime WakeUpTime { get; set; }
+            public DateTime CreatedDate { get; set; }
         }
     }
 }
