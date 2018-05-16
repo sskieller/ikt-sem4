@@ -52,10 +52,7 @@ namespace FWPS_App
 
             return Task.CompletedTask;
         }
-<<<<<<< HEAD
-    }
-}
-=======
+
 
         private static string _GetObject(string uri)
         {
@@ -90,4 +87,4 @@ namespace FWPS_App
         }
     }
 }
->>>>>>> Hellow_v3
+

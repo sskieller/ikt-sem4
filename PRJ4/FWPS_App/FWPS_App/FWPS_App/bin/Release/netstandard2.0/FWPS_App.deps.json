@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "53d9a6494738fc8637db2fe76ffa69103c10c440"
+    "signature": "9791798f54e8cf2c60f161749ac9c6d3d38a41d9"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,12 +9,22 @@
     ".NETStandard,Version=v2.0/": {
       "FWPS_App/1.0.0": {
         "dependencies": {
+          "Microcharts.Forms": "0.6.1",
           "NETStandard.Library": "2.0.1",
-          "Newtonsoft.Json": "11.0.1",
+          "Newtonsoft.Json": "11.0.2",
+          "Toasts.Forms.Plugin": "3.3.2",
           "Xamarin.Forms": "2.5.0.280555"
         },
         "runtime": {
           "FWPS_App.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.6.1": {
+        "dependencies": {
+          "SkiaSharp.Views.Forms": "1.59.1"
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wpa81+wp8/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
@@ -23,9 +33,28 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "Newtonsoft.Json/11.0.1": {
+      "Newtonsoft.Json/11.0.2": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1": {
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "Xamarin.Forms": "2.5.0.280555"
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "Toasts.Forms.Plugin/3.3.2": {
+        "runtime": {
+          "lib/netstandard1.1/Toasts.Forms.Plugin.Abstractions.dll": {}
         }
       },
       "Xamarin.Forms/2.5.0.280555": {
@@ -43,6 +72,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microcharts.Forms/0.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lZmOwQ9SWhlNYTq1GCcHJF9yFRxkZeRpsQzUVJLQFlxhXm90NXCpgS7MhEZzwPw1+2+8ZjdoXFyHHsqNO9rEMg==",
+      "path": "microcharts.forms/0.6.1",
+      "hashPath": "microcharts.forms.0.6.1.nupkg.sha512"
+    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -57,12 +93,33 @@
       "path": "netstandard.library/2.0.1",
       "hashPath": "netstandard.library.2.0.1.nupkg.sha512"
     },
-    "Newtonsoft.Json/11.0.1": {
+    "Newtonsoft.Json/11.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pNN4l+J6LlpIvHOeNdXlwxv39NPJ2B5klz+Rd2UQZIx30Squ5oND1Yy3wEAUoKn0GPUj6Yxt9lxlYWQqfZcvKg==",
-      "path": "newtonsoft.json/11.0.1",
-      "hashPath": "newtonsoft.json.11.0.1.nupkg.sha512"
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "path": "newtonsoft.json/11.0.2",
+      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+    },
+    "SkiaSharp/1.59.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
+      "path": "skiasharp/1.59.1",
+      "hashPath": "skiasharp.1.59.1.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Forms/1.59.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oJB/Hgk1TghpMuuXhUZKmQ3rOU/l4RleYsgNd0EvrNmDahdr/PPhJ30rFH0OjdIsuf5T2hrRdAn55zdb7yMg2w==",
+      "path": "skiasharp.views.forms/1.59.1",
+      "hashPath": "skiasharp.views.forms.1.59.1.nupkg.sha512"
+    },
+    "Toasts.Forms.Plugin/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Cg+uc+GPV2rfGLYl/gyW7oo5YPPZ0/jG1Bj6KRihecoOy0Ju4HfKith9pd8CIXerS9DH7x8vqV5jrPaKXEGenA==",
+      "path": "toasts.forms.plugin/3.3.2",
+      "hashPath": "toasts.forms.plugin.3.3.2.nupkg.sha512"
     },
     "Xamarin.Forms/2.5.0.280555": {
       "type": "package",

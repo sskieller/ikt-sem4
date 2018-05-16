@@ -31,10 +31,10 @@ namespace FWPS_App
             loadingWheelTM.IsRunning = true;
             _loggingIn = true;
 
-            Task.Factory.StartNew(LoginFunc); // Making thread to handle login since it takes a whole
+            Task.Run(() => LoginFunc()); // Making thread to handle login since it takes a whole
         }
 
-        private async Task LoginFunc()
+        private void LoginFunc()
         {
             Thread.Sleep(1000); // CUZ OTHERWISE IT TOO FUCKIN' FAST
 
@@ -42,18 +42,14 @@ namespace FWPS_App
             string password = passwordTextBox.Text ?? "";
 
             if (_login.Login(username, password))
-            {
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     _loggingIn = false;
                     loadingWheelTM.IsRunning = false;
-                    Navigation.PushAsync(new MainPage() {Title = "Main Page"});
+                    Navigation.PushAsync(new MainPage() { Title = "Main Page" });
                     usernameTextBox.Text = "";
                     passwordTextBox.Text = "";
-
                 });
-                await SignalRClient.Instance.UpdateName();
-            }
             else
                 Device.BeginInvokeOnMainThread(() =>
                 {
@@ -63,8 +59,6 @@ namespace FWPS_App
                     _loggingIn = false;
                     loadingWheelTM.IsRunning = false;
                 });
-
-            
         }
     }
 }

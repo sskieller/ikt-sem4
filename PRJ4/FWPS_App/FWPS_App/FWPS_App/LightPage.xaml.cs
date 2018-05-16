@@ -30,7 +30,6 @@ namespace FWPS_App
             WakeUpAndSleepApplyBtn.Clicked += WakeUpAndSleepApplyBtn_Clicked;
         }
 
-
         private void ShowStatisticsBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ShowLightStatisticsPage());
@@ -48,23 +47,11 @@ namespace FWPS_App
 
                 var lightObject = JsonConvert.DeserializeObject<LightObject>(obj);
 
-<<<<<<< HEAD
-                LightObject lightObject = new LightObject()
-                {
-                    Command = "off",
-                    IsRun = false,
-                    IsOn = false
-                };
-                HTTPRequestHandler.CreateRequest(lightObject, LightUri);
-                OnButton.IsEnabled = true;
-            
-=======
                 hhWakeUpEditor.Text = lightObject.WakeUpTime.Hour.ToString();
                 mmWakeUpEditor.Text = lightObject.WakeUpTime.Minute.ToString();
                 hhSleepEditor.Text = lightObject.SleepTime.Hour.ToString();
                 mmSleepEditor.Text = lightObject.SleepTime.Minute.ToString();
             });
->>>>>>> Hellow_v3
         }
 
         private void WakeUpAndSleepApplyBtn_Clicked(object sender, EventArgs e)
@@ -73,16 +60,6 @@ namespace FWPS_App
             // The four editor fiels has to hold integer values
             if (!int.TryParse((hhWakeUpEditor.Text), out int something))
             {
-<<<<<<< HEAD
-                Command = "on",
-                IsRun = false,
-                IsOn = true
-            };
-            HTTPRequestHandler.CreateRequest(lightObject, LightUri);
-            OnButton.IsEnabled = true;
-        }
-
-=======
                 DisplayAlert("Wrong input", "Field(s) either empty or wrong input type. Please try again", "OK");
                 hhWakeUpEditor.Text = "";
                 WakeUpAndSleepApplyBtn.IsEnabled = true;
@@ -151,57 +128,8 @@ namespace FWPS_App
                 WakeUpAndSleepApplyBtn.IsEnabled = true;
                 return;
             }
->>>>>>> Hellow_v3
 
-	    public void LightChangedHandler(object obj, LightEventArgs e)
-	    {
-	        lightStateLabel.Text = e.State ? "Light is on" : "Light is off";
-	    }
 
-<<<<<<< HEAD
-
-	    //protected void GetLightState()
-     //   {
-
-     //       HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + "Newest/");
-     //       request.Method = "GET";
-     //       request.KeepAlive = false;
-     //       request.ContentType = "application/json";
-     //       //request.Headers.Add("content-type", "application/json");
-            
-     //       try
-     //       {
-     //           HttpWebResponse response = (HttpWebResponse)  request.GetResponse();
-     //           string myResponse = "";
-     //           using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-     //           {
-     //               myResponse = sr.ReadToEnd();
-     //           }
-
-     //           LightObject lightobject = JsonConvert.DeserializeObject<LightObject>(myResponse);
-
-     //           if (lightobject.IsOn == true)
-     //           {
-     //               lightStateLabel.Text = "Light is on";
-
-     //           }
-     //           else if(lightobject.IsOn == false)
-     //           {
-     //               lightStateLabel.Text = "Light is off";
-     //           }
-     //           else
-     //           {
-     //               lightStateLabel.Text = "Something went much wrong";
-     //           }
-                
-     //       }
-     //       catch (WebException e)
-     //       {
-     //           Console.WriteLine(e.Message);
-     //       }
-
-     //   }
-=======
             DateTime WakeUpParsedDate = new DateTime();
             WakeUpParsedDate = DateTime.Today;
             WakeUpParsedDate = WakeUpParsedDate.AddHours(hhWakeUpInput);
@@ -239,7 +167,7 @@ namespace FWPS_App
             timer.Start();
         }
 
-    private void LightState()
+        private void LightState()
         {
 
             string obj = HTTPRequestHandler.CreateGetRequest(LightUri + "newest/").ToString();
@@ -274,7 +202,7 @@ namespace FWPS_App
             string obj = HTTPRequestHandler.CreateGetRequest(LightUri + "newest/").ToString();
             var lightStateObject = JsonConvert.DeserializeObject<LightObject>(obj);
 
-            if(lightStateObject.IsOn == false)
+            if (lightStateObject.IsOn == false)
             {
                 DisplayAlert("Well tried", "Light is already turned off!", "OK");
             }
@@ -292,7 +220,6 @@ namespace FWPS_App
                 OffButton.IsEnabled = true;
             }
         }
->>>>>>> Hellow_v3
 
         private void OnButton_Clicked(object sender, EventArgs e)
         {
