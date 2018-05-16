@@ -16,6 +16,7 @@ namespace FWPS_App
     public partial class SnapboxPage : ContentPage
     {
         private bool _notificationSent;
+        private bool _powerNotificationSent;
         public SnapboxPage()
         {
             InitializeComponent();
@@ -56,9 +57,10 @@ namespace FWPS_App
                 {
                     powerlevel.Text = snapboxObject.PowerLevel + "%";
 
-                    if (snapboxObject.PowerLevel == "15")
+                    if (int.Parse(snapboxObject.PowerLevel) <= 15 && _powerNotificationSent == false)
                     {
-                        // Make nofitication if powerlevel is 15%
+                        _powerNotificationSent = true;
+                        // Make nofitication if powerlevel is less than 15%
                         var toastclass = new ToastClass();
 
                         toastclass.ShowToast(new NotificationOptions()
@@ -75,6 +77,10 @@ namespace FWPS_App
                                 ForceOpenAppOnNotificationTap = true
                             }
                         });
+                    }
+                    else if (int.Parse(snapboxObject.PowerLevel) > 15)
+                    {
+                        _powerNotificationSent = false;
                     }
                 });
         }
