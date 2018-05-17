@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -73,6 +74,8 @@ namespace FWPS_App
 
         public bool VerifyPassword(string usrname, string pskword)
         {
+            if (usrname == string.Empty || pskword == string.Empty) return false;
+
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_baseUri + usrname + ';' + pskword);
@@ -80,8 +83,14 @@ namespace FWPS_App
 
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse(); // Get response to check the returnvalue
 
-                Console.WriteLine("Status code returned: {0}", response.StatusCode);
-                return response.StatusCode == HttpStatusCode.OK;
+                string myResponse;
+
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                {
+                    myResponse = sr.ReadToEnd();
+                }
+
+                return response.StatusCode == HttpStatusCode.OK && myResponse == "LoginOk";
             }
             catch (Exception e)
             {

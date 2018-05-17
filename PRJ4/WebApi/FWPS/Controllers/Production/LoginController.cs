@@ -35,7 +35,7 @@ namespace FWPS.Controllers
         [HttpGet("{RFID}", Name = "GetRFID")]
         public IActionResult GetByUsername(string rfid)
         {
-            DebugWriter.Write("rfid received: " + rfid + " end");
+            (new DebugWriter()).Write("rfid received: " + rfid + " end");
             var item = _context.LoginItems.FirstOrDefault(t => (t.RfidId1 == rfid || t.RfidId2 == rfid));
             if (item == null)
             {
@@ -55,7 +55,7 @@ namespace FWPS.Controllers
                     return NotFound();
                 }
             }
-            return Content("Hi there");
+            return Content("LoginOk");
         }
         
         

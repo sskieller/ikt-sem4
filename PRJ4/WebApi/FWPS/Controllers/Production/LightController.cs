@@ -51,6 +51,21 @@ namespace FWPS.Controllers
             return new ObjectResult(lightItem);
         }
 
+        [HttpGet("[action]")]
+        public IEnumerable<LightItem> GetUpdate()
+        {
+            if (_context.LightItems.ToList().Count <= 0)
+            {
+                throw new NoItemsInDatabaseException();
+            }
+
+            var items = from it in _context.LightItems
+                where DateTime.Now.Subtract(it.CreatedDate) < TimeSpan.FromDays(7)
+                select it;
+
+            return items;
+        }
+
         [HttpGet("[action]")] // '/api/Light/next'
         public IActionResult Next()
         {

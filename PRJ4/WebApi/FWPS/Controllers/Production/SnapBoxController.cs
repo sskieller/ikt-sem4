@@ -40,7 +40,22 @@ namespace FWPS.Controllers
 			return _context.SnapBoxItems.ToList();
 		}
 
-		[HttpGet("{id:int}", Name = "GetSnapBox")]
+	    [HttpGet("[action]")]
+	    public IEnumerable<SnapBoxItem> GetUpdate()
+	    {
+	        if (_context.SnapBoxItems.ToList().Count <= 0)
+	        {
+	            throw new NoItemsInDatabaseException();
+	        }
+
+	        var items = from it in _context.SnapBoxItems
+	            where DateTime.Now.Subtract(it.CreatedDate) < TimeSpan.FromDays(7)
+	            select it;
+
+	        return items;
+	    }
+
+        [HttpGet("{id:int}", Name = "GetSnapBox")]
 		public IActionResult GetById(long id)
 		{
 			var item = _context.SnapBoxItems.FirstOrDefault(t => t.Id == id);
