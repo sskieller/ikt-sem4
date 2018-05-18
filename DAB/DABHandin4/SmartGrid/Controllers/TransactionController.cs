@@ -67,31 +67,5 @@ namespace SmartGrid.Controllers
             
 
         }
-
-        // PUT: api/Transaction/5
-        public async Task Put(int id, [FromBody]Transaction p)
-        {
-            //Person p = await Task<Person>.Factory.StartNew(() => JsonConvert.DeserializeObject<Person>(value));
-
-            if (p == null)
-            {
-                return;
-            }
-            await _repository.Update(p.Id, p);
-
-        }
-
-        // DELETE: api/Person/5
-        public async Task Delete(string id)
-        {
-
-            if (id == null)
-            {
-                return;
-            }
-
-            await _repository.Delete(id);
-
-        }
     }
 }
