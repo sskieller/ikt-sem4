@@ -67,7 +67,6 @@ namespace MasterApplication.MessageHandlers
             //Send message to DB that light is now on
             LightItem lightItem = new LightItem() { Command = "TurnedOn", IsOn = true };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
-            SignalRClient.Instance.UpdateEntityCondition("Light", "On");
         }
 
         private void LightIsOff(string message)
@@ -77,7 +76,6 @@ namespace MasterApplication.MessageHandlers
             //Send message to DB that light is now on
             LightItem lightItem = new LightItem() { Command = "TurnedOff", IsOn = false };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
-            SignalRClient.Instance.UpdateEntityCondition("Light", "Off");
         }
 
         #endregion
