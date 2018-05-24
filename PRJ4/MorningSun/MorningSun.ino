@@ -93,12 +93,6 @@ void callback(char * topic, byte* payload, unsigned int length)
 
 		return;
 	}
-	else if (strcmp(topic, "MorningSun/CmdStatus") == 0)
-	{
-		Wire.beginTransmission(0x10);
-		Wire.write('L');
-		byte s = Wire.endTransmission();
-	}
 
 	Serial.println("Unknown command received");
 }
@@ -139,7 +133,6 @@ void reconnect()
 			//Subscribe to MorningSun
 			mqClient.subscribe("MorningSun/CmdOn");
 			mqClient.subscribe("MorningSun/CmdOff");
-			mqClient.subscribe("MorningSun/CmdStatus");
 		}
 		else
 		{

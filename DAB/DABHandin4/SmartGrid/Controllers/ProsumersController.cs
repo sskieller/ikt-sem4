@@ -17,21 +17,13 @@ namespace SmartGrid.Controllers
 {
     public class ProsumersController : ApiController
     {
-        private SmartGridContext db = new SmartGridContext();
-        private static Timer _timer = new Timer();
-        private bool _timerEnabled = false;
+        private readonly SmartGridContext _db = new SmartGridContext();
 
-        private static event EventHandler ProsumerUpdatedEvent;
-
-        static ProsumersController()
-        {
-            ProsumerUpdatedEvent += EventNotifier.Instance.ProsumersUpdatedEventHandler;
-        }
 
         // GET: api/Prosumers
         public IEnumerable<ProsumerDTO> GetProsumers()
         {
-            var uow = new UnitOfWork<Prosumer>(db);
+            var uow = new UnitOfWork<Prosumer>(_db);
 
             var Dtos = new List<ProsumerDTO>();
 
@@ -45,7 +37,7 @@ namespace SmartGrid.Controllers
         [ResponseType(typeof(Prosumer))]
         public async Task<IHttpActionResult> GetProsumer(string id)
         {
-            Prosumer prosumer = await db.Prosumers.FindAsync(id);
+            Prosumer prosumer = await _db.Prosumers.FindAsync(id);
             if (prosumer == null)
             {
                 return NotFound();
@@ -54,40 +46,6 @@ namespace SmartGrid.Controllers
             return Ok(prosumer);
         }
 
-        // PUT: api/Prosumers/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProsumer(string id, Prosumer prosumer)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != prosumer.Name)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(prosumer).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProsumerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
 
         // POST: api/Prosumers
         // POST: api/Prosumers
@@ -99,7 +57,7 @@ namespace SmartGrid.Controllers
                 return BadRequest(ModelState);
             }
 
-            var uow = new UnitOfWork<Prosumer>(db);
+            var uow = new UnitOfWork<Prosumer>(_db);
 
             var allProsumers = uow.Repository.ReadAll();
 
@@ -156,7 +114,7 @@ namespace SmartGrid.Controllers
 
         internal void UpdateGrids(ProsumerDTO[] prosumer)
         {
-            var uow = new UnitOfWork<Prosumer>(db);
+            var uow = new UnitOfWork<Prosumer>(_db);
 
             var allProsumers = uow.Repository.ReadAll();
 
@@ -199,14 +157,14 @@ namespace SmartGrid.Controllers
         [ResponseType(typeof(Prosumer))]
         public async Task<IHttpActionResult> DeleteProsumer(string id)
         {
-            Prosumer prosumer = await db.Prosumers.FindAsync(id);
+            Prosumer prosumer = await _db.Prosumers.FindAsync(id);
             if (prosumer == null)
             {
                 return NotFound();
             }
 
-            db.Prosumers.Remove(prosumer);
-            await db.SaveChangesAsync();
+            _db.Prosumers.Remove(prosumer);
+            await _db.SaveChangesAsync();
 
             return Ok(prosumer);
         }
@@ -215,14 +173,14 @@ namespace SmartGrid.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool ProsumerExists(string id)
         {
-            return db.Prosumers.Count(e => e.Name == id) > 0;
+            return _db.Prosumers.Count(e => e.Name == id) > 0;
         }
     }
 }

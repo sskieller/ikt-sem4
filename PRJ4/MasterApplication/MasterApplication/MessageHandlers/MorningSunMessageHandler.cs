@@ -50,9 +50,6 @@ namespace MasterApplication.MessageHandlers
                 case "UpdateTime":
 	                UpdateTime(message);
 	                break;
-                case "Status":
-                    UpdateStatus(message);
-                    break;
 
 				default:
 					//Do not handle
@@ -70,7 +67,6 @@ namespace MasterApplication.MessageHandlers
             //Send message to DB that light is now on
             LightItem lightItem = new LightItem() { Command = "TurnedOn", IsOn = true };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
-            SignalRClient.Instance.UpdateEntityCondition("Light", "On");
         }
 
         private void LightIsOff(string message)
@@ -80,21 +76,12 @@ namespace MasterApplication.MessageHandlers
             //Send message to DB that light is now on
             LightItem lightItem = new LightItem() { Command = "TurnedOff", IsOn = false };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
-            SignalRClient.Instance.UpdateEntityCondition("Light", "Off");
         }
 
         #endregion
 
 
         #region WebAPI-related handlers
-
-
-
-        private void UpdateStatus(string message)
-        {
-            //Ask MorningSun for status
-            FwpsPublisher.PublishMessage("MorningSun.CmdStatus", "");
-        }
 
         private void TurnOn(string message)
         {

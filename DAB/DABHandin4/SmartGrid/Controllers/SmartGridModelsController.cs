@@ -15,12 +15,12 @@ namespace SmartGrid.Controllers
 {
     public class SmartGridModelsController : ApiController
     {
-        private SmartGridContext db = new SmartGridContext();
+        private readonly SmartGridContext _db = new SmartGridContext();
 
         // GET: api/SmartGridModels
         public IEnumerable<SmartGridModelDTO> GetSmartGridModels()
         {
-            var uow = new UnitOfWork<SmartGridModel>(db);
+            var uow = new UnitOfWork<SmartGridModel>(_db);
 
             var dtos = new List<SmartGridModelDTO>();
 
@@ -36,7 +36,7 @@ namespace SmartGrid.Controllers
         [ResponseType(typeof(SmartGridModel))]
         public IHttpActionResult GetSmartGridModel(int id)
         {
-            var uow = new UnitOfWork<SmartGridModel>(db);
+            var uow = new UnitOfWork<SmartGridModel>(_db);
 
             SmartGridModel smartGridModel = uow.Repository.Read(id);
             if (smartGridModel == null)
@@ -55,7 +55,7 @@ namespace SmartGrid.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var uow = new UnitOfWork<SmartGridModel>(db);
+            var uow = new UnitOfWork<SmartGridModel>(_db);
             
             //smartGridModel.TimeStamp = DateTime.Now;
 
@@ -69,14 +69,14 @@ namespace SmartGrid.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool SmartGridModelExists(int id)
         {
-            return db.SmartGridModels.Count(e => e.SmartGridId == id) > 0;
+            return _db.SmartGridModels.Count(e => e.SmartGridId == id) > 0;
         }
     }
 }
