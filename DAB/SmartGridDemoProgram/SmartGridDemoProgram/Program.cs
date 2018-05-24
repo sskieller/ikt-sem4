@@ -36,7 +36,7 @@ namespace SmartGridDemoProgram
 
             api.PostItem("api/Prosumers", JsonConvert.SerializeObject(prosumers));
             
-            Console.WriteLine("Press 'q' to quit -- 'u' to Update all -- 't' to view transaction");
+            Console.WriteLine("Press 'q' to quit -- 'u' to Update all");
             
             while (true)
             {
@@ -65,39 +65,12 @@ namespace SmartGridDemoProgram
         public WebApiConnector()
         {
         }
-        public string GetItem(string uri)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + uri);
-            request.Method = "GET";
-            request.KeepAlive = false;
-
-            //REMEMBER ERROR HANDLING CODE IN CASE OBJECT DOES NOT EXIST
-
-            try
-            {
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                string myResponse = "";
-                using (System.IO.StreamReader sr = new System.IO.StreamReader(response.GetResponseStream()))
-                {
-                    myResponse = sr.ReadToEnd();
-                }
-
-                return myResponse;
-            }
-            catch (WebException e)
-            {
-                Console.WriteLine(e.Response);
-                return null;
-            }
-        }
 
         public string PostItem(string uri, string json)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + uri);
             request.Method = "POST";
             request.ContentType = "application/json";
-
-            //REMEMBER ERROR HANDLING CODE IN CASE OBJECT DOES NOT EXIST
 
             try
             {
@@ -120,6 +93,7 @@ namespace SmartGridDemoProgram
                     myResponse = sr.ReadToEnd();
                 }
                 return myResponse;
+
             }
             catch (WebException e)
             {
