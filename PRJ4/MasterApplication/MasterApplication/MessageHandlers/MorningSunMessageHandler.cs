@@ -50,9 +50,6 @@ namespace MasterApplication.MessageHandlers
                 case "UpdateTime":
 	                UpdateTime(message);
 	                break;
-                case "Status":
-                    UpdateStatus(message);
-                    break;
 
 				default:
 					//Do not handle
@@ -87,14 +84,6 @@ namespace MasterApplication.MessageHandlers
 
 
         #region WebAPI-related handlers
-
-
-
-        private void UpdateStatus(string message)
-        {
-            //Ask MorningSun for status
-            FwpsPublisher.PublishMessage("MorningSun.CmdStatus", "");
-        }
 
         private void TurnOn(string message)
         {
