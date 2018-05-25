@@ -56,53 +56,7 @@ void setup()
 
 void callback(char * topic, byte* payload, unsigned int length)
 {
-  Serial.print("Message recived on topic: \"");
-  Serial.print(topic);
-  Serial.print("\": ");
-  for (int i = 0; i < length; ++i)
-  {
-    Serial.print((char)payload[i]);
-  }
-  Serial.println();
-
-  //Different handlers for different topics
-  if (strcmp(topic, "MorningSun/CmdOn") == 0) //Received 'on'
-  {
-    /*
-    Wire.beginTransmission(0x10);
-    Wire.write('T');
-    byte s = Wire.endTransmission();
-    */
-    char chrarr[16];
-
-    sprintf(chrarr, "%u, %u", i2cbuffer[0], i2cbuffer[1]);
-    
-    mqClient.publish("MorningSun/ModuleOn", chrarr);
-
-    return;
-  }
-  else if (strcmp(topic, "MorningSun/CmdOff") == 0) //Received 'off'
-  {
-    Wire.beginTransmission(0x10);
-    Wire.write('F');
-    byte s = Wire.endTransmission();
-
-    char chrarr[16];
-
-    sprintf(chrarr, "Turned off %u", s);
-    
-    mqClient.publish("MorningSun/ModuleOff", chrarr);
-
-    return;
-  }
-  else if (strcmp(topic, "MorningSun/CmdStatus") == 0)
-  {
-    Wire.beginTransmission(0x10);
-    Wire.write('L');
-    byte s = Wire.endTransmission();
-  }
-
-  Serial.println("Unknown command received");
+  return;
 }
 
 void getRaspberryIp()
@@ -132,16 +86,12 @@ void reconnect()
     Serial.print("Trying to connect to message broker on ip: ");
     Serial.print(host);
 
-    String clientId = "MorningSun";
+    String clientId = "SnapBox";
     if (mqClient.connect(clientId.c_str(), "simon", "simon"))
     {
       Serial.println("Connected to message broker");
       //Publish announcement that you are here
-      mqClient.publish("MorningSun/Hello", "Hello World");
-      //Subscribe to MorningSun
-      mqClient.subscribe("MorningSun/CmdOn");
-      mqClient.subscribe("MorningSun/CmdOff");
-      mqClient.subscribe("MorningSun/CmdStatus");
+      mqClient.publish("SnapBox/Hello", "Hello World");
     }
     else
     {
@@ -160,9 +110,27 @@ void loop()
     reconnect(); //Reconnect if not connected
   }
   mqClient.loop(); //Loop MQTT client
+
+  Wire.beginTransmission(0x10);
+  Wire.write(0x10);
+  Wire.endTransmission();
+
+  delay(2);
+  pinMode(2, INPUT);
+  pinMode(0, INPUT);
+  pinMode(2, OUTPUT);
+  pinMode(0, OUTPUT);
+  delayMicroseconds(10);
+  pinMode(2, INPUT);
+  pinMode(0, INPUT);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(0, INPUT_PULLUP);
+  delay(2);
+  Wire.begin(0,2);
+  delay(2);
   
   Wire.requestFrom(0x10, 1);
-  delay(5);
+  delay(2);
   if(Wire.available())
   {
     i2cbuffer[0] = Wire.read();
@@ -185,7 +153,7 @@ void loop()
     
     sprintf(arr, "mail: %u : %u", (i2cbuffer[1] >> 7), (i2cbuffer[1] & 0b01111111));
     
-    mqClient.publish("MorningSun/ModuleOff", arr);
+    mqClient.publish("SnapBox/Update", arr);
   }
 
   delay(200);
