@@ -51,7 +51,7 @@ namespace FWPS.Controllers
             return new ObjectResult(lightItem);
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]")] // '/api/Light/getupdate'
         public IEnumerable<LightItem> GetUpdate()
         {
             if (_context.LightItems.ToList().Count <= 0)

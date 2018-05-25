@@ -40,7 +40,7 @@ namespace FWPS.Controllers
 			return _context.SnapBoxItems.ToList();
 		}
 
-	    [HttpGet("[action]")]
+	    [HttpGet("[action]")] // '/api/snapbox/getupdate'
 	    public IEnumerable<SnapBoxItem> GetUpdate()
 	    {
 	        if (_context.SnapBoxItems.ToList().Count <= 0)
@@ -68,7 +68,7 @@ namespace FWPS.Controllers
 			return new ObjectResult(item);
 		}
 
-	    [HttpGet("[action]")] // '/api/Light/Newest'
+	    [HttpGet("[action]")] // '/api/snapbox/Newest'
 	    public IActionResult Newest()
 	    {
 	        var item = _context.SnapBoxItems.Last();
