@@ -75,6 +75,8 @@ namespace SmartGridDemoProgram
                 Consumed -= (float)(_rnd.NextDouble() * _stdDiviation);
             }
 
+
+            // Checking for Out of Bounds values, and to make entities have atlease produced or consumed a bit, and negate negative values. 
             if (Type == "House")
             {
                 if (Produced > 30f) Produced = 30f;
