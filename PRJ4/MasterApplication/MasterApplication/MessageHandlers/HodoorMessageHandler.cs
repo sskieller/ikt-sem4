@@ -32,9 +32,9 @@ namespace MasterApplication.MessageHandlers
                 case "CmdUnlock":
                     UnlockHodoor(message);
                     break;
-                case "CmdLock":
-                    LockHodoor(message);
-                    break;
+                //case "CmdLock":
+                //    LockHodoor(message);
+                //    break;
                 
             }
         }
