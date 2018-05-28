@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FWPS_App.PoombaPage">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Image Source="https://www.br.de/themen/wissen/lama-glama-alpaka-weiss-100~_v-img__3__4__xl_-f4c197f4ebda83c772171de6efadd3b29843089f.jpg?version=55f97" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Text="Welcome to Poomba!" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" x:Name="label2"
+                       Margin="0,15,0,0"
+                       FontSize="Large"
+                       Style="{StaticResource LabelStyle}"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="4"/>
+
+                <Button Text="Turn Poomba on" HorizontalOptions="FillAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="OnButton" 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
+                <Button Text="Turn Poomba off" HorizontalOptions="FillAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="OffButton"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        />
+
+                <Label Text="Current state: " 
+                       Style="{StaticResource LabelStyle}"
+                       HorizontalOptions="End" 
+                       Grid.Row="4"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"/>
+                <Label x:Name="poombaStateLabel"
+                       Style="{StaticResource LabelStyle}"
+                       Text="--state here--"
+                       Grid.Row="4"
+                       Grid.Column="2"/>
+
+                <Button Text="Return to MainPage"
+                        HorizontalOptions="CenterAndExpand" 
+                        Style="{StaticResource ButtonStyle}"
+                        x:Name="ReturnBtn"
+                        Grid.Row="9"
+                        Grid.Column="0"/>
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

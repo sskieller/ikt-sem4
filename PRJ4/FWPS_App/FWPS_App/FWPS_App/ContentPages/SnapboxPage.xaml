@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FWPS_App.SnapboxPage">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Image Source="https://www.sunnyskyz.com/uploads/2014/03/543or-alpaca.jpg" Opacity="0.3"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+            <Label Text="Welcome to Snapbox!"
+                       Margin="0,15,0,0"
+                       FontSize="Large"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                   Style="{StaticResource LabelStyle}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"/>
+                <Label Text="Mail status:" 
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" 
+                       Grid.Row="2"
+                       Grid.Column="1"/>
+                <Label x:Name="mailStatusLbl"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" 
+                       Grid.Row="2"
+                       Grid.Column="2"
+                       Grid.ColumnSpan="2"/>
+                <Label Text="Power level:" 
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" 
+                       Grid.Row="3"
+                       Grid.Column="1"/>
+                <Label x:Name="powerlevel"
+                       FontSize="Medium"
+                       Style="{StaticResource LabelStyle}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" 
+                       Grid.Row="3"
+                       Grid.Column="2"/>
+                <Button Text="Show statistics"
+                        x:Name="ShowStatisticsBtn"
+                        Style="{StaticResource ButtonStyle}"
+                        Grid.Row="9"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"/>
+                <Button x:Name="ReturnBtn"
+                    Text="Return to MainPage"
+                    Style="{StaticResource ButtonStyle}"
+                        Grid.Row="9"
+                        Grid.Column="0"/>
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
