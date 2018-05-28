@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace FWPS.Models
+namespace MasterApplication.Models
 {
     public class PoombaItem : ItemBase
     {
@@ -16,4 +15,5 @@ namespace FWPS.Models
         public DateTime CleaningTime { get; set; }
 
     }
+
 }

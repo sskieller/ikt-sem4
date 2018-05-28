@@ -32,9 +32,9 @@ namespace MasterApplication.MessageHandlers
                 case "CmdUnlock":
                     UnlockHodoor(message);
                     break;
-                case "CmdLock":
-                    LockHodoor(message);
-                    break;
+                //case "CmdLock":
+                //    LockHodoor(message);
+                //    break;
                 
             }
         }
@@ -50,7 +50,6 @@ namespace MasterApplication.MessageHandlers
             //Send message to DB that Hodoor was unlocked
             HodoorItem item = new HodoorItem(){Command = "ModuleUnlocked", OpenStatus = true};
             _connector.PostItem("Hodoor/", JsonConvert.SerializeObject(item));
-            SignalRClient.Instance.UpdateEntityCondition("Hodoor", "Unlocked");
         }
 
         private void HodoorWasLocked(string message)
@@ -61,7 +60,6 @@ namespace MasterApplication.MessageHandlers
             //Send message to DB that Hodoor was unlocked
             HodoorItem item = new HodoorItem() { Command = "ModuleLocked", OpenStatus = false };
             _connector.PostItem("Hodoor/", JsonConvert.SerializeObject(item));
-            SignalRClient.Instance.UpdateEntityCondition("Hodoor", "Locked");
         }
 
         private void RfidEntryRequest(string message)

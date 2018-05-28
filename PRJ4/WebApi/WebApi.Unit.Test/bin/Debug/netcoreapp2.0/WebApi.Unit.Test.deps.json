@@ -4078,7 +4078,8 @@
           "Microsoft.EntityFrameworkCore.Relational": "2.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.2",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.2",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.3"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.3",
+          "NSubstitute": "3.1.0"
         },
         "runtime": {
           "FWPS.dll": {}

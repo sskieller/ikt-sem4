@@ -60,7 +60,8 @@ namespace FWPS.Controllers
 
 			return CreatedAtRoute("Getip", new { id = item.Id }, item);
 		}
-		[HttpPut("{id}")]
+
+	    [HttpPut("{id}")]
 		public IActionResult Update(long id, [FromBody] IpItem item)
 		{
 			if (item == null || item.Id != id)
