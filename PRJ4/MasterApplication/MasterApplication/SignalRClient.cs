@@ -58,11 +58,6 @@ namespace MasterApplication
                 OnCommandReceived?.Invoke(this, new SignalREventArgs(obj, target, type));
             }));
 
-            _connection.On<string, string>("UpdateEntityCondition", (entity, value) =>
-            {
-                Console.WriteLine(entity + " --- " + value);
-            });
-
             _connection.StartAsync().Wait();
 
             _connection.Closed += ConnectionOnClosed;

@@ -16,6 +16,8 @@ namespace MasterApplication.MessageHandlers
                     return new SnapBoxMessageHandler();
                 case "Hodoor":
                     return new HodoorMessageHandler();
+                case "Poomba":
+                    return new PoombaMessageHandler();
                 default:
                     throw new MessageHandlerCreationException("Type not recognized by MessageHandlerFactory");
             }

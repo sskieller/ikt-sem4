@@ -22,6 +22,7 @@ namespace MasterApplication
 
 	        {
 				MorningSunMessageHandler msgHandler = new MorningSunMessageHandler();
+                PoombaMessageHandler msgHandler2 = new PoombaMessageHandler();
 	        }
 
 
@@ -37,9 +38,10 @@ namespace MasterApplication
 				listener.Add("MorningSun.#");
 				listener.Add("SnapBox.#");
                 listener.Add("Hodoor.#");
+                listener.Add("Poomba.#");
 
-				//Initialize listener and publisher
-				listener.Start();
+                //Initialize listener and publisher
+                listener.Start();
 				FwpsPublisher.Initialize(connection);
 
 				Console.WriteLine("Enter a char, 1 for on, 2 for off, q for quit");
