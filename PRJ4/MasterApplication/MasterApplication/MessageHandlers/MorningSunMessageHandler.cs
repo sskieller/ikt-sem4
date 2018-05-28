@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace MasterApplication.MessageHandlers
 {
+    /////////////////////////////////////////////////
+    /// Message handler for MorningSun. 
+    /////////////////////////////////////////////////
     public class MorningSunMessageHandler : IMessageHandler
     {
 	    private static System.Timers.Timer _wakeUpTimer;
@@ -20,8 +23,11 @@ namespace MasterApplication.MessageHandlers
 	    {
 			UpdateTime(null);
 		}
-		
-		//Create map of topics here
+
+        //Create map of topics here
+        /////////////////////////////////////////////////
+        /// Message handler for MorningSun. 
+        /////////////////////////////////////////////////
         public void HandleMessage(string message, string topic)
         {
 	        if (topic == null)
@@ -59,7 +65,9 @@ namespace MasterApplication.MessageHandlers
         }
 
         #region MorningSun-related handlers
-
+        /////////////////////////////////////////////////
+        /// Handler function for when MorningSun turns on
+        /////////////////////////////////////////////////
         private void LightIsOn(string message)
         {
             Console.WriteLine("Morning Sun: Received \"on\" from module");
@@ -69,6 +77,9 @@ namespace MasterApplication.MessageHandlers
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when MorningSun turns off
+        /////////////////////////////////////////////////
         private void LightIsOff(string message)
         {
             Console.WriteLine("Morning Sun: Received \"off\" from module");
@@ -82,13 +93,20 @@ namespace MasterApplication.MessageHandlers
 
 
         #region WebAPI-related handlers
-
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to turn on MorningSun
+        /////////////////////////////////////////////////
         private void TurnOn(string message)
         {
             //Ask MorningSun to turn on
             FwpsPublisher.PublishMessage("MorningSun.CmdOn", "");
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to turn off MorningSun
+        /////////////////////////////////////////////////
         private void TurnOff(string message)
         {
             //Ask MorningSun to turn off
@@ -99,7 +117,10 @@ namespace MasterApplication.MessageHandlers
 
 
         #region Timer-related methods
-
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to set the timers on MorningSun
+        /////////////////////////////////////////////////
         private static void UpdateTime(string message)
         {
             Console.WriteLine("Morning Sun: Asked to update timers");
@@ -138,6 +159,10 @@ namespace MasterApplication.MessageHandlers
             _wakeUpTimer.Start();
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when the Timer is triggerd,
+        /// and turns on MorningSun
+        /////////////////////////////////////////////////
         private static void WakeUp(object sender, ElapsedEventArgs e)
         {
 			FwpsPublisher.PublishMessage("MorningSun.CmdOn", "");
@@ -148,7 +173,10 @@ namespace MasterApplication.MessageHandlers
             _wakeUpTimer.Interval = TimeSpan.FromDays(1).TotalMilliseconds;
             _wakeUpTimer.Start();
         }
-
+        /////////////////////////////////////////////////
+        /// Handler function for when the Timer is triggerd,
+        /// and turns off MorningSun
+        /////////////////////////////////////////////////
         private static void Sleep(object sender, ElapsedEventArgs e)
         {
 	        FwpsPublisher.PublishMessage("MorningSun.CmdOff", "");

@@ -8,7 +8,10 @@ using MasterApplication.Threads;
 using RabbitMQ.Client.Events;
 
 namespace MasterApplication.MessageHandlers
-{
+{    /////////////////////////////////////////////////
+    /// Class who will spawn a new MessageHandler
+    /// depending on calling- or target module.
+    /////////////////////////////////////////////////
     public class MessageDispatcher
     {
 	    public MessageDispatcher(IListener listener)
@@ -19,6 +22,12 @@ namespace MasterApplication.MessageHandlers
             SignalRClient.Instance.OnCommandReceived += SignalROnCommandReceived;
 		}
 
+        /////////////////////////////////////////////////
+        /// Handles a message received over SignalR.
+        /// Spawns a new MessageHandler
+        /// depending on calling- or target module, and
+        /// handles the message
+        /////////////////////////////////////////////////
         private void SignalROnCommandReceived(object sender, SignalREventArgs signalREventArgs)
         {
             Task.Factory.StartNew(() =>
@@ -33,13 +42,14 @@ namespace MasterApplication.MessageHandlers
                     Console.WriteLine(ex.Message);
                 }
             });
-
-
-
-
-
         }
 
+        /////////////////////////////////////////////////
+        /// Handles a message received over RabbitMQ
+        /// Spawns a new MessageHandler
+        /// depending on calling- or target module, and
+        /// handles the message
+        /////////////////////////////////////////////////
         private void OnMessageReceived_DispatchMessage(object sender, BasicDeliverEventArgs e)
 	    {
 		    var message = Encoding.UTF8.GetString(e.Body); //Message 

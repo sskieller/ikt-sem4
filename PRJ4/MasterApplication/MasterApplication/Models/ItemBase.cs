@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MasterApplication.Models
 {
+    /////////////////////////////////////////////////
+    /// Item representing the Itembase on the WebApi
+    /////////////////////////////////////////////////
     public abstract class ItemBase
     {
         protected ItemBase()

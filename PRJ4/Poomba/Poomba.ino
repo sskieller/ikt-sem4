@@ -5,14 +5,19 @@
 #include <PubSubClient.h>
 
 //Wifi related
-const char * ssid = "JonasAP"; // SSID
-const char * password = "Fkt73gss"; // Password
-String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1
+const char * ssid = "JonasAP"; //!< SSID to the WiFiNetwork
+const char * password = "Fkt73gss"; //!< Password to the WiFiNetwork
+String host = ""; //!< IP for raspberry. collected from fwps.azurewebsites.net/api/ip/1
 WiFiClient espClient;
 PubSubClient mqClient(espClient);
 char buffer[20];
 bool isOn = false;
 
+/////////////////////////////////////////////////
+/// Sets up the ESP chip. Will try to connect
+/// to the network until it succedes.
+/// Will get IP for Master Unit and connect to it.
+/////////////////////////////////////////////////
 void setup()
 {
 	Wire.begin(2,0); // Sets I2C pins to pin 0 and pin 2
@@ -53,6 +58,10 @@ void setup()
 
 }
 
+/////////////////////////////////////////////////
+/// Callback to handle Messages received by the
+/// Master Unit.
+/////////////////////////////////////////////////
 void callback(char * topic, byte* payload, unsigned int length)
 {
 	Serial.print("Message recived on topic: \"");
@@ -97,6 +106,10 @@ void callback(char * topic, byte* payload, unsigned int length)
 	Serial.println("Unknown command received");
 }
 
+/////////////////////////////////////////////////
+/// Will get the current Master Unit IP from the
+/// WebApi.
+/////////////////////////////////////////////////
 void getRaspberryIp()
 {
 	HTTPClient http;
@@ -117,6 +130,10 @@ void getRaspberryIp()
 	}
 }
 
+/////////////////////////////////////////////////
+/// Will try to reconnect to the Master Unit.
+/// If fails, retries every 5 seconds.
+/////////////////////////////////////////////////
 void reconnect()
 {
 	while (!mqClient.connected())
@@ -144,6 +161,10 @@ void reconnect()
 	}
 }
 
+/////////////////////////////////////////////////
+/// Loop/Run function. Required to run a micro-
+/// processor.
+/////////////////////////////////////////////////
 void loop()
 {
 	if(!mqClient.connected())
@@ -151,6 +172,23 @@ void loop()
 		reconnect(); //Reconnect if not connected
 	}
 	mqClient.loop(); //Loop MQTT client
+
+
+
+  delay(2);
+  pinMode(2, INPUT);
+  pinMode(0, INPUT);
+  pinMode(2, OUTPUT);
+  pinMode(0, OUTPUT);
+  delayMicroseconds(10);
+  pinMode(2, INPUT);
+  pinMode(0, INPUT);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(0, INPUT_PULLUP);
+  delay(2);
+  Wire.begin(2,0);
+  delay(2);
+
 
 	/*
 	int i = 0;
@@ -190,6 +228,6 @@ void loop()
 		mqClient.publish("MorningSun/ModuleOn", "Status on");
 	}
   */
-	delay(100);
+	delay(200);
 	
 }

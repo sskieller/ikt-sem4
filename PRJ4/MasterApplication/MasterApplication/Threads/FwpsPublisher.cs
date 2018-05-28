@@ -6,16 +6,21 @@ using RabbitMQ.Client;
 
 namespace MasterApplication.Threads
 {
-
-	public static class FwpsPublisher
+    /////////////////////////////////////////////////
+    /// Static class to handle sending messages to
+    /// the connected modules. Uses RabbitMQ
+    /////////////////////////////////////////////////
+    public static class FwpsPublisher
 	{
 		private static IModel _channel;
 	    private static bool _initialized;
 	    private static readonly object _lock = new object();
 
 
-
-	    public static void Initialize(IConnection connection)
+	    /////////////////////////////////////////////////
+	    /// Sets up the Publisher
+	    /////////////////////////////////////////////////
+        public static void Initialize(IConnection connection)
 	    {
             lock(_lock)
 	        if (!_initialized)
@@ -27,8 +32,12 @@ namespace MasterApplication.Threads
                 throw new PublisherInitializedException("Already initialized");
         }
 
-
-		public static void PublishMessage(string topic, string message, string exchange = "amq.topic")
+	    /////////////////////////////////////////////////
+	    /// Publishes a message. Takes a topic & a
+	    /// message as inputs. Topic tells it where to
+	    /// route it. Message is a message.
+	    /////////////////////////////////////////////////
+        public static void PublishMessage(string topic, string message, string exchange = "amq.topic")
 		{
             lock(_lock)
 		    if (!_initialized)

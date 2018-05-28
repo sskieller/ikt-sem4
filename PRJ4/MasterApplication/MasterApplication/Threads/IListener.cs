@@ -6,6 +6,9 @@ using RabbitMQ.Client.Events;
 
 namespace MasterApplication.Threads
 {
+    /////////////////////////////////////////////////
+    /// Interface to handle the FwpsListener class.
+    /////////////////////////////////////////////////
     public interface IListener : IDisposable
     {
 	    event EventHandler<BasicDeliverEventArgs> OnMessageReceived;

@@ -5,11 +5,18 @@ using Newtonsoft.Json;
 
 namespace MasterApplication
 {
+    /////////////////////////////////////////////////
+    /// SignalRClient is a communicationsHub which is
+    /// responsible for communicating with the WebApi.
+    /// Singleton Class so that it's avaliable everywhere.
+    /// Observer pattern, since you can subscribe to
+    /// different kind of functions/topics.
+    /////////////////////////////////////////////////
     public class SignalRClient
     {
         // Singleton
 
-        private static SignalRClient _instance;
+        private static SignalRClient _instance; //!< Singleton instance of SignalRClient
 
         public static SignalRClient Instance
         {
@@ -23,8 +30,18 @@ namespace MasterApplication
 
         // Implementation
 
+        /////////////////////////////////////////////////
+        /// The eventhandler which is called when a
+        /// message is received.
+        /////////////////////////////////////////////////
         public event EventHandler<SignalREventArgs> OnCommandReceived;
 
+        /////////////////////////////////////////////////
+        /// The Setup function. Needs to be called when
+        /// the program starts. Sets up the internal
+        /// SignalR class, subscribes to topics and
+        /// updates the unit name on the Web Api.
+        /////////////////////////////////////////////////
         /// <summary>
         /// Setups and configures the signalR connection to the Azure server
         /// </summary>
@@ -44,11 +61,18 @@ namespace MasterApplication
 
         // Private implementation
 
-        private HubConnection _connection;
+        private HubConnection _connection; //!< This is the connection variable. Stores an instance of the actual connection.
 
         private SignalRClient()
         { }
 
+
+        /////////////////////////////////////////////////
+        /// Sets up the connection to the azure hub.
+        /// Will also subscripe to the UpdateSpecific
+        /// topic. Starts the connection and adds an
+        /// event that handles if the connection is lost.
+        /////////////////////////////////////////////////
         private void SetUpInternal()
         {
             _connection = new HubConnectionBuilder().WithUrl("http://fwps.azurewebsites.net/devices").Build();
@@ -63,6 +87,11 @@ namespace MasterApplication
             _connection.Closed += ConnectionOnClosed;
         }
 
+        /////////////////////////////////////////////////
+        /// Handles if the connection closes. Tries to
+        /// connect again after 15 seconds.
+        /// Will try for 15 seconds, and retry if failed.
+        /////////////////////////////////////////////////
         private Task ConnectionOnClosed(Exception exception)
         {
             Console.WriteLine(exception.Message);
@@ -94,6 +123,9 @@ namespace MasterApplication
         }
     }
 
+    /////////////////////////////////////////////////
+    /// EventArgs passed to the eventhandler function.
+    /////////////////////////////////////////////////
     public class SignalREventArgs : EventArgs
     {
         public object Obj { get; set; }
