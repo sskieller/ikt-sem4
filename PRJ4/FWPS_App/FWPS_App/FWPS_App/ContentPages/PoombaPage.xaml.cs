@@ -18,10 +18,12 @@ namespace FWPS_App
 		{
 			InitializeComponent ();
             Timer();
+            GetWakeUpAndSleepTimes();
             NavigationPage.SetHasNavigationBar(this, false);
             ReturnBtn.Clicked += ReturnBtn_Clicked;
             OnButton.Clicked += OnButton_Clicked;
             OffButton.Clicked += OffButton_Clicked;
+            WakeUpAndSleepApplyBtn.Clicked += WakeUpAndSleepApplyBtn_Clicked;
         }
 
         private void Timer()
@@ -32,6 +34,120 @@ namespace FWPS_App
             timer.AutoReset = true;
             timer.Interval = 2000;
             timer.Start();
+        }
+        private void GetWakeUpAndSleepTimes()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri + "newest/").ToString();
+                var poombaObject = JsonConvert.DeserializeObject<PoombaObject>(obj);
+
+                hhWakeUpEditor.Text = poombaObject.WakeUpTime.Hour.ToString();
+                mmWakeUpEditor.Text = poombaObject.WakeUpTime.Minute.ToString();
+                hhSleepEditor.Text = poombaObject.SleepTime.Hour.ToString();
+                mmSleepEditor.Text = poombaObject.SleepTime.Minute.ToString();
+            });
+        }
+
+        private void WakeUpAndSleepApplyBtn_Clicked(object sender, EventArgs e)
+        {
+            WakeUpAndSleepApplyBtn.IsEnabled = false;
+            // The four editor fiels has to hold integer values
+            if (!int.TryParse((hhWakeUpEditor.Text), out int something))
+            {
+                DisplayAlert("Wrong input", "Field(s) either empty or wrong input type. Please try again", "OK");
+                hhWakeUpEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+            if (!int.TryParse((mmWakeUpEditor.Text), out int something2))
+            {
+                DisplayAlert("Wrong input", "Field(s) either empty or wrong input type. Please try again", "OK");
+                mmWakeUpEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+            if (!int.TryParse((hhSleepEditor.Text), out int something3))
+            {
+                DisplayAlert("Wrong input", "Field(s) either empty or wrong input type. Please try again", "OK");
+                hhSleepEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+            if (!int.TryParse((mmSleepEditor.Text), out int something4))
+            {
+                DisplayAlert("Wrong input", "Field(s) either empty or wrong input type. Please try again", "OK");
+                mmSleepEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+
+            var hhWakeUpInput = Double.Parse(hhWakeUpEditor.Text);
+            var mmWakeUpInput = Double.Parse(mmWakeUpEditor.Text);
+            var hhSleepInput = Double.Parse(hhSleepEditor.Text);
+            var mmSleepInput = Double.Parse(mmSleepEditor.Text);
+
+            // Check if inputs are within ranges
+            if (hhWakeUpInput < 0 || hhWakeUpInput > 23)
+            {
+                DisplayAlert("Wrong input", "Input(s) out of range. Please try again", "OK");
+                hhWakeUpEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+            if (mmWakeUpInput < 0 || mmWakeUpInput > 59)
+            {
+                DisplayAlert("Wrong input", "Input(s) out of range. Please try again", "OK");
+                mmWakeUpEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+            if (hhSleepInput < 0 || hhSleepInput > 23)
+            {
+                DisplayAlert("Wrong input", "Input(s) out of range. Please try again", "OK");
+                hhSleepEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+            if (mmSleepInput < 0 || mmSleepInput > 59)
+            {
+                DisplayAlert("Wrong input", "Input(s) out of range. Please try again", "OK");
+                mmSleepEditor.Text = "";
+                WakeUpAndSleepApplyBtn.IsEnabled = true;
+                return;
+            }
+
+
+            DateTime WakeUpParsedDate = new DateTime();
+            WakeUpParsedDate = DateTime.Today;
+            WakeUpParsedDate = WakeUpParsedDate.AddHours(hhWakeUpInput);
+            WakeUpParsedDate = WakeUpParsedDate.AddMinutes(mmWakeUpInput);
+
+            DateTime SleepParsedDate = new DateTime();
+            SleepParsedDate = DateTime.Today;
+            SleepParsedDate = SleepParsedDate.AddHours(hhSleepInput);
+            SleepParsedDate = SleepParsedDate.AddMinutes(mmSleepInput);
+
+
+            string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri + "newest/").ToString();
+            var poombaObject = JsonConvert.DeserializeObject<PoombaObject>(obj);
+
+            PoombaObject poombaWakeUpObject = new PoombaObject()
+            {
+                IsOn = poombaObject.IsOn,
+                Command = "UpdateTime",
+                WakeUpTime = WakeUpParsedDate,
+                SleepTime = SleepParsedDate
+            };
+            HTTPRequestHandler.CreateRequest(poombaWakeUpObject, PoombaUri);
+            WakeUpAndSleepApplyBtn.IsEnabled = true;
         }
 
         private void PoombaState()
