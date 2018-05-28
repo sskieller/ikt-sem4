@@ -37,7 +37,7 @@ namespace FWPS_App
         private void PoombaState()
         {
 
-            string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri).ToString();
+            string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri + "newest/").ToString();
             var poombaObject = JsonConvert.DeserializeObject<PoombaObject>(obj);
 
             if (poombaObject.IsOn == true)
@@ -65,7 +65,7 @@ namespace FWPS_App
 
         private void OffButton_Clicked(object sender, EventArgs e)
         {
-            string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri).ToString();
+            string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri + "newest/").ToString();
             var poombaStateObject = JsonConvert.DeserializeObject<PoombaObject>(obj);
 
             if (poombaStateObject.IsOn == false)
@@ -89,7 +89,7 @@ namespace FWPS_App
 
         private void OnButton_Clicked(object sender, EventArgs e)
         {
-            string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri).ToString();
+            string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri + "newest/").ToString();
             var poombaStateObject = JsonConvert.DeserializeObject<PoombaObject>(obj);
 
             if (poombaStateObject.IsOn == true)
@@ -115,7 +115,7 @@ namespace FWPS_App
             Navigation.PopAsync();
         }
 
-        public static string PoombaUri { get; set; } = "http://fwps.azurewebsites.net/api/poomba/newest";
+        public static string PoombaUri { get; set; } = "http://fwps.azurewebsites.net/api/poomba/";
 
         public class PoombaObject
         {

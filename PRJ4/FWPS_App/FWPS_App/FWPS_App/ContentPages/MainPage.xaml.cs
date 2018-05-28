@@ -24,7 +24,7 @@ namespace FWPS_App
         /// <summary>
         /// Pages that can be reached through touch events
         /// </summary>
-        ContentPage lightPage, snapboxPage, hodoorPage, poombaPage, climateControlPage;
+        ContentPage lightPage, snapboxPage, hodoorPage, poombaPage, climateControlPage, lazyCurtainPage;
 
         /// <summary>
         /// Initialisations
@@ -40,6 +40,7 @@ namespace FWPS_App
             HodoorButton.Clicked += HodoorButton_Clicked;
             LogoutButton.Clicked += LogoutButton_Clicked;
             SnapboxButton.Clicked += SnapboxButton_Clicked;
+            LazyCurtainButton.Clicked += LazyCurtainButton_Clicked;
         }
 
 
@@ -53,6 +54,7 @@ namespace FWPS_App
             hodoorPage = new HodoorPage();
             poombaPage = new PoombaPage();
             climateControlPage = new ClimateControlPage();
+            lazyCurtainPage = new LazyCurtainPage();
         }
 
         #region PagesPushAsync
@@ -73,6 +75,10 @@ namespace FWPS_App
             Navigation.PushAsync(snapboxPage);
         }
 
+        private void LazyCurtainButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(lazyCurtainPage);
+        }
 
         private void HodoorButton_Clicked(object sender, EventArgs e)
         {
