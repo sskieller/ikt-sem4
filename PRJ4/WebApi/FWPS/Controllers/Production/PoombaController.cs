@@ -129,22 +129,22 @@ namespace FWPS.Controllers
                 return BadRequest();
             }
 
-            var light = _context.PoombaItems.FirstOrDefault(o => o.Id == id);
-            if (light == null)
+            var poomba = _context.PoombaItems.FirstOrDefault(o => o.Id == id);
+            if (poomba == null)
             {
                 return NotFound();
             }
 
-            light.IsRun = poombaItem.IsRun;
-            light.LastModifiedDate = DateTime.Now;
-	        light.Command = poombaItem.Command;
+            poomba.IsRun = poombaItem.IsRun;
+            poomba.LastModifiedDate = DateTime.Now;
+	        poomba.Command = poombaItem.Command;
 	        if (poombaItem.SleepTime != DateTime.MinValue && poombaItem.WakeUpTime != DateTime.MinValue)
 	        {
-		        light.SleepTime = poombaItem.SleepTime;
-		        light.WakeUpTime = poombaItem.WakeUpTime;
+		        poomba.SleepTime = poombaItem.SleepTime;
+		        poomba.WakeUpTime = poombaItem.WakeUpTime;
 	        }
 
-            _context.PoombaItems.Update(light);
+            _context.PoombaItems.Update(poomba);
             _context.SaveChanges();
             return new NoContentResult();
         }
