@@ -10,13 +10,13 @@ using Newtonsoft.Json;
 
 namespace MasterApplication.MessageHandlers
 {
-    public class MorningSunMessageHandler : IMessageHandler
+    public class PoombaMessageHandler : IMessageHandler
     {
 	    private static System.Timers.Timer _wakeUpTimer;
 	    private static System.Timers.Timer _sleepTimer;
 	    private readonly WebApiConnector _connector = new WebApiConnector();
 
-	    static MorningSunMessageHandler()
+	    static PoombaMessageHandler()
 	    {
 			UpdateTime(null);
 		}
@@ -30,11 +30,11 @@ namespace MasterApplication.MessageHandlers
 	        switch (topic)
 	        {
                 //Sent from Morning Sun
-				case "ModuleOn": //MorningSun has been turned on
+				case "ModuleOn": //Poomba has been turned on
 					LightIsOn(message);
 					break;
 
-				case "ModuleOff": //MorningSun has been turned off
+				case "ModuleOff": //Poomba has been turned off
 					LightIsOff(message);
 					break;
 
@@ -58,14 +58,14 @@ namespace MasterApplication.MessageHandlers
 	        }
         }
 
-        #region MorningSun-related handlers
+        #region Poomba-related handlers
 
         private void LightIsOn(string message)
         {
             Console.WriteLine("Morning Sun: Received \"on\" from module");
             Console.WriteLine(message);
             //Send message to DB that light is now on
-            LightItem lightItem = new LightItem() { Command = "TurnedOn", IsOn = true };
+            PoombaItem lightItem = new PoombaItem() { Command = "TurnedOn", IsOn = true };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
         }
 
@@ -74,7 +74,7 @@ namespace MasterApplication.MessageHandlers
             Console.WriteLine("Morning Sun: Received \"off\" from module");
             Console.WriteLine(message);
             //Send message to DB that light is now on
-            LightItem lightItem = new LightItem() { Command = "TurnedOff", IsOn = false };
+            PoombaItem lightItem = new PoombaItem() { Command = "TurnedOff", IsOn = false };
             _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
         }
 
@@ -85,14 +85,14 @@ namespace MasterApplication.MessageHandlers
 
         private void TurnOn(string message)
         {
-            //Ask MorningSun to turn on
-            FwpsPublisher.PublishMessage("MorningSun.CmdOn", "");
+            //Ask Poomba to turn on
+            FwpsPublisher.PublishMessage("Poomba.CmdOn", "");
         }
 
         private void TurnOff(string message)
         {
-            //Ask MorningSun to turn off
-            FwpsPublisher.PublishMessage("MorningSun.CmdOff","");
+            //Ask Poomba to turn off
+            FwpsPublisher.PublishMessage("Poomba.CmdOff","");
         }
 
         #endregion
@@ -106,7 +106,7 @@ namespace MasterApplication.MessageHandlers
             WebApiConnector connector = new WebApiConnector();
             //Get latest lightObject from database
             string json = connector.GetItem("Light/Newest");
-            LightItem light = JsonConvert.DeserializeObject<LightItem>(json);
+            PoombaItem light = JsonConvert.DeserializeObject<PoombaItem>(json);
 
             //Find time for next sleep time
             TimeSpan timeToTurnOff = light.SleepTime - DateTime.Now;
@@ -140,7 +140,7 @@ namespace MasterApplication.MessageHandlers
 
         private static void WakeUp(object sender, ElapsedEventArgs e)
         {
-			FwpsPublisher.PublishMessage("MorningSun.CmdOn", "");
+			FwpsPublisher.PublishMessage("Poomba.CmdOn", "");
 
             Console.WriteLine("Light waking up");
 
@@ -151,7 +151,7 @@ namespace MasterApplication.MessageHandlers
 
         private static void Sleep(object sender, ElapsedEventArgs e)
         {
-	        FwpsPublisher.PublishMessage("MorningSun.CmdOff", "");
+	        FwpsPublisher.PublishMessage("Poomba.CmdOff", "");
 			Console.WriteLine("Light sleeping");
 
             //Rearm timer to start in one day
