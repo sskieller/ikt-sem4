@@ -29,13 +29,13 @@ namespace MasterApplication.MessageHandlers
 
 	        switch (topic)
 	        {
-                //Sent from Morning Sun
+                //Sent from Poomba
 				case "ModuleOn": //Poomba has been turned on
-					LightIsOn(message);
+					PoombaIsOn(message);
 					break;
 
 				case "ModuleOff": //Poomba has been turned off
-					LightIsOff(message);
+					PoombaIsOff(message);
 					break;
 
                 //Sent from Web
@@ -60,22 +60,22 @@ namespace MasterApplication.MessageHandlers
 
         #region Poomba-related handlers
 
-        private void LightIsOn(string message)
+        private void PoombaIsOn(string message)
         {
-            Console.WriteLine("Morning Sun: Received \"on\" from module");
+            Console.WriteLine("Poomba: Received \"on\" from module");
             Console.WriteLine(message);
-            //Send message to DB that light is now on
-            PoombaItem lightItem = new PoombaItem() { Command = "TurnedOn", IsOn = true };
-            _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
+            //Send message to DB that Poomba is now on
+            PoombaItem poombaItem = new PoombaItem() { Command = "TurnedOn", IsOn = true };
+            _connector.PostItem("Poomba/", JsonConvert.SerializeObject(poombaItem));
         }
 
-        private void LightIsOff(string message)
+        private void PoombaIsOff(string message)
         {
-            Console.WriteLine("Morning Sun: Received \"off\" from module");
+            Console.WriteLine("Poomba: Received \"off\" from module");
             Console.WriteLine(message);
-            //Send message to DB that light is now on
-            PoombaItem lightItem = new PoombaItem() { Command = "TurnedOff", IsOn = false };
-            _connector.PostItem("Light/", JsonConvert.SerializeObject(lightItem));
+            //Send message to DB that Poomba is now on
+            PoombaItem poombaItem = new PoombaItem() { Command = "TurnedOff", IsOn = false };
+            _connector.PostItem("Poomba/", JsonConvert.SerializeObject(poombaItem));
         }
 
         #endregion
@@ -102,15 +102,15 @@ namespace MasterApplication.MessageHandlers
 
         private static void UpdateTime(string message)
         {
-            Console.WriteLine("Morning Sun: Asked to update timers");
+            Console.WriteLine("Poomba: Asked to update timers");
             WebApiConnector connector = new WebApiConnector();
-            //Get latest lightObject from database
-            string json = connector.GetItem("Light/Newest");
-            PoombaItem light = JsonConvert.DeserializeObject<PoombaItem>(json);
+            //Get latest PoombaObject from database
+            string json = connector.GetItem("Poomba/Newest");
+            PoombaItem poomba = JsonConvert.DeserializeObject<PoombaItem>(json);
 
             //Find time for next sleep time
-            TimeSpan timeToTurnOff = light.SleepTime - DateTime.Now;
-            TimeSpan timeToTurnOn = light.WakeUpTime - DateTime.Now;
+            TimeSpan timeToTurnOff = poomba.SleepTime - DateTime.Now;
+            TimeSpan timeToTurnOn = poomba.WakeUpTime - DateTime.Now;
 
             // Increment TimeSpan by one day until the day matches with current day
             while (timeToTurnOff < TimeSpan.Zero)
@@ -119,8 +119,8 @@ namespace MasterApplication.MessageHandlers
             while (timeToTurnOn < TimeSpan.Zero)
                 timeToTurnOn = timeToTurnOn + TimeSpan.FromDays(1);
 
-            Console.WriteLine("Morning Sun: Timer for wakeup is now in: {0} hours", timeToTurnOn.TotalHours);
-            Console.WriteLine("Morning Sun: Timer for sleep is now in: {0} hours", timeToTurnOff.TotalHours);
+            Console.WriteLine("Poomba: Timer for wakeup is now in: {0} hours", timeToTurnOn.TotalHours);
+            Console.WriteLine("Poomba: Timer for sleep is now in: {0} hours", timeToTurnOff.TotalHours);
 
             //Set up timer for automatic sleep
             _sleepTimer?.Dispose();
@@ -142,7 +142,7 @@ namespace MasterApplication.MessageHandlers
         {
 			FwpsPublisher.PublishMessage("Poomba.CmdOn", "");
 
-            Console.WriteLine("Light waking up");
+            Console.WriteLine("Poomba waking up");
 
             //Rearm timer to start in one day
             _wakeUpTimer.Interval = TimeSpan.FromDays(1).TotalMilliseconds;
@@ -152,7 +152,7 @@ namespace MasterApplication.MessageHandlers
         private static void Sleep(object sender, ElapsedEventArgs e)
         {
 	        FwpsPublisher.PublishMessage("Poomba.CmdOff", "");
-			Console.WriteLine("Light sleeping");
+			Console.WriteLine("Poomba sleeping");
 
             //Rearm timer to start in one day
             _sleepTimer.Interval = TimeSpan.FromDays(1).TotalMilliseconds;
