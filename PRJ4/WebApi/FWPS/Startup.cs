@@ -29,7 +29,10 @@ namespace FWPS
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /////////////////////////////////////////////////
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /////////////////////////////////////////////////
+        
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString =
@@ -39,7 +42,10 @@ namespace FWPS
             services.AddSignalR();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /////////////////////////////////////////////////
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /////////////////////////////////////////////////
+        
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -53,28 +59,6 @@ namespace FWPS
             // SignalR Routing
             app.UseSignalR(route => route.MapHub<DevicesHub>("devices"));
 
-            // Commented out for now, implementing SignalR instead. It's way more reliable on Azure servers
-            /*
-            app.Use(async (context, next) =>
-            {
-                if (context.Request.Path == "/ws")
-                { 
-                    if (context.WebSockets.IsWebSocketRequest)
-                    {
-                        Clients.Instance.AddClient(context);
-                    }
-                    else
-                    {
-                        context.Response.StatusCode = 400;
-                    }
-                }
-                else
-                {
-                    await next();
-                }
-
-            });
-            */
         }
     }
 }

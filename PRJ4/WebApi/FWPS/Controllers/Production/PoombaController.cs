@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace FWPS.Controllers
 {
+    /////////////////////////////////////////////////
+    /// Controller responsible for Poomba API
+    /////////////////////////////////////////////////
     [Route("api/[Controller]")]
     public class PoombaController : Controller
     {
@@ -31,6 +34,9 @@ namespace FWPS.Controllers
             }
         }
 
+        /////////////////////////////////////////////////
+        /// Returns all Poomba items from database
+        /////////////////////////////////////////////////
         [HttpGet]
         public IEnumerable<PoombaItem> GetAll()
         {
@@ -38,6 +44,10 @@ namespace FWPS.Controllers
 
         }
 
+
+        /////////////////////////////////////////////////
+        /// Returns Poomba item denoted by {id}
+        /////////////////////////////////////////////////
         [HttpGet("{id:int}", Name = "GetPoomba")]
         public IActionResult GetById(long id)
         {
@@ -51,6 +61,9 @@ namespace FWPS.Controllers
             return new ObjectResult(poombaItem);
         }
 
+        /////////////////////////////////////////////////
+        /// Returns all items within 7 days of current date
+        /////////////////////////////////////////////////
         [HttpGet("[action]")] // '/api/Poomba/getupdate'
         public IEnumerable<PoombaItem> GetUpdate()
         {
@@ -66,19 +79,10 @@ namespace FWPS.Controllers
             return items;
         }
 
-        [HttpGet("[action]")] // '/api/Poomba/next'
-        public IActionResult Next()
-        {
-            var poombaItem = _context.PoombaItems.LastOrDefault(o => o.IsRun == false && o.Command != null);
-            if (poombaItem == null)
-            {
-                return NotFound();
-            }
-            return new ObjectResult(poombaItem);
-        }
-
-
-	    [HttpGet("[action]")] // '/api/Poomba/Newest'
+        /////////////////////////////////////////////////
+        /// Returns newest Poomba item from database
+        /////////////////////////////////////////////////
+        [HttpGet("[action]")] // '/api/Poomba/Newest'
 	    public IActionResult Newest()
 	    {
 		    var poombaItem = _context.PoombaItems.Last();
@@ -89,7 +93,10 @@ namespace FWPS.Controllers
 		    return new ObjectResult(poombaItem);
 	    }
 
-		[HttpPost]
+        /////////////////////////////////////////////////
+        /// Creates new Poomba item in database
+        /////////////////////////////////////////////////
+        [HttpPost]
         public IActionResult Create([FromBody] PoombaItem poombaItem)
         {
             if (poombaItem == null)
@@ -119,49 +126,6 @@ namespace FWPS.Controllers
             }
 
             return CreatedAtRoute("GetPoomba", new {id = poombaItem.Id}, poombaItem);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] PoombaItem poombaItem)
-        {
-            if (poombaItem == null || poombaItem.Id != id)
-            {
-                return BadRequest();
-            }
-
-            var poomba = _context.PoombaItems.FirstOrDefault(o => o.Id == id);
-            if (poomba == null)
-            {
-                return NotFound();
-            }
-
-            poomba.IsRun = poombaItem.IsRun;
-            poomba.LastModifiedDate = DateTime.Now;
-	        poomba.Command = poombaItem.Command;
-	        if (poombaItem.SleepTime != DateTime.MinValue && poombaItem.WakeUpTime != DateTime.MinValue)
-	        {
-		        poomba.SleepTime = poombaItem.SleepTime;
-		        poomba.WakeUpTime = poombaItem.WakeUpTime;
-	        }
-
-            _context.PoombaItems.Update(poomba);
-            _context.SaveChanges();
-            return new NoContentResult();
-        }
-
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
-        {
-            var poombaItem = _context.PoombaItems.FirstOrDefault(o => o.Id == id);
-            if (poombaItem == null)
-            {
-                return NotFound();
-            }
-
-            _context.PoombaItems.Remove(poombaItem);
-            _context.SaveChanges();
-            return new NoContentResult();
         }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// Not used, Clima-M8 item model
+    /////////////////////////////////////////////////
     public class ClimateControlItem : ItemBase
     {
         public string Command { get; set; }

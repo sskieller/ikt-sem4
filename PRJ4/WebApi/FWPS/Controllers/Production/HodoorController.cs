@@ -13,109 +13,9 @@ using NSubstitute.Extensions;
 
 namespace FWPS.Controllers
 {
-    interface IHodoorController
-    {
-        [HttpGet]
-        IEnumerable<HodoorItem> GetAll();
-
-        [HttpGet("{id:int}", Name = "GetHodoor")]
-        IActionResult GetById(long id);
-
-        [HttpGet("[action]")] // '/api/Light/next'
-        IActionResult Next();
-
-        [HttpGet("[action]")] // '/api/Light/Newest'
-        IActionResult Newest();
-
-        [HttpPost]
-        IActionResult Create([FromBody] HodoorItem hodoorItem);
-
-        [HttpPut("{id}")]
-        IActionResult Update(long id, [FromBody] HodoorItem hodoorItem);
-
-        [HttpDelete("{id}")]
-        IActionResult Delete(long id);
-    }
-
-    [Route("api/[Controller]")]
-    public class MockHodoorController : Controller, IHodoorController
-    {
-        private readonly FwpsDbContext _context;
-        // SignalRHubContext
-        private IHubContext<DevicesHub> _hub;
-
-        private IDebugWriter _stubDebugWriter;
-
-        public MockHodoorController(FwpsDbContext context, IHubContext<DevicesHub> hub)
-        {
-            _hub = hub ?? throw new NullReferenceException();
-            _context = context ?? throw new NullReferenceException();
-
-            if (_context.HodoorItems.Any() == false)
-            {
-                _context.HodoorItems.Add(new HodoorItem() { Command = "CmdUnlock", OpenStatus = false });
-                _context.SaveChanges();
-            }
-        }
-
-        public IEnumerable<HodoorItem> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IActionResult GetById(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IActionResult Next()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IActionResult Newest()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IActionResult Create(HodoorItem hodoorItem)
-        {
-            if (hodoorItem == null)
-            {
-                return BadRequest();
-            }
-
-            _stubDebugWriter = new StubDebugWriter();
-
-            _context.HodoorItems.Add(hodoorItem);
-            _context.SaveChanges();
-
-            _stubDebugWriter.Write(string.Format("Created HodoorItem with ID: {0}", hodoorItem.Id));
-
-            try
-            {
-                _hub.Clients.All.InvokeAsync("UpdateSpecific", "Hodoor", hodoorItem.Command, hodoorItem);
-
-            }
-            catch (Exception e)
-            {
-                _stubDebugWriter.Write(e.Message);
-            }
-
-            return CreatedAtRoute("GetHodoor", new { id = hodoorItem.Id }, hodoorItem);
-        }
-
-        public IActionResult Update(long id, HodoorItem hodoorItem)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IActionResult Delete(long id)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
+    /////////////////////////////////////////////////
+    /// Controller for Hodoor-related API
+    /////////////////////////////////////////////////
     [Route("api/[Controller]")]
     public class HodoorController : Controller, IHodoorController
     {
@@ -137,6 +37,9 @@ namespace FWPS.Controllers
             }
         }
 
+        /////////////////////////////////////////////////
+        /// Returns all Hodoor items from database
+        /////////////////////////////////////////////////
         [HttpGet]
         public IEnumerable<HodoorItem> GetAll()
         {
@@ -144,6 +47,9 @@ namespace FWPS.Controllers
 
         }
 
+        /////////////////////////////////////////////////
+        /// Returns specific Hodoor item from database by id {int}
+        /////////////////////////////////////////////////
         [HttpGet("{id:int}", Name = "GetHodoor")]
         public IActionResult GetById(long id)
         {
@@ -157,6 +63,9 @@ namespace FWPS.Controllers
             return new ObjectResult(hodoorItem);
         }
 
+        /////////////////////////////////////////////////
+        /// Not used, get next item to be executed from database
+        /////////////////////////////////////////////////
         [HttpGet("[action]")] // '/api/Light/next'
         public IActionResult Next()
         {
@@ -168,8 +77,10 @@ namespace FWPS.Controllers
             return new ObjectResult(hodoorItem);
         }
 
-
-	    [HttpGet("[action]")] // '/api/Light/Newest'
+        /////////////////////////////////////////////////
+        /// Gets newest Hodoor item from database
+        /////////////////////////////////////////////////
+        [HttpGet("[action]")] // '/api/Light/Newest'
 	    public IActionResult Newest()
 	    {
 		    var hodoorItem = _context.HodoorItems.Last();
@@ -179,8 +90,10 @@ namespace FWPS.Controllers
 		    }
 		    return new ObjectResult(hodoorItem);
 	    }
-
-		[HttpPost]
+        /////////////////////////////////////////////////
+        /// Adds new Hodoor item to database
+        /////////////////////////////////////////////////
+        [HttpPost]
         public IActionResult Create([FromBody] HodoorItem hodoorItem)
         {
             if (hodoorItem == null)
@@ -207,6 +120,9 @@ namespace FWPS.Controllers
             return CreatedAtRoute("GetHodoor", new {id = hodoorItem.Id}, hodoorItem);
         }
 
+        /////////////////////////////////////////////////
+        /// Not used, Replaces a Hodoor Item with {id} with item passed as parameter
+        /////////////////////////////////////////////////
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] HodoorItem hodoorItem)
         {
@@ -231,7 +147,9 @@ namespace FWPS.Controllers
             return new NoContentResult();
         }
 
-
+        /////////////////////////////////////////////////
+        /// Not used, Deletes an item from Hodoor denoted by {id}
+        /////////////////////////////////////////////////
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

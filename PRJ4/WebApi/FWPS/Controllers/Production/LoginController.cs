@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FWPS.Controllers
 {
+    /////////////////////////////////////////////////
+    /// Controller responsible for Login API
+    /////////////////////////////////////////////////
     [Route("api/[Controller]")]
     public class LoginController : Controller
     {
@@ -31,9 +34,11 @@ namespace FWPS.Controllers
             }
         }
 
-
+        /////////////////////////////////////////////////
+        /// Verifies existence of RFID-chip in database, returns 'OK' on succes and 'NoAccess' on error
+        /////////////////////////////////////////////////
         [HttpGet("{RFID}", Name = "GetRFID")]
-        public IActionResult GetByUsername(string rfid)
+        public IActionResult GetByRfid(string rfid)
         {
             (new DebugWriter()).Write("rfid received: " + rfid + " end");
             var item = _context.LoginItems.FirstOrDefault(t => (t.RfidId1 == rfid || t.RfidId2 == rfid));
@@ -44,7 +49,9 @@ namespace FWPS.Controllers
             return Content("Ok");
         }
 
-
+        /////////////////////////////////////////////////
+        /// Verifies username/password combination, returns 'LoginOk' on succes and HTTP NotFound on error
+        /////////////////////////////////////////////////
         [HttpGet("{username};{password}", Name = "GetLogin")]
         public IActionResult GetAllowLogin(string username, string password)
         {

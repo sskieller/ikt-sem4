@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// MorningSun item model
+    /////////////////////////////////////////////////
     public class LightItem : ItemBase
     {
 

@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FWPS.Controllers
 {
-	[Route("api/[Controller]")]
+    /////////////////////////////////////////////////
+    /// Controller responsible for getting and updating Master Unit IP Address
+    /////////////////////////////////////////////////
+    [Route("api/[Controller]")]
 	public class IpController : Controller
 	{
 		private readonly FwpsDbContext _context;
@@ -24,16 +27,20 @@ namespace FWPS.Controllers
 			}
 		}
 
-
-		[HttpGet]
+	    /////////////////////////////////////////////////
+	    /// Not used, Gets all IP items from database
+	    /////////////////////////////////////////////////
+        [HttpGet]
 		public IEnumerable<IpItem> GetAll()
 		{
 			return _context.IpItems.ToList();
 
 		}
 
-
-		[HttpGet("{id:int}", Name = "Getip")]
+	    /////////////////////////////////////////////////
+	    /// Gets IP item denoted by {id}
+	    /////////////////////////////////////////////////
+        [HttpGet("{id:int}", Name = "Getip")]
 		public IActionResult GetById(long id)
 		{
 			var item = _context.IpItems.FirstOrDefault(t => t.Id == id);
@@ -47,8 +54,10 @@ namespace FWPS.Controllers
 		}
 
 
-
-		[HttpPost]
+	    /////////////////////////////////////////////////
+	    /// Not used, Creates new IP item in database
+	    /////////////////////////////////////////////////
+        [HttpPost]
 		public IActionResult Create([FromBody] IpItem item)
 		{
 			if (item == null)
@@ -61,7 +70,10 @@ namespace FWPS.Controllers
 			return CreatedAtRoute("Getip", new { id = item.Id }, item);
 		}
 
-	    [HttpPut("{id}")]
+	    /////////////////////////////////////////////////
+	    /// Replaces IP item denoted by {id} with IP item passed in parameter
+	    /////////////////////////////////////////////////
+        [HttpPut("{id}")]
 		public IActionResult Update(long id, [FromBody] IpItem item)
 		{
 			if (item == null || item.Id != id)
@@ -83,8 +95,10 @@ namespace FWPS.Controllers
 			return new NoContentResult();
 		}
 
-
-		[HttpDelete("{id}")]
+	    /////////////////////////////////////////////////
+	    /// Not used, Deletes IP item denoted by {id}
+	    /////////////////////////////////////////////////
+        [HttpDelete("{id}")]
 		public IActionResult Delete(long id)
 		{
 			var ip = _context.IpItems.FirstOrDefault(o => o.Id == id);

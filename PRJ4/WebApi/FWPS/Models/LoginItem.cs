@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// Login item model
+    /////////////////////////////////////////////////
     public class LoginItem : ItemBase
     {
 

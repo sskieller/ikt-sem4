@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// Poomba item model
+    /////////////////////////////////////////////////
     public class SnapBoxItem : ItemBase
     {
         public string SnapBoxId { get; set; }

@@ -4,10 +4,19 @@ using FWPS.Models;
 
 namespace FWPS.Controllers
 {
+    /////////////////////////////////////////////////
+    /// Interface for mail sender, not used
+    /////////////////////////////////////////////////
+    public interface IMailSender
+    {
+        void SendSnapBoxMail(SnapBoxItem item);
+    }
     public class SendSnapBoxMailExecutedException : Exception
     {
     }
-
+    /////////////////////////////////////////////////
+    /// Sub class for mail sender, not used
+    /////////////////////////////////////////////////
     public class StubMailSender : IMailSender
     {
         private readonly FwpsDbContext _context;

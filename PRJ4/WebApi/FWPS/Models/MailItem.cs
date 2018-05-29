@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// SnapBox item model
+    /////////////////////////////////////////////////
     public class MailItem : ItemBase
     {
         public string From { get; set; }

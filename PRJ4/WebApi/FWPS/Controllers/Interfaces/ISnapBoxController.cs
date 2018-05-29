@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FWPS.Controllers
 {
+    /////////////////////////////////////////////////
+    /// Interface for SnapBoxController
+    /////////////////////////////////////////////////
     internal interface ISnapBoxController
     {
         [Route("api/[Controller]")]

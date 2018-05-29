@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// Poomba item model
+    /////////////////////////////////////////////////
     public class PoombaItem : ItemBase
     {
         public string Command { get; set; }
