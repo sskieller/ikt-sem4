@@ -16,9 +16,16 @@ using Newtonsoft.Json;
 namespace FWPS_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    /////////////////////////////////////////////////
+    /// Content Page for MorningSun statistics
+    /////////////////////////////////////////////////
     public partial class ShowLightStatisticsPage : ContentPage
     {
 
+        /////////////////////////////////////////////////
+        /// Initialisations 
+        /////////////////////////////////////////////////
         public ShowLightStatisticsPage()
         {
             InitializeComponent();
@@ -27,6 +34,10 @@ namespace FWPS_App
             ReturnBtn.Clicked += ReturnBtn_Clicked;
         }
 
+        /////////////////////////////////////////////////
+        /// Make plot for statistics displaying 8 
+        /// coloums, 7 for recent days and 1 for total
+        /////////////////////////////////////////////////
         public void MakePlot()
         {
             // Last seven days in specific format. Is to be used in labels in chart.
@@ -112,6 +123,10 @@ namespace FWPS_App
             chartView.Chart = chart;
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// MorningSun page
+        /////////////////////////////////////////////////
         private void ReturnBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();

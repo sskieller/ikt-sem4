@@ -10,15 +10,27 @@ using Xamarin.Forms.Xaml;
 namespace FWPS_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ClimateControlPage : ContentPage
+
+    /////////////////////////////////////////////////
+    /// Content Page for ClimateControl 
+    /////////////////////////////////////////////////
+    public partial class ClimateControlPage : ContentPage
 	{
-		public ClimateControlPage ()
+        /////////////////////////////////////////////////
+        /// Initialisations 
+        /////////////////////////////////////////////////
+        public ClimateControlPage ()
 		{
 			InitializeComponent ();
             NavigationPage.SetHasNavigationBar(this, false);
             ReturnBtn.Clicked += ReturnBtn_Clicked;
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// Mainpage which shows content for 
+        /// mainpage
+        /////////////////////////////////////////////////
         private void ReturnBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();

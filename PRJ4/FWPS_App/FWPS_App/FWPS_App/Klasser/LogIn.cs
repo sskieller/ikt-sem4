@@ -7,26 +7,41 @@ using System.Threading.Tasks;
 
 namespace FWPS_App
 {
+    /////////////////////////////////////////////////
+    /// 
+    /////////////////////////////////////////////////
     internal interface IVerifyCredentials
     {
         bool VerifyUsernameExists(string usrname);
         bool VerifyPassword(string usrname, string pskword);
     }
 
+    /////////////////////////////////////////////////
+    /// 
+    /////////////////////////////////////////////////
     internal interface IHasher
     {
         string Hash(string stringToBeHashed);
     }
 
+    /////////////////////////////////////////////////
+    /// 
+    /////////////////////////////////////////////////
     internal class Sha256Hasher : IHasher
     {
         private readonly SHA256 _sha256;
 
+        /////////////////////////////////////////////////
+        /// 
+        /////////////////////////////////////////////////
         internal Sha256Hasher()
         {
             _sha256 = SHA256.Create();
         }
 
+        /////////////////////////////////////////////////
+        /// 
+        /////////////////////////////////////////////////
         public string Hash(string stringToBeHashed)
         {
             var data = _sha256.ComputeHash(Encoding.UTF8.GetBytes(stringToBeHashed));
@@ -42,15 +57,24 @@ namespace FWPS_App
         }
     }
 
+    /////////////////////////////////////////////////
+    /// 
+    /////////////////////////////////////////////////
     internal class VerifyLogin : IVerifyCredentials
     {
         private static string _baseUri;
 
+        /////////////////////////////////////////////////
+        /// 
+        /////////////////////////////////////////////////
         internal VerifyLogin(string baseUri)
         {
             _baseUri = baseUri;
         }
 
+        /////////////////////////////////////////////////
+        /// 
+        /////////////////////////////////////////////////
         public bool VerifyUsernameExists(string usrname)
         {
             try
@@ -72,6 +96,9 @@ namespace FWPS_App
             }
         }
 
+        /////////////////////////////////////////////////
+        /// 
+        /////////////////////////////////////////////////
         public bool VerifyPassword(string usrname, string pskword)
         {
             if (usrname == string.Empty || pskword == string.Empty) return false;
@@ -102,20 +129,27 @@ namespace FWPS_App
         }
     }
 
+    /////////////////////////////////////////////////
+    /// 
+    /////////////////////////////////////////////////
     public class LogIn
     {
         private readonly IVerifyCredentials _verify;
 
         private readonly IHasher _hasher;
 
-
+        /////////////////////////////////////////////////
+        /// 
+        /////////////////////////////////////////////////
         public LogIn(string apiUrl)
         {
             _verify = new VerifyLogin(apiUrl);
             _hasher = new Sha256Hasher();
         }
 
-
+        /////////////////////////////////////////////////
+        /// 
+        /////////////////////////////////////////////////
         public bool Login(string usrname, string pskword)
         {
             usrname = usrname?.Trim();

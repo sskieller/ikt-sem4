@@ -13,9 +13,16 @@ using System.Timers;
 namespace FWPS_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    /////////////////////////////////////////////////
+    /// Content Page for MorningSun 
+    /////////////////////////////////////////////////
     public partial class LightPage : ContentPage
     {
 
+        /////////////////////////////////////////////////
+        /// Initialisations 
+        /////////////////////////////////////////////////
         public LightPage()
         {
             InitializeComponent();
@@ -30,15 +37,29 @@ namespace FWPS_App
             WakeUpAndSleepApplyBtn.Clicked += WakeUpAndSleepApplyBtn_Clicked;
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// statistics for MorningSun
+        /////////////////////////////////////////////////
         private void ShowStatisticsBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ShowLightStatisticsPage());
         }
+
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// Mainpage which shows content for 
+        /// mainpage
+        /////////////////////////////////////////////////
         private void ReturnBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
         }
 
+        /////////////////////////////////////////////////
+        /// Loads current wake up and sleep time to be
+        /// displayed in app
+        /////////////////////////////////////////////////
         private void GetWakeUpAndSleepTimes()
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -54,6 +75,10 @@ namespace FWPS_App
             });
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that handles if user
+        /// sets and apply wake up and sleep time
+        /////////////////////////////////////////////////
         private void WakeUpAndSleepApplyBtn_Clicked(object sender, EventArgs e)
         {
             WakeUpAndSleepApplyBtn.IsEnabled = false;
@@ -156,7 +181,9 @@ namespace FWPS_App
             WakeUpAndSleepApplyBtn.IsEnabled = true;
         }
 
-
+        /////////////////////////////////////////////////
+        /// Timerfunction for polling every 2sec
+        /////////////////////////////////////////////////
         private void Timer()
         {
             Timer timer;
@@ -167,6 +194,11 @@ namespace FWPS_App
             timer.Start();
         }
 
+        /////////////////////////////////////////////////
+        /// Light state for MorningSun to be displayed 
+        /// in app showing if MorningSun is turned on
+        /// or off
+        /////////////////////////////////////////////////
         private void LightState()
         {
 
@@ -197,6 +229,10 @@ namespace FWPS_App
             }
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that turnes off 
+        /// MorningSun
+        /////////////////////////////////////////////////
         private void OffButton_Clicked(object sender, EventArgs e)
         {
             string obj = HTTPRequestHandler.CreateGetRequest(LightUri + "newest/").ToString();
@@ -221,6 +257,10 @@ namespace FWPS_App
             }
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that turnes on 
+        /// MorningSun
+        /////////////////////////////////////////////////
         private void OnButton_Clicked(object sender, EventArgs e)
         {
             string obj = HTTPRequestHandler.CreateGetRequest(LightUri + "newest/").ToString();
@@ -246,6 +286,9 @@ namespace FWPS_App
 
         public static string LightUri { get; set; } = "https://fwps.azurewebsites.net/api/Light/";
 
+        /////////////////////////////////////////////////
+        /// Light object class
+        /////////////////////////////////////////////////
         public class LightObject
         {
             public string Command { get; set; }

@@ -12,12 +12,19 @@ using Xamarin.Forms.Xaml;
 namespace FWPS_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    /////////////////////////////////////////////////
+    /// Content Page for Homepage 
+    /////////////////////////////////////////////////
     public partial class HomePage : ContentPage
     {
         private LogIn _login = new LogIn("https://fwps.azurewebsites.net/api/login/"); // Making a login Context to handle Login Requests
 
         private bool _loggingIn = false;
 
+        /////////////////////////////////////////////////
+        /// Initialisations 
+        /////////////////////////////////////////////////
         public HomePage()
         {
             InitializeComponent();
@@ -25,6 +32,9 @@ namespace FWPS_App
             OnLoginButton.Clicked += OnLoginButton_Clicked;
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler for login button
+        /////////////////////////////////////////////////
         private void OnLoginButton_Clicked(object sender, EventArgs e)
         {
             if (_loggingIn) return;
@@ -34,6 +44,11 @@ namespace FWPS_App
             Task.Run(() => LoginFunc()); // Making thread to handle login since it takes a whole
         }
 
+        /////////////////////////////////////////////////
+        /// Function that handles login logic. By
+        /// succesfull login app redirects to mainpage. 
+        /// By wrong login alert is displayed
+        /////////////////////////////////////////////////
         private void LoginFunc()
         {
             Thread.Sleep(1000); // CUZ OTHERWISE IT TOO FUCKIN' FAST

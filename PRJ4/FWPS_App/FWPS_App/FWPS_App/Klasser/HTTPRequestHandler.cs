@@ -8,18 +8,34 @@ using Newtonsoft.Json;
 
 namespace FWPS_App
 {
+    /////////////////////////////////////////////////
+    /// Class to handle HTTP requests - post and 
+    /// get specific JSON-objects
+    /////////////////////////////////////////////////
     static class HTTPRequestHandler
     {
+        /////////////////////////////////////////////////
+        /// Creating a request and takes an object and 
+        /// Uri
+        /////////////////////////////////////////////////
         public static void CreateRequest(object obj, string BaseUri)
         {
             Task.Factory.StartNew(() => _CreatePostRequest(obj, BaseUri));
         }
 
+        /////////////////////////////////////////////////
+        /// Creating request to get object from specified
+        /// Uri
+        /////////////////////////////////////////////////
         public static object CreateGetRequest(string BaseUri)
         {
             return _GetObject(BaseUri);
         }
 
+        /////////////////////////////////////////////////
+        /// Function to create HTTP web request and 
+        /// post specified JSON-object
+        /////////////////////////////////////////////////
         private static Task _CreatePostRequest(object obj, string uri)
         {
             try
@@ -45,7 +61,10 @@ namespace FWPS_App
             return Task.CompletedTask;
         }
 
-
+        /////////////////////////////////////////////////
+        /// Function to create HTTP web request and 
+        /// get specified JSON-object
+        /////////////////////////////////////////////////
         private static string _GetObject(string uri)
         {
                 string myResponse = string.Empty;

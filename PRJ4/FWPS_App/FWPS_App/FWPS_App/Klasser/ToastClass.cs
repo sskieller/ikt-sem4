@@ -7,8 +7,15 @@ using Xamarin.Forms;
 
 namespace FWPS_App
 {
+    /////////////////////////////////////////////////
+    /// Class to use to make nofikations
+    /////////////////////////////////////////////////
     class ToastClass
     {
+        /////////////////////////////////////////////////
+        /// Function to show nofitication on mobile 
+        /// devices
+        /////////////////////////////////////////////////
         public void ShowToast(INotificationOptions options)
         {
             var notificator = DependencyService.Get<IToastNotificator>();

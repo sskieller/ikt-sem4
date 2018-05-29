@@ -1,11 +1,4 @@
-﻿/**
- * @file MainPage.xaml.cs
- * @author 
- * @date 25 may 2018
- * @brief This file initiates Content Pages and which through button event handlers can be navigated to
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,19 +9,16 @@ using Xamarin.Forms;
 
 namespace FWPS_App
 {
-    /// <summary>
+    /////////////////////////////////////////////////
     /// Content Page which acts main page for the app 
-    /// </summary>
+    /////////////////////////////////////////////////
     public partial class MainPage : ContentPage
 	{
-        /// <summary>
-        /// Pages that can be reached through touch events
-        /// </summary>
         ContentPage lightPage, snapboxPage, hodoorPage, poombaPage, climateControlPage, lazyCurtainPage;
 
-        /// <summary>
-        /// Initialisations
-        /// </summary>
+        /////////////////////////////////////////////////
+        /// Initialisations 
+        /////////////////////////////////////////////////
         public MainPage()
 		{
 			InitializeComponent();
@@ -44,9 +34,9 @@ namespace FWPS_App
         }
 
 
-        /// <summary>
-        /// Assignation of Pages
-        /// </summary>
+        /////////////////////////////////////////////////
+        /// Make pages
+        /////////////////////////////////////////////////
         public void MakePages()
         {
             lightPage = new LightPage();
@@ -58,45 +48,72 @@ namespace FWPS_App
         }
 
         #region PagesPushAsync
-        /// <summary>
-        /// Button event handler that redirects to LightPage which shows content for MorningSun 
-        /// </summary>
+
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// LightPage which shows content for MorningSun
+        /////////////////////////////////////////////////
         private void LightButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(lightPage);
         }
 
-
-        /// <summary>
-        /// Button event handler that redirects to LightPage which shows content for MorningSun 
-        /// </summary>
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// SnapboxPage which shows content for 
+        /// Snapbox
+        /////////////////////////////////////////////////
         private void SnapboxButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(snapboxPage);
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// LazyCurtainPage which shows content for 
+        /// LazyCurtain
+        /////////////////////////////////////////////////
         private void LazyCurtainButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(lazyCurtainPage);
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// HodoorPage which shows content for 
+        /// Hodoor
+        /////////////////////////////////////////////////
         private void HodoorButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(hodoorPage);
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// PoombaPage which shows content for 
+        /// Poomba
+        /////////////////////////////////////////////////
         private void PoombaButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(poombaPage);
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// ClimateControlPage which shows content for 
+        /// ClimateControl
+        /////////////////////////////////////////////////
         private void ClimateControlButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(climateControlPage);
         }
         #endregion
 
-
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// HomePage which shows content for 
+        /// homepage from where the user can login
+        /////////////////////////////////////////////////
         private void LogoutButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();

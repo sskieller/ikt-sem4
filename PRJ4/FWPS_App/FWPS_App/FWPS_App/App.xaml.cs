@@ -7,7 +7,10 @@ using Xamarin.Forms;
 
 namespace FWPS_App
 {
-	public partial class App : Application
+    /////////////////////////////////////////////////
+    /// Initialisation of app
+    /////////////////////////////////////////////////
+    public partial class App : Application
 	{
 		public App ()
 		{

@@ -12,9 +12,17 @@ using Xamarin.Forms.Xaml;
 namespace FWPS_App
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PoombaPage : ContentPage
+
+    /////////////////////////////////////////////////
+    /// Content Page for Poomba 
+    /////////////////////////////////////////////////
+    public partial class PoombaPage : ContentPage
 	{
-		public PoombaPage ()
+
+        /////////////////////////////////////////////////
+        /// Initialisations 
+        /////////////////////////////////////////////////
+        public PoombaPage ()
 		{
 			InitializeComponent ();
             Timer();
@@ -26,6 +34,9 @@ namespace FWPS_App
             WakeUpAndSleepApplyBtn.Clicked += WakeUpAndSleepApplyBtn_Clicked;
         }
 
+        /////////////////////////////////////////////////
+        /// Timerfunction for polling every 2sec
+        /////////////////////////////////////////////////
         private void Timer()
         {
             Timer timer;
@@ -35,6 +46,11 @@ namespace FWPS_App
             timer.Interval = 2000;
             timer.Start();
         }
+
+        /////////////////////////////////////////////////
+        /// Loads current wake up and sleep time to be
+        /// displayed in app
+        /////////////////////////////////////////////////
         private void GetWakeUpAndSleepTimes()
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -49,6 +65,10 @@ namespace FWPS_App
             });
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that handles if user
+        /// sets and apply wake up and sleep time
+        /////////////////////////////////////////////////
         private void WakeUpAndSleepApplyBtn_Clicked(object sender, EventArgs e)
         {
             WakeUpAndSleepApplyBtn.IsEnabled = false;
@@ -150,6 +170,11 @@ namespace FWPS_App
             WakeUpAndSleepApplyBtn.IsEnabled = true;
         }
 
+        /////////////////////////////////////////////////
+        /// Poomba state Poomba to be displayed 
+        /// in app showing if Poomba is turned on
+        /// or off
+        /////////////////////////////////////////////////
         private void PoombaState()
         {
 
@@ -179,6 +204,10 @@ namespace FWPS_App
             }
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that turnes off 
+        /// Poomba
+        /////////////////////////////////////////////////
         private void OffButton_Clicked(object sender, EventArgs e)
         {
             string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri + "newest/").ToString();
@@ -203,6 +232,10 @@ namespace FWPS_App
             }
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that turnes on 
+        /// Poomba
+        /////////////////////////////////////////////////
         private void OnButton_Clicked(object sender, EventArgs e)
         {
             string obj = HTTPRequestHandler.CreateGetRequest(PoombaUri + "newest/").ToString();
@@ -226,6 +259,11 @@ namespace FWPS_App
             }
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// Mainpage which shows content for 
+        /// mainpage
+        /////////////////////////////////////////////////
         private void ReturnBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
@@ -233,6 +271,9 @@ namespace FWPS_App
 
         public static string PoombaUri { get; set; } = "http://fwps.azurewebsites.net/api/poomba/";
 
+        /////////////////////////////////////////////////
+        /// Poomba object class
+        /////////////////////////////////////////////////
         public class PoombaObject
         {
             public string Command { get; set; }

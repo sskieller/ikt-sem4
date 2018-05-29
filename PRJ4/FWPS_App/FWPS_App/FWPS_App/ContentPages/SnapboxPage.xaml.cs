@@ -13,10 +13,18 @@ using Plugin.Toasts.Options;
 namespace FWPS_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
+    /////////////////////////////////////////////////
+    /// Content Page for Snapbox 
+    /////////////////////////////////////////////////
     public partial class SnapboxPage : ContentPage
     {
         private bool _notificationSent;
         private bool _powerNotificationSent;
+
+        /////////////////////////////////////////////////
+        /// Initialisations 
+        /////////////////////////////////////////////////
         public SnapboxPage()
         {
             InitializeComponent();
@@ -26,11 +34,18 @@ namespace FWPS_App
             ShowStatisticsBtn.Clicked += ShowStatisticsBtn_Clicked;
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// statistics for Snapbox
+        /////////////////////////////////////////////////
         private void ShowStatisticsBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ShowStatisticsPage());
         }
 
+        /////////////////////////////////////////////////
+        /// Timerfunction for polling every 2sec
+        /////////////////////////////////////////////////
         private void Timer()
         {
             Timer timer;
@@ -42,11 +57,21 @@ namespace FWPS_App
             timer.Start();
         }
 
+        /////////////////////////////////////////////////
+        /// Button event handler that redirects to
+        /// Mainpage which shows content for 
+        /// mainpage
+        /////////////////////////////////////////////////
         private void ReturnBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
         }
 
+        /////////////////////////////////////////////////
+        /// Loads current battery powerlevel to be 
+        /// displayed in app. If powerlevel reach 15% 
+        /// or lower make nofitication
+        /////////////////////////////////////////////////
         private void BatteryStatus()
         {
             string obj = HTTPRequestHandler.CreateGetRequest(SnapboxUri + "newest/").ToString();
@@ -85,6 +110,11 @@ namespace FWPS_App
                 });
         }
 
+        /////////////////////////////////////////////////
+        /// Loads mail status to be displayed in app. 
+        /// If mail is recieved after Snapbox has been
+        /// emptied make nofitication
+        /////////////////////////////////////////////////
         private void MailStatus()
         {
 
@@ -131,6 +161,9 @@ namespace FWPS_App
 
         public static string SnapboxUri { get; set; } = "http://fwps.azurewebsites.net/api/snapbox/";
 
+        /////////////////////////////////////////////////
+        /// Snapbox object class
+        /////////////////////////////////////////////////
         public class SnapboxObject
         {
             public string SnapBoxId { get; set; }
