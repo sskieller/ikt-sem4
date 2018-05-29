@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FWPS.Controllers
 {
-    public class NoItemsInDatabaseException : Exception
-    {
-    }
-    
+
+
+    /////////////////////////////////////////////////
+    /// Controller responsible for SnapBox API
+    /////////////////////////////////////////////////
     [Route("api/[Controller]")]
 	public class SnapBoxController : Controller, ISnapBoxController
 	{
@@ -30,7 +31,10 @@ namespace FWPS.Controllers
 			}
 		}
 
-	    [HttpGet]
+	    /////////////////////////////////////////////////
+	    /// Returns all SnapBox items in database
+	    /////////////////////////////////////////////////
+        [HttpGet]
 		public IEnumerable<SnapBoxItem> GetAll()
 		{
             if (_context.SnapBoxItems.ToList().Count <= 0)
@@ -39,8 +43,10 @@ namespace FWPS.Controllers
             }
 			return _context.SnapBoxItems.ToList();
 		}
-
-	    [HttpGet("[action]")] // '/api/snapbox/getupdate'
+	    /////////////////////////////////////////////////
+	    /// Returns all items from database no older than 7 days from current date
+	    /////////////////////////////////////////////////
+        [HttpGet("[action]")] // '/api/snapbox/getupdate'
 	    public IEnumerable<SnapBoxItem> GetUpdate()
 	    {
 	        if (_context.SnapBoxItems.ToList().Count <= 0)
@@ -55,7 +61,10 @@ namespace FWPS.Controllers
 	        return items;
 	    }
 
-	    [HttpGet("[action]")] // '/api/snapbox/Testupdate'
+	    /////////////////////////////////////////////////
+	    /// Test method, Clears database from items older than 7 days and creates 20 test elements
+	    /////////////////////////////////////////////////
+        [HttpGet("[action]")] // '/api/snapbox/Testupdate'
 	    public IEnumerable<SnapBoxItem> TestUpdate()
 	    {
 	        if (_context.SnapBoxItems.ToList().Count <= 0)
@@ -97,6 +106,10 @@ namespace FWPS.Controllers
             return items;
 	    }
 
+
+	    /////////////////////////////////////////////////
+	    /// Gets SnapBox item denoted by {id}
+	    /////////////////////////////////////////////////
         [HttpGet("{id:int}", Name = "GetSnapBox")]
 		public IActionResult GetById(long id)
 		{
@@ -110,7 +123,10 @@ namespace FWPS.Controllers
 			return new ObjectResult(item);
 		}
 
-	    [HttpGet("[action]")] // '/api/snapbox/Newest'
+	    /////////////////////////////////////////////////
+	    /// Gets newest SnapBox item from database
+	    /////////////////////////////////////////////////
+        [HttpGet("[action]")] // '/api/snapbox/Newest'
 	    public IActionResult Newest()
 	    {
 	        var item = _context.SnapBoxItems.Last();
@@ -121,6 +137,9 @@ namespace FWPS.Controllers
 	        return new ObjectResult(item);
 	    }
 
+	    /////////////////////////////////////////////////
+	    /// Creates new SnapBox item in database
+	    /////////////////////////////////////////////////
         [HttpPost]
 		public IActionResult Create([FromBody] SnapBoxItem item)
 		{
@@ -137,14 +156,17 @@ namespace FWPS.Controllers
 
             if (item.MailReceived)
             {
-                MailSender ms = new MailSender(_context);
-                ms.SendSnapBoxMail(item);
+                //MailSender ms = new MailSender(_context);
+                //ms.SendSnapBoxMail(item);
             }
 
 			return CreatedAtRoute("GetSnapBox", new { id = item.Id }, item);
 		}
 
-		[HttpDelete("{id}")]
+	    /////////////////////////////////////////////////
+	    /// Not used, Deletes SnapBox item denoted by {id}
+	    /////////////////////////////////////////////////
+        [HttpDelete("{id}")]
 		public IActionResult Delete(long id)
 		{
 			var item = _context.SnapBoxItems.FirstOrDefault(o => o.Id == id);

@@ -9,9 +9,16 @@ using Newtonsoft.Json;
 
 namespace MasterApplication.MessageHandlers
 {
+    /////////////////////////////////////////////////
+    /// Message handler for Hodoor. 
+    /////////////////////////////////////////////////
     public class HodoorMessageHandler : IMessageHandler
     {
         private readonly WebApiConnector _connector = new WebApiConnector();
+
+        /////////////////////////////////////////////////
+        /// Message handler for Hodoor. 
+        /////////////////////////////////////////////////
         public void HandleMessage(string message, string topic)
         {
             switch (topic)
@@ -41,7 +48,9 @@ namespace MasterApplication.MessageHandlers
 
 
         #region Hodoor module related handlers
-
+        /////////////////////////////////////////////////
+        /// Handler function for when Hodoor unlocks
+        /////////////////////////////////////////////////
         private void HodoorWasUnlocked(string message)
         {
             Console.WriteLine("Hodoor: Received \"Unlocked\" from module");
@@ -52,6 +61,9 @@ namespace MasterApplication.MessageHandlers
             _connector.PostItem("Hodoor/", JsonConvert.SerializeObject(item));
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when Hodoor locks
+        /////////////////////////////////////////////////
         private void HodoorWasLocked(string message)
         {
             Console.WriteLine("Hodoor: Received \"Locked\" from module");
@@ -62,6 +74,10 @@ namespace MasterApplication.MessageHandlers
             _connector.PostItem("Hodoor/", JsonConvert.SerializeObject(item));
         }
 
+        /////////////////////////////////////////////////
+        /// RFID-card scanned. Validates the card on the
+        /// WebApi and responds accordingly. 
+        /////////////////////////////////////////////////
         private void RfidEntryRequest(string message)
         {
             Console.WriteLine("Hodoor: Received entry request with RFID: {0}", message);
@@ -77,13 +93,20 @@ namespace MasterApplication.MessageHandlers
         #endregion
 
         #region WebApi related handlers
-
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to open Hodoor
+        /////////////////////////////////////////////////
         private void UnlockHodoor(string message)
         {
             //Unlock Hodoor
            FwpsPublisher.PublishMessage("Hodoor.CmdModUnlock", "");
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to lock Hodoor
+        /////////////////////////////////////////////////
         private void LockHodoor(string message)
         {
             //Lock Hodoor

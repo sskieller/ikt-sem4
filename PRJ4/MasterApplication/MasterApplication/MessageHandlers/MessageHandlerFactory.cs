@@ -4,8 +4,15 @@ using System.Text;
 
 namespace MasterApplication.MessageHandlers
 {
+    /////////////////////////////////////////////////
+    /// Factory that dispends MessageHandlers.
+    /////////////////////////////////////////////////
     public static class MessageHandlerFactory
     {
+        /////////////////////////////////////////////////
+        /// Spawn a MessageHandler according to requested
+        /// type.
+        /////////////////////////////////////////////////
         public static IMessageHandler GetMessageHandler(string messageHandlerType)
         {
             switch (messageHandlerType)

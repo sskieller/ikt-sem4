@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// Base class for all model classes
+    /////////////////////////////////////////////////
     public abstract class ItemBase
     {
         protected ItemBase()

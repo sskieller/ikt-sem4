@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace FWPS.Controllers
 {
+    /////////////////////////////////////////////////
+    /// Controller responsible for handling MorningSun API
+    /////////////////////////////////////////////////
     [Route("api/[Controller]")]
     public class LightController : Controller
     {
@@ -30,14 +33,18 @@ namespace FWPS.Controllers
                 _context.SaveChanges();
             }
         }
-
+        /////////////////////////////////////////////////
+        /// Gets all MorningSun items from database
+        /////////////////////////////////////////////////
         [HttpGet]
         public IEnumerable<LightItem> GetAll()
         {
             return _context.LightItems.ToList();
 
         }
-
+        /////////////////////////////////////////////////
+        /// Not used, Gets MorningSun item denoted by {id}
+        /////////////////////////////////////////////////
         [HttpGet("{id:int}", Name = "GetLight")]
         public IActionResult GetById(long id)
         {
@@ -50,7 +57,9 @@ namespace FWPS.Controllers
             }
             return new ObjectResult(lightItem);
         }
-
+        /////////////////////////////////////////////////
+        /// Gets all MorningSun items from 7 days from current date
+        /////////////////////////////////////////////////
         [HttpGet("[action]")] // '/api/Light/getupdate'
         public IEnumerable<LightItem> GetUpdate()
         {
@@ -66,6 +75,9 @@ namespace FWPS.Controllers
             return items;
         }
 
+        /////////////////////////////////////////////////
+        /// Not used, Gets next non-executed item from database
+        /////////////////////////////////////////////////
         [HttpGet("[action]")] // '/api/Light/next'
         public IActionResult Next()
         {
@@ -77,8 +89,10 @@ namespace FWPS.Controllers
             return new ObjectResult(lightItem);
         }
 
-
-	    [HttpGet("[action]")] // '/api/Light/Newest'
+        /////////////////////////////////////////////////
+        /// Gets newest MorningSun item from database
+        /////////////////////////////////////////////////
+        [HttpGet("[action]")] // '/api/Light/Newest'
 	    public IActionResult Newest()
 	    {
 		    var lightItem = _context.LightItems.Last();
@@ -88,8 +102,10 @@ namespace FWPS.Controllers
 		    }
 		    return new ObjectResult(lightItem);
 	    }
-
-		[HttpPost]
+        /////////////////////////////////////////////////
+        /// Creates new MorningSun item in database
+        /////////////////////////////////////////////////
+        [HttpPost]
         public IActionResult Create([FromBody] LightItem lightItem)
         {
             if (lightItem == null)
@@ -120,7 +136,9 @@ namespace FWPS.Controllers
 
             return CreatedAtRoute("GetLight", new {id = lightItem.Id}, lightItem);
         }
-
+        /////////////////////////////////////////////////
+        /// Replaces MorningSun item denoted by {id} with item passed in parameter
+        /////////////////////////////////////////////////
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] LightItem lightItem)
         {
@@ -149,7 +167,9 @@ namespace FWPS.Controllers
             return new NoContentResult();
         }
 
-
+        /////////////////////////////////////////////////
+        /// Deletes MorningSun item denoted by {id}
+        /////////////////////////////////////////////////
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

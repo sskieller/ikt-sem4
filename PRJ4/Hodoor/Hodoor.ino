@@ -1,38 +1,4 @@
-/*
- * --------------------------------------------------------------------------------------------------------------------
- * Example sketch/program showing how to read data from a PICC to serial.
- * --------------------------------------------------------------------------------------------------------------------
- * This is a MFRC522 library example; for further details and other examples see: https://github.com/miguelbalboa/rfid
- * 
- * Example sketch/program showing how to read data from a PICC (that is: a RFID Tag or Card) using a MFRC522 based RFID
- * Reader on the Arduino SPI interface.
- * 
- * When the Arduino and the MFRC522 module are connected (see the pin layout below), load this sketch into Arduino IDE
- * then verify/compile and upload it. To see the output: use Tools, Serial Monitor of the IDE (hit Ctrl+Shft+M). When
- * you present a PICC (that is: a RFID Tag or Card) at reading distance of the MFRC522 Reader/PCD, the serial output
- * will show the ID/UID, type and any data blocks it can read. Note: you may see "Timeout in communication" messages
- * when removing the PICC from reading distance too early.
- * 
- * If your reader supports it, this sketch/program will read all the PICCs presented (that is: multiple tag reading).
- * So if you stack two or more PICCs on top of each other and present them to the reader, it will first output all
- * details of the first and then the next PICC. Note that this may take some time as all data blocks are dumped, so
- * keep the PICCs at reading distance until complete.
- * 
- * @license Released into the public domain.
- * 
- * Typical pin layout used:
- * -----------------------------------------------------------------------------------------
- *             MFRC522      Arduino       Arduino   Arduino    Arduino          Arduino
- *             Reader/PCD   Uno/101       Mega      Nano v3    Leonardo/Micro   Pro Micro
- * Signal      Pin          Pin           Pin       Pin        Pin              Pin
- * -----------------------------------------------------------------------------------------
- * RST/Reset   RST          9             5         D9         RESET/ICSP-5     RST
- * SPI SS      SDA(SS)      10            53        D10        10               10
- * SPI MOSI    MOSI         11 / ICSP-4   51        D11        ICSP-4           16
- * SPI MISO    MISO         12 / ICSP-1   50        D12        ICSP-1           14
- * SPI SCK     SCK          13 / ICSP-3   52        D13        ICSP-3           15
- */
-
+/**@file Hodoor.ino */
 
 #define SS_PIN 4  //D2
 #define RST_PIN 5 //D1
@@ -52,9 +18,9 @@
 #include <PubSubClient.h>
 
 //Wifi related
-const char * ssid = "JonasAP"; // SSID
-const char * password = "Fkt73gss"; // Password
-String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1
+const char * ssid = "JonasAP"; //!< SSID to the WiFiNetwork
+const char * password = "Fkt73gss"; //!< Password to the WiFiNetwork
+String host = ""; //!< IP for raspberry. collected from fwps.azurewebsites.net/api/ip/1
 WiFiClient espClient;
 PubSubClient mqClient(espClient);
 // Timers
@@ -66,13 +32,17 @@ Ticker ticker3;
 // Variables
 MFRC522 mfrc522(SS_PIN, RST_PIN);  // Create MFRC522 instance
 char lastID[4] = {0, 0, 0, 0};
-char validID[] = {0x2B, 0xD6, 0x18, 0xFD};
 byte valueReturned = 0;
 byte timeout = 0;
 
 enum DoorState { DOOROPEN, ISOPENING, DOORCLOSED };
 DoorState state = DOOROPEN;
 
+/////////////////////////////////////////////////
+/// Sets up the ESP chip. Will try to connect
+/// to the network until it succedes.
+/// Will get IP for Master Unit and connect to it.
+/////////////////////////////////////////////////
 void setup() {
 	Serial.begin(115200);		// Initialize serial communications with the PC
 	SPI.begin();			// Init SPI bus
@@ -109,6 +79,14 @@ void setup() {
   mqClient.setCallback(callback);
 }
 
+
+/////////////////////////////////////////////////
+/// Loop/Run function. Will try to read a card
+/// if the door is closed. If it reads a card, it 
+/// will try to validate the card.
+/// Will keep the door unlocked as long as it's 
+/// open. Will lock the door once its closed.
+/////////////////////////////////////////////////
 void loop() {
   if(!mqClient.connected())
   {
@@ -165,7 +143,10 @@ void loop() {
   delay(200);
 }
 
-// HANDLE RFID INPUT
+/////////////////////////////////////////////////
+/// Handles the card input and will try to 
+/// validate it. Will timeout after 5 seconds.
+/////////////////////////////////////////////////
 void HandleInput(MFRC522::Uid *uid)
 {
   for(byte i = 0; i < 4; i++)
@@ -195,7 +176,9 @@ void HandleInput(MFRC522::Uid *uid)
 }
 
 
-// DOOR FUNCTIONALITY
+/////////////////////////////////////////////////
+/// Checks if the door is open.
+/////////////////////////////////////////////////
 bool IsDoorOpen()
 {
   delay(100);
@@ -203,6 +186,9 @@ bool IsDoorOpen()
   return val > 350;
 }
 
+/////////////////////////////////////////////////
+/// Locks the door
+/////////////////////////////////////////////////
 void LockDoor()
 {
   digitalWrite(DOORLOCKPIN, LOW);
@@ -212,6 +198,9 @@ void LockDoor()
   state = DOORCLOSED;
 }
 
+/////////////////////////////////////////////////
+/// Display to User that the card is denied.
+/////////////////////////////////////////////////
 void AccessDenied()
 {
   digitalWrite(DOORLOCKPIN, LOW);
@@ -225,6 +214,9 @@ void AccessDenied()
   digitalWrite(REDLED, LOW);
 }
 
+/////////////////////////////////////////////////
+/// Unlocks the door
+/////////////////////////////////////////////////
 void OpenDoor()
 {
   digitalWrite(REDLED, LOW);
@@ -245,6 +237,9 @@ void OpenDoor()
   state = ISOPENING;
 }
 
+/////////////////////////////////////////////////
+/// Handles the timeout from HandleInput()
+/////////////////////////////////////////////////
 void TimeoutFunc()
 {
   digitalWrite(DOORLOCKPIN, LOW);
@@ -259,6 +254,10 @@ void GreenLight()
 
 // RABBITMQ AND WIFI METHODS
 
+/////////////////////////////////////////////////
+/// Will get the current Master Unit IP from the
+/// WebApi.
+/////////////////////////////////////////////////
 void getRaspberryIp()
 {
   HTTPClient http;
@@ -276,6 +275,10 @@ void getRaspberryIp()
   }
 }
 
+/////////////////////////////////////////////////
+/// Will try to reconnect to the Master Unit.
+/// If fails, retries every 5 seconds.
+/////////////////////////////////////////////////
 void reconnect()
 {
   while (!mqClient.connected())
@@ -295,6 +298,10 @@ void reconnect()
   }
 }
 
+/////////////////////////////////////////////////
+/// Callback to handle Messages received by the
+/// Master Unit.
+/////////////////////////////////////////////////
 void callback(char * topic, byte* payload, unsigned int length)
 {
   Serial.println(topic);

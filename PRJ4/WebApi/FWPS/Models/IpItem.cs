@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// IP item model
+    /////////////////////////////////////////////////
     public class IpItem : ItemBase
     {
 

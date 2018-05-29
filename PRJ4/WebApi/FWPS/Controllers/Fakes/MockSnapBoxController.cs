@@ -7,8 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FWPS.Controllers
 {
+    public class NoItemsInDatabaseException : Exception
+    {
+    }
+    /////////////////////////////////////////////////
+    /// SnapBoxController mock for unit testing
+    /////////////////////////////////////////////////
     [Route("api/[Controller]")]
-    public class MockSnapBoxController : Controller, ISnapBoxController
+    public class MockSnapBoxController : Controller
     {
         private readonly FwpsDbContext _context;
         private List<IObserver<SnapBoxItem>> _observers;
@@ -24,6 +30,8 @@ namespace FWPS.Controllers
                 _context.SaveChanges();
             }
         }
+
+
         public IEnumerable<SnapBoxItem> GetAll()
         {
             throw new NotImplementedException();

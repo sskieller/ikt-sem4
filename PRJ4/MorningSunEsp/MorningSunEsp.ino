@@ -5,14 +5,19 @@
 #include <PubSubClient.h>
 
 //Wifi related
-const char * ssid = "JonasAP"; // SSID
-const char * password = "Fkt73gss"; // Password
-String host = ""; // IP for raspberry. Hentes fra fwps.azurewebsites.net/api/ip/1
+const char * ssid = "JonasAP"; //!< SSID to the WiFiNetwork
+const char * password = "Fkt73gss"; //!< Password to the WiFiNetwork
+String host = ""; //!< IP for raspberry. collected from fwps.azurewebsites.net/api/ip/1
 WiFiClient espClient;
 PubSubClient mqClient(espClient);
 char buffer[20];
 bool isOn = false;
 
+/////////////////////////////////////////////////
+/// Sets up the ESP chip. Will try to connect
+/// to the network until it succedes.
+/// Will get IP for Master Unit and connect to it.
+/////////////////////////////////////////////////
 void setup()
 {
 	Wire.begin(2,0); // Sets I2C pins to pin 0 and pin 2
@@ -53,6 +58,10 @@ void setup()
 
 }
 
+/////////////////////////////////////////////////
+/// Callback to handle Messages received by the
+/// Master Unit.
+/////////////////////////////////////////////////
 void callback(char * topic, byte* payload, unsigned int length)
 {
 	Serial.print("Message recived on topic: \"");
@@ -97,6 +106,10 @@ void callback(char * topic, byte* payload, unsigned int length)
 	Serial.println("Unknown command received");
 }
 
+/////////////////////////////////////////////////
+/// Will get the current Master Unit IP from the
+/// WebApi.
+/////////////////////////////////////////////////
 void getRaspberryIp()
 {
 	HTTPClient http;
@@ -117,6 +130,10 @@ void getRaspberryIp()
 	}
 }
 
+/////////////////////////////////////////////////
+/// Will try to reconnect to the Master Unit.
+/// If fails, retries every 5 seconds.
+/////////////////////////////////////////////////
 void reconnect()
 {
 	while (!mqClient.connected())
@@ -144,6 +161,11 @@ void reconnect()
 	}
 }
 
+/////////////////////////////////////////////////
+/// Loop/Run function. Will read the status from
+/// MorningSun and if the status has changed,
+/// then it will alert the Master Unit.
+/////////////////////////////////////////////////
 void loop()
 {
 	if(!mqClient.connected())
@@ -159,22 +181,6 @@ void loop()
   delay(1);
 
   buffer[0] = Wire.read();
-  /*
-	while (Wire.available())
-	{
-		buffer[i] = Wire.read();
-		++i;
-	}
-	i = 0;
-  */
-
-  /*
-	//Serial.println("Received following from Morning sun: ");
-	for (int j = 0; j < i; ++j)
-	{
-		Serial.print(buffer[j]);
-	}
-  */
 	
 	//WIP
 	if (buffer[0] == 0)

@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace FWPS.Controllers
 {
+    /////////////////////////////////////////////////
+    /// Allows access to internal Debug Log on Web API
+    /////////////////////////////////////////////////
     [Route("api/[Controller]")]
     public class DebugController : Controller
     {
@@ -19,13 +22,18 @@ namespace FWPS.Controllers
             _hub = dvhub;
             //FWPS.Devices.Hub = dvhub;
         }
-
+        /////////////////////////////////////////////////
+        /// Returns all data stored in Debug Log
+        /////////////////////////////////////////////////
         [HttpGet]
         public IActionResult Get()
         {
             return Content(new DebugWriter().Read);
         }
 
+        /////////////////////////////////////////////////
+        /// Clears Debug Log
+        /////////////////////////////////////////////////
         [HttpGet("[action]")] // '/api/Light/Newest'
         public IActionResult Clear()
         {
@@ -33,6 +41,9 @@ namespace FWPS.Controllers
             return Ok();
         }
 
+        /////////////////////////////////////////////////
+        /// Get each device stored in Debug Log
+        /////////////////////////////////////////////////
         [HttpGet("[action]")] // '/api/Light/Newest'
         public IActionResult Devices()
         {

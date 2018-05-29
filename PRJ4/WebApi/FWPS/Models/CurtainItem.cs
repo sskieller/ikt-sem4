@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace FWPS.Models
 {
+    /////////////////////////////////////////////////
+    /// Not used, LazyCurtain item model
+    /////////////////////////////////////////////////
     public class CurtainItem : ItemBase
     {
         public string Command { get; set; }

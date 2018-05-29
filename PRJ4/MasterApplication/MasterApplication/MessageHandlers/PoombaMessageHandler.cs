@@ -10,6 +10,9 @@ using Newtonsoft.Json;
 
 namespace MasterApplication.MessageHandlers
 {
+    /////////////////////////////////////////////////
+    /// Message handler for Poomba. 
+    /////////////////////////////////////////////////
     public class PoombaMessageHandler : IMessageHandler
     {
 	    private static System.Timers.Timer _wakeUpTimer;
@@ -20,8 +23,11 @@ namespace MasterApplication.MessageHandlers
 	    {
 			UpdateTime(null);
 		}
-		
-		//Create map of topics here
+
+        //Create map of topics here
+        /////////////////////////////////////////////////
+        /// Message handler for Poomba. 
+        /////////////////////////////////////////////////
         public void HandleMessage(string message, string topic)
         {
 	        if (topic == null)
@@ -60,22 +66,24 @@ namespace MasterApplication.MessageHandlers
 
         #region Poomba-related handlers
 
+        /////////////////////////////////////////////////
+        /// Handler function for when Poomba turns on
+        /////////////////////////////////////////////////
         private void PoombaIsOn(string message)
         {
             Console.WriteLine("Poomba: Received \"on\" from module");
             Console.WriteLine(message);
             //Send message to DB that Poomba is now on
-            PoombaItem poombaItem = new PoombaItem() { Command = "TurnedOn", IsOn = true };
-            _connector.PostItem("Poomba/", JsonConvert.SerializeObject(poombaItem));
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when Poomba turns off
+        /////////////////////////////////////////////////
         private void PoombaIsOff(string message)
         {
             Console.WriteLine("Poomba: Received \"off\" from module");
             Console.WriteLine(message);
             //Send message to DB that Poomba is now on
-            PoombaItem poombaItem = new PoombaItem() { Command = "TurnedOff", IsOn = false };
-            _connector.PostItem("Poomba/", JsonConvert.SerializeObject(poombaItem));
         }
 
         #endregion
@@ -83,14 +91,24 @@ namespace MasterApplication.MessageHandlers
 
         #region WebAPI-related handlers
 
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to turn on Poomba
+        /////////////////////////////////////////////////
         private void TurnOn(string message)
         {
             //Ask Poomba to turn on
+            Console.WriteLine("Received \"on\" Poomba");
             FwpsPublisher.PublishMessage("Poomba.CmdOn", "");
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to turn off Poomba
+        /////////////////////////////////////////////////
         private void TurnOff(string message)
         {
+            Console.WriteLine("Received \"off\" Poomba");
             //Ask Poomba to turn off
             FwpsPublisher.PublishMessage("Poomba.CmdOff","");
         }
@@ -99,7 +117,10 @@ namespace MasterApplication.MessageHandlers
 
 
         #region Timer-related methods
-
+        /////////////////////////////////////////////////
+        /// Handler function for when the Web Api requests
+        /// to set the timers on Poomba
+        /////////////////////////////////////////////////
         private static void UpdateTime(string message)
         {
             Console.WriteLine("Poomba: Asked to update timers");
@@ -138,6 +159,10 @@ namespace MasterApplication.MessageHandlers
             _wakeUpTimer.Start();
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when the Timer is triggerd,
+        /// and turns on Poomba
+        /////////////////////////////////////////////////
         private static void WakeUp(object sender, ElapsedEventArgs e)
         {
 			FwpsPublisher.PublishMessage("Poomba.CmdOn", "");
@@ -149,6 +174,10 @@ namespace MasterApplication.MessageHandlers
             _wakeUpTimer.Start();
         }
 
+        /////////////////////////////////////////////////
+        /// Handler function for when the Timer is triggerd,
+        /// and turns off Poomba
+        /////////////////////////////////////////////////
         private static void Sleep(object sender, ElapsedEventArgs e)
         {
 	        FwpsPublisher.PublishMessage("Poomba.CmdOff", "");

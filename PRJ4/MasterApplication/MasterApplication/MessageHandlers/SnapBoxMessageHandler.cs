@@ -7,8 +7,19 @@ using Newtonsoft.Json.Serialization;
 
 namespace MasterApplication.MessageHandlers
 {
+    /////////////////////////////////////////////////
+    /// Message handler for Poomba. 
+    /////////////////////////////////////////////////
     public class SnapBoxMessageHandler : IMessageHandler
     {
+        /////////////////////////////////////////////////
+        /// Message handler for Poomba. SnapBox only receives
+        /// one kind of message. This message is then split
+        /// using a RegEx, such that 2 values are extracted.
+        /// These values will then decide if mail is received,
+        /// and what the powerlevel of the battery is.
+        /// These values are then posted to the WebApi
+        /////////////////////////////////////////////////
         public void HandleMessage(string message, string topic = "")
         {
             Console.WriteLine("Snap Box message: {0}, Topic: {1}", message, topic);

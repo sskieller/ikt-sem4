@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FWPS.Data
 {
+    /////////////////////////////////////////////////
+    /// DbContext containing Mapping between Model classes and database
+    /////////////////////////////////////////////////
     public class FwpsDbContext : DbContext
     {
         public DbSet<ClimateControlItem> ClimateControlItems { get; set; }

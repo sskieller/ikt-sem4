@@ -8,14 +8,21 @@ using Newtonsoft.Json;
 
 namespace MasterApplication
 {
+    /////////////////////////////////////////////////
+    /// Handles the REST calls made to the Web Api.
+    /////////////////////////////////////////////////
     public class WebApiConnector
     {
-	    public static string BaseUri { get; set; } = "https://fwps.azurewebsites.net/api/";
+	    public static string BaseUri { get; set; } = "https://fwps.azurewebsites.net/api/"; //!< BaseURI for the WebApi
 
 		public WebApiConnector()
 	    {
 	    }
-	    public string GetItem(string uri)
+
+        /////////////////////////////////////////////////
+        /// Gets an item from the WebApi
+        /////////////////////////////////////////////////
+        public string GetItem(string uri)
 	    {
 		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + uri);
 		    request.Method = "Get";
@@ -43,6 +50,9 @@ namespace MasterApplication
 		    }
 		}
 
+        /////////////////////////////////////////////////
+        /// Post an item to the WebApi
+        /////////////////////////////////////////////////
         public string PostItem(string uri, string json)
 	    {
 		    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(BaseUri + uri);

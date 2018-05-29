@@ -4,6 +4,9 @@ using System.Text;
 
 namespace MasterApplication.Models
 {
+    /////////////////////////////////////////////////
+    /// Item representing the PoombaItem on the WebApi
+    /////////////////////////////////////////////////
     public class PoombaItem : ItemBase
     {
         public string Command { get; set; }

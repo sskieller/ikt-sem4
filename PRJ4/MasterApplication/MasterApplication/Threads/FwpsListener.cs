@@ -8,6 +8,10 @@ using RabbitMQ.Client.Events;
 
 namespace MasterApplication.Threads
 {
+    /////////////////////////////////////////////////
+    /// Class that listens for messages using RabbitMQ
+    /// Will throw a new event if it receives a message.
+    /////////////////////////////////////////////////
     public class FwpsListener : IListener
     {
 	    public event EventHandler<BasicDeliverEventArgs> OnMessageReceived;
