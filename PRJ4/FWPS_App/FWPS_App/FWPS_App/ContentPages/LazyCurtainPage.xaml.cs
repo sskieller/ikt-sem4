@@ -13,6 +13,7 @@ namespace FWPS_App
 
     /////////////////////////////////////////////////
     /// Content Page for LazyCurtain 
+    /// TODO: implement the system
     /////////////////////////////////////////////////
     public partial class LazyCurtainPage : ContentPage
 	{

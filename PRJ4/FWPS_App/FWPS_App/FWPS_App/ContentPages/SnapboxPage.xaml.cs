@@ -69,7 +69,7 @@ namespace FWPS_App
 
         /////////////////////////////////////////////////
         /// Loads current battery powerlevel to be 
-        /// displayed in app. If powerlevel reach 15% 
+        /// displayed in app. If powerlevel reach 20% 
         /// or lower make nofitication
         /////////////////////////////////////////////////
         private void BatteryStatus()
@@ -82,16 +82,16 @@ namespace FWPS_App
                 {
                     powerlevel.Text = snapboxObject.PowerLevel + "%";
 
-                    if (int.Parse(snapboxObject.PowerLevel) <= 15 && _powerNotificationSent == false)
+                    if (int.Parse(snapboxObject.PowerLevel) <= 20 && _powerNotificationSent == false)
                     {
                         _powerNotificationSent = true;
-                        // Make nofitication if powerlevel is less than 15%
+                        // Make nofitication if powerlevel is less than 20%
                         var toastclass = new ToastClass();
 
                         toastclass.ShowToast(new NotificationOptions()
                         {
                             Title = "Low battery",
-                            Description = "Your snapbox powerlevel has reached 15%!",
+                            Description = "Your snapbox powerlevel has reached 20% or lower!",
                             IsClickable = true,
                             WindowsOptions = new WindowsOptions() { LogoUri = "icon.png" },
                             ClearFromHistory = false,
@@ -103,7 +103,7 @@ namespace FWPS_App
                             }
                         });
                     }
-                    else if (int.Parse(snapboxObject.PowerLevel) > 15)
+                    else if (int.Parse(snapboxObject.PowerLevel) > 20)
                     {
                         _powerNotificationSent = false;
                     }
