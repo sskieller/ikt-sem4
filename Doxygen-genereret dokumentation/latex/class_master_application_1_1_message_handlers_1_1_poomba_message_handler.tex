@@ -1,0 +1,209 @@
+\hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler}{}\section{Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler Class Reference}
+\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler}\index{Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler@{Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler}}
+
+
+Message handler for Poomba.  
+
+
+Inheritance diagram for Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_master_application_1_1_message_handlers_1_1_poomba_message_handler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a2c49a00a1f9cad8e67d799be49b476a2}{Handle\+Message}} (string message, string topic)
+\begin{DoxyCompactList}\small\item\em Message handler for Poomba. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a934ed11f001a917e3ed9d0e61eab542e}{Poomba\+Is\+On}} (string message)
+\begin{DoxyCompactList}\small\item\em Handler function for when Poomba turns on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af70c8de253c60c1f125e6715487de921}{Poomba\+Is\+Off}} (string message)
+\begin{DoxyCompactList}\small\item\em Handler function for when Poomba turns off. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a6e4ba259c1d9074f4e3508c6010c028a}{Turn\+On}} (string message)
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a1cfd1a817648573e03ef02e0499e56f9}{Turn\+Off}} (string message)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a79b0fb9c31b4e159e84f4f5fc6c4230e}{Poomba\+Message\+Handler}} ()
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_acedd70fc2d2f6cd2aef52853b0008762}{Update\+Time}} (string message)
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a64a87ea54159ec8141884cf0ca6cf3be}{Wake\+Up}} (object sender, Elapsed\+Event\+Args e)
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_ab557dca7cd4a20b44b9db8d1c78f65ed}{Sleep}} (object sender, Elapsed\+Event\+Args e)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}} \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a2d2bdedd9c715df9a7e1242a25febe64}{\+\_\+connector}} = new \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}}()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static System.\+Timers.\+Timer \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af6f6704f46dcb6b8dff593a24fe1ada0}{\+\_\+wake\+Up\+Timer}}
+\item 
+static System.\+Timers.\+Timer \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af0f6ef136986d40f0063c713603fc938}{\+\_\+sleep\+Timer}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Message handler for Poomba. 
+
+Definition at line 16 of file Poomba\+Message\+Handler.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a79b0fb9c31b4e159e84f4f5fc6c4230e}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a79b0fb9c31b4e159e84f4f5fc6c4230e}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Poomba\+Message\+Handler@{Poomba\+Message\+Handler}}
+\index{Poomba\+Message\+Handler@{Poomba\+Message\+Handler}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Poomba\+Message\+Handler()}{PoombaMessageHandler()}}
+{\footnotesize\ttfamily static Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Poomba\+Message\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Poomba\+Message\+Handler.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a2c49a00a1f9cad8e67d799be49b476a2}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a2c49a00a1f9cad8e67d799be49b476a2}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Handle\+Message@{Handle\+Message}}
+\index{Handle\+Message@{Handle\+Message}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Handle\+Message()}{HandleMessage()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Handle\+Message (\begin{DoxyParamCaption}\item[{string}]{message,  }\item[{string}]{topic }\end{DoxyParamCaption})}
+
+
+
+Message handler for Poomba. 
+
+
+
+Implements \mbox{\hyperlink{interface_master_application_1_1_message_handlers_1_1_i_message_handler_ada3ca8e0f5f2801663822849a2cfdf40}{Master\+Application.\+Message\+Handlers.\+I\+Message\+Handler}}.
+
+
+
+Definition at line 31 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af70c8de253c60c1f125e6715487de921}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af70c8de253c60c1f125e6715487de921}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Poomba\+Is\+Off@{Poomba\+Is\+Off}}
+\index{Poomba\+Is\+Off@{Poomba\+Is\+Off}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Poomba\+Is\+Off()}{PoombaIsOff()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Poomba\+Is\+Off (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handler function for when Poomba turns off. 
+
+
+
+Definition at line 82 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a934ed11f001a917e3ed9d0e61eab542e}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a934ed11f001a917e3ed9d0e61eab542e}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Poomba\+Is\+On@{Poomba\+Is\+On}}
+\index{Poomba\+Is\+On@{Poomba\+Is\+On}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Poomba\+Is\+On()}{PoombaIsOn()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Poomba\+Is\+On (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handler function for when Poomba turns on. 
+
+
+
+Definition at line 72 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_ab557dca7cd4a20b44b9db8d1c78f65ed}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_ab557dca7cd4a20b44b9db8d1c78f65ed}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Sleep@{Sleep}}
+\index{Sleep@{Sleep}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Sleep()}{Sleep()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Sleep (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Elapsed\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Handler function for when the Timer is triggerd, and turns off Poomba 
+
+Definition at line 181 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a1cfd1a817648573e03ef02e0499e56f9}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a1cfd1a817648573e03ef02e0499e56f9}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Turn\+Off@{Turn\+Off}}
+\index{Turn\+Off@{Turn\+Off}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Turn\+Off()}{TurnOff()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Turn\+Off (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handler function for when the Web Api requests to turn off Poomba 
+
+Definition at line 109 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a6e4ba259c1d9074f4e3508c6010c028a}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a6e4ba259c1d9074f4e3508c6010c028a}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Turn\+On@{Turn\+On}}
+\index{Turn\+On@{Turn\+On}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Turn\+On()}{TurnOn()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Turn\+On (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handler function for when the Web Api requests to turn on Poomba 
+
+Definition at line 98 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_acedd70fc2d2f6cd2aef52853b0008762}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_acedd70fc2d2f6cd2aef52853b0008762}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Update\+Time@{Update\+Time}}
+\index{Update\+Time@{Update\+Time}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Update\+Time()}{UpdateTime()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Update\+Time (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Handler function for when the Web Api requests to set the timers on Poomba 
+
+Definition at line 124 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a64a87ea54159ec8141884cf0ca6cf3be}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a64a87ea54159ec8141884cf0ca6cf3be}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!Wake\+Up@{Wake\+Up}}
+\index{Wake\+Up@{Wake\+Up}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Wake\+Up()}{WakeUp()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+Wake\+Up (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Elapsed\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Handler function for when the Timer is triggerd, and turns on Poomba 
+
+Definition at line 166 of file Poomba\+Message\+Handler.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a2d2bdedd9c715df9a7e1242a25febe64}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_a2d2bdedd9c715df9a7e1242a25febe64}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!\+\_\+connector@{\+\_\+connector}}
+\index{\+\_\+connector@{\+\_\+connector}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+connector}{\_connector}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}} Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+\_\+connector = new \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af0f6ef136986d40f0063c713603fc938}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af0f6ef136986d40f0063c713603fc938}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!\+\_\+sleep\+Timer@{\+\_\+sleep\+Timer}}
+\index{\+\_\+sleep\+Timer@{\+\_\+sleep\+Timer}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+sleep\+Timer}{\_sleepTimer}}
+{\footnotesize\ttfamily System.\+Timers.\+Timer Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+\_\+sleep\+Timer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Poomba\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af6f6704f46dcb6b8dff593a24fe1ada0}\label{class_master_application_1_1_message_handlers_1_1_poomba_message_handler_af6f6704f46dcb6b8dff593a24fe1ada0}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}!\+\_\+wake\+Up\+Timer@{\+\_\+wake\+Up\+Timer}}
+\index{\+\_\+wake\+Up\+Timer@{\+\_\+wake\+Up\+Timer}!Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Poomba\+Message\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+wake\+Up\+Timer}{\_wakeUpTimer}}
+{\footnotesize\ttfamily System.\+Timers.\+Timer Master\+Application.\+Message\+Handlers.\+Poomba\+Message\+Handler.\+\_\+wake\+Up\+Timer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Poomba\+Message\+Handler.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\+Message\+Handlers/\mbox{\hyperlink{_poomba_message_handler_8cs}{Poomba\+Message\+Handler.\+cs}}\end{DoxyCompactItemize}

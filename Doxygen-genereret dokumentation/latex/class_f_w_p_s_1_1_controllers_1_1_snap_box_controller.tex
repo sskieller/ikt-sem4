@@ -1,0 +1,188 @@
+\hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller}{}\section{F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller Class Reference}
+\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller}\index{F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller@{F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller}}
+
+
+Controller responsible for Snap\+Box A\+PI.  
+
+
+Inheritance diagram for F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a0815313202414fe5280b69388c94cbd6}{Snap\+Box\+Controller}} (\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} context)
+\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a48a7202c98318ded83da45ba85104399}{Get\+All}} ()
+\begin{DoxyCompactList}\small\item\em Returns all Snap\+Box items in database. \end{DoxyCompactList}\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a4b83e073156adc29992825eaed5f6a49}{Get\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Returns all items from database no older than 7 days from current date. \end{DoxyCompactList}\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a5bd420e6ce51fda0bf43aed631045be7}{Test\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Test method, Clears database from items older than 7 days and creates 20 test elements. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_ab711e174d68a12b38173bd3690795f5f}{Get\+By\+Id}} (long id)
+\begin{DoxyCompactList}\small\item\em Gets Snap\+Box item denoted by \{id\}. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a6cb26790ddb2f4881b90be4b77350a7b}{Newest}} ()
+\begin{DoxyCompactList}\small\item\em Gets newest Snap\+Box item from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a3ea0fbfa5763124116e9ca247affc883}{Create}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Creates new Snap\+Box item in database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_aaf17f97e97bf3466ad307469ac8e6247}{Delete}} (long id)
+\begin{DoxyCompactList}\small\item\em Not used, Deletes Snap\+Box item denoted by \{id\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_aeaf63b1f6165ca718c06f7ff8861cdcb}{\+\_\+context}}
+\item 
+List$<$ I\+Observer$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}} $>$ $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a8b970aa8784b1349cd3276235d7a453c}{\+\_\+observers}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller responsible for Snap\+Box A\+PI. 
+
+Definition at line 17 of file Snap\+Box\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a0815313202414fe5280b69388c94cbd6}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a0815313202414fe5280b69388c94cbd6}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Snap\+Box\+Controller@{Snap\+Box\+Controller}}
+\index{Snap\+Box\+Controller@{Snap\+Box\+Controller}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Snap\+Box\+Controller()}{SnapBoxController()}}
+{\footnotesize\ttfamily F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Snap\+Box\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}}}]{context }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file Snap\+Box\+Controller.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a3ea0fbfa5763124116e9ca247affc883}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a3ea0fbfa5763124116e9ca247affc883}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Create@{Create}}
+\index{Create@{Create}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Create (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}}}]{item }\end{DoxyParamCaption})}
+
+
+
+Creates new Snap\+Box item in database. 
+
+
+
+Definition at line 144 of file Snap\+Box\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_aaf17f97e97bf3466ad307469ac8e6247}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_aaf17f97e97bf3466ad307469ac8e6247}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Delete@{Delete}}
+\index{Delete@{Delete}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Delete (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Not used, Deletes Snap\+Box item denoted by \{id\}. 
+
+
+
+Definition at line 170 of file Snap\+Box\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a48a7202c98318ded83da45ba85104399}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a48a7202c98318ded83da45ba85104399}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Get\+All@{Get\+All}}
+\index{Get\+All@{Get\+All}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Get\+All()}{GetAll()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns all Snap\+Box items in database. 
+
+
+
+Definition at line 38 of file Snap\+Box\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_ab711e174d68a12b38173bd3690795f5f}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_ab711e174d68a12b38173bd3690795f5f}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Get\+By\+Id@{Get\+By\+Id}}
+\index{Get\+By\+Id@{Get\+By\+Id}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Get\+By\+Id()}{GetById()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Get\+By\+Id (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Gets Snap\+Box item denoted by \{id\}. 
+
+
+
+Definition at line 114 of file Snap\+Box\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a4b83e073156adc29992825eaed5f6a49}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a4b83e073156adc29992825eaed5f6a49}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Get\+Update@{Get\+Update}}
+\index{Get\+Update@{Get\+Update}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Get\+Update()}{GetUpdate()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Get\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns all items from database no older than 7 days from current date. 
+
+
+
+Definition at line 50 of file Snap\+Box\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a6cb26790ddb2f4881b90be4b77350a7b}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a6cb26790ddb2f4881b90be4b77350a7b}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Newest@{Newest}}
+\index{Newest@{Newest}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Newest()}{Newest()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Newest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets newest Snap\+Box item from database. 
+
+
+
+Definition at line 130 of file Snap\+Box\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a5bd420e6ce51fda0bf43aed631045be7}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a5bd420e6ce51fda0bf43aed631045be7}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!Test\+Update@{Test\+Update}}
+\index{Test\+Update@{Test\+Update}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{Test\+Update()}{TestUpdate()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+Test\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Test method, Clears database from items older than 7 days and creates 20 test elements. 
+
+
+
+Definition at line 68 of file Snap\+Box\+Controller.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_aeaf63b1f6165ca718c06f7ff8861cdcb}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_aeaf63b1f6165ca718c06f7ff8861cdcb}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!\+\_\+context@{\+\_\+context}}
+\index{\+\_\+context@{\+\_\+context}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+context}{\_context}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Snap\+Box\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a8b970aa8784b1349cd3276235d7a453c}\label{class_f_w_p_s_1_1_controllers_1_1_snap_box_controller_a8b970aa8784b1349cd3276235d7a453c}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}!\+\_\+observers@{\+\_\+observers}}
+\index{\+\_\+observers@{\+\_\+observers}!F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Snap\+Box\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+observers}{\_observers}}
+{\footnotesize\ttfamily List$<$I\+Observer$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_snap_box_item}{Snap\+Box\+Item}}$>$ $>$ F\+W\+P\+S.\+Controllers.\+Snap\+Box\+Controller.\+\_\+observers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Snap\+Box\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Web\+Api/\+F\+W\+P\+S/\+Controllers/\+Production/\mbox{\hyperlink{_snap_box_controller_8cs}{Snap\+Box\+Controller.\+cs}}\end{DoxyCompactItemize}

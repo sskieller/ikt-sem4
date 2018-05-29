@@ -1,0 +1,96 @@
+\hypertarget{class_f_w_p_s_1_1_controllers_1_1_login_controller}{}\section{F\+W\+P\+S.\+Controllers.\+Login\+Controller Class Reference}
+\label{class_f_w_p_s_1_1_controllers_1_1_login_controller}\index{F\+W\+P\+S.\+Controllers.\+Login\+Controller@{F\+W\+P\+S.\+Controllers.\+Login\+Controller}}
+
+
+Controller responsible for Login A\+PI.  
+
+
+Inheritance diagram for F\+W\+P\+S.\+Controllers.\+Login\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_f_w_p_s_1_1_controllers_1_1_login_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_login_controller_aad78f00742e686dc138c6fd0ddd55adb}{Login\+Controller}} (\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} context)
+\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_login_controller_a49bddd8fd1e610b022ce02189d3d8444}{Get\+By\+Rfid}} (string rfid)
+\begin{DoxyCompactList}\small\item\em Verifies existence of R\+F\+I\+D-\/chip in database, returns \textquotesingle{}OK\textquotesingle{} on succes and \textquotesingle{}No\+Access\textquotesingle{} on error. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_login_controller_a80569095f4a0d5bf8e68c45a192307cc}{Get\+Allow\+Login}} (string username, string \mbox{\hyperlink{_snap_box_8ino_aa4a2ebcb494493f648ae1e6975672575}{password}})
+\begin{DoxyCompactList}\small\item\em Verifies username/password combination, returns \textquotesingle{}Login\+Ok\textquotesingle{} on succes and H\+T\+TP Not\+Found on error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_login_controller_a9acbf5235323be9f01a3411a40a34725}{\+\_\+context}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller responsible for Login A\+PI. 
+
+Definition at line 16 of file Login\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_login_controller_aad78f00742e686dc138c6fd0ddd55adb}\label{class_f_w_p_s_1_1_controllers_1_1_login_controller_aad78f00742e686dc138c6fd0ddd55adb}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}!Login\+Controller@{Login\+Controller}}
+\index{Login\+Controller@{Login\+Controller}!F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}}
+\subsubsection{\texorpdfstring{Login\+Controller()}{LoginController()}}
+{\footnotesize\ttfamily F\+W\+P\+S.\+Controllers.\+Login\+Controller.\+Login\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}}}]{context }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Login\+Controller.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_login_controller_a80569095f4a0d5bf8e68c45a192307cc}\label{class_f_w_p_s_1_1_controllers_1_1_login_controller_a80569095f4a0d5bf8e68c45a192307cc}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}!Get\+Allow\+Login@{Get\+Allow\+Login}}
+\index{Get\+Allow\+Login@{Get\+Allow\+Login}!F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}}
+\subsubsection{\texorpdfstring{Get\+Allow\+Login()}{GetAllowLogin()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Login\+Controller.\+Get\+Allow\+Login (\begin{DoxyParamCaption}\item[{string}]{username,  }\item[{string}]{password }\end{DoxyParamCaption})}
+
+
+
+Verifies username/password combination, returns \textquotesingle{}Login\+Ok\textquotesingle{} on succes and H\+T\+TP Not\+Found on error. 
+
+
+
+Definition at line 56 of file Login\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_login_controller_a49bddd8fd1e610b022ce02189d3d8444}\label{class_f_w_p_s_1_1_controllers_1_1_login_controller_a49bddd8fd1e610b022ce02189d3d8444}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}!Get\+By\+Rfid@{Get\+By\+Rfid}}
+\index{Get\+By\+Rfid@{Get\+By\+Rfid}!F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}}
+\subsubsection{\texorpdfstring{Get\+By\+Rfid()}{GetByRfid()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Login\+Controller.\+Get\+By\+Rfid (\begin{DoxyParamCaption}\item[{string}]{rfid }\end{DoxyParamCaption})}
+
+
+
+Verifies existence of R\+F\+I\+D-\/chip in database, returns \textquotesingle{}OK\textquotesingle{} on succes and \textquotesingle{}No\+Access\textquotesingle{} on error. 
+
+
+
+Definition at line 41 of file Login\+Controller.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_login_controller_a9acbf5235323be9f01a3411a40a34725}\label{class_f_w_p_s_1_1_controllers_1_1_login_controller_a9acbf5235323be9f01a3411a40a34725}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}!\+\_\+context@{\+\_\+context}}
+\index{\+\_\+context@{\+\_\+context}!F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Login\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+context}{\_context}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} F\+W\+P\+S.\+Controllers.\+Login\+Controller.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Login\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Web\+Api/\+F\+W\+P\+S/\+Controllers/\+Production/\mbox{\hyperlink{_login_controller_8cs}{Login\+Controller.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,171 @@
+\hypertarget{_morning_sun_esp_8ino}{}\section{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Morning\+Sun\+Esp/\+Morning\+Sun\+Esp.ino File Reference}
+\label{_morning_sun_esp_8ino}\index{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Morning\+Sun\+Esp/\+Morning\+Sun\+Esp.\+ino@{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Morning\+Sun\+Esp/\+Morning\+Sun\+Esp.\+ino}}
+{\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+{\ttfamily \#include $<$E\+S\+P8266\+H\+T\+T\+P\+Client.\+h$>$}\newline
+{\ttfamily \#include $<$E\+S\+P8266\+Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$Pub\+Sub\+Client.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Pub\+Sub\+Client \mbox{\hyperlink{_morning_sun_esp_8ino_a3723ecd4627fe1acd7f94dd266f1105a}{mq\+Client}} (\mbox{\hyperlink{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}})
+\item 
+void \mbox{\hyperlink{_morning_sun_esp_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_morning_sun_esp_8ino_ac3a129f66dc859e2b7279565f4e1de78}{callback}} (char $\ast$topic, byte $\ast$payload, unsigned int length)
+\item 
+void \mbox{\hyperlink{_morning_sun_esp_8ino_a7a69432900bad935bd00eb0a9d4bf61f}{get\+Raspberry\+Ip}} ()
+\item 
+void \mbox{\hyperlink{_morning_sun_esp_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}{reconnect}} ()
+\item 
+void \mbox{\hyperlink{_morning_sun_esp_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{_morning_sun_esp_8ino_a587ba0cb07f02913598610049a3bbb79}{ssid}} = \char`\"{}Jonas\+AP\char`\"{}
+\begin{DoxyCompactList}\small\item\em S\+S\+ID to the Wi\+Fi\+Network. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_morning_sun_esp_8ino_aa4a2ebcb494493f648ae1e6975672575}{password}} = \char`\"{}Fkt73gss\char`\"{}
+\begin{DoxyCompactList}\small\item\em Password to the Wi\+Fi\+Network. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_morning_sun_esp_8ino_a2502b12b30261ef4dea2ff97a6b78cab}{host}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em IP for raspberry. collected from fwps.\+azurewebsites.\+net/api/ip/1. \end{DoxyCompactList}\item 
+Wi\+Fi\+Client \mbox{\hyperlink{_morning_sun_esp_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}
+\item 
+char \mbox{\hyperlink{_morning_sun_esp_8ino_a5819dbc2d305e99e930c734a0d28bc3b}{buffer}} \mbox{[}20\mbox{]}
+\item 
+bool \mbox{\hyperlink{_morning_sun_esp_8ino_ae530c5af75c42fc2bd1fb588c38aa332}{is\+On}} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_morning_sun_esp_8ino_ac3a129f66dc859e2b7279565f4e1de78}\label{_morning_sun_esp_8ino_ac3a129f66dc859e2b7279565f4e1de78}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!callback@{callback}}
+\index{callback@{callback}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{callback()}{callback()}}
+{\footnotesize\ttfamily void callback (\begin{DoxyParamCaption}\item[{char $\ast$}]{topic,  }\item[{byte $\ast$}]{payload,  }\item[{unsigned int}]{length }\end{DoxyParamCaption})}
+
+Callback to handle Messages received by the Master Unit. 
+
+Definition at line 65 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_a7a69432900bad935bd00eb0a9d4bf61f}\label{_morning_sun_esp_8ino_a7a69432900bad935bd00eb0a9d4bf61f}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!get\+Raspberry\+Ip@{get\+Raspberry\+Ip}}
+\index{get\+Raspberry\+Ip@{get\+Raspberry\+Ip}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{get\+Raspberry\+Ip()}{getRaspberryIp()}}
+{\footnotesize\ttfamily void get\+Raspberry\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Will get the current Master Unit IP from the \mbox{\hyperlink{namespace_web_api}{Web\+Api}}. 
+
+Definition at line 113 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_morning_sun_esp_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!loop@{loop}}
+\index{loop@{loop}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Loop/\+Run function. Will read the status from Morning\+Sun and if the status has changed, then it will alert the Master Unit. 
+
+Definition at line 169 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_a3723ecd4627fe1acd7f94dd266f1105a}\label{_morning_sun_esp_8ino_a3723ecd4627fe1acd7f94dd266f1105a}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!mq\+Client@{mq\+Client}}
+\index{mq\+Client@{mq\+Client}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{mq\+Client()}{mqClient()}}
+{\footnotesize\ttfamily Pub\+Sub\+Client mq\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}\label{_morning_sun_esp_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!reconnect@{reconnect}}
+\index{reconnect@{reconnect}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{reconnect()}{reconnect()}}
+{\footnotesize\ttfamily void reconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Will try to reconnect to the Master Unit. If fails, retries every 5 seconds. 
+
+Definition at line 137 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_morning_sun_esp_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!setup@{setup}}
+\index{setup@{setup}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets up the E\+SP chip. Will try to connect to the network until it succedes. Will get IP for Master Unit and connect to it. 
+
+Definition at line 21 of file Morning\+Sun\+Esp.\+ino.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_morning_sun_esp_8ino_a5819dbc2d305e99e930c734a0d28bc3b}\label{_morning_sun_esp_8ino_a5819dbc2d305e99e930c734a0d28bc3b}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!buffer@{buffer}}
+\index{buffer@{buffer}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily char buffer\mbox{[}20\mbox{]}}
+
+
+
+Definition at line 13 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}\label{_morning_sun_esp_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!esp\+Client@{esp\+Client}}
+\index{esp\+Client@{esp\+Client}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{esp\+Client}{espClient}}
+{\footnotesize\ttfamily Wi\+Fi\+Client esp\+Client}
+
+
+
+Definition at line 11 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_a2502b12b30261ef4dea2ff97a6b78cab}\label{_morning_sun_esp_8ino_a2502b12b30261ef4dea2ff97a6b78cab}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!host@{host}}
+\index{host@{host}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{host}{host}}
+{\footnotesize\ttfamily String host = \char`\"{}\char`\"{}}
+
+
+
+IP for raspberry. collected from fwps.\+azurewebsites.\+net/api/ip/1. 
+
+
+
+Definition at line 10 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_ae530c5af75c42fc2bd1fb588c38aa332}\label{_morning_sun_esp_8ino_ae530c5af75c42fc2bd1fb588c38aa332}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!is\+On@{is\+On}}
+\index{is\+On@{is\+On}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{is\+On}{isOn}}
+{\footnotesize\ttfamily bool is\+On = false}
+
+
+
+Definition at line 14 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_aa4a2ebcb494493f648ae1e6975672575}\label{_morning_sun_esp_8ino_aa4a2ebcb494493f648ae1e6975672575}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!password@{password}}
+\index{password@{password}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily const char$\ast$ password = \char`\"{}Fkt73gss\char`\"{}}
+
+
+
+Password to the Wi\+Fi\+Network. 
+
+
+
+Definition at line 9 of file Morning\+Sun\+Esp.\+ino.
+
+\mbox{\Hypertarget{_morning_sun_esp_8ino_a587ba0cb07f02913598610049a3bbb79}\label{_morning_sun_esp_8ino_a587ba0cb07f02913598610049a3bbb79}} 
+\index{Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}!ssid@{ssid}}
+\index{ssid@{ssid}!Morning\+Sun\+Esp.\+ino@{Morning\+Sun\+Esp.\+ino}}
+\subsubsection{\texorpdfstring{ssid}{ssid}}
+{\footnotesize\ttfamily const char$\ast$ ssid = \char`\"{}Jonas\+AP\char`\"{}}
+
+
+
+S\+S\+ID to the Wi\+Fi\+Network. 
+
+
+
+Definition at line 8 of file Morning\+Sun\+Esp.\+ino.
+

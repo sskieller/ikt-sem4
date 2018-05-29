@@ -1,0 +1,189 @@
+\hypertarget{class_master_application_1_1_signal_r_client}{}\section{Master\+Application.\+Signal\+R\+Client Class Reference}
+\label{class_master_application_1_1_signal_r_client}\index{Master\+Application.\+Signal\+R\+Client@{Master\+Application.\+Signal\+R\+Client}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a510d16bef7f5c25be0b4bd6e2927df73}{Setup}} (string device\+Name)
+\begin{DoxyCompactList}\small\item\em Setups and configures the signalR connection to the Azure server \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a3410b2f911461baa15c0e66e9554fdd4}{Update\+Entity\+Condition}} (string entity, string value)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_master_application_1_1_signal_r_client}{Signal\+R\+Client}} \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a6fe29cdd3dbddd9a0fd08d0d697d6a13}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ \mbox{\hyperlink{class_master_application_1_1_signal_r_event_args}{Signal\+R\+Event\+Args}} $>$ \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a96f1903916cbf1732ceebebbc086b10b}{On\+Command\+Received}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_master_application_1_1_signal_r_client_a7ada19145378cc311e1b206ebb2378b1}{Signal\+R\+Client}} ()
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a092a3b2db4b336cbe6ef675ac614fddd}{Set\+Up\+Internal}} ()
+\item 
+Task \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a9cb6f0f00bf7784e304dee3a4a9032f5}{Connection\+On\+Closed}} (Exception exception)
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a1bc49180200db122a1a8b4079d2be1c0}{Try\+To\+Reconnect}} (int times)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Hub\+Connection \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a1c022935782db7f0d405a2b30874ec35}{\+\_\+connection}}
+\begin{DoxyCompactList}\small\item\em This is the connection variable. Stores an instance of the actual connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_master_application_1_1_signal_r_client}{Signal\+R\+Client}} \mbox{\hyperlink{class_master_application_1_1_signal_r_client_a6ee898fc7dabd1c137b6eb1342df475f}{\+\_\+instance}}
+\begin{DoxyCompactList}\small\item\em Singleton instance of \mbox{\hyperlink{class_master_application_1_1_signal_r_client}{Signal\+R\+Client}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_master_application_1_1_signal_r_client}{Signal\+R\+Client}} is a communications\+Hub which is responsible for communicating with the \mbox{\hyperlink{namespace_web_api}{Web\+Api}}. Singleton Class so that it\textquotesingle{}s avaliable everywhere. Observer pattern, since you can subscribe to different kind of functions/topics. 
+
+Definition at line 15 of file Signal\+R\+Client.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a7ada19145378cc311e1b206ebb2378b1}\label{class_master_application_1_1_signal_r_client_a7ada19145378cc311e1b206ebb2378b1}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!Signal\+R\+Client@{Signal\+R\+Client}}
+\index{Signal\+R\+Client@{Signal\+R\+Client}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{Signal\+R\+Client()}{SignalRClient()}}
+{\footnotesize\ttfamily Master\+Application.\+Signal\+R\+Client.\+Signal\+R\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file Signal\+R\+Client.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a9cb6f0f00bf7784e304dee3a4a9032f5}\label{class_master_application_1_1_signal_r_client_a9cb6f0f00bf7784e304dee3a4a9032f5}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!Connection\+On\+Closed@{Connection\+On\+Closed}}
+\index{Connection\+On\+Closed@{Connection\+On\+Closed}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{Connection\+On\+Closed()}{ConnectionOnClosed()}}
+{\footnotesize\ttfamily Task Master\+Application.\+Signal\+R\+Client.\+Connection\+On\+Closed (\begin{DoxyParamCaption}\item[{Exception}]{exception }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handles if the connection closes. Tries to connect again after 15 seconds. Will try for 15 seconds, and retry if failed. 
+
+Definition at line 95 of file Signal\+R\+Client.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a510d16bef7f5c25be0b4bd6e2927df73}\label{class_master_application_1_1_signal_r_client_a510d16bef7f5c25be0b4bd6e2927df73}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!Setup@{Setup}}
+\index{Setup@{Setup}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily void Master\+Application.\+Signal\+R\+Client.\+Setup (\begin{DoxyParamCaption}\item[{string}]{device\+Name }\end{DoxyParamCaption})}
+
+
+
+Setups and configures the signalR connection to the Azure server 
+
+The Setup function. Needs to be called when the program starts. Sets up the internal SignalR class, subscribes to topics and updates the unit name on the Web Api.
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+Name} & Name Displayed on the Azure server\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Definition at line 50 of file Signal\+R\+Client.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a092a3b2db4b336cbe6ef675ac614fddd}\label{class_master_application_1_1_signal_r_client_a092a3b2db4b336cbe6ef675ac614fddd}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!Set\+Up\+Internal@{Set\+Up\+Internal}}
+\index{Set\+Up\+Internal@{Set\+Up\+Internal}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{Set\+Up\+Internal()}{SetUpInternal()}}
+{\footnotesize\ttfamily void Master\+Application.\+Signal\+R\+Client.\+Set\+Up\+Internal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Sets up the connection to the azure hub. Will also subscripe to the Update\+Specific topic. Starts the connection and adds an event that handles if the connection is lost. 
+
+Definition at line 76 of file Signal\+R\+Client.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a1bc49180200db122a1a8b4079d2be1c0}\label{class_master_application_1_1_signal_r_client_a1bc49180200db122a1a8b4079d2be1c0}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!Try\+To\+Reconnect@{Try\+To\+Reconnect}}
+\index{Try\+To\+Reconnect@{Try\+To\+Reconnect}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{Try\+To\+Reconnect()}{TryToReconnect()}}
+{\footnotesize\ttfamily void Master\+Application.\+Signal\+R\+Client.\+Try\+To\+Reconnect (\begin{DoxyParamCaption}\item[{int}]{times }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 120 of file Signal\+R\+Client.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a3410b2f911461baa15c0e66e9554fdd4}\label{class_master_application_1_1_signal_r_client_a3410b2f911461baa15c0e66e9554fdd4}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!Update\+Entity\+Condition@{Update\+Entity\+Condition}}
+\index{Update\+Entity\+Condition@{Update\+Entity\+Condition}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{Update\+Entity\+Condition()}{UpdateEntityCondition()}}
+{\footnotesize\ttfamily void Master\+Application.\+Signal\+R\+Client.\+Update\+Entity\+Condition (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file Signal\+R\+Client.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a1c022935782db7f0d405a2b30874ec35}\label{class_master_application_1_1_signal_r_client_a1c022935782db7f0d405a2b30874ec35}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!\+\_\+connection@{\+\_\+connection}}
+\index{\+\_\+connection@{\+\_\+connection}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{\+\_\+connection}{\_connection}}
+{\footnotesize\ttfamily Hub\+Connection Master\+Application.\+Signal\+R\+Client.\+\_\+connection\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+This is the connection variable. Stores an instance of the actual connection. 
+
+
+
+Definition at line 64 of file Signal\+R\+Client.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a6ee898fc7dabd1c137b6eb1342df475f}\label{class_master_application_1_1_signal_r_client_a6ee898fc7dabd1c137b6eb1342df475f}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!\+\_\+instance@{\+\_\+instance}}
+\index{\+\_\+instance@{\+\_\+instance}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{\+\_\+instance}{\_instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_master_application_1_1_signal_r_client}{Signal\+R\+Client}} Master\+Application.\+Signal\+R\+Client.\+\_\+instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Singleton instance of \mbox{\hyperlink{class_master_application_1_1_signal_r_client}{Signal\+R\+Client}}. 
+
+
+
+Definition at line 19 of file Signal\+R\+Client.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a6fe29cdd3dbddd9a0fd08d0d697d6a13}\label{class_master_application_1_1_signal_r_client_a6fe29cdd3dbddd9a0fd08d0d697d6a13}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!Instance@{Instance}}
+\index{Instance@{Instance}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_master_application_1_1_signal_r_client}{Signal\+R\+Client}} Master\+Application.\+Signal\+R\+Client.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+Definition at line 22 of file Signal\+R\+Client.\+cs.
+
+
+
+\subsection{Event Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_signal_r_client_a96f1903916cbf1732ceebebbc086b10b}\label{class_master_application_1_1_signal_r_client_a96f1903916cbf1732ceebebbc086b10b}} 
+\index{Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}!On\+Command\+Received@{On\+Command\+Received}}
+\index{On\+Command\+Received@{On\+Command\+Received}!Master\+Application\+::\+Signal\+R\+Client@{Master\+Application\+::\+Signal\+R\+Client}}
+\subsubsection{\texorpdfstring{On\+Command\+Received}{OnCommandReceived}}
+{\footnotesize\ttfamily Event\+Handler$<$\mbox{\hyperlink{class_master_application_1_1_signal_r_event_args}{Signal\+R\+Event\+Args}}$>$ Master\+Application.\+Signal\+R\+Client.\+On\+Command\+Received}
+
+The eventhandler which is called when a message is received. 
+
+Definition at line 37 of file Signal\+R\+Client.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\mbox{\hyperlink{_signal_r_client_8cs}{Signal\+R\+Client.\+cs}}\end{DoxyCompactItemize}

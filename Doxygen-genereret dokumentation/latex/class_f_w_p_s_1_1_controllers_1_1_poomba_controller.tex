@@ -1,0 +1,156 @@
+\hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller}{}\section{F\+W\+P\+S.\+Controllers.\+Poomba\+Controller Class Reference}
+\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller}\index{F\+W\+P\+S.\+Controllers.\+Poomba\+Controller@{F\+W\+P\+S.\+Controllers.\+Poomba\+Controller}}
+
+
+Controller responsible for Poomba A\+PI.  
+
+
+Inheritance diagram for F\+W\+P\+S.\+Controllers.\+Poomba\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_f_w_p_s_1_1_controllers_1_1_poomba_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a52de14a00e6ea494725efbdc2eeb2462}{Poomba\+Controller}} (\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} context, I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$ hub)
+\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_poomba_item}{Poomba\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_ae19ff49329ce6d7e134336fe61691370}{Get\+All}} ()
+\begin{DoxyCompactList}\small\item\em Returns all Poomba items from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a8974ce80e3e49cdbc98d58135e7b3780}{Get\+By\+Id}} (long id)
+\begin{DoxyCompactList}\small\item\em Returns Poomba item denoted by \{id\}. \end{DoxyCompactList}\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_poomba_item}{Poomba\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_adfc9eb5cb3b835aa5dcba35d982f5612}{Get\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Returns all items within 7 days of current date. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a68095b381a0c0b2828afe9d401855bdb}{Newest}} ()
+\begin{DoxyCompactList}\small\item\em Returns newest Poomba item from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_afb34ea874e3d77cf6e3db3b2263f32f9}{Create}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_poomba_item}{Poomba\+Item}} poomba\+Item)
+\begin{DoxyCompactList}\small\item\em Creates new Poomba item in database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a0a919104421ece4773c74014fd9e1785}{\+\_\+context}}
+\item 
+I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a3afa7e57e7325eb2a6a0c478a0fc202b}{\+\_\+hub}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller responsible for Poomba A\+PI. 
+
+Definition at line 18 of file Poomba\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a52de14a00e6ea494725efbdc2eeb2462}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a52de14a00e6ea494725efbdc2eeb2462}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!Poomba\+Controller@{Poomba\+Controller}}
+\index{Poomba\+Controller@{Poomba\+Controller}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{Poomba\+Controller()}{PoombaController()}}
+{\footnotesize\ttfamily F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+Poomba\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}}}]{context,  }\item[{I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$}]{hub }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Poomba\+Controller.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_afb34ea874e3d77cf6e3db3b2263f32f9}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_afb34ea874e3d77cf6e3db3b2263f32f9}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!Create@{Create}}
+\index{Create@{Create}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+Create (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_poomba_item}{Poomba\+Item}}}]{poomba\+Item }\end{DoxyParamCaption})}
+
+
+
+Creates new Poomba item in database. 
+
+
+
+Definition at line 100 of file Poomba\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_ae19ff49329ce6d7e134336fe61691370}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_ae19ff49329ce6d7e134336fe61691370}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!Get\+All@{Get\+All}}
+\index{Get\+All@{Get\+All}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{Get\+All()}{GetAll()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_poomba_item}{Poomba\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+Get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns all Poomba items from database. 
+
+
+
+Definition at line 41 of file Poomba\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a8974ce80e3e49cdbc98d58135e7b3780}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a8974ce80e3e49cdbc98d58135e7b3780}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!Get\+By\+Id@{Get\+By\+Id}}
+\index{Get\+By\+Id@{Get\+By\+Id}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{Get\+By\+Id()}{GetById()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+Get\+By\+Id (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Returns Poomba item denoted by \{id\}. 
+
+
+
+Definition at line 52 of file Poomba\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_adfc9eb5cb3b835aa5dcba35d982f5612}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_adfc9eb5cb3b835aa5dcba35d982f5612}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!Get\+Update@{Get\+Update}}
+\index{Get\+Update@{Get\+Update}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{Get\+Update()}{GetUpdate()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_poomba_item}{Poomba\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+Get\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns all items within 7 days of current date. 
+
+
+
+Definition at line 68 of file Poomba\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a68095b381a0c0b2828afe9d401855bdb}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a68095b381a0c0b2828afe9d401855bdb}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!Newest@{Newest}}
+\index{Newest@{Newest}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{Newest()}{Newest()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+Newest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns newest Poomba item from database. 
+
+
+
+Definition at line 86 of file Poomba\+Controller.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a0a919104421ece4773c74014fd9e1785}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a0a919104421ece4773c74014fd9e1785}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!\+\_\+context@{\+\_\+context}}
+\index{\+\_\+context@{\+\_\+context}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+context}{\_context}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Poomba\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a3afa7e57e7325eb2a6a0c478a0fc202b}\label{class_f_w_p_s_1_1_controllers_1_1_poomba_controller_a3afa7e57e7325eb2a6a0c478a0fc202b}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}!\+\_\+hub@{\+\_\+hub}}
+\index{\+\_\+hub@{\+\_\+hub}!F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Poomba\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+hub}{\_hub}}
+{\footnotesize\ttfamily I\+Hub\+Context$<$\mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}}$>$ F\+W\+P\+S.\+Controllers.\+Poomba\+Controller.\+\_\+hub\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Poomba\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Web\+Api/\+F\+W\+P\+S/\+Controllers/\+Production/\mbox{\hyperlink{_poomba_controller_8cs}{Poomba\+Controller.\+cs}}\end{DoxyCompactItemize}

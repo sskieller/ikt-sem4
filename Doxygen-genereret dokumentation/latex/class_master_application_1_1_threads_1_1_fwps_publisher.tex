@@ -1,0 +1,90 @@
+\hypertarget{class_master_application_1_1_threads_1_1_fwps_publisher}{}\section{Master\+Application.\+Threads.\+Fwps\+Publisher Class Reference}
+\label{class_master_application_1_1_threads_1_1_fwps_publisher}\index{Master\+Application.\+Threads.\+Fwps\+Publisher@{Master\+Application.\+Threads.\+Fwps\+Publisher}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_publisher_adafe58736252f353111b720863e189eb}{Initialize}} (I\+Connection connection)
+\begin{DoxyCompactList}\small\item\em Sets up the Publisher. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_publisher_a45efdbdf9d1a8ab5e25556e209af87e3}{Publish\+Message}} (string topic, string message, string exchange=\char`\"{}amq.\+topic\char`\"{})
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static I\+Model \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_publisher_ac43fad545679e2527729a43a9810452f}{\+\_\+channel}}
+\item 
+static bool \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_publisher_ad8a2e4a36b9fbb88325500371e06ff50}{\+\_\+initialized}}
+\item 
+static readonly object \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_publisher_a90b87f7a5031791824049034892a4274}{\+\_\+lock}} = new object()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Static class to handle sending messages to the connected modules. Uses Rabbit\+MQ 
+
+Definition at line 13 of file Fwps\+Publisher.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_publisher_adafe58736252f353111b720863e189eb}\label{class_master_application_1_1_threads_1_1_fwps_publisher_adafe58736252f353111b720863e189eb}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Threads.\+Fwps\+Publisher.\+Initialize (\begin{DoxyParamCaption}\item[{I\+Connection}]{connection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets up the Publisher. 
+
+
+
+Definition at line 23 of file Fwps\+Publisher.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_publisher_a45efdbdf9d1a8ab5e25556e209af87e3}\label{class_master_application_1_1_threads_1_1_fwps_publisher_a45efdbdf9d1a8ab5e25556e209af87e3}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}!Publish\+Message@{Publish\+Message}}
+\index{Publish\+Message@{Publish\+Message}!Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}}
+\subsubsection{\texorpdfstring{Publish\+Message()}{PublishMessage()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Threads.\+Fwps\+Publisher.\+Publish\+Message (\begin{DoxyParamCaption}\item[{string}]{topic,  }\item[{string}]{message,  }\item[{string}]{exchange = {\ttfamily \char`\"{}amq.topic\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Publishes a message. Takes a topic \& a message as inputs. Topic tells it where to route it. Message is a message. 
+
+Definition at line 40 of file Fwps\+Publisher.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_publisher_ac43fad545679e2527729a43a9810452f}\label{class_master_application_1_1_threads_1_1_fwps_publisher_ac43fad545679e2527729a43a9810452f}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}!\+\_\+channel@{\+\_\+channel}}
+\index{\+\_\+channel@{\+\_\+channel}!Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}}
+\subsubsection{\texorpdfstring{\+\_\+channel}{\_channel}}
+{\footnotesize\ttfamily I\+Model Master\+Application.\+Threads.\+Fwps\+Publisher.\+\_\+channel\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Fwps\+Publisher.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_publisher_ad8a2e4a36b9fbb88325500371e06ff50}\label{class_master_application_1_1_threads_1_1_fwps_publisher_ad8a2e4a36b9fbb88325500371e06ff50}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}!\+\_\+initialized@{\+\_\+initialized}}
+\index{\+\_\+initialized@{\+\_\+initialized}!Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}}
+\subsubsection{\texorpdfstring{\+\_\+initialized}{\_initialized}}
+{\footnotesize\ttfamily bool Master\+Application.\+Threads.\+Fwps\+Publisher.\+\_\+initialized\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 16 of file Fwps\+Publisher.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_publisher_a90b87f7a5031791824049034892a4274}\label{class_master_application_1_1_threads_1_1_fwps_publisher_a90b87f7a5031791824049034892a4274}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}!\+\_\+lock@{\+\_\+lock}}
+\index{\+\_\+lock@{\+\_\+lock}!Master\+Application\+::\+Threads\+::\+Fwps\+Publisher@{Master\+Application\+::\+Threads\+::\+Fwps\+Publisher}}
+\subsubsection{\texorpdfstring{\+\_\+lock}{\_lock}}
+{\footnotesize\ttfamily readonly object Master\+Application.\+Threads.\+Fwps\+Publisher.\+\_\+lock = new object()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 17 of file Fwps\+Publisher.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\+Threads/\mbox{\hyperlink{_fwps_publisher_8cs}{Fwps\+Publisher.\+cs}}\end{DoxyCompactItemize}

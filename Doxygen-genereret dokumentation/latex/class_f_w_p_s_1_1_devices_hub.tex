@@ -1,0 +1,127 @@
+\hypertarget{class_f_w_p_s_1_1_devices_hub}{}\section{F\+W\+P\+S.\+Devices\+Hub Class Reference}
+\label{class_f_w_p_s_1_1_devices_hub}\index{F\+W\+P\+S.\+Devices\+Hub@{F\+W\+P\+S.\+Devices\+Hub}}
+
+
+Implementation of SignalR Hub class.  
+
+
+Inheritance diagram for F\+W\+P\+S.\+Devices\+Hub\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_f_w_p_s_1_1_devices_hub}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override Task \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub_aca0b77bc4434e8b29985876931c96c16}{On\+Connected\+Async}} ()
+\begin{DoxyCompactList}\small\item\em Callback for new SignalR connection. \end{DoxyCompactList}\item 
+override Task \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub_a75c74048ac8d2eccb161ee770bd04aeb}{On\+Disconnected\+Async}} (Exception exception)
+\begin{DoxyCompactList}\small\item\em Callback for SignalR disconnection. \end{DoxyCompactList}\item 
+Task \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub_ae1ae1078929eaa4b46e653ce66e91d85}{Send}} (string message)
+\begin{DoxyCompactList}\small\item\em Sends message to topic \textquotesingle{}Send\textquotesingle{}. \end{DoxyCompactList}\item 
+Task \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub_a9ef83a80ed7ebcbaafc5fa4970c65875}{Update\+Name}} (string name)
+\begin{DoxyCompactList}\small\item\em Updates SignalR connection name. \end{DoxyCompactList}\item 
+Task \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub_a6d952a1d6529e35a7c4ab9260e576b5a}{Update\+Entity\+Condition}} (string entity, string value)
+\begin{DoxyCompactList}\small\item\em Not used, Updates item condition. \end{DoxyCompactList}\item 
+Task \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub_a2922367d72f85098f4ae8fc883f81c05}{Update\+Specific}} (string type, string target, object obj)
+\begin{DoxyCompactList}\small\item\em Sends SignalR message to connected devices with passed parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of SignalR Hub class. 
+
+Definition at line 29 of file Devices.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_devices_hub_aca0b77bc4434e8b29985876931c96c16}\label{class_f_w_p_s_1_1_devices_hub_aca0b77bc4434e8b29985876931c96c16}} 
+\index{F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}!On\+Connected\+Async@{On\+Connected\+Async}}
+\index{On\+Connected\+Async@{On\+Connected\+Async}!F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}}
+\subsubsection{\texorpdfstring{On\+Connected\+Async()}{OnConnectedAsync()}}
+{\footnotesize\ttfamily override Task F\+W\+P\+S.\+Devices\+Hub.\+On\+Connected\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Callback for new SignalR connection. 
+
+
+
+Definition at line 34 of file Devices.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_devices_hub_a75c74048ac8d2eccb161ee770bd04aeb}\label{class_f_w_p_s_1_1_devices_hub_a75c74048ac8d2eccb161ee770bd04aeb}} 
+\index{F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}!On\+Disconnected\+Async@{On\+Disconnected\+Async}}
+\index{On\+Disconnected\+Async@{On\+Disconnected\+Async}!F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}}
+\subsubsection{\texorpdfstring{On\+Disconnected\+Async()}{OnDisconnectedAsync()}}
+{\footnotesize\ttfamily override Task F\+W\+P\+S.\+Devices\+Hub.\+On\+Disconnected\+Async (\begin{DoxyParamCaption}\item[{Exception}]{exception }\end{DoxyParamCaption})}
+
+
+
+Callback for SignalR disconnection. 
+
+
+
+Definition at line 44 of file Devices.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_devices_hub_ae1ae1078929eaa4b46e653ce66e91d85}\label{class_f_w_p_s_1_1_devices_hub_ae1ae1078929eaa4b46e653ce66e91d85}} 
+\index{F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}!Send@{Send}}
+\index{Send@{Send}!F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}}
+\subsubsection{\texorpdfstring{Send()}{Send()}}
+{\footnotesize\ttfamily Task F\+W\+P\+S.\+Devices\+Hub.\+Send (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})}
+
+
+
+Sends message to topic \textquotesingle{}Send\textquotesingle{}. 
+
+
+
+Definition at line 54 of file Devices.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_devices_hub_a6d952a1d6529e35a7c4ab9260e576b5a}\label{class_f_w_p_s_1_1_devices_hub_a6d952a1d6529e35a7c4ab9260e576b5a}} 
+\index{F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}!Update\+Entity\+Condition@{Update\+Entity\+Condition}}
+\index{Update\+Entity\+Condition@{Update\+Entity\+Condition}!F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}}
+\subsubsection{\texorpdfstring{Update\+Entity\+Condition()}{UpdateEntityCondition()}}
+{\footnotesize\ttfamily Task F\+W\+P\+S.\+Devices\+Hub.\+Update\+Entity\+Condition (\begin{DoxyParamCaption}\item[{string}]{entity,  }\item[{string}]{value }\end{DoxyParamCaption})}
+
+
+
+Not used, Updates item condition. 
+
+
+
+Definition at line 71 of file Devices.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_devices_hub_a9ef83a80ed7ebcbaafc5fa4970c65875}\label{class_f_w_p_s_1_1_devices_hub_a9ef83a80ed7ebcbaafc5fa4970c65875}} 
+\index{F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}!Update\+Name@{Update\+Name}}
+\index{Update\+Name@{Update\+Name}!F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}}
+\subsubsection{\texorpdfstring{Update\+Name()}{UpdateName()}}
+{\footnotesize\ttfamily Task F\+W\+P\+S.\+Devices\+Hub.\+Update\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Updates SignalR connection name. 
+
+
+
+Definition at line 62 of file Devices.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_devices_hub_a2922367d72f85098f4ae8fc883f81c05}\label{class_f_w_p_s_1_1_devices_hub_a2922367d72f85098f4ae8fc883f81c05}} 
+\index{F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}!Update\+Specific@{Update\+Specific}}
+\index{Update\+Specific@{Update\+Specific}!F\+W\+P\+S\+::\+Devices\+Hub@{F\+W\+P\+S\+::\+Devices\+Hub}}
+\subsubsection{\texorpdfstring{Update\+Specific()}{UpdateSpecific()}}
+{\footnotesize\ttfamily Task F\+W\+P\+S.\+Devices\+Hub.\+Update\+Specific (\begin{DoxyParamCaption}\item[{string}]{type,  }\item[{string}]{target,  }\item[{object}]{obj }\end{DoxyParamCaption})}
+
+
+
+Sends SignalR message to connected devices with passed parameters. 
+
+
+
+Definition at line 80 of file Devices.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Web\+Api/\+F\+W\+P\+S/\mbox{\hyperlink{_devices_8cs}{Devices.\+cs}}\end{DoxyCompactItemize}

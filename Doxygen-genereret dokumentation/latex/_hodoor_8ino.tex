@@ -1,0 +1,459 @@
+\hypertarget{_hodoor_8ino}{}\section{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Hodoor/\+Hodoor.ino File Reference}
+\label{_hodoor_8ino}\index{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Hodoor/\+Hodoor.\+ino@{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Hodoor/\+Hodoor.\+ino}}
+{\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+{\ttfamily \#include $<$Ticker.\+h$>$}\newline
+{\ttfamily \#include $<$S\+P\+I.\+h$>$}\newline
+{\ttfamily \#include $<$M\+F\+R\+C522.\+h$>$}\newline
+{\ttfamily \#include $<$E\+S\+P8266\+H\+T\+T\+P\+Client.\+h$>$}\newline
+{\ttfamily \#include $<$E\+S\+P8266\+Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$Pub\+Sub\+Client.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_hodoor_8ino_a86fac98c9b4c98a3e50fc45440878391}{S\+S\+\_\+\+P\+IN}}~4
+\item 
+\#define \mbox{\hyperlink{_hodoor_8ino_a36932b0e869e0114f32e255f61306d6b}{R\+S\+T\+\_\+\+P\+IN}}~5
+\item 
+\#define \mbox{\hyperlink{_hodoor_8ino_a0041c43f3be2f6d289ddfa04b46a806a}{D\+O\+O\+R\+S\+E\+N\+S\+P\+IN}}~A0
+\item 
+\#define \mbox{\hyperlink{_hodoor_8ino_a9b753e79773b31559cb42a51930623f8}{D\+O\+O\+R\+L\+O\+C\+K\+P\+IN}}~2
+\item 
+\#define \mbox{\hyperlink{_hodoor_8ino_a1a93f984896e07e32aff39c2e0fb4459}{R\+E\+D\+L\+ED}}~0
+\item 
+\#define \mbox{\hyperlink{_hodoor_8ino_aef42a90443e2cce65762788edcbfb8ee}{G\+R\+E\+E\+N\+L\+ED}}~15
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252}{Door\+State}} \{ \mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a18cd602003cbe103c9e4c31b1457bb36}{D\+O\+O\+R\+O\+P\+EN}}, 
+\mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a602836d2bd713b6d76c70fcb4037a969}{I\+S\+O\+P\+E\+N\+I\+NG}}, 
+\mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252acc756382874a4e61574810dd02f00d4c}{D\+O\+O\+R\+C\+L\+O\+S\+ED}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Pub\+Sub\+Client \mbox{\hyperlink{_hodoor_8ino_a3723ecd4627fe1acd7f94dd266f1105a}{mq\+Client}} (\mbox{\hyperlink{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}})
+\item 
+M\+F\+R\+C522 \mbox{\hyperlink{_hodoor_8ino_ac672f817299d07cc428fe3f456235273}{mfrc522}} (\mbox{\hyperlink{_hodoor_8ino_a86fac98c9b4c98a3e50fc45440878391}{S\+S\+\_\+\+P\+IN}}, \mbox{\hyperlink{_hodoor_8ino_a36932b0e869e0114f32e255f61306d6b}{R\+S\+T\+\_\+\+P\+IN}})
+\item 
+void \mbox{\hyperlink{_hodoor_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_hodoor_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\item 
+void \mbox{\hyperlink{_hodoor_8ino_a98675754ce81a9e1a94fa2835d88d9d3}{Handle\+Input}} (M\+F\+R\+C522\+::\+Uid $\ast$uid)
+\item 
+bool \mbox{\hyperlink{_hodoor_8ino_afbe526681d5cfb592beb5df86c387c56}{Is\+Door\+Open}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the door is open. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hodoor_8ino_a01c01d3be09b769c607eb96c37d300d3}{Lock\+Door}} ()
+\begin{DoxyCompactList}\small\item\em Locks the door. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hodoor_8ino_a4154ba1797b309f61d68281984831f24}{Access\+Denied}} ()
+\begin{DoxyCompactList}\small\item\em Display to User that the card is denied. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hodoor_8ino_a6eba9e4464d54ec1dad2519781313b12}{Open\+Door}} ()
+\begin{DoxyCompactList}\small\item\em Unlocks the door. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hodoor_8ino_a419e6b0415908250d60da1a336370405}{Timeout\+Func}} ()
+\begin{DoxyCompactList}\small\item\em Handles the timeout from \mbox{\hyperlink{_hodoor_8ino_a98675754ce81a9e1a94fa2835d88d9d3}{Handle\+Input()}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_hodoor_8ino_a053826d2d5448727c8fa26fc929e0747}{Green\+Light}} ()
+\item 
+void \mbox{\hyperlink{_hodoor_8ino_a7a69432900bad935bd00eb0a9d4bf61f}{get\+Raspberry\+Ip}} ()
+\item 
+void \mbox{\hyperlink{_hodoor_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}{reconnect}} ()
+\item 
+void \mbox{\hyperlink{_hodoor_8ino_ac3a129f66dc859e2b7279565f4e1de78}{callback}} (char $\ast$topic, byte $\ast$payload, unsigned int length)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{_hodoor_8ino_a587ba0cb07f02913598610049a3bbb79}{ssid}} = \char`\"{}Jonas\+AP\char`\"{}
+\begin{DoxyCompactList}\small\item\em S\+S\+ID to the Wi\+Fi\+Network. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_hodoor_8ino_aa4a2ebcb494493f648ae1e6975672575}{password}} = \char`\"{}Fkt73gss\char`\"{}
+\begin{DoxyCompactList}\small\item\em Password to the Wi\+Fi\+Network. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_hodoor_8ino_a2502b12b30261ef4dea2ff97a6b78cab}{host}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em IP for raspberry. collected from fwps.\+azurewebsites.\+net/api/ip/1. \end{DoxyCompactList}\item 
+Wi\+Fi\+Client \mbox{\hyperlink{_hodoor_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}
+\item 
+Ticker \mbox{\hyperlink{_hodoor_8ino_a4bb2542b2738619fdf76b685b10e315d}{ticker}}
+\item 
+Ticker \mbox{\hyperlink{_hodoor_8ino_ac897bdb69e388d25c44452966489a9c0}{ticker2}}
+\item 
+Ticker \mbox{\hyperlink{_hodoor_8ino_ac954b19255c9b0503807c1487a6b37e8}{ticker3}}
+\item 
+char \mbox{\hyperlink{_hodoor_8ino_a1e3c969869954f5a43ca5bb4a7209ad9}{last\+ID}} \mbox{[}4\mbox{]} = \{0, 0, 0, 0\}
+\item 
+byte \mbox{\hyperlink{_hodoor_8ino_ac22a0d46d5b9a804560f46b8a3e219d0}{value\+Returned}} = 0
+\item 
+byte \mbox{\hyperlink{_hodoor_8ino_a190531d86dfe4b60f4a36c36dccc7399}{timeout}} = 0
+\item 
+\mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252}{Door\+State}} \mbox{\hyperlink{_hodoor_8ino_a8159095f9d2ebca4cde1f98efbda59bf}{state}} = \mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a18cd602003cbe103c9e4c31b1457bb36}{D\+O\+O\+R\+O\+P\+EN}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_hodoor_8ino_a9b753e79773b31559cb42a51930623f8}\label{_hodoor_8ino_a9b753e79773b31559cb42a51930623f8}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!D\+O\+O\+R\+L\+O\+C\+K\+P\+IN@{D\+O\+O\+R\+L\+O\+C\+K\+P\+IN}}
+\index{D\+O\+O\+R\+L\+O\+C\+K\+P\+IN@{D\+O\+O\+R\+L\+O\+C\+K\+P\+IN}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{D\+O\+O\+R\+L\+O\+C\+K\+P\+IN}{DOORLOCKPIN}}
+{\footnotesize\ttfamily \#define D\+O\+O\+R\+L\+O\+C\+K\+P\+IN~2}
+
+
+
+Definition at line 7 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a0041c43f3be2f6d289ddfa04b46a806a}\label{_hodoor_8ino_a0041c43f3be2f6d289ddfa04b46a806a}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!D\+O\+O\+R\+S\+E\+N\+S\+P\+IN@{D\+O\+O\+R\+S\+E\+N\+S\+P\+IN}}
+\index{D\+O\+O\+R\+S\+E\+N\+S\+P\+IN@{D\+O\+O\+R\+S\+E\+N\+S\+P\+IN}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{D\+O\+O\+R\+S\+E\+N\+S\+P\+IN}{DOORSENSPIN}}
+{\footnotesize\ttfamily \#define D\+O\+O\+R\+S\+E\+N\+S\+P\+IN~A0}
+
+
+
+Definition at line 6 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_aef42a90443e2cce65762788edcbfb8ee}\label{_hodoor_8ino_aef42a90443e2cce65762788edcbfb8ee}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!G\+R\+E\+E\+N\+L\+ED@{G\+R\+E\+E\+N\+L\+ED}}
+\index{G\+R\+E\+E\+N\+L\+ED@{G\+R\+E\+E\+N\+L\+ED}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{G\+R\+E\+E\+N\+L\+ED}{GREENLED}}
+{\footnotesize\ttfamily \#define G\+R\+E\+E\+N\+L\+ED~15}
+
+
+
+Definition at line 9 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a1a93f984896e07e32aff39c2e0fb4459}\label{_hodoor_8ino_a1a93f984896e07e32aff39c2e0fb4459}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!R\+E\+D\+L\+ED@{R\+E\+D\+L\+ED}}
+\index{R\+E\+D\+L\+ED@{R\+E\+D\+L\+ED}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{R\+E\+D\+L\+ED}{REDLED}}
+{\footnotesize\ttfamily \#define R\+E\+D\+L\+ED~0}
+
+
+
+Definition at line 8 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a36932b0e869e0114f32e255f61306d6b}\label{_hodoor_8ino_a36932b0e869e0114f32e255f61306d6b}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!R\+S\+T\+\_\+\+P\+IN@{R\+S\+T\+\_\+\+P\+IN}}
+\index{R\+S\+T\+\_\+\+P\+IN@{R\+S\+T\+\_\+\+P\+IN}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{R\+S\+T\+\_\+\+P\+IN}{RST\_PIN}}
+{\footnotesize\ttfamily \#define R\+S\+T\+\_\+\+P\+IN~5}
+
+
+
+Definition at line 4 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a86fac98c9b4c98a3e50fc45440878391}\label{_hodoor_8ino_a86fac98c9b4c98a3e50fc45440878391}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!S\+S\+\_\+\+P\+IN@{S\+S\+\_\+\+P\+IN}}
+\index{S\+S\+\_\+\+P\+IN@{S\+S\+\_\+\+P\+IN}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{S\+S\+\_\+\+P\+IN}{SS\_PIN}}
+{\footnotesize\ttfamily \#define S\+S\+\_\+\+P\+IN~4}
+
+
+
+Definition at line 3 of file Hodoor.\+ino.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252}\label{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Door\+State@{Door\+State}}
+\index{Door\+State@{Door\+State}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Door\+State}{DoorState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252}{Door\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+O\+O\+R\+O\+P\+EN@{D\+O\+O\+R\+O\+P\+EN}!Hodoor.\+ino@{Hodoor.\+ino}}\index{Hodoor.\+ino@{Hodoor.\+ino}!D\+O\+O\+R\+O\+P\+EN@{D\+O\+O\+R\+O\+P\+EN}}}\mbox{\Hypertarget{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a18cd602003cbe103c9e4c31b1457bb36}\label{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a18cd602003cbe103c9e4c31b1457bb36}} 
+D\+O\+O\+R\+O\+P\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+S\+O\+P\+E\+N\+I\+NG@{I\+S\+O\+P\+E\+N\+I\+NG}!Hodoor.\+ino@{Hodoor.\+ino}}\index{Hodoor.\+ino@{Hodoor.\+ino}!I\+S\+O\+P\+E\+N\+I\+NG@{I\+S\+O\+P\+E\+N\+I\+NG}}}\mbox{\Hypertarget{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a602836d2bd713b6d76c70fcb4037a969}\label{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a602836d2bd713b6d76c70fcb4037a969}} 
+I\+S\+O\+P\+E\+N\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{D\+O\+O\+R\+C\+L\+O\+S\+ED@{D\+O\+O\+R\+C\+L\+O\+S\+ED}!Hodoor.\+ino@{Hodoor.\+ino}}\index{Hodoor.\+ino@{Hodoor.\+ino}!D\+O\+O\+R\+C\+L\+O\+S\+ED@{D\+O\+O\+R\+C\+L\+O\+S\+ED}}}\mbox{\Hypertarget{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252acc756382874a4e61574810dd02f00d4c}\label{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252acc756382874a4e61574810dd02f00d4c}} 
+D\+O\+O\+R\+C\+L\+O\+S\+ED&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 38 of file Hodoor.\+ino.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_hodoor_8ino_a4154ba1797b309f61d68281984831f24}\label{_hodoor_8ino_a4154ba1797b309f61d68281984831f24}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Access\+Denied@{Access\+Denied}}
+\index{Access\+Denied@{Access\+Denied}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Access\+Denied()}{AccessDenied()}}
+{\footnotesize\ttfamily void Access\+Denied (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display to User that the card is denied. 
+
+
+
+Definition at line 204 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_ac3a129f66dc859e2b7279565f4e1de78}\label{_hodoor_8ino_ac3a129f66dc859e2b7279565f4e1de78}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!callback@{callback}}
+\index{callback@{callback}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{callback()}{callback()}}
+{\footnotesize\ttfamily void callback (\begin{DoxyParamCaption}\item[{char $\ast$}]{topic,  }\item[{byte $\ast$}]{payload,  }\item[{unsigned int}]{length }\end{DoxyParamCaption})}
+
+Callback to handle Messages received by the Master Unit. 
+
+Definition at line 305 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a7a69432900bad935bd00eb0a9d4bf61f}\label{_hodoor_8ino_a7a69432900bad935bd00eb0a9d4bf61f}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!get\+Raspberry\+Ip@{get\+Raspberry\+Ip}}
+\index{get\+Raspberry\+Ip@{get\+Raspberry\+Ip}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{get\+Raspberry\+Ip()}{getRaspberryIp()}}
+{\footnotesize\ttfamily void get\+Raspberry\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Will get the current Master Unit IP from the \mbox{\hyperlink{namespace_web_api}{Web\+Api}}. 
+
+Definition at line 261 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a053826d2d5448727c8fa26fc929e0747}\label{_hodoor_8ino_a053826d2d5448727c8fa26fc929e0747}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Green\+Light@{Green\+Light}}
+\index{Green\+Light@{Green\+Light}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Green\+Light()}{GreenLight()}}
+{\footnotesize\ttfamily void Green\+Light (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 249 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a98675754ce81a9e1a94fa2835d88d9d3}\label{_hodoor_8ino_a98675754ce81a9e1a94fa2835d88d9d3}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Handle\+Input@{Handle\+Input}}
+\index{Handle\+Input@{Handle\+Input}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Handle\+Input()}{HandleInput()}}
+{\footnotesize\ttfamily void Handle\+Input (\begin{DoxyParamCaption}\item[{M\+F\+R\+C522\+::\+Uid $\ast$}]{uid }\end{DoxyParamCaption})}
+
+Handles the card input and will try to validate it. Will timeout after 5 seconds. 
+
+Definition at line 150 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_afbe526681d5cfb592beb5df86c387c56}\label{_hodoor_8ino_afbe526681d5cfb592beb5df86c387c56}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Is\+Door\+Open@{Is\+Door\+Open}}
+\index{Is\+Door\+Open@{Is\+Door\+Open}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Is\+Door\+Open()}{IsDoorOpen()}}
+{\footnotesize\ttfamily bool Is\+Door\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the door is open. 
+
+
+
+Definition at line 182 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a01c01d3be09b769c607eb96c37d300d3}\label{_hodoor_8ino_a01c01d3be09b769c607eb96c37d300d3}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Lock\+Door@{Lock\+Door}}
+\index{Lock\+Door@{Lock\+Door}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Lock\+Door()}{LockDoor()}}
+{\footnotesize\ttfamily void Lock\+Door (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Locks the door. 
+
+
+
+Definition at line 192 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_hodoor_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!loop@{loop}}
+\index{loop@{loop}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Loop/\+Run function. Will try to read a card if the door is closed. If it reads a card, it will try to validate the card. Will keep the door unlocked as long as it\textquotesingle{}s open. Will lock the door once its closed. 
+
+Definition at line 90 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_ac672f817299d07cc428fe3f456235273}\label{_hodoor_8ino_ac672f817299d07cc428fe3f456235273}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!mfrc522@{mfrc522}}
+\index{mfrc522@{mfrc522}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{mfrc522()}{mfrc522()}}
+{\footnotesize\ttfamily M\+F\+R\+C522 mfrc522 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_hodoor_8ino_a86fac98c9b4c98a3e50fc45440878391}{S\+S\+\_\+\+P\+IN}}}]{,  }\item[{\mbox{\hyperlink{_hodoor_8ino_a36932b0e869e0114f32e255f61306d6b}{R\+S\+T\+\_\+\+P\+IN}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_hodoor_8ino_a3723ecd4627fe1acd7f94dd266f1105a}\label{_hodoor_8ino_a3723ecd4627fe1acd7f94dd266f1105a}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!mq\+Client@{mq\+Client}}
+\index{mq\+Client@{mq\+Client}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{mq\+Client()}{mqClient()}}
+{\footnotesize\ttfamily Pub\+Sub\+Client mq\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_hodoor_8ino_a6eba9e4464d54ec1dad2519781313b12}\label{_hodoor_8ino_a6eba9e4464d54ec1dad2519781313b12}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Open\+Door@{Open\+Door}}
+\index{Open\+Door@{Open\+Door}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Open\+Door()}{OpenDoor()}}
+{\footnotesize\ttfamily void Open\+Door (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unlocks the door. 
+
+
+
+Definition at line 220 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}\label{_hodoor_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!reconnect@{reconnect}}
+\index{reconnect@{reconnect}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{reconnect()}{reconnect()}}
+{\footnotesize\ttfamily void reconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Will try to reconnect to the Master Unit. If fails, retries every 5 seconds. 
+
+Definition at line 282 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_hodoor_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!setup@{setup}}
+\index{setup@{setup}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets up the E\+SP chip. Will try to connect to the network until it succedes. Will get IP for Master Unit and connect to it. 
+
+Definition at line 46 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a419e6b0415908250d60da1a336370405}\label{_hodoor_8ino_a419e6b0415908250d60da1a336370405}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!Timeout\+Func@{Timeout\+Func}}
+\index{Timeout\+Func@{Timeout\+Func}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{Timeout\+Func()}{TimeoutFunc()}}
+{\footnotesize\ttfamily void Timeout\+Func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles the timeout from \mbox{\hyperlink{_hodoor_8ino_a98675754ce81a9e1a94fa2835d88d9d3}{Handle\+Input()}} 
+
+
+
+Definition at line 243 of file Hodoor.\+ino.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_hodoor_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}\label{_hodoor_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!esp\+Client@{esp\+Client}}
+\index{esp\+Client@{esp\+Client}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{esp\+Client}{espClient}}
+{\footnotesize\ttfamily Wi\+Fi\+Client esp\+Client}
+
+
+
+Definition at line 24 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a2502b12b30261ef4dea2ff97a6b78cab}\label{_hodoor_8ino_a2502b12b30261ef4dea2ff97a6b78cab}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!host@{host}}
+\index{host@{host}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{host}{host}}
+{\footnotesize\ttfamily String host = \char`\"{}\char`\"{}}
+
+
+
+IP for raspberry. collected from fwps.\+azurewebsites.\+net/api/ip/1. 
+
+
+
+Definition at line 23 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a1e3c969869954f5a43ca5bb4a7209ad9}\label{_hodoor_8ino_a1e3c969869954f5a43ca5bb4a7209ad9}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!last\+ID@{last\+ID}}
+\index{last\+ID@{last\+ID}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{last\+ID}{lastID}}
+{\footnotesize\ttfamily char last\+ID\mbox{[}4\mbox{]} = \{0, 0, 0, 0\}}
+
+
+
+Definition at line 34 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_aa4a2ebcb494493f648ae1e6975672575}\label{_hodoor_8ino_aa4a2ebcb494493f648ae1e6975672575}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!password@{password}}
+\index{password@{password}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily const char$\ast$ password = \char`\"{}Fkt73gss\char`\"{}}
+
+
+
+Password to the Wi\+Fi\+Network. 
+
+
+
+Definition at line 22 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a587ba0cb07f02913598610049a3bbb79}\label{_hodoor_8ino_a587ba0cb07f02913598610049a3bbb79}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!ssid@{ssid}}
+\index{ssid@{ssid}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{ssid}{ssid}}
+{\footnotesize\ttfamily const char$\ast$ ssid = \char`\"{}Jonas\+AP\char`\"{}}
+
+
+
+S\+S\+ID to the Wi\+Fi\+Network. 
+
+
+
+Definition at line 21 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a8159095f9d2ebca4cde1f98efbda59bf}\label{_hodoor_8ino_a8159095f9d2ebca4cde1f98efbda59bf}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!state@{state}}
+\index{state@{state}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252}{Door\+State}} state = \mbox{\hyperlink{_hodoor_8ino_a117f8df7c03b73093e6da94ae41b4252a18cd602003cbe103c9e4c31b1457bb36}{D\+O\+O\+R\+O\+P\+EN}}}
+
+
+
+Definition at line 39 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a4bb2542b2738619fdf76b685b10e315d}\label{_hodoor_8ino_a4bb2542b2738619fdf76b685b10e315d}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!ticker@{ticker}}
+\index{ticker@{ticker}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{ticker}{ticker}}
+{\footnotesize\ttfamily Ticker ticker}
+
+
+
+Definition at line 27 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_ac897bdb69e388d25c44452966489a9c0}\label{_hodoor_8ino_ac897bdb69e388d25c44452966489a9c0}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!ticker2@{ticker2}}
+\index{ticker2@{ticker2}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{ticker2}{ticker2}}
+{\footnotesize\ttfamily Ticker ticker2}
+
+
+
+Definition at line 28 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_ac954b19255c9b0503807c1487a6b37e8}\label{_hodoor_8ino_ac954b19255c9b0503807c1487a6b37e8}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!ticker3@{ticker3}}
+\index{ticker3@{ticker3}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{ticker3}{ticker3}}
+{\footnotesize\ttfamily Ticker ticker3}
+
+
+
+Definition at line 29 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_a190531d86dfe4b60f4a36c36dccc7399}\label{_hodoor_8ino_a190531d86dfe4b60f4a36c36dccc7399}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!timeout@{timeout}}
+\index{timeout@{timeout}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{timeout}{timeout}}
+{\footnotesize\ttfamily byte timeout = 0}
+
+
+
+Definition at line 36 of file Hodoor.\+ino.
+
+\mbox{\Hypertarget{_hodoor_8ino_ac22a0d46d5b9a804560f46b8a3e219d0}\label{_hodoor_8ino_ac22a0d46d5b9a804560f46b8a3e219d0}} 
+\index{Hodoor.\+ino@{Hodoor.\+ino}!value\+Returned@{value\+Returned}}
+\index{value\+Returned@{value\+Returned}!Hodoor.\+ino@{Hodoor.\+ino}}
+\subsubsection{\texorpdfstring{value\+Returned}{valueReturned}}
+{\footnotesize\ttfamily byte value\+Returned = 0}
+
+
+
+Definition at line 35 of file Hodoor.\+ino.
+

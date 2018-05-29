@@ -1,0 +1,82 @@
+\hypertarget{class_f_w_p_s___app_1_1_log_in}{}\section{F\+W\+P\+S\+\_\+\+App.\+Log\+In Class Reference}
+\label{class_f_w_p_s___app_1_1_log_in}\index{F\+W\+P\+S\+\_\+\+App.\+Log\+In@{F\+W\+P\+S\+\_\+\+App.\+Log\+In}}
+
+
+Class to wrap the login process.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_w_p_s___app_1_1_log_in_a824881c7304f1bf46304030d1b36f1be}{Log\+In}} (string api\+Url)
+\item 
+bool \mbox{\hyperlink{class_f_w_p_s___app_1_1_log_in_ab71c428971eb55052a152e6e7e5be0bf}{Login}} (string usrname, string pskword)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly I\+Verify\+Credentials \mbox{\hyperlink{class_f_w_p_s___app_1_1_log_in_af0912320a76a9ea8aae6140aa35a928d}{\+\_\+verify}}
+\item 
+readonly I\+Hasher \mbox{\hyperlink{class_f_w_p_s___app_1_1_log_in_a77038778855a35ff0cb47797e8c17b38}{\+\_\+hasher}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to wrap the login process. 
+
+Definition at line 140 of file Log\+In.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_w_p_s___app_1_1_log_in_a824881c7304f1bf46304030d1b36f1be}\label{class_f_w_p_s___app_1_1_log_in_a824881c7304f1bf46304030d1b36f1be}} 
+\index{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}!Log\+In@{Log\+In}}
+\index{Log\+In@{Log\+In}!F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}}
+\subsubsection{\texorpdfstring{Log\+In()}{LogIn()}}
+{\footnotesize\ttfamily F\+W\+P\+S\+\_\+\+App.\+Log\+In.\+Log\+In (\begin{DoxyParamCaption}\item[{string}]{api\+Url }\end{DoxyParamCaption})}
+
+Sets up constructor. Takes a base U\+RI to route the login requests. 
+
+Definition at line 150 of file Log\+In.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s___app_1_1_log_in_ab71c428971eb55052a152e6e7e5be0bf}\label{class_f_w_p_s___app_1_1_log_in_ab71c428971eb55052a152e6e7e5be0bf}} 
+\index{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}!Login@{Login}}
+\index{Login@{Login}!F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}}
+\subsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily bool F\+W\+P\+S\+\_\+\+App.\+Log\+In.\+Login (\begin{DoxyParamCaption}\item[{string}]{usrname,  }\item[{string}]{pskword }\end{DoxyParamCaption})}
+
+Tries to login. Will hash the given password with the \+\_\+hasher interface. 
+
+Definition at line 160 of file Log\+In.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_f_w_p_s___app_1_1_log_in_a77038778855a35ff0cb47797e8c17b38}\label{class_f_w_p_s___app_1_1_log_in_a77038778855a35ff0cb47797e8c17b38}} 
+\index{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}!\+\_\+hasher@{\+\_\+hasher}}
+\index{\+\_\+hasher@{\+\_\+hasher}!F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}}
+\subsubsection{\texorpdfstring{\+\_\+hasher}{\_hasher}}
+{\footnotesize\ttfamily readonly I\+Hasher F\+W\+P\+S\+\_\+\+App.\+Log\+In.\+\_\+hasher\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 144 of file Log\+In.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s___app_1_1_log_in_af0912320a76a9ea8aae6140aa35a928d}\label{class_f_w_p_s___app_1_1_log_in_af0912320a76a9ea8aae6140aa35a928d}} 
+\index{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}!\+\_\+verify@{\+\_\+verify}}
+\index{\+\_\+verify@{\+\_\+verify}!F\+W\+P\+S\+\_\+\+App\+::\+Log\+In@{F\+W\+P\+S\+\_\+\+App\+::\+Log\+In}}
+\subsubsection{\texorpdfstring{\+\_\+verify}{\_verify}}
+{\footnotesize\ttfamily readonly I\+Verify\+Credentials F\+W\+P\+S\+\_\+\+App.\+Log\+In.\+\_\+verify\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 142 of file Log\+In.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+F\+W\+P\+S\+\_\+\+App/\+F\+W\+P\+S\+\_\+\+App/\+F\+W\+P\+S\+\_\+\+App/\+Klasser/\mbox{\hyperlink{_log_in_8cs}{Log\+In.\+cs}}\end{DoxyCompactItemize}

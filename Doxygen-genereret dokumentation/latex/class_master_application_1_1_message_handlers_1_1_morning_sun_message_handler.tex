@@ -1,0 +1,209 @@
+\hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler}{}\section{Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler Class Reference}
+\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler}\index{Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler@{Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler}}
+
+
+Message handler for Morning\+Sun.  
+
+
+Inheritance diagram for Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a0e70245da3c7203ab5d1049fe0286c9f}{Handle\+Message}} (string message, string topic)
+\begin{DoxyCompactList}\small\item\em Message handler for Morning\+Sun. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_abf6716f193dc5a3a3cdc97a31fb33575}{Light\+Is\+On}} (string message)
+\begin{DoxyCompactList}\small\item\em Handler function for when Morning\+Sun turns on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a526dcd561059dfe79f2f0ba862b69561}{Light\+Is\+Off}} (string message)
+\begin{DoxyCompactList}\small\item\em Handler function for when Morning\+Sun turns off. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_af575f6b6c9bc931599f02c1858903b2b}{Turn\+On}} (string message)
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aa719d01ca3e96dae506e467da4bb40df}{Turn\+Off}} (string message)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_ac4e1e473b2e8f7ae2f8bf1b5d6059e6b}{Morning\+Sun\+Message\+Handler}} ()
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a1c51cc86793ded7228b52ea28e1c08da}{Update\+Time}} (string message)
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aef59514a029ee21e09daae1802785a17}{Wake\+Up}} (object sender, Elapsed\+Event\+Args e)
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a87c7d58728ce4087b929a28ac2f07812}{Sleep}} (object sender, Elapsed\+Event\+Args e)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}} \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_ad9bf8d647f3f953c7182253ddd92b60b}{\+\_\+connector}} = new \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}}()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static System.\+Timers.\+Timer \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a382feec4ea46d0b019256595c90bab22}{\+\_\+wake\+Up\+Timer}}
+\item 
+static System.\+Timers.\+Timer \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aebb59a81c651514469a9caab1f0289e3}{\+\_\+sleep\+Timer}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Message handler for Morning\+Sun. 
+
+Definition at line 16 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_ac4e1e473b2e8f7ae2f8bf1b5d6059e6b}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_ac4e1e473b2e8f7ae2f8bf1b5d6059e6b}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Morning\+Sun\+Message\+Handler@{Morning\+Sun\+Message\+Handler}}
+\index{Morning\+Sun\+Message\+Handler@{Morning\+Sun\+Message\+Handler}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Morning\+Sun\+Message\+Handler()}{MorningSunMessageHandler()}}
+{\footnotesize\ttfamily static Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Morning\+Sun\+Message\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a0e70245da3c7203ab5d1049fe0286c9f}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a0e70245da3c7203ab5d1049fe0286c9f}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Handle\+Message@{Handle\+Message}}
+\index{Handle\+Message@{Handle\+Message}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Handle\+Message()}{HandleMessage()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Handle\+Message (\begin{DoxyParamCaption}\item[{string}]{message,  }\item[{string}]{topic }\end{DoxyParamCaption})}
+
+
+
+Message handler for Morning\+Sun. 
+
+
+
+Implements \mbox{\hyperlink{interface_master_application_1_1_message_handlers_1_1_i_message_handler_ada3ca8e0f5f2801663822849a2cfdf40}{Master\+Application.\+Message\+Handlers.\+I\+Message\+Handler}}.
+
+
+
+Definition at line 31 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a526dcd561059dfe79f2f0ba862b69561}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a526dcd561059dfe79f2f0ba862b69561}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Light\+Is\+Off@{Light\+Is\+Off}}
+\index{Light\+Is\+Off@{Light\+Is\+Off}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Light\+Is\+Off()}{LightIsOff()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Light\+Is\+Off (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handler function for when Morning\+Sun turns off. 
+
+
+
+Definition at line 83 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_abf6716f193dc5a3a3cdc97a31fb33575}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_abf6716f193dc5a3a3cdc97a31fb33575}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Light\+Is\+On@{Light\+Is\+On}}
+\index{Light\+Is\+On@{Light\+Is\+On}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Light\+Is\+On()}{LightIsOn()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Light\+Is\+On (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handler function for when Morning\+Sun turns on. 
+
+
+
+Definition at line 71 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a87c7d58728ce4087b929a28ac2f07812}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a87c7d58728ce4087b929a28ac2f07812}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Sleep@{Sleep}}
+\index{Sleep@{Sleep}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Sleep()}{Sleep()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Sleep (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Elapsed\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Handler function for when the Timer is triggerd, and turns off Morning\+Sun 
+
+Definition at line 180 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aa719d01ca3e96dae506e467da4bb40df}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aa719d01ca3e96dae506e467da4bb40df}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Turn\+Off@{Turn\+Off}}
+\index{Turn\+Off@{Turn\+Off}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Turn\+Off()}{TurnOff()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Turn\+Off (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handler function for when the Web Api requests to turn off Morning\+Sun 
+
+Definition at line 110 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_af575f6b6c9bc931599f02c1858903b2b}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_af575f6b6c9bc931599f02c1858903b2b}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Turn\+On@{Turn\+On}}
+\index{Turn\+On@{Turn\+On}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Turn\+On()}{TurnOn()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Turn\+On (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handler function for when the Web Api requests to turn on Morning\+Sun 
+
+Definition at line 100 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a1c51cc86793ded7228b52ea28e1c08da}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a1c51cc86793ded7228b52ea28e1c08da}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Update\+Time@{Update\+Time}}
+\index{Update\+Time@{Update\+Time}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Update\+Time()}{UpdateTime()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Update\+Time (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Handler function for when the Web Api requests to set the timers on Morning\+Sun 
+
+Definition at line 124 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aef59514a029ee21e09daae1802785a17}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aef59514a029ee21e09daae1802785a17}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!Wake\+Up@{Wake\+Up}}
+\index{Wake\+Up@{Wake\+Up}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Wake\+Up()}{WakeUp()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+Wake\+Up (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Elapsed\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Handler function for when the Timer is triggerd, and turns on Morning\+Sun 
+
+Definition at line 166 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_ad9bf8d647f3f953c7182253ddd92b60b}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_ad9bf8d647f3f953c7182253ddd92b60b}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!\+\_\+connector@{\+\_\+connector}}
+\index{\+\_\+connector@{\+\_\+connector}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+connector}{\_connector}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}} Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+\_\+connector = new \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aebb59a81c651514469a9caab1f0289e3}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_aebb59a81c651514469a9caab1f0289e3}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!\+\_\+sleep\+Timer@{\+\_\+sleep\+Timer}}
+\index{\+\_\+sleep\+Timer@{\+\_\+sleep\+Timer}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+sleep\+Timer}{\_sleepTimer}}
+{\footnotesize\ttfamily System.\+Timers.\+Timer Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+\_\+sleep\+Timer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a382feec4ea46d0b019256595c90bab22}\label{class_master_application_1_1_message_handlers_1_1_morning_sun_message_handler_a382feec4ea46d0b019256595c90bab22}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}!\+\_\+wake\+Up\+Timer@{\+\_\+wake\+Up\+Timer}}
+\index{\+\_\+wake\+Up\+Timer@{\+\_\+wake\+Up\+Timer}!Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Morning\+Sun\+Message\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+wake\+Up\+Timer}{\_wakeUpTimer}}
+{\footnotesize\ttfamily System.\+Timers.\+Timer Master\+Application.\+Message\+Handlers.\+Morning\+Sun\+Message\+Handler.\+\_\+wake\+Up\+Timer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Morning\+Sun\+Message\+Handler.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\+Message\+Handlers/\mbox{\hyperlink{_morning_sun_message_handler_8cs}{Morning\+Sun\+Message\+Handler.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,204 @@
+\hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller}{}\section{F\+W\+P\+S.\+Controllers.\+Light\+Controller Class Reference}
+\label{class_f_w_p_s_1_1_controllers_1_1_light_controller}\index{F\+W\+P\+S.\+Controllers.\+Light\+Controller@{F\+W\+P\+S.\+Controllers.\+Light\+Controller}}
+
+
+Controller responsible for handling Morning\+Sun A\+PI.  
+
+
+Inheritance diagram for F\+W\+P\+S.\+Controllers.\+Light\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_f_w_p_s_1_1_controllers_1_1_light_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a9d6e809f8aa95f22d5ca89d9616d6bf9}{Light\+Controller}} (\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} context, I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$ hub)
+\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a307cd1a97fe0a34495fcf40f7834c3cc}{Get\+All}} ()
+\begin{DoxyCompactList}\small\item\em Gets all Morning\+Sun items from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a35e585d1b3e493a51f9855f70cca2dc1}{Get\+By\+Id}} (long id)
+\begin{DoxyCompactList}\small\item\em Not used, Gets Morning\+Sun item denoted by \{id\}. \end{DoxyCompactList}\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a531d27cca2dfb487ad5120d544cd975d}{Get\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Gets all Morning\+Sun items from 7 days from current date. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a65788397f941b3dfb336277e6982541a}{Next}} ()
+\begin{DoxyCompactList}\small\item\em Not used, Gets next non-\/executed item from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_aa3a3e1c2916ef441b88bfb0cf2a525f0}{Newest}} ()
+\begin{DoxyCompactList}\small\item\em Gets newest Morning\+Sun item from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a0fe5a181efbc00564d0089d34dbe9249}{Create}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}} light\+Item)
+\begin{DoxyCompactList}\small\item\em Creates new Morning\+Sun item in database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a896b21e4373e50a41835496dd983e4fc}{Update}} (long id, \mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}} light\+Item)
+\begin{DoxyCompactList}\small\item\em Replaces Morning\+Sun item denoted by \{id\} with item passed in parameter. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a1e7afaccf07d481cd34f24e8422fd94d}{Delete}} (long id)
+\begin{DoxyCompactList}\small\item\em Deletes Morning\+Sun item denoted by \{id\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_a6f33859da85cd46d41451760b875704b}{\+\_\+context}}
+\item 
+I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_light_controller_acc736d9ae6f36836ea91fc7be5d8e4ac}{\+\_\+hub}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller responsible for handling Morning\+Sun A\+PI. 
+
+Definition at line 18 of file Light\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a9d6e809f8aa95f22d5ca89d9616d6bf9}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a9d6e809f8aa95f22d5ca89d9616d6bf9}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Light\+Controller@{Light\+Controller}}
+\index{Light\+Controller@{Light\+Controller}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Light\+Controller()}{LightController()}}
+{\footnotesize\ttfamily F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Light\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}}}]{context,  }\item[{I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$}]{hub }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Light\+Controller.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a0fe5a181efbc00564d0089d34dbe9249}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a0fe5a181efbc00564d0089d34dbe9249}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Create@{Create}}
+\index{Create@{Create}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Create (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}}}]{light\+Item }\end{DoxyParamCaption})}
+
+
+
+Creates new Morning\+Sun item in database. 
+
+
+
+Definition at line 109 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a1e7afaccf07d481cd34f24e8422fd94d}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a1e7afaccf07d481cd34f24e8422fd94d}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Delete@{Delete}}
+\index{Delete@{Delete}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Delete (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Deletes Morning\+Sun item denoted by \{id\}. 
+
+
+
+Definition at line 174 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a307cd1a97fe0a34495fcf40f7834c3cc}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a307cd1a97fe0a34495fcf40f7834c3cc}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Get\+All@{Get\+All}}
+\index{Get\+All@{Get\+All}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Get\+All()}{GetAll()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets all Morning\+Sun items from database. 
+
+
+
+Definition at line 40 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a35e585d1b3e493a51f9855f70cca2dc1}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a35e585d1b3e493a51f9855f70cca2dc1}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Get\+By\+Id@{Get\+By\+Id}}
+\index{Get\+By\+Id@{Get\+By\+Id}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Get\+By\+Id()}{GetById()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Get\+By\+Id (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Not used, Gets Morning\+Sun item denoted by \{id\}. 
+
+
+
+Definition at line 49 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a531d27cca2dfb487ad5120d544cd975d}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a531d27cca2dfb487ad5120d544cd975d}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Get\+Update@{Get\+Update}}
+\index{Get\+Update@{Get\+Update}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Get\+Update()}{GetUpdate()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Get\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets all Morning\+Sun items from 7 days from current date. 
+
+
+
+Definition at line 64 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_aa3a3e1c2916ef441b88bfb0cf2a525f0}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_aa3a3e1c2916ef441b88bfb0cf2a525f0}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Newest@{Newest}}
+\index{Newest@{Newest}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Newest()}{Newest()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Newest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets newest Morning\+Sun item from database. 
+
+
+
+Definition at line 96 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a65788397f941b3dfb336277e6982541a}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a65788397f941b3dfb336277e6982541a}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Next@{Next}}
+\index{Next@{Next}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Next()}{Next()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Not used, Gets next non-\/executed item from database. 
+
+
+
+Definition at line 82 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a896b21e4373e50a41835496dd983e4fc}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a896b21e4373e50a41835496dd983e4fc}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!Update@{Update}}
+\index{Update@{Update}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+Update (\begin{DoxyParamCaption}\item[{long}]{id,  }\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_light_item}{Light\+Item}}}]{light\+Item }\end{DoxyParamCaption})}
+
+
+
+Replaces Morning\+Sun item denoted by \{id\} with item passed in parameter. 
+
+
+
+Definition at line 143 of file Light\+Controller.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_a6f33859da85cd46d41451760b875704b}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_a6f33859da85cd46d41451760b875704b}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!\+\_\+context@{\+\_\+context}}
+\index{\+\_\+context@{\+\_\+context}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+context}{\_context}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Light\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_light_controller_acc736d9ae6f36836ea91fc7be5d8e4ac}\label{class_f_w_p_s_1_1_controllers_1_1_light_controller_acc736d9ae6f36836ea91fc7be5d8e4ac}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}!\+\_\+hub@{\+\_\+hub}}
+\index{\+\_\+hub@{\+\_\+hub}!F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Light\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+hub}{\_hub}}
+{\footnotesize\ttfamily I\+Hub\+Context$<$\mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}}$>$ F\+W\+P\+S.\+Controllers.\+Light\+Controller.\+\_\+hub\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Light\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Web\+Api/\+F\+W\+P\+S/\+Controllers/\+Production/\mbox{\hyperlink{_light_controller_8cs}{Light\+Controller.\+cs}}\end{DoxyCompactItemize}

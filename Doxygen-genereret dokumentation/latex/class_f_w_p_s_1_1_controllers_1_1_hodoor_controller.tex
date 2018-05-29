@@ -1,0 +1,228 @@
+\hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller}{}\section{F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller Class Reference}
+\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller}\index{F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller@{F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller}}
+
+
+Controller for Hodoor-\/related A\+PI.  
+
+
+Inheritance diagram for F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_adce9f31ecaab1ed1e08cb9cf09c305f2}{Hodoor\+Controller}} (\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} context, I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$ hub)
+\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_hodoor_item}{Hodoor\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a862b9ad647c5e0ff7fda5dd5f359a040}{Get\+All}} ()
+\begin{DoxyCompactList}\small\item\em Returns all Hodoor items from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a27509de7aa39ce596b256d0cc4cc20f1}{Get\+By\+Id}} (long id)
+\begin{DoxyCompactList}\small\item\em Returns specific Hodoor item from database by id \{int\}. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_ac5008a5159d83bffd779b742bd9e6555}{Next}} ()
+\begin{DoxyCompactList}\small\item\em Not used, get next item to be executed from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a35f759a06b813cb402420ab98e64000c}{Newest}} ()
+\begin{DoxyCompactList}\small\item\em Gets newest Hodoor item from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a10c4a8b451c2ed13e161beca8341e5dc}{Create}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_hodoor_item}{Hodoor\+Item}} hodoor\+Item)
+\begin{DoxyCompactList}\small\item\em Adds new Hodoor item to database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a024011e1456e9634e741fdbc30ddd482}{Update}} (long id, \mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_hodoor_item}{Hodoor\+Item}} hodoor\+Item)
+\begin{DoxyCompactList}\small\item\em Not used, Replaces a Hodoor Item with \{id\} with item passed as parameter. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_aa0b89f247140f77be91067dd79d68345}{Delete}} (long id)
+\begin{DoxyCompactList}\small\item\em Not used, Deletes an item from Hodoor denoted by \{id\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_af225a1072fecdf625330a84e5b7846a8}{\+\_\+context}}
+\item 
+I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a30e9f233a802a0fa45a43ecec1979db9}{\+\_\+hub}}
+\item 
+\mbox{\hyperlink{class_f_w_p_s_1_1_debug_writer}{Debug\+Writer}} \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a192eed3a6a2a5aeaf53c37ca5cfb94c4}{\+\_\+debug\+Writer}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller for Hodoor-\/related A\+PI. 
+
+Definition at line 20 of file Hodoor\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_adce9f31ecaab1ed1e08cb9cf09c305f2}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_adce9f31ecaab1ed1e08cb9cf09c305f2}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Hodoor\+Controller@{Hodoor\+Controller}}
+\index{Hodoor\+Controller@{Hodoor\+Controller}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Hodoor\+Controller()}{HodoorController()}}
+{\footnotesize\ttfamily F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Hodoor\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}}}]{context,  }\item[{I\+Hub\+Context$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}} $>$}]{hub }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file Hodoor\+Controller.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a10c4a8b451c2ed13e161beca8341e5dc}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a10c4a8b451c2ed13e161beca8341e5dc}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Create@{Create}}
+\index{Create@{Create}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Create (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_hodoor_item}{Hodoor\+Item}}}]{hodoor\+Item }\end{DoxyParamCaption})}
+
+
+
+Adds new Hodoor item to database. 
+
+
+
+Implements \mbox{\hyperlink{interface_f_w_p_s_1_1_controllers_1_1_i_hodoor_controller_af4ec9b2bea258465475226f9693e26b3}{F\+W\+P\+S.\+Controllers.\+I\+Hodoor\+Controller}}.
+
+
+
+Definition at line 97 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_aa0b89f247140f77be91067dd79d68345}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_aa0b89f247140f77be91067dd79d68345}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Delete@{Delete}}
+\index{Delete@{Delete}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Delete (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Not used, Deletes an item from Hodoor denoted by \{id\}. 
+
+
+
+Implements \mbox{\hyperlink{interface_f_w_p_s_1_1_controllers_1_1_i_hodoor_controller_a8fe985f1171b270cd663c1e16bb198ee}{F\+W\+P\+S.\+Controllers.\+I\+Hodoor\+Controller}}.
+
+
+
+Definition at line 154 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a862b9ad647c5e0ff7fda5dd5f359a040}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a862b9ad647c5e0ff7fda5dd5f359a040}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Get\+All@{Get\+All}}
+\index{Get\+All@{Get\+All}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Get\+All()}{GetAll()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_hodoor_item}{Hodoor\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns all Hodoor items from database. 
+
+
+
+Implements \mbox{\hyperlink{interface_f_w_p_s_1_1_controllers_1_1_i_hodoor_controller_ac50e7afd931ca1f16f767cac2fae488e}{F\+W\+P\+S.\+Controllers.\+I\+Hodoor\+Controller}}.
+
+
+
+Definition at line 44 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a27509de7aa39ce596b256d0cc4cc20f1}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a27509de7aa39ce596b256d0cc4cc20f1}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Get\+By\+Id@{Get\+By\+Id}}
+\index{Get\+By\+Id@{Get\+By\+Id}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Get\+By\+Id()}{GetById()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Get\+By\+Id (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Returns specific Hodoor item from database by id \{int\}. 
+
+
+
+Implements \mbox{\hyperlink{interface_f_w_p_s_1_1_controllers_1_1_i_hodoor_controller_a7676bf587ad504f1e5e7c1802f964489}{F\+W\+P\+S.\+Controllers.\+I\+Hodoor\+Controller}}.
+
+
+
+Definition at line 54 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a35f759a06b813cb402420ab98e64000c}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a35f759a06b813cb402420ab98e64000c}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Newest@{Newest}}
+\index{Newest@{Newest}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Newest()}{Newest()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Newest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets newest Hodoor item from database. 
+
+
+
+Implements \mbox{\hyperlink{interface_f_w_p_s_1_1_controllers_1_1_i_hodoor_controller_a39f296accada798a0f161ba8e0ad8777}{F\+W\+P\+S.\+Controllers.\+I\+Hodoor\+Controller}}.
+
+
+
+Definition at line 84 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_ac5008a5159d83bffd779b742bd9e6555}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_ac5008a5159d83bffd779b742bd9e6555}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Next@{Next}}
+\index{Next@{Next}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Next()}{Next()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Not used, get next item to be executed from database. 
+
+
+
+Implements \mbox{\hyperlink{interface_f_w_p_s_1_1_controllers_1_1_i_hodoor_controller_a106763414af6e583aa8e73c23daeab2e}{F\+W\+P\+S.\+Controllers.\+I\+Hodoor\+Controller}}.
+
+
+
+Definition at line 70 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a024011e1456e9634e741fdbc30ddd482}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a024011e1456e9634e741fdbc30ddd482}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!Update@{Update}}
+\index{Update@{Update}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+Update (\begin{DoxyParamCaption}\item[{long}]{id,  }\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_hodoor_item}{Hodoor\+Item}}}]{hodoor\+Item }\end{DoxyParamCaption})}
+
+
+
+Not used, Replaces a Hodoor Item with \{id\} with item passed as parameter. 
+
+
+
+Implements \mbox{\hyperlink{interface_f_w_p_s_1_1_controllers_1_1_i_hodoor_controller_a9550c77b49185af0d0e6ba79514535f5}{F\+W\+P\+S.\+Controllers.\+I\+Hodoor\+Controller}}.
+
+
+
+Definition at line 127 of file Hodoor\+Controller.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_af225a1072fecdf625330a84e5b7846a8}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_af225a1072fecdf625330a84e5b7846a8}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!\+\_\+context@{\+\_\+context}}
+\index{\+\_\+context@{\+\_\+context}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+context}{\_context}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a192eed3a6a2a5aeaf53c37ca5cfb94c4}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a192eed3a6a2a5aeaf53c37ca5cfb94c4}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!\+\_\+debug\+Writer@{\+\_\+debug\+Writer}}
+\index{\+\_\+debug\+Writer@{\+\_\+debug\+Writer}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+debug\+Writer}{\_debugWriter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_f_w_p_s_1_1_debug_writer}{Debug\+Writer}} F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+\_\+debug\+Writer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 26 of file Hodoor\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a30e9f233a802a0fa45a43ecec1979db9}\label{class_f_w_p_s_1_1_controllers_1_1_hodoor_controller_a30e9f233a802a0fa45a43ecec1979db9}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}!\+\_\+hub@{\+\_\+hub}}
+\index{\+\_\+hub@{\+\_\+hub}!F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Hodoor\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+hub}{\_hub}}
+{\footnotesize\ttfamily I\+Hub\+Context$<$\mbox{\hyperlink{class_f_w_p_s_1_1_devices_hub}{Devices\+Hub}}$>$ F\+W\+P\+S.\+Controllers.\+Hodoor\+Controller.\+\_\+hub\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file Hodoor\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Web\+Api/\+F\+W\+P\+S/\+Controllers/\+Production/\mbox{\hyperlink{_hodoor_controller_8cs}{Hodoor\+Controller.\+cs}}\end{DoxyCompactItemize}

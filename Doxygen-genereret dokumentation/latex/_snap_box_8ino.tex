@@ -1,0 +1,183 @@
+\hypertarget{_snap_box_8ino}{}\section{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Snap\+Box/\+Snap\+Box.ino File Reference}
+\label{_snap_box_8ino}\index{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Snap\+Box/\+Snap\+Box.\+ino@{C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Snap\+Box/\+Snap\+Box.\+ino}}
+{\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+{\ttfamily \#include $<$E\+S\+P8266\+H\+T\+T\+P\+Client.\+h$>$}\newline
+{\ttfamily \#include $<$E\+S\+P8266\+Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$Pub\+Sub\+Client.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Pub\+Sub\+Client \mbox{\hyperlink{_snap_box_8ino_a3723ecd4627fe1acd7f94dd266f1105a}{mq\+Client}} (\mbox{\hyperlink{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}})
+\item 
+void \mbox{\hyperlink{_snap_box_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_snap_box_8ino_ac3a129f66dc859e2b7279565f4e1de78}{callback}} (char $\ast$topic, byte $\ast$payload, unsigned int length)
+\item 
+void \mbox{\hyperlink{_snap_box_8ino_a7a69432900bad935bd00eb0a9d4bf61f}{get\+Raspberry\+Ip}} ()
+\item 
+void \mbox{\hyperlink{_snap_box_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}{reconnect}} ()
+\item 
+void \mbox{\hyperlink{_snap_box_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{_snap_box_8ino_a587ba0cb07f02913598610049a3bbb79}{ssid}} = \char`\"{}Jonas\+AP\char`\"{}
+\begin{DoxyCompactList}\small\item\em S\+S\+ID to the Wi\+Fi\+Network. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_snap_box_8ino_aa4a2ebcb494493f648ae1e6975672575}{password}} = \char`\"{}Fkt73gss\char`\"{}
+\begin{DoxyCompactList}\small\item\em Password to the Wi\+Fi\+Network. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_snap_box_8ino_a2502b12b30261ef4dea2ff97a6b78cab}{host}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em IP for raspberry. collected from fwps.\+azurewebsites.\+net/api/ip/1. \end{DoxyCompactList}\item 
+Wi\+Fi\+Client \mbox{\hyperlink{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}
+\item 
+char \mbox{\hyperlink{_snap_box_8ino_affaea6d4a4cbfa87671e2929922c3d77}{i2cbuffer}} \mbox{[}20\mbox{]}
+\item 
+bool \mbox{\hyperlink{_snap_box_8ino_ae530c5af75c42fc2bd1fb588c38aa332}{is\+On}} = false
+\item 
+byte \mbox{\hyperlink{_snap_box_8ino_a9a1dfa6d1aaeda043479fb5d16e28a65}{arr\+Index}} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_snap_box_8ino_ac3a129f66dc859e2b7279565f4e1de78}\label{_snap_box_8ino_ac3a129f66dc859e2b7279565f4e1de78}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!callback@{callback}}
+\index{callback@{callback}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{callback()}{callback()}}
+{\footnotesize\ttfamily void callback (\begin{DoxyParamCaption}\item[{char $\ast$}]{topic,  }\item[{byte $\ast$}]{payload,  }\item[{unsigned int}]{length }\end{DoxyParamCaption})}
+
+Callback to handle Messages received by the Master Unit. Does nothing here. 
+
+Definition at line 66 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_a7a69432900bad935bd00eb0a9d4bf61f}\label{_snap_box_8ino_a7a69432900bad935bd00eb0a9d4bf61f}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!get\+Raspberry\+Ip@{get\+Raspberry\+Ip}}
+\index{get\+Raspberry\+Ip@{get\+Raspberry\+Ip}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{get\+Raspberry\+Ip()}{getRaspberryIp()}}
+{\footnotesize\ttfamily void get\+Raspberry\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Will get the current Master Unit IP from the \mbox{\hyperlink{namespace_web_api}{Web\+Api}}. 
+
+Definition at line 75 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_snap_box_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!loop@{loop}}
+\index{loop@{loop}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Loop/\+Run function. Will read the status from Snap\+Box and if the status has changed, then it will alert the Master Unit. 
+
+Definition at line 128 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_a3723ecd4627fe1acd7f94dd266f1105a}\label{_snap_box_8ino_a3723ecd4627fe1acd7f94dd266f1105a}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!mq\+Client@{mq\+Client}}
+\index{mq\+Client@{mq\+Client}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{mq\+Client()}{mqClient()}}
+{\footnotesize\ttfamily Pub\+Sub\+Client mq\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}{esp\+Client}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_snap_box_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}\label{_snap_box_8ino_a4bcd6ce7d04c38f8c4ff908d1fc50f86}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!reconnect@{reconnect}}
+\index{reconnect@{reconnect}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{reconnect()}{reconnect()}}
+{\footnotesize\ttfamily void reconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Will try to reconnect to the Master Unit. If fails, retries every 5 seconds. 
+
+Definition at line 99 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_snap_box_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!setup@{setup}}
+\index{setup@{setup}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sets up the E\+SP chip. Will try to connect to the network until it succedes. Will get IP for Master Unit and connect to it. 
+
+Definition at line 22 of file Snap\+Box.\+ino.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_snap_box_8ino_a9a1dfa6d1aaeda043479fb5d16e28a65}\label{_snap_box_8ino_a9a1dfa6d1aaeda043479fb5d16e28a65}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!arr\+Index@{arr\+Index}}
+\index{arr\+Index@{arr\+Index}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{arr\+Index}{arrIndex}}
+{\footnotesize\ttfamily byte arr\+Index = 0}
+
+
+
+Definition at line 15 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}\label{_snap_box_8ino_abd77e757e4b3bb6f1e4b42b21ea9e040}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!esp\+Client@{esp\+Client}}
+\index{esp\+Client@{esp\+Client}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{esp\+Client}{espClient}}
+{\footnotesize\ttfamily Wi\+Fi\+Client esp\+Client}
+
+
+
+Definition at line 11 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_a2502b12b30261ef4dea2ff97a6b78cab}\label{_snap_box_8ino_a2502b12b30261ef4dea2ff97a6b78cab}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!host@{host}}
+\index{host@{host}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{host}{host}}
+{\footnotesize\ttfamily String host = \char`\"{}\char`\"{}}
+
+
+
+IP for raspberry. collected from fwps.\+azurewebsites.\+net/api/ip/1. 
+
+
+
+Definition at line 10 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_affaea6d4a4cbfa87671e2929922c3d77}\label{_snap_box_8ino_affaea6d4a4cbfa87671e2929922c3d77}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!i2cbuffer@{i2cbuffer}}
+\index{i2cbuffer@{i2cbuffer}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{i2cbuffer}{i2cbuffer}}
+{\footnotesize\ttfamily char i2cbuffer\mbox{[}20\mbox{]}}
+
+
+
+Definition at line 13 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_ae530c5af75c42fc2bd1fb588c38aa332}\label{_snap_box_8ino_ae530c5af75c42fc2bd1fb588c38aa332}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!is\+On@{is\+On}}
+\index{is\+On@{is\+On}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{is\+On}{isOn}}
+{\footnotesize\ttfamily bool is\+On = false}
+
+
+
+Definition at line 14 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_aa4a2ebcb494493f648ae1e6975672575}\label{_snap_box_8ino_aa4a2ebcb494493f648ae1e6975672575}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!password@{password}}
+\index{password@{password}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily const char$\ast$ password = \char`\"{}Fkt73gss\char`\"{}}
+
+
+
+Password to the Wi\+Fi\+Network. 
+
+
+
+Definition at line 9 of file Snap\+Box.\+ino.
+
+\mbox{\Hypertarget{_snap_box_8ino_a587ba0cb07f02913598610049a3bbb79}\label{_snap_box_8ino_a587ba0cb07f02913598610049a3bbb79}} 
+\index{Snap\+Box.\+ino@{Snap\+Box.\+ino}!ssid@{ssid}}
+\index{ssid@{ssid}!Snap\+Box.\+ino@{Snap\+Box.\+ino}}
+\subsubsection{\texorpdfstring{ssid}{ssid}}
+{\footnotesize\ttfamily const char$\ast$ ssid = \char`\"{}Jonas\+AP\char`\"{}}
+
+
+
+S\+S\+ID to the Wi\+Fi\+Network. 
+
+
+
+Definition at line 8 of file Snap\+Box.\+ino.
+

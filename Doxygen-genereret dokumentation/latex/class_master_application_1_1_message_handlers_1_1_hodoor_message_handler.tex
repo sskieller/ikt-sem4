@@ -1,0 +1,140 @@
+\hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler}{}\section{Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler Class Reference}
+\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler}\index{Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler@{Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler}}
+
+
+Message handler for Hodoor.  
+
+
+Inheritance diagram for Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_ae3bb33c825a5f9ca7941e56fe25cc3ae}{Handle\+Message}} (string message, string topic)
+\begin{DoxyCompactList}\small\item\em Message handler for Hodoor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a1d0cb1162818545b40782509d5838300}{Hodoor\+Was\+Unlocked}} (string message)
+\begin{DoxyCompactList}\small\item\em Handler function for when Hodoor unlocks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_aa21641d765da50865bf1bfff9a59e73f}{Hodoor\+Was\+Locked}} (string message)
+\begin{DoxyCompactList}\small\item\em Handler function for when Hodoor locks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_ae7e94ce6ba8ed60c3ba9fde613c76e1b}{Rfid\+Entry\+Request}} (string message)
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a9977e84f9848d7be4d4f1ab589323dcf}{Unlock\+Hodoor}} (string message)
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a2303b565214e664a7cab48341e9f4821}{Lock\+Hodoor}} (string message)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}} \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_abe79d0f7853328d474992ef055523f11}{\+\_\+connector}} = new \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}}()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Message handler for Hodoor. 
+
+Definition at line 15 of file Hodoor\+Message\+Handler.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_ae3bb33c825a5f9ca7941e56fe25cc3ae}\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_ae3bb33c825a5f9ca7941e56fe25cc3ae}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}!Handle\+Message@{Handle\+Message}}
+\index{Handle\+Message@{Handle\+Message}!Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Handle\+Message()}{HandleMessage()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler.\+Handle\+Message (\begin{DoxyParamCaption}\item[{string}]{message,  }\item[{string}]{topic }\end{DoxyParamCaption})}
+
+
+
+Message handler for Hodoor. 
+
+
+
+Implements \mbox{\hyperlink{interface_master_application_1_1_message_handlers_1_1_i_message_handler_ada3ca8e0f5f2801663822849a2cfdf40}{Master\+Application.\+Message\+Handlers.\+I\+Message\+Handler}}.
+
+
+
+Definition at line 22 of file Hodoor\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_aa21641d765da50865bf1bfff9a59e73f}\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_aa21641d765da50865bf1bfff9a59e73f}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}!Hodoor\+Was\+Locked@{Hodoor\+Was\+Locked}}
+\index{Hodoor\+Was\+Locked@{Hodoor\+Was\+Locked}!Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Hodoor\+Was\+Locked()}{HodoorWasLocked()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler.\+Hodoor\+Was\+Locked (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handler function for when Hodoor locks. 
+
+
+
+Definition at line 67 of file Hodoor\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a1d0cb1162818545b40782509d5838300}\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a1d0cb1162818545b40782509d5838300}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}!Hodoor\+Was\+Unlocked@{Hodoor\+Was\+Unlocked}}
+\index{Hodoor\+Was\+Unlocked@{Hodoor\+Was\+Unlocked}!Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Hodoor\+Was\+Unlocked()}{HodoorWasUnlocked()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler.\+Hodoor\+Was\+Unlocked (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handler function for when Hodoor unlocks. 
+
+
+
+Definition at line 54 of file Hodoor\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a2303b565214e664a7cab48341e9f4821}\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a2303b565214e664a7cab48341e9f4821}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}!Lock\+Hodoor@{Lock\+Hodoor}}
+\index{Lock\+Hodoor@{Lock\+Hodoor}!Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Lock\+Hodoor()}{LockHodoor()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler.\+Lock\+Hodoor (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handler function for when the Web Api requests to lock Hodoor 
+
+Definition at line 110 of file Hodoor\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_ae7e94ce6ba8ed60c3ba9fde613c76e1b}\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_ae7e94ce6ba8ed60c3ba9fde613c76e1b}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}!Rfid\+Entry\+Request@{Rfid\+Entry\+Request}}
+\index{Rfid\+Entry\+Request@{Rfid\+Entry\+Request}!Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Rfid\+Entry\+Request()}{RfidEntryRequest()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler.\+Rfid\+Entry\+Request (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+R\+F\+I\+D-\/card scanned. Validates the card on the \mbox{\hyperlink{namespace_web_api}{Web\+Api}} and responds accordingly. 
+
+Definition at line 81 of file Hodoor\+Message\+Handler.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a9977e84f9848d7be4d4f1ab589323dcf}\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_a9977e84f9848d7be4d4f1ab589323dcf}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}!Unlock\+Hodoor@{Unlock\+Hodoor}}
+\index{Unlock\+Hodoor@{Unlock\+Hodoor}!Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}}
+\subsubsection{\texorpdfstring{Unlock\+Hodoor()}{UnlockHodoor()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler.\+Unlock\+Hodoor (\begin{DoxyParamCaption}\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handler function for when the Web Api requests to open Hodoor 
+
+Definition at line 100 of file Hodoor\+Message\+Handler.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_abe79d0f7853328d474992ef055523f11}\label{class_master_application_1_1_message_handlers_1_1_hodoor_message_handler_abe79d0f7853328d474992ef055523f11}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}!\+\_\+connector@{\+\_\+connector}}
+\index{\+\_\+connector@{\+\_\+connector}!Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler@{Master\+Application\+::\+Message\+Handlers\+::\+Hodoor\+Message\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+connector}{\_connector}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}} Master\+Application.\+Message\+Handlers.\+Hodoor\+Message\+Handler.\+\_\+connector = new \mbox{\hyperlink{class_master_application_1_1_web_api_connector}{Web\+Api\+Connector}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 17 of file Hodoor\+Message\+Handler.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\+Message\+Handlers/\mbox{\hyperlink{_hodoor_message_handler_8cs}{Hodoor\+Message\+Handler.\+cs}}\end{DoxyCompactItemize}

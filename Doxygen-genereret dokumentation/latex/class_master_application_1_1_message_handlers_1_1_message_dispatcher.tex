@@ -1,0 +1,62 @@
+\hypertarget{class_master_application_1_1_message_handlers_1_1_message_dispatcher}{}\section{Master\+Application.\+Message\+Handlers.\+Message\+Dispatcher Class Reference}
+\label{class_master_application_1_1_message_handlers_1_1_message_dispatcher}\index{Master\+Application.\+Message\+Handlers.\+Message\+Dispatcher@{Master\+Application.\+Message\+Handlers.\+Message\+Dispatcher}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_message_dispatcher_a9aa911387692b4a67cbb63140ccda719}{Message\+Dispatcher}} (\mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener}{I\+Listener}} listener)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_message_dispatcher_ade63abb94bd2bd5c1efaa4231ca99bde}{Signal\+R\+On\+Command\+Received}} (object sender, \mbox{\hyperlink{class_master_application_1_1_signal_r_event_args}{Signal\+R\+Event\+Args}} signal\+R\+Event\+Args)
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_message_handlers_1_1_message_dispatcher_a018717faf7b4a4e755da94b87272a302}{On\+Message\+Received\+\_\+\+Dispatch\+Message}} (object sender, Basic\+Deliver\+Event\+Args e)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class who will spawn a new Message\+Handler depending on calling-\/ or target module. 
+
+Definition at line 15 of file Message\+Dispatcher.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_message_dispatcher_a9aa911387692b4a67cbb63140ccda719}\label{class_master_application_1_1_message_handlers_1_1_message_dispatcher_a9aa911387692b4a67cbb63140ccda719}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher@{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher}!Message\+Dispatcher@{Message\+Dispatcher}}
+\index{Message\+Dispatcher@{Message\+Dispatcher}!Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher@{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher}}
+\subsubsection{\texorpdfstring{Message\+Dispatcher()}{MessageDispatcher()}}
+{\footnotesize\ttfamily Master\+Application.\+Message\+Handlers.\+Message\+Dispatcher.\+Message\+Dispatcher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener}{I\+Listener}}}]{listener }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Message\+Dispatcher.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_message_dispatcher_a018717faf7b4a4e755da94b87272a302}\label{class_master_application_1_1_message_handlers_1_1_message_dispatcher_a018717faf7b4a4e755da94b87272a302}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher@{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher}!On\+Message\+Received\+\_\+\+Dispatch\+Message@{On\+Message\+Received\+\_\+\+Dispatch\+Message}}
+\index{On\+Message\+Received\+\_\+\+Dispatch\+Message@{On\+Message\+Received\+\_\+\+Dispatch\+Message}!Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher@{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher}}
+\subsubsection{\texorpdfstring{On\+Message\+Received\+\_\+\+Dispatch\+Message()}{OnMessageReceived\_DispatchMessage()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Message\+Dispatcher.\+On\+Message\+Received\+\_\+\+Dispatch\+Message (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Basic\+Deliver\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handles a message received over Rabbit\+MQ Spawns a new Message\+Handler depending on calling-\/ or target module, and handles the message 
+
+Definition at line 53 of file Message\+Dispatcher.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_message_handlers_1_1_message_dispatcher_ade63abb94bd2bd5c1efaa4231ca99bde}\label{class_master_application_1_1_message_handlers_1_1_message_dispatcher_ade63abb94bd2bd5c1efaa4231ca99bde}} 
+\index{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher@{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher}!Signal\+R\+On\+Command\+Received@{Signal\+R\+On\+Command\+Received}}
+\index{Signal\+R\+On\+Command\+Received@{Signal\+R\+On\+Command\+Received}!Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher@{Master\+Application\+::\+Message\+Handlers\+::\+Message\+Dispatcher}}
+\subsubsection{\texorpdfstring{Signal\+R\+On\+Command\+Received()}{SignalROnCommandReceived()}}
+{\footnotesize\ttfamily void Master\+Application.\+Message\+Handlers.\+Message\+Dispatcher.\+Signal\+R\+On\+Command\+Received (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{\mbox{\hyperlink{class_master_application_1_1_signal_r_event_args}{Signal\+R\+Event\+Args}}}]{signal\+R\+Event\+Args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Handles a message received over SignalR. Spawns a new Message\+Handler depending on calling-\/ or target module, and handles the message 
+
+Definition at line 31 of file Message\+Dispatcher.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\+Message\+Handlers/\mbox{\hyperlink{_message_dispatcher_8cs}{Message\+Dispatcher.\+cs}}\end{DoxyCompactItemize}

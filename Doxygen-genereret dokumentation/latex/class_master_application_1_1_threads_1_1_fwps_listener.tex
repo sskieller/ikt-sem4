@@ -1,0 +1,257 @@
+\hypertarget{class_master_application_1_1_threads_1_1_fwps_listener}{}\section{Master\+Application.\+Threads.\+Fwps\+Listener Class Reference}
+\label{class_master_application_1_1_threads_1_1_fwps_listener}\index{Master\+Application.\+Threads.\+Fwps\+Listener@{Master\+Application.\+Threads.\+Fwps\+Listener}}
+Inheritance diagram for Master\+Application.\+Threads.\+Fwps\+Listener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_master_application_1_1_threads_1_1_fwps_listener}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_adf0a8a6efaa73852384016f2bdef71eb}{Fwps\+Listener}} (I\+Connection connection)
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_abb282c4f8d463224c65582c91dd1a5bb}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the Listener, allowing for messages to be received \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_a590df6f1cf3d72935ba0aa2e26ed6174}{Stop}} ()
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_ae19201bd86b5f5d21b6d140794ecbdbc}{Add}} (string routing\+Key, string exchange=\char`\"{}amq.\+topic\char`\"{})
+\begin{DoxyCompactList}\small\item\em Adds routing key to listener, allowing Receiver to listen to keys denoted by \textquotesingle{}routing\+Key\textquotesingle{}. Please use \textquotesingle{}$\ast$\textquotesingle{} to denote one word wildcards and \textquotesingle{}\#\textquotesingle{} for zero or multiple word wildcards \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_aee12307bd200ca163ed2d536db60b0bc}{Remove}} (string routing\+Key, string exchange=\char`\"{}amq.\+topic\char`\"{})
+\begin{DoxyCompactList}\small\item\em Removed routing key from listener, allowing Receiver to listen to keys denoted by \textquotesingle{}routing\+Key\textquotesingle{}. Please use \textquotesingle{}$\ast$\textquotesingle{} to denote one word wildcards and \textquotesingle{}\#\textquotesingle{} for zero or multiple word wildcards \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_a7252861b396fe8ee18e4c183596e4696}{Dispose}} ()
+\begin{DoxyCompactList}\small\item\em Dispose object, closing channel \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_afd19d33b9743b159b65c95b009c80331}{Is\+Active}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ Basic\+Deliver\+Event\+Args $>$ \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_a800200e774b70976a987207845b6f953}{On\+Message\+Received}}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_af666026eb89f076643628aa181a05fc5}{Received\+Message\+Handler}} (object sender, Basic\+Deliver\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Raises \textquotesingle{}On\+Message\+Received\textquotesingle{} event, passing event information using Fwps\+Message\+Event\+Args \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly I\+Model \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_a8d6cc4e90a3fd4ceeef1605a748c7445}{\+\_\+channel}}
+\item 
+string \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_a03705945da2d45b42a55f203a99eea2d}{\+\_\+queue\+Name}}
+\item 
+List$<$ Tuple$<$ string, string $>$ $>$ \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_af542284d90e072bafc52083ae3b82a05}{\+\_\+routing\+Keys}}
+\item 
+Eventing\+Basic\+Consumer \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_ad761b87b72db12dafd37930574ac1cb2}{\+\_\+consumer}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that listens for messages using Rabbit\+MQ Will throw a new event if it receives a message. 
+
+Definition at line 15 of file Fwps\+Listener.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_adf0a8a6efaa73852384016f2bdef71eb}\label{class_master_application_1_1_threads_1_1_fwps_listener_adf0a8a6efaa73852384016f2bdef71eb}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Fwps\+Listener@{Fwps\+Listener}}
+\index{Fwps\+Listener@{Fwps\+Listener}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Fwps\+Listener()}{FwpsListener()}}
+{\footnotesize\ttfamily Master\+Application.\+Threads.\+Fwps\+Listener.\+Fwps\+Listener (\begin{DoxyParamCaption}\item[{I\+Connection}]{connection }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Fwps\+Listener.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_ae19201bd86b5f5d21b6d140794ecbdbc}\label{class_master_application_1_1_threads_1_1_fwps_listener_ae19201bd86b5f5d21b6d140794ecbdbc}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Add@{Add}}
+\index{Add@{Add}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+Fwps\+Listener.\+Add (\begin{DoxyParamCaption}\item[{string}]{routing\+Key,  }\item[{string}]{exchange = {\ttfamily \char`\"{}amq.topic\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Adds routing key to listener, allowing Receiver to listen to keys denoted by \textquotesingle{}routing\+Key\textquotesingle{}. Please use \textquotesingle{}$\ast$\textquotesingle{} to denote one word wildcards and \textquotesingle{}\#\textquotesingle{} for zero or multiple word wildcards 
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_ae5d4878084f5003f98f99a5a3e4b5ec8}{Master\+Application.\+Threads.\+I\+Listener}}.
+
+
+
+Definition at line 62 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_a7252861b396fe8ee18e4c183596e4696}\label{class_master_application_1_1_threads_1_1_fwps_listener_a7252861b396fe8ee18e4c183596e4696}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+Fwps\+Listener.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Dispose object, closing channel 
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Definition at line 94 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_af666026eb89f076643628aa181a05fc5}\label{class_master_application_1_1_threads_1_1_fwps_listener_af666026eb89f076643628aa181a05fc5}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Received\+Message\+Handler@{Received\+Message\+Handler}}
+\index{Received\+Message\+Handler@{Received\+Message\+Handler}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Received\+Message\+Handler()}{ReceivedMessageHandler()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+Fwps\+Listener.\+Received\+Message\+Handler (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Basic\+Deliver\+Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Raises \textquotesingle{}On\+Message\+Received\textquotesingle{} event, passing event information using Fwps\+Message\+Event\+Args 
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Definition at line 103 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_aee12307bd200ca163ed2d536db60b0bc}\label{class_master_application_1_1_threads_1_1_fwps_listener_aee12307bd200ca163ed2d536db60b0bc}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Remove@{Remove}}
+\index{Remove@{Remove}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+Fwps\+Listener.\+Remove (\begin{DoxyParamCaption}\item[{string}]{routing\+Key,  }\item[{string}]{exchange = {\ttfamily \char`\"{}amq.topic\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Removed routing key from listener, allowing Receiver to listen to keys denoted by \textquotesingle{}routing\+Key\textquotesingle{}. Please use \textquotesingle{}$\ast$\textquotesingle{} to denote one word wildcards and \textquotesingle{}\#\textquotesingle{} for zero or multiple word wildcards 
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_a1bf04b1440221f92c0ba0f3f674d4bce}{Master\+Application.\+Threads.\+I\+Listener}}.
+
+
+
+Definition at line 78 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_abb282c4f8d463224c65582c91dd1a5bb}\label{class_master_application_1_1_threads_1_1_fwps_listener_abb282c4f8d463224c65582c91dd1a5bb}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Start@{Start}}
+\index{Start@{Start}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+Fwps\+Listener.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts the Listener, allowing for messages to be received 
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_ae413bfc6d77762470fa78203cd07271b}{Master\+Application.\+Threads.\+I\+Listener}}.
+
+
+
+Definition at line 41 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_a590df6f1cf3d72935ba0aa2e26ed6174}\label{class_master_application_1_1_threads_1_1_fwps_listener_a590df6f1cf3d72935ba0aa2e26ed6174}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Stop@{Stop}}
+\index{Stop@{Stop}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+Fwps\+Listener.\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_a0d9d8ecd623c0e30648053b64a7fc13a}{Master\+Application.\+Threads.\+I\+Listener}}.
+
+
+
+Definition at line 51 of file Fwps\+Listener.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_a8d6cc4e90a3fd4ceeef1605a748c7445}\label{class_master_application_1_1_threads_1_1_fwps_listener_a8d6cc4e90a3fd4ceeef1605a748c7445}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!\+\_\+channel@{\+\_\+channel}}
+\index{\+\_\+channel@{\+\_\+channel}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{\+\_\+channel}{\_channel}}
+{\footnotesize\ttfamily readonly I\+Model Master\+Application.\+Threads.\+Fwps\+Listener.\+\_\+channel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_ad761b87b72db12dafd37930574ac1cb2}\label{class_master_application_1_1_threads_1_1_fwps_listener_ad761b87b72db12dafd37930574ac1cb2}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!\+\_\+consumer@{\+\_\+consumer}}
+\index{\+\_\+consumer@{\+\_\+consumer}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{\+\_\+consumer}{\_consumer}}
+{\footnotesize\ttfamily Eventing\+Basic\+Consumer Master\+Application.\+Threads.\+Fwps\+Listener.\+\_\+consumer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 21 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_a03705945da2d45b42a55f203a99eea2d}\label{class_master_application_1_1_threads_1_1_fwps_listener_a03705945da2d45b42a55f203a99eea2d}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!\+\_\+queue\+Name@{\+\_\+queue\+Name}}
+\index{\+\_\+queue\+Name@{\+\_\+queue\+Name}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{\+\_\+queue\+Name}{\_queueName}}
+{\footnotesize\ttfamily string Master\+Application.\+Threads.\+Fwps\+Listener.\+\_\+queue\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Fwps\+Listener.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_af542284d90e072bafc52083ae3b82a05}\label{class_master_application_1_1_threads_1_1_fwps_listener_af542284d90e072bafc52083ae3b82a05}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!\+\_\+routing\+Keys@{\+\_\+routing\+Keys}}
+\index{\+\_\+routing\+Keys@{\+\_\+routing\+Keys}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{\+\_\+routing\+Keys}{\_routingKeys}}
+{\footnotesize\ttfamily List$<$Tuple$<$string, string$>$ $>$ Master\+Application.\+Threads.\+Fwps\+Listener.\+\_\+routing\+Keys\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Fwps\+Listener.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_afd19d33b9743b159b65c95b009c80331}\label{class_master_application_1_1_threads_1_1_fwps_listener_afd19d33b9743b159b65c95b009c80331}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!Is\+Active@{Is\+Active}}
+\index{Is\+Active@{Is\+Active}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{Is\+Active}{IsActive}}
+{\footnotesize\ttfamily bool Master\+Application.\+Threads.\+Fwps\+Listener.\+Is\+Active\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+Definition at line 23 of file Fwps\+Listener.\+cs.
+
+
+
+\subsection{Event Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_threads_1_1_fwps_listener_a800200e774b70976a987207845b6f953}\label{class_master_application_1_1_threads_1_1_fwps_listener_a800200e774b70976a987207845b6f953}} 
+\index{Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}!On\+Message\+Received@{On\+Message\+Received}}
+\index{On\+Message\+Received@{On\+Message\+Received}!Master\+Application\+::\+Threads\+::\+Fwps\+Listener@{Master\+Application\+::\+Threads\+::\+Fwps\+Listener}}
+\subsubsection{\texorpdfstring{On\+Message\+Received}{OnMessageReceived}}
+{\footnotesize\ttfamily Event\+Handler$<$Basic\+Deliver\+Event\+Args$>$ Master\+Application.\+Threads.\+Fwps\+Listener.\+On\+Message\+Received}
+
+
+
+Definition at line 17 of file Fwps\+Listener.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\+Threads/\mbox{\hyperlink{_fwps_listener_8cs}{Fwps\+Listener.\+cs}}\end{DoxyCompactItemize}

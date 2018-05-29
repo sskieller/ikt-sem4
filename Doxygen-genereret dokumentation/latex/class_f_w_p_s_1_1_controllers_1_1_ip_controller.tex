@@ -1,0 +1,144 @@
+\hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller}{}\section{F\+W\+P\+S.\+Controllers.\+Ip\+Controller Class Reference}
+\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller}\index{F\+W\+P\+S.\+Controllers.\+Ip\+Controller@{F\+W\+P\+S.\+Controllers.\+Ip\+Controller}}
+
+
+Controller responsible for getting and updating Master Unit IP Address.  
+
+
+Inheritance diagram for F\+W\+P\+S.\+Controllers.\+Ip\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_f_w_p_s_1_1_controllers_1_1_ip_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a92f0d0ff639328863f8485ef1f5c8a51}{Ip\+Controller}} (\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} context)
+\item 
+I\+Enumerable$<$ \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_ip_item}{Ip\+Item}} $>$ \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a7dbbca42293fc173fae7e4a76660e2c2}{Get\+All}} ()
+\begin{DoxyCompactList}\small\item\em Not used, Gets all IP items from database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a196ed934dd681d3c6ae7dc825a68d2c2}{Get\+By\+Id}} (long id)
+\begin{DoxyCompactList}\small\item\em Gets IP item denoted by \{id\}. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a84681f490197522433ce269962e2d5a9}{Create}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_ip_item}{Ip\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Not used, Creates new IP item in database. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a87843cd885322510221b64ea284bcbec}{Update}} (long id, \mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_ip_item}{Ip\+Item}} item)
+\begin{DoxyCompactList}\small\item\em Replaces IP item denoted by \{id\} with IP item passed in parameter. \end{DoxyCompactList}\item 
+I\+Action\+Result \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a3cf3a7207085ea04af8a53b5db4bb8ad}{Delete}} (long id)
+\begin{DoxyCompactList}\small\item\em Not used, Deletes IP item denoted by \{id\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} \mbox{\hyperlink{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a6b74e68acf41dc1ca73b68ca4b01c097}{\+\_\+context}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller responsible for getting and updating Master Unit IP Address. 
+
+Definition at line 15 of file Ip\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a92f0d0ff639328863f8485ef1f5c8a51}\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a92f0d0ff639328863f8485ef1f5c8a51}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}!Ip\+Controller@{Ip\+Controller}}
+\index{Ip\+Controller@{Ip\+Controller}!F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}}
+\subsubsection{\texorpdfstring{Ip\+Controller()}{IpController()}}
+{\footnotesize\ttfamily F\+W\+P\+S.\+Controllers.\+Ip\+Controller.\+Ip\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}}}]{context }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file Ip\+Controller.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a84681f490197522433ce269962e2d5a9}\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a84681f490197522433ce269962e2d5a9}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}!Create@{Create}}
+\index{Create@{Create}!F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}}
+\subsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Ip\+Controller.\+Create (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_ip_item}{Ip\+Item}}}]{item }\end{DoxyParamCaption})}
+
+
+
+Not used, Creates new IP item in database. 
+
+
+
+Definition at line 61 of file Ip\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a3cf3a7207085ea04af8a53b5db4bb8ad}\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a3cf3a7207085ea04af8a53b5db4bb8ad}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}!Delete@{Delete}}
+\index{Delete@{Delete}!F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}}
+\subsubsection{\texorpdfstring{Delete()}{Delete()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Ip\+Controller.\+Delete (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Not used, Deletes IP item denoted by \{id\}. 
+
+
+
+Definition at line 102 of file Ip\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a7dbbca42293fc173fae7e4a76660e2c2}\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a7dbbca42293fc173fae7e4a76660e2c2}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}!Get\+All@{Get\+All}}
+\index{Get\+All@{Get\+All}!F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}}
+\subsubsection{\texorpdfstring{Get\+All()}{GetAll()}}
+{\footnotesize\ttfamily I\+Enumerable$<$\mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_ip_item}{Ip\+Item}}$>$ F\+W\+P\+S.\+Controllers.\+Ip\+Controller.\+Get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Not used, Gets all IP items from database. 
+
+
+
+Definition at line 34 of file Ip\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a196ed934dd681d3c6ae7dc825a68d2c2}\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a196ed934dd681d3c6ae7dc825a68d2c2}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}!Get\+By\+Id@{Get\+By\+Id}}
+\index{Get\+By\+Id@{Get\+By\+Id}!F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}}
+\subsubsection{\texorpdfstring{Get\+By\+Id()}{GetById()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Ip\+Controller.\+Get\+By\+Id (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+Gets IP item denoted by \{id\}. 
+
+
+
+Definition at line 44 of file Ip\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a87843cd885322510221b64ea284bcbec}\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a87843cd885322510221b64ea284bcbec}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}!Update@{Update}}
+\index{Update@{Update}!F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily I\+Action\+Result F\+W\+P\+S.\+Controllers.\+Ip\+Controller.\+Update (\begin{DoxyParamCaption}\item[{long}]{id,  }\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_f_w_p_s_1_1_models_1_1_ip_item}{Ip\+Item}}}]{item }\end{DoxyParamCaption})}
+
+
+
+Replaces IP item denoted by \{id\} with IP item passed in parameter. 
+
+
+
+Definition at line 77 of file Ip\+Controller.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a6b74e68acf41dc1ca73b68ca4b01c097}\label{class_f_w_p_s_1_1_controllers_1_1_ip_controller_a6b74e68acf41dc1ca73b68ca4b01c097}} 
+\index{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}!\+\_\+context@{\+\_\+context}}
+\index{\+\_\+context@{\+\_\+context}!F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller@{F\+W\+P\+S\+::\+Controllers\+::\+Ip\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+context}{\_context}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_f_w_p_s_1_1_data_1_1_fwps_db_context}{Fwps\+Db\+Context}} F\+W\+P\+S.\+Controllers.\+Ip\+Controller.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 17 of file Ip\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Web\+Api/\+F\+W\+P\+S/\+Controllers/\+Production/\mbox{\hyperlink{_ip_controller_8cs}{Ip\+Controller.\+cs}}\end{DoxyCompactItemize}

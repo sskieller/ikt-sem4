@@ -1,0 +1,97 @@
+\hypertarget{interface_master_application_1_1_threads_1_1_i_listener}{}\section{Master\+Application.\+Threads.\+I\+Listener Interface Reference}
+\label{interface_master_application_1_1_threads_1_1_i_listener}\index{Master\+Application.\+Threads.\+I\+Listener@{Master\+Application.\+Threads.\+I\+Listener}}
+
+
+Interface to handle the \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener}{Fwps\+Listener}} class.  
+
+
+Inheritance diagram for Master\+Application.\+Threads.\+I\+Listener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{interface_master_application_1_1_threads_1_1_i_listener}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_ae413bfc6d77762470fa78203cd07271b}{Start}} ()
+\item 
+void \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_a0d9d8ecd623c0e30648053b64a7fc13a}{Stop}} ()
+\item 
+void \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_ae5d4878084f5003f98f99a5a3e4b5ec8}{Add}} (string routing\+Key, string exchange=\char`\"{}amq.\+topic\char`\"{})
+\item 
+void \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_a1bf04b1440221f92c0ba0f3f674d4bce}{Remove}} (string routing\+Key, string exchange=\char`\"{}amq.\+topic\char`\"{})
+\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ Basic\+Deliver\+Event\+Args $>$ \mbox{\hyperlink{interface_master_application_1_1_threads_1_1_i_listener_a1fa719996a24e3a7c60660e21e9d9d17}{On\+Message\+Received}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface to handle the \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener}{Fwps\+Listener}} class. 
+
+Definition at line 12 of file I\+Listener.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_master_application_1_1_threads_1_1_i_listener_ae5d4878084f5003f98f99a5a3e4b5ec8}\label{interface_master_application_1_1_threads_1_1_i_listener_ae5d4878084f5003f98f99a5a3e4b5ec8}} 
+\index{Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}!Add@{Add}}
+\index{Add@{Add}!Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}}
+\subsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+I\+Listener.\+Add (\begin{DoxyParamCaption}\item[{string}]{routing\+Key,  }\item[{string}]{exchange = {\ttfamily \char`\"{}amq.topic\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_ae19201bd86b5f5d21b6d140794ecbdbc}{Master\+Application.\+Threads.\+Fwps\+Listener}}.
+
+\mbox{\Hypertarget{interface_master_application_1_1_threads_1_1_i_listener_a1bf04b1440221f92c0ba0f3f674d4bce}\label{interface_master_application_1_1_threads_1_1_i_listener_a1bf04b1440221f92c0ba0f3f674d4bce}} 
+\index{Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}!Remove@{Remove}}
+\index{Remove@{Remove}!Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}}
+\subsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+I\+Listener.\+Remove (\begin{DoxyParamCaption}\item[{string}]{routing\+Key,  }\item[{string}]{exchange = {\ttfamily \char`\"{}amq.topic\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_aee12307bd200ca163ed2d536db60b0bc}{Master\+Application.\+Threads.\+Fwps\+Listener}}.
+
+\mbox{\Hypertarget{interface_master_application_1_1_threads_1_1_i_listener_ae413bfc6d77762470fa78203cd07271b}\label{interface_master_application_1_1_threads_1_1_i_listener_ae413bfc6d77762470fa78203cd07271b}} 
+\index{Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}!Start@{Start}}
+\index{Start@{Start}!Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+I\+Listener.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_abb282c4f8d463224c65582c91dd1a5bb}{Master\+Application.\+Threads.\+Fwps\+Listener}}.
+
+\mbox{\Hypertarget{interface_master_application_1_1_threads_1_1_i_listener_a0d9d8ecd623c0e30648053b64a7fc13a}\label{interface_master_application_1_1_threads_1_1_i_listener_a0d9d8ecd623c0e30648053b64a7fc13a}} 
+\index{Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}!Stop@{Stop}}
+\index{Stop@{Stop}!Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Master\+Application.\+Threads.\+I\+Listener.\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_master_application_1_1_threads_1_1_fwps_listener_a590df6f1cf3d72935ba0aa2e26ed6174}{Master\+Application.\+Threads.\+Fwps\+Listener}}.
+
+
+
+\subsection{Event Documentation}
+\mbox{\Hypertarget{interface_master_application_1_1_threads_1_1_i_listener_a1fa719996a24e3a7c60660e21e9d9d17}\label{interface_master_application_1_1_threads_1_1_i_listener_a1fa719996a24e3a7c60660e21e9d9d17}} 
+\index{Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}!On\+Message\+Received@{On\+Message\+Received}}
+\index{On\+Message\+Received@{On\+Message\+Received}!Master\+Application\+::\+Threads\+::\+I\+Listener@{Master\+Application\+::\+Threads\+::\+I\+Listener}}
+\subsubsection{\texorpdfstring{On\+Message\+Received}{OnMessageReceived}}
+{\footnotesize\ttfamily Event\+Handler$<$Basic\+Deliver\+Event\+Args$>$ Master\+Application.\+Threads.\+I\+Listener.\+On\+Message\+Received}
+
+
+
+Definition at line 14 of file I\+Listener.\+cs.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\+Threads/\mbox{\hyperlink{_i_listener_8cs}{I\+Listener.\+cs}}\end{DoxyCompactItemize}

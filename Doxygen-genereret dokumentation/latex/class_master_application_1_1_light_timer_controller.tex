@@ -1,0 +1,186 @@
+\hypertarget{class_master_application_1_1_light_timer_controller}{}\section{Master\+Application.\+Light\+Timer\+Controller Class Reference}
+\label{class_master_application_1_1_light_timer_controller}\index{Master\+Application.\+Light\+Timer\+Controller@{Master\+Application.\+Light\+Timer\+Controller}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a9453948c870b922fb6a5080847e4ca90}{Start}} ()
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a0538817a522b0b7f65c0a85f749e7c8a}{Stop}} ()
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a00084f3d19a781b946a4283891765dab}{Set\+Time}} (Date\+Time when\+To\+Handle)
+\begin{DoxyCompactList}\small\item\em Sets new execution time for timer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Event\+Handler \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a34e6c8f85b2c8e61b1967cceccc3e0e4}{On\+Wake\+Up\+Time}}
+\item 
+static Event\+Handler \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_ad04b63eea25e1d7c00edeb428d12d90f}{On\+Sleep\+Time}}
+\item 
+static bool \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a3379e0a8fea84487902f8f5653a47bc8}{Is\+Running}} =$>$ \+\_\+wake\+Up\+Timer.\+Enabled
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a6aca57a6a6033b49f68d925fbbed7ae0}{Light\+Timer\+Controller}} ()
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_aec91ddf32845276e02330e446f5c9859}{Wakeup\+On\+Elapsed}} (object sender, Elapsed\+Event\+Args elapsed\+Event\+Args)
+\item 
+static void \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_af7b0f648c14fad7fd49b687beb1f825d}{Sleep\+Time\+On\+Elapsed}} (object sender, Elapsed\+Event\+Args elapsed\+Event\+Args)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly System.\+Timers.\+Timer \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a5f247a7435ff4e8e24cbaa1b6e93bd4a}{\+\_\+wake\+Up\+Timer}}
+\item 
+static readonly System.\+Timers.\+Timer \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a939efc8b74869f2d28b908deaaee0337}{\+\_\+sleep\+Timer}}
+\item 
+static Time\+Span \mbox{\hyperlink{class_master_application_1_1_light_timer_controller_a06dd9c3a348e7d71d4433c1ff25aad80}{\+\_\+due\+Time}} = Time\+Span.\+From\+Milliseconds(-\/1)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 9 of file Timer\+Controller.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a6aca57a6a6033b49f68d925fbbed7ae0}\label{class_master_application_1_1_light_timer_controller_a6aca57a6a6033b49f68d925fbbed7ae0}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!Light\+Timer\+Controller@{Light\+Timer\+Controller}}
+\index{Light\+Timer\+Controller@{Light\+Timer\+Controller}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{Light\+Timer\+Controller()}{LightTimerController()}}
+{\footnotesize\ttfamily static Master\+Application.\+Light\+Timer\+Controller.\+Light\+Timer\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Timer\+Controller.\+cs.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a00084f3d19a781b946a4283891765dab}\label{class_master_application_1_1_light_timer_controller_a00084f3d19a781b946a4283891765dab}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!Set\+Time@{Set\+Time}}
+\index{Set\+Time@{Set\+Time}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{Set\+Time()}{SetTime()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Light\+Timer\+Controller.\+Set\+Time (\begin{DoxyParamCaption}\item[{Date\+Time}]{when\+To\+Handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets new execution time for timer 
+
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Definition at line 49 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_af7b0f648c14fad7fd49b687beb1f825d}\label{class_master_application_1_1_light_timer_controller_af7b0f648c14fad7fd49b687beb1f825d}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!Sleep\+Time\+On\+Elapsed@{Sleep\+Time\+On\+Elapsed}}
+\index{Sleep\+Time\+On\+Elapsed@{Sleep\+Time\+On\+Elapsed}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{Sleep\+Time\+On\+Elapsed()}{SleepTimeOnElapsed()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Light\+Timer\+Controller.\+Sleep\+Time\+On\+Elapsed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Elapsed\+Event\+Args}]{elapsed\+Event\+Args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 60 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a9453948c870b922fb6a5080847e4ca90}\label{class_master_application_1_1_light_timer_controller_a9453948c870b922fb6a5080847e4ca90}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!Start@{Start}}
+\index{Start@{Start}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Light\+Timer\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 29 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a0538817a522b0b7f65c0a85f749e7c8a}\label{class_master_application_1_1_light_timer_controller_a0538817a522b0b7f65c0a85f749e7c8a}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!Stop@{Stop}}
+\index{Stop@{Stop}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Light\+Timer\+Controller.\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 37 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_aec91ddf32845276e02330e446f5c9859}\label{class_master_application_1_1_light_timer_controller_aec91ddf32845276e02330e446f5c9859}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!Wakeup\+On\+Elapsed@{Wakeup\+On\+Elapsed}}
+\index{Wakeup\+On\+Elapsed@{Wakeup\+On\+Elapsed}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{Wakeup\+On\+Elapsed()}{WakeupOnElapsed()}}
+{\footnotesize\ttfamily static void Master\+Application.\+Light\+Timer\+Controller.\+Wakeup\+On\+Elapsed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Elapsed\+Event\+Args}]{elapsed\+Event\+Args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 56 of file Timer\+Controller.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a06dd9c3a348e7d71d4433c1ff25aad80}\label{class_master_application_1_1_light_timer_controller_a06dd9c3a348e7d71d4433c1ff25aad80}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!\+\_\+due\+Time@{\+\_\+due\+Time}}
+\index{\+\_\+due\+Time@{\+\_\+due\+Time}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+due\+Time}{\_dueTime}}
+{\footnotesize\ttfamily Time\+Span Master\+Application.\+Light\+Timer\+Controller.\+\_\+due\+Time = Time\+Span.\+From\+Milliseconds(-\/1)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 13 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a939efc8b74869f2d28b908deaaee0337}\label{class_master_application_1_1_light_timer_controller_a939efc8b74869f2d28b908deaaee0337}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!\+\_\+sleep\+Timer@{\+\_\+sleep\+Timer}}
+\index{\+\_\+sleep\+Timer@{\+\_\+sleep\+Timer}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+sleep\+Timer}{\_sleepTimer}}
+{\footnotesize\ttfamily readonly System.\+Timers.\+Timer Master\+Application.\+Light\+Timer\+Controller.\+\_\+sleep\+Timer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 12 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a5f247a7435ff4e8e24cbaa1b6e93bd4a}\label{class_master_application_1_1_light_timer_controller_a5f247a7435ff4e8e24cbaa1b6e93bd4a}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!\+\_\+wake\+Up\+Timer@{\+\_\+wake\+Up\+Timer}}
+\index{\+\_\+wake\+Up\+Timer@{\+\_\+wake\+Up\+Timer}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+wake\+Up\+Timer}{\_wakeUpTimer}}
+{\footnotesize\ttfamily readonly System.\+Timers.\+Timer Master\+Application.\+Light\+Timer\+Controller.\+\_\+wake\+Up\+Timer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 11 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a3379e0a8fea84487902f8f5653a47bc8}\label{class_master_application_1_1_light_timer_controller_a3379e0a8fea84487902f8f5653a47bc8}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!Is\+Running@{Is\+Running}}
+\index{Is\+Running@{Is\+Running}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{Is\+Running}{IsRunning}}
+{\footnotesize\ttfamily bool Master\+Application.\+Light\+Timer\+Controller.\+Is\+Running =$>$ \+\_\+wake\+Up\+Timer.\+Enabled\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 17 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_ad04b63eea25e1d7c00edeb428d12d90f}\label{class_master_application_1_1_light_timer_controller_ad04b63eea25e1d7c00edeb428d12d90f}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!On\+Sleep\+Time@{On\+Sleep\+Time}}
+\index{On\+Sleep\+Time@{On\+Sleep\+Time}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{On\+Sleep\+Time}{OnSleepTime}}
+{\footnotesize\ttfamily Event\+Handler Master\+Application.\+Light\+Timer\+Controller.\+On\+Sleep\+Time\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 15 of file Timer\+Controller.\+cs.
+
+\mbox{\Hypertarget{class_master_application_1_1_light_timer_controller_a34e6c8f85b2c8e61b1967cceccc3e0e4}\label{class_master_application_1_1_light_timer_controller_a34e6c8f85b2c8e61b1967cceccc3e0e4}} 
+\index{Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}!On\+Wake\+Up\+Time@{On\+Wake\+Up\+Time}}
+\index{On\+Wake\+Up\+Time@{On\+Wake\+Up\+Time}!Master\+Application\+::\+Light\+Timer\+Controller@{Master\+Application\+::\+Light\+Timer\+Controller}}
+\subsubsection{\texorpdfstring{On\+Wake\+Up\+Time}{OnWakeUpTime}}
+{\footnotesize\ttfamily Event\+Handler Master\+Application.\+Light\+Timer\+Controller.\+On\+Wake\+Up\+Time\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 14 of file Timer\+Controller.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Simon/\+Cloud\+Station/\+Skole/\+Programmering/ikt-\/sem4/\+P\+R\+J4/\+Master\+Application/\+Master\+Application/\mbox{\hyperlink{_timer_controller_8cs}{Timer\+Controller.\+cs}}\end{DoxyCompactItemize}
