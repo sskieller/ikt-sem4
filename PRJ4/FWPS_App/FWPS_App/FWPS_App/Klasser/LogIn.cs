@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace FWPS_App
 {
     /////////////////////////////////////////////////
-    /// 
+    /// Interface to implement a tool to verify
+    /// credentials.
     /////////////////////////////////////////////////
     internal interface IVerifyCredentials
     {
@@ -17,7 +18,7 @@ namespace FWPS_App
     }
 
     /////////////////////////////////////////////////
-    /// 
+    /// Interface to implement a hashing algorithm
     /////////////////////////////////////////////////
     internal interface IHasher
     {
@@ -25,7 +26,7 @@ namespace FWPS_App
     }
 
     /////////////////////////////////////////////////
-    /// 
+    /// Sha256 implementation of the IHaster interface
     /////////////////////////////////////////////////
     internal class Sha256Hasher : IHasher
     {
@@ -40,7 +41,8 @@ namespace FWPS_App
         }
 
         /////////////////////////////////////////////////
-        /// 
+        /// Computates the SHA2 - 256 hash of
+        /// stringToBeHashed
         /////////////////////////////////////////////////
         public string Hash(string stringToBeHashed)
         {
@@ -73,7 +75,8 @@ namespace FWPS_App
         }
 
         /////////////////////////////////////////////////
-        /// 
+        /// Currently not used. Checks if the username
+        /// exists in the database
         /////////////////////////////////////////////////
         public bool VerifyUsernameExists(string usrname)
         {
@@ -97,7 +100,9 @@ namespace FWPS_App
         }
 
         /////////////////////////////////////////////////
-        /// 
+        /// Validates and verifys the given username and
+        /// password.
+        /// TODO: implement a login token.
         /////////////////////////////////////////////////
         public bool VerifyPassword(string usrname, string pskword)
         {
@@ -130,7 +135,7 @@ namespace FWPS_App
     }
 
     /////////////////////////////////////////////////
-    /// 
+    /// Class to wrap the login process. 
     /////////////////////////////////////////////////
     public class LogIn
     {
@@ -139,7 +144,8 @@ namespace FWPS_App
         private readonly IHasher _hasher;
 
         /////////////////////////////////////////////////
-        /// 
+        /// Sets up constructor. Takes a base URI to
+        /// route the login requests.
         /////////////////////////////////////////////////
         public LogIn(string apiUrl)
         {
@@ -148,7 +154,8 @@ namespace FWPS_App
         }
 
         /////////////////////////////////////////////////
-        /// 
+        /// Tries to login. Will hash the given password
+        /// with the _hasher interface. 
         /////////////////////////////////////////////////
         public bool Login(string usrname, string pskword)
         {
